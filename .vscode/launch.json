@@ -28,6 +28,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Depack",
+      "program": "${workspaceFolder}/modules/delegates/depack/index_.js",
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Example",
       "program": "${workspaceFolder}/example/index.js",
       "env": {

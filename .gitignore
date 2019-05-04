@@ -57,3 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 .documentary/cache
+modules/**
+!modules/delegates/
+!modules/delegates/index.js
