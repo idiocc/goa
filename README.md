@@ -1,3 +1,25 @@
+# @goa/koa
+
+[![npm version](https://badge.fury.io/js/%40goa%2Fkoa.svg)](https://npmjs.org/package/@goa/koa)
+
+`@goa/koa` is the Koa web-sever compiled and optimised with _Google Closure Compiler_ so that it has 0 dependencies. The types are written as JSDoc and don't require installing typings, therefore they work not just with TypeScript-based editors and don't require downloading additional data.
+
+```sh
+yarn add @goa/koa
+```
+
+## Table Of Contents
+
+- [Table Of Contents](#table-of-contents)
+- [Types](#types)
+  * [`_goa.Application`](#type-_goaapplication)
+  * [`_goa.Response`](#type-_goaresponse)
+- [Copyright](#copyright)
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+
+## Types
+
 __<a name="type-_goaapplication">`_goa.Application`</a>__: The application interface.
 
 |      Name       |       Type       |                                                                                                 Description                                                                                                  |
@@ -34,3 +56,36 @@ __<a name="type-_goaresponse">`_goa.Response`</a>__: The response API.
 | __etag*__         | <em>*</em>                                                                                                               | 1                                                                                    |
 | __headerSent*__   | <em>boolean</em>                                                                                                         | 1                                                                                    |
 | __writable*__     | <em>boolean</em>                                                                                                         | 1                                                                                    |
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
+
+## Copyright
+
+The Koa web server by its [authors](https://github.com/koajs/koa).
+
+---
+
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png" alt="Art Deco" />
+      </a>
+    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a> for <a href="https://idio.cc">Idio</a> 2019</th>
+    <th>
+      <a href="https://idio.cc">
+        <img src="https://avatars3.githubusercontent.com/u/40834161?s=100" width="100" alt="Idio" />
+      </a>
+    </th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img src="https://raw.githubusercontent.com/artdecoweb/www.technation.sucks/master/anim.gif"
+          alt="Tech Nation Visa" />
+      </a>
+    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+  </tr>
+</table>
+
+<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
