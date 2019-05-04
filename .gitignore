@@ -60,3 +60,7 @@ typings/
 modules/**
 !modules/delegates/
 !modules/delegates/index.js
+!modules/accepts/
+!modules/accepts/index.js
+!modules/mime-db.js
+!modules/mime-types.js
