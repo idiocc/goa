@@ -130,10 +130,10 @@ competent@^1.1.1:
     restream "^3.7.1"
     rexml "^1.4.0"
 
-documentary@^1.27.0:
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.0.tgz#396faf8d241edc89ac4ea7318c3129845b29fde4"
-  integrity sha512-qBRhehctl7lYTU2kUSNmJhfwVlkP6aTpY8SAK3MNtk1/bnLZ5hqZfisDwVbxa+lbN+TV3yBDovA2bnA5kX59NA==
+documentary@^1.27.1:
+  version "1.27.1"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.1.tgz#abb5d4457470cdb6903b6ba5b439c2e5f3a67bfd"
+  integrity sha512-t6MJpENKlXPnpEQcbfLosb2obsy63gA0wS/7YDJHzX/SQpgq1Hbnzodl7pOI8YzszK2DBrGqp7xOMkuclZqZ0w==
   dependencies:
     "@depack/cache" "^1.0.0"
     "@depack/render" "^1.1.4"

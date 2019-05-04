@@ -13,9 +13,7 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "b": "alamode src -o build -s",
-    "d": "yarn-s d1 externs",
-    "d1": "typal src -c",
-    "externs": "typal externs.js -e",
+    "d": "typal types/index.js types/externs.js",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
@@ -41,7 +39,7 @@
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
     "alamode": "^2.1.2",
-    "documentary": "^1.27.0",
+    "documentary": "^1.27.1",
     "eslint-config-artdeco": "1.0.1",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"
