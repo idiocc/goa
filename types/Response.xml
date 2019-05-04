@@ -1,0 +1,70 @@
+<types namespace="_goa">
+  <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
+  <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
+
+  <type interface name="Response" desc="The response API.">
+    <prop type="_goa.Application" name="app">
+      The reference to the application.
+    </prop>
+    <prop type="_goa.Context" name="ctx">
+      The reference to the context instance.
+    </prop>
+    <prop type="_goa.Request" name="request">
+      The reference to the request instance.
+    </prop>
+    <prop type="http.IncomingMessage" name="req">
+      The message from the client.
+    </prop>
+    <prop type="http.ServerResponse" name="res">
+      The response from the server.
+    </prop>
+    <prop type="function" name="attachment">
+      1     1
+    </prop>
+    <prop type="function" name="redirect">
+     1
+    </prop>
+    <prop type="function" name="remove">
+     1
+    </prop>
+    <prop type="function" name="vary">
+     1
+    </prop>
+    <prop type="function" name="set">
+     1
+    </prop>
+    <prop type="function" name="append">
+     1
+    </prop>
+    <prop type="function" name="flushHeaders">
+     1
+    </prop>
+    <prop name="status">
+     1
+    </prop>
+    <prop name="message">
+     1
+    </prop>
+    <prop name="body">
+     1
+    </prop>
+    <prop number name="length">
+      Return parsed response Content-Length when present. Set Content-Length field to `n`.
+    </prop>
+    <prop name="type">
+     1
+    </prop>
+    <prop name="lastModified">
+     1
+    </prop>
+    <prop name="etag">
+     1
+    </prop>
+    <prop boolean name="headerSent">
+     1
+    </prop>
+    <prop boolean name="writable">
+     1
+    </prop>
+  </type>
+</types>

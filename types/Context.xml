@@ -1,0 +1,7 @@
+<types>
+  <type name="Context" desc="The context object for each request.">
+    <prop name="">
+
+    </prop>
+  </type>
+</types>

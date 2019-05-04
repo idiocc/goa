@@ -1,6 +1,42 @@
+
+# only
+
+  Return whitelisted properties of an object.
+
+## Installation
+
+    $ npm install only
+
+## API
+
+ An array or space-delimited string may be given:
+
+```js
+var obj = {
+  name: 'tobi',
+  last: 'holowaychuk',
+  email: 'tobi@learnboost.com',
+  _id: '12345'
+};
+
+var user = only(obj, 'name last email');
+```
+
+yields:
+
+```js
+{
+  name: 'tobi',
+  last: 'holowaychuk',
+  email: 'tobi@learnboost.com'
+}
+```
+
+## License 
+
 (The MIT License)
 
-Copyright (c) 2019 Koa contributors
+Copyright (c) 2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

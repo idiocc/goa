@@ -1,32 +1,24 @@
-import { join } from 'path'
-import { debuglog } from 'util'
+import { Duplex, Readable, Writable } from 'stream'
+import Koa from '../../src'
 
-const LOG = debuglog('@idio/goa')
+export const Context = (req, res, app) => {
+  const socket = new Duplex()
+  req = Object.assign({ headers: {}, socket }, Readable.prototype, req)
+  res = Object.assign({ _headers: {}, socket }, Writable.prototype, res)
+  req.socket.remoteAddress = req.socket.remoteAddress || '127.0.0.1'
+  app = app || new Koa()
+  res.getHeader = k => res._headers[k.toLowerCase()]
+  res.setHeader = (k, v) => res._headers[k.toLowerCase()] = v
+  res.removeHeader = (k) => delete res._headers[k.toLowerCase()]
+  return app.createContext(req, res)
+}
 
-/**
- * A testing context for the package.
- */
-export default class Context {
-  async _init() {
-    LOG('init context')
-  }
-  /**
-   * Example method.
-   */
-  example() {
-    return 'OK'
-  }
-  /**
-   * A tagged template that returns the relative path to the fixture.
-   * @param {string} file
-   * @example
-   * fixture`input.txt` // -> test/fixture/input.txt
-   */
-  fixture(file) {
-    const f = file.raw[0]
-    return join('test/fixture', f)
-  }
-  async _destroy() {
-    LOG('destroy context')
-  }
+export const request = (req, res, app) => {
+  const c = Context(req, res, app)
+  return c.request
+}
+
+export const response = (req, res, app) => {
+  const c = Context(req, res, app)
+  return c.response
 }

@@ -1,0 +1,10 @@
+<types namespace="_goa">
+  <type interface name="Application" desc="The application interface.">
+    <prop opt boolean name="proxy">
+      Whether the server is running behind a proxy.
+    </prop>
+    <prop opt number name="subdomainOffset">
+       For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
+    </prop>
+  </type>
+</types>

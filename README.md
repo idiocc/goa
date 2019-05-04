@@ -1,65 +1,36 @@
-# @idio/goa
+__<a name="type-_goaapplication">`_goa.Application`</a>__: The application interface.
 
-[![npm version](https://badge.fury.io/js/@idio/goa.svg)](https://npmjs.org/package/@idio/goa)
+|      Name       |       Type       |                                                                                                 Description                                                                                                  |
+| --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| proxy           | <em>boolean</em> | Whether the server is running behind a proxy.                                                                                                                                                                |
+| subdomainOffset | <em>number</em>  | For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`. |
 
-`@idio/goa` is The Koa Fork Compiler With Google Closure Compiler.
+[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-httpincomingmessage">`http.IncomingMessage`</a>__: The first argument to the 'request' event.
 
-```sh
-yarn add @idio/goa
-```
+[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_response_socket) __<a name="type-httpserverresponse">`http.ServerResponse`</a>__: The second parameter to the 'request' event.
 
-## Table Of Contents
+__<a name="type-_goaresponse">`_goa.Response`</a>__: The response API.
 
-- [Table Of Contents](#table-of-contents)
-- [API](#api)
-- [`goa(arg1: string, arg2?: boolean)`](#mynewpackagearg1-stringarg2-boolean-void)
-  * [`_@idio/goa.Config`](#type-_@idio/goaconfig)
-- [Copyright](#copyright)
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
-
-## API
-
-The package is available by importing its default function:
-
-```js
-import goa from '@idio/goa'
-```
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
-
-## `goa(`<br/>&nbsp;&nbsp;`arg1: string,`<br/>&nbsp;&nbsp;`arg2?: boolean,`<br/>`): void`
-
-Call this function to get the result you want.
-
-__<a name="type-_@idio/goaconfig">`_@idio/goa.Config`</a>__: Options for the program.
-
-|   Name    |       Type       |    Description    | Default |
-| --------- | ---------------- | ----------------- | ------- |
-| shouldRun | <em>boolean</em> | A boolean option. | `true`  |
-| __text*__ | <em>string</em>  | A text to return. | -       |
-
-```js
-/* alanode example/ */
-import goa from '@idio/goa'
-
-(async () => {
-  const res = await goa({
-    text: 'example',
-  })
-  console.log(res)
-})()
-```
-```
-example
-```
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
-
-## Copyright
-
-(c) [Idio][1] 2019
-
-[1]: https://idio.cc
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+|       Name        |                                                           Type                                                           |                                     Description                                      |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| __app*__          | <em><a href="#type-_goaapplication" title="The application interface.">_goa.Application</a></em>                         | The reference to the application.                                                    |
+| __ctx*__          | <em>_goa.Context</em>                                                                                                    | The reference to the context instance.                                               |
+| __request*__      | <em>_goa.Request</em>                                                                                                    | The reference to the request instance.                                               |
+| __req*__          | <em><a href="#type-httpincomingmessage" title="The first argument to the 'request' event.">http.IncomingMessage</a></em> | The message from the client.                                                         |
+| __res*__          | <em><a href="#type-httpserverresponse" title="The second parameter to the 'request' event.">http.ServerResponse</a></em> | The response from the server.                                                        |
+| __attachment*__   | <em>function</em>                                                                                                        | 1     1                                                                              |
+| __redirect*__     | <em>function</em>                                                                                                        | 1                                                                                    |
+| __remove*__       | <em>function</em>                                                                                                        | 1                                                                                    |
+| __vary*__         | <em>function</em>                                                                                                        | 1                                                                                    |
+| __set*__          | <em>function</em>                                                                                                        | 1                                                                                    |
+| __append*__       | <em>function</em>                                                                                                        | 1                                                                                    |
+| __flushHeaders*__ | <em>function</em>                                                                                                        | 1                                                                                    |
+| __status*__       | <em>*</em>                                                                                                               | 1                                                                                    |
+| __message*__      | <em>*</em>                                                                                                               | 1                                                                                    |
+| __body*__         | <em>*</em>                                                                                                               | 1                                                                                    |
+| __length*__       | <em>number</em>                                                                                                          | Return parsed response Content-Length when present. Set Content-Length field to `n`. |
+| __type*__         | <em>*</em>                                                                                                               | 1                                                                                    |
+| __lastModified*__ | <em>*</em>                                                                                                               | 1                                                                                    |
+| __etag*__         | <em>*</em>                                                                                                               | 1                                                                                    |
+| __headerSent*__   | <em>boolean</em>                                                                                                         | 1                                                                                    |
+| __writable*__     | <em>boolean</em>                                                                                                         | 1                                                                                    |
