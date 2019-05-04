@@ -20,16 +20,18 @@ yarn add @goa/koa
 
 ## Types
 
+[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-httpincomingmessage">`http.IncomingMessage`</a>__: The first argument to the 'request' event.
+
+[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_response_socket) __<a name="type-httpserverresponse">`http.ServerResponse`</a>__: The second parameter to the 'request' event.
+
+[`import('net').Socket`](https://nodejs.org/api/net.html#net_class_net_socket) __<a name="type-netsocket">`net.Socket`</a>__: The socket underlying the request.
+
 __<a name="type-_goaapplication">`_goa.Application`</a>__: The application interface.
 
 |      Name       |       Type       |                                                                                                 Description                                                                                                  |
 | --------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | proxy           | <em>boolean</em> | Whether the server is running behind a proxy.                                                                                                                                                                |
 | subdomainOffset | <em>number</em>  | For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`. |
-
-[`import('http').IncomingMessage`](https://nodejs.org/api/http.html#http_class_http_incomingmessage) __<a name="type-httpincomingmessage">`http.IncomingMessage`</a>__: The first argument to the 'request' event.
-
-[`import('http').ServerResponse`](https://nodejs.org/api/http.html#http_response_socket) __<a name="type-httpserverresponse">`http.ServerResponse`</a>__: The second parameter to the 'request' event.
 
 __<a name="type-_goaresponse">`_goa.Response`</a>__: The response API.
 
@@ -55,7 +57,12 @@ __<a name="type-_goaresponse">`_goa.Response`</a>__: The response API.
 | __lastModified*__ | <em>Date</em>                                                                                                            | Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date. _Examples_:<li>      `this.response.lastModified = new Date()`</li><li>      `this.response.lastModified = '2013-09-13'`</li>                                                                                                                                           |
 | __etag*__         | <em>string</em>                                                                                                          | Get/Set the ETag of a response. This will normalize the quotes if necessary. _Examples_:<li>      `this.response.etag = 'md5hashsum'`</li><li>      `this.response.etag = '"md5hashsum"'`</li><li>      `this.response.etag = 'W/"123456789"'`</li>                                                                                                                                 |
 | __headerSent*__   | <em>boolean</em>                                                                                                         | Check if a header has been written to the socket.                                                                                                                                                                                                                                                                                                                                   |
+| __socket*__       | <em><a href="#type-netsocket" title="The socket underlying the request.">net.Socket</a></em>                             | Return the request socket.                                                                                                                                                                                                                                                                                                                                                          |
 | __writable*__     | <em>boolean</em>                                                                                                         | Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.                                                                                                                                                                                                                                                                    |
+| __header*__       | <em>Object&lt;string, string&gt;</em>                                                                                    | Return response header (_OutgoingHttpHeaders_).                                                                                                                                                                                                                                                                                                                                     |
+| __headers*__      | <em>Object&lt;string, string&gt;</em>                                                                                    | Return response header, alias as `response.header` (_OutgoingHttpHeaders_).                                                                                                                                                                                                                                                                                                         |
+| __is*__           | <em>function(string|!Array<string>, ...string=): string|boolean</em>                                                     | Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.                                                                                                                                                                                                                                                                                 |
+| __get*__          | <em>function(string): string</em>                                                                                        | Return response header. _Examples_:<li>      ` this.get('Content-Type')` =&gt; `"text/plain"`</li><li>      ` this.get('content-type')` => `"text/plain"`</li>                                                                                                                                                                                                                      |
 
 <p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
 
