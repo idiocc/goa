@@ -38,9 +38,9 @@
   },
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
-    "@goa/accepts": "^1.0.1",
+    "@goa/accepts": "^1.0.2",
     "@goa/is-generator-function": "^1.0.1",
-    "@goa/negotiator": "^1.0.0",
+    "@goa/negotiator": "^1.0.1",
     "@goa/vary": "^1.0.0",
     "@idio/debug": "^1.0.0",
     "alamode": "^2.1.2",

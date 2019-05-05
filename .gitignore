@@ -59,3 +59,6 @@ typings/
 .documentary/cache
 modules/**
 !modules/delegates/
+!modules/type-is/
+!modules/type-is/**/*.js
+!modules/destroy.js

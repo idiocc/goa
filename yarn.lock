@@ -34,20 +34,20 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/accepts@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.0.1.tgz#4f489ca4191e9fec3a35983c5bd8d0329ae866c7"
-  integrity sha512-olfcLdRs4UvAxweuwVvYQBLPeNo/ds6uZVJLlhQWHYCbOi6tbCNIOsvM9I+d8Gmu8YcNEr4CBsrmKa8iuuosMQ==
+"@goa/accepts@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.0.2.tgz#b195e21172530c6e0df492f091f663e55707cbbc"
+  integrity sha512-iPxawN2YFVU3efg+ZKrGiI6NEdOwHv4r39Gwl3OwD0J3FqPP1WmJDA9eTadkV1r5ZMbVAy+XgKOYLFdFAGnvew==
 
 "@goa/is-generator-function@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@goa/is-generator-function/-/is-generator-function-1.0.1.tgz#2ad692706bbc6da7be2797f531bb472d87f74ff4"
   integrity sha512-Zt9q5/E+HrmS91NJLT9AVNKvLpBmFHzRTXZcb+PfFRDt9XzGXDqr/pumfA1+girr3Qw9haVf9MmcEa1dMak2cg==
 
-"@goa/negotiator@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@goa/negotiator/-/negotiator-1.0.0.tgz#f31e669ff005d2d69ccf902082987ec1387fcaef"
-  integrity sha512-mZzNsSyX4d5ztIerHMHFea7GnR2sHWJVw/loNcr6KBjX9ilxlOvwX317nqbcfiwNpvhZyVTEI0Q6r6y2qkW2/A==
+"@goa/negotiator@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@goa/negotiator/-/negotiator-1.0.1.tgz#d0b0dccfafc4dc4a990ae92a65c4faedfbe884f7"
+  integrity sha512-Hzu2cXJBI5/WKb+9nuLRfefLcRWUlgWTlWHaZbtrM/7BHQHQIX4FJWNzywQARmWDl9g8hoHdeWw58SPcx5ET4Q==
 
 "@goa/vary@^1.0.0":
   version "1.0.0"
