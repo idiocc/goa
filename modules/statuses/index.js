@@ -70,7 +70,6 @@ function populateStatusesMap(statuses, allCodes) {
  * if valid, otherwise will lookup the code assuming this is
  * the status message.
  * @param {string|number} code
- * @returns {number}
  */
 export default function status(code) {
   if (typeof code == 'number') {

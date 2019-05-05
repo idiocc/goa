@@ -57,8 +57,3 @@ typings/
 # dotenv environment variables file
 .env
 .documentary/cache
-modules/**
-!modules/delegates/
-!modules/type-is/
-!modules/type-is/**/*.js
-!modules/destroy.js

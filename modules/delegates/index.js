@@ -101,5 +101,5 @@ export default class Delegator {
 
 /**
  * @license MIT Copyright (c) 2015 TJ Holowaychuk <tj@vision-media.ca>
- * https://www.npmjs.com/package/delegates
+ * https://npmjs.org/delegates
  */

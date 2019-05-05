@@ -28,6 +28,20 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Zoroaster For Module",
+      "program": "${workspaceFolder}/node_modules/.bin/zoroaster",
+      "console": "integratedTerminal",
+      "args": [
+        "modules/http-errors/test.js",
+        "-a", "-w", "-t", "9999999"
+      ],
+      "skipFiles": [
+        "<node_internals>/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Depack",
       "program": "${workspaceFolder}/modules/delegates/depack/index_.js",
       "skipFiles": [
