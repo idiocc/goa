@@ -4,7 +4,7 @@ const [,,file] = process.argv
 
 let content = `${readFileSync(file)}`
 content = content
-  .replace(/it\('(.+?)', function \(\) {/g, (m, n) => {
+  .replace(/it\('(.+?)', function \((.*?)\) {/g, (m, n) => {
     return `'${n}'() {`
   })
   .replace(/describe\('(.+?)', function \(\) {/g, (m, n) => {

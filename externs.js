@@ -31,3 +31,20 @@ process.env.TRACE_DEPRECATION
 process.traceDeprecation
 /** @type {string} */
 process.env.TEAMCITY_VERSION
+
+/** @type {boolean} */
+Error.prototype.expose
+/** @type {number} */
+Error.prototype.status
+/** @type {number} */
+Error.prototype.statusCode
+
+/** @type {!Object|undefined} */
+http.ServerResponse.prototype._headers
+/** @type {string|undefined} */
+http.IncomingHttpHeaders.prototype.referrer
+/** @type {string|undefined} */
+http.IncomingHttpHeaders.prototype.referer
+
+/** @type {string} */
+process.env.NODE_ENV

@@ -72,13 +72,13 @@
 
   <type interface extends="ContextDelegatedResponse" name="BaseResponse"
     desc="The additional API not available via Context.">
-    <prop type="net.Socket" name="socket">
+    <prop type="!net.Socket" name="socket">
       Return the request socket.
     </prop>
-    <prop type="Object<string, string>" name="header">
+    <prop type="O!bject<string, string>" name="header">
       Return response header (_OutgoingHttpHeaders_).
     </prop>
-    <prop type="Object<string, string>" name="headers">
+    <prop type="!Object<string, string>" name="headers">
       Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
     </prop>
     <prop type="function(string|!Array<string>, ...string): string|boolean" name="is">

@@ -11,9 +11,8 @@ import first from '../ee-first'
  * Invoke callback when the response has finished, useful for
  * cleaning up resources afterwards.
  *
- * @param {object} msg
+ * @param {!http.IncomingMessage|http.OutgoingMessage} msg
  * @param {function} listener
- * @return {object}
  */
 export default function onFinished(msg, listener) {
   if (isFinished(msg) !== false) {
@@ -30,12 +29,11 @@ export default function onFinished(msg, listener) {
 /**
  * Determine if message is already finished.
  *
- * @param {object} msg
- * @return {boolean}
+ * @param {!(http.IncomingMessage|http.OutgoingMessage)} msg
  * @public
  */
 export function isFinished(msg) {
-  var socket = msg.socket
+  const socket = msg.socket
 
   if (typeof msg.finished == 'boolean') {
     // OutgoingMessage
@@ -165,3 +163,10 @@ function patchAssignSocket(res, callback) {
     callback(socket)
   }
 }
+
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').IncomingMessage} http.IncomingMessage
+ * @typedef {import('http').OutgoingMessage} http.OutgoingMessage
+ */

@@ -8,6 +8,36 @@
     <prop opt boolean name="proxy">
       Whether the server is running behind a proxy.
     </prop>
+    <prop type="!Array<!_goa.Middleware>" name="middleware">
+      The array with middleware used on the server.
+    </prop>
+    <prop type="!_goa.Context" name="context">
+      The context object for each request.
+    </prop>
+    <prop type="!_goa.Request" name="request">
+      The request object for each request.
+    </prop>
+    <prop type="!_goa.Response" name="response">
+      The response object for each request.
+    </prop>
+    <prop string name="env" default="development">
+      The value from the `NODE_ENV` environment variable.
+    </prop>
+    <prop string name="originalUrl">
+      The URL set by the `parseurl` package.
+    </prop>
+    <prop opt type="!(_goa.Keygrip|Array<string>)" name="keys">
+      The keys for signing of the cookies.
+    </prop>
+    <prop boolean name="silent" default="false">
+      Whether to not log an error when it happens.
+    </prop>
+    <prop type="function(!_goa.Middleware): !_goa.Application" name="use">
+      Use the given middleware `fn`. Old-style middleware will be converted.
+    </prop>
+    <prop type="function(): !Function" name="callback">
+      Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+    </prop>
     <prop opt number name="subdomainOffset">
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>

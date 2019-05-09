@@ -1,6 +1,6 @@
 process.env.NO_DEPRECATION = 'http-errors'
 
-import assert, { ok, strictEqual, notStrictEqual, throws } from 'assert'
+import assert, { ok, strictEqual, notStrictEqual } from 'assert'
 import { isError } from 'util'
 import createError from './'
 

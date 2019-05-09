@@ -1,10 +1,11 @@
 import { format } from 'util'
+import Cookies from '@goa/cookies'
+import Accepts from '@goa/accepts' // eslint-disable-line
 
 import createError from '../modules/http-errors'
-import httpAssert from 'http-assert'
-import delegate from 'delegates'
-import statuses from 'statuses'
-import Cookies from 'cookies'
+import delegate from '../modules/delegates'
+import httpAssert from '../modules/http-assert'
+import statuses from '../modules/statuses'
 
 import Request from './Request' // eslint-disable-line
 import Response from './Response' // eslint-disable-line
@@ -13,13 +14,14 @@ const COOKIES = Symbol('context#cookies')
 
 /**
  * Context prototype.
+ * @implements {_goa.ContextDelegatedRequest}
+ * @implements {_goa.ContextDelegatedResponse}
+ * @implements {_goa.Context}
  */
 export default class Context {
   constructor() {
     /** @type {?_goa.Application} */
     this.app = null
-    /** @type {?Context} */
-    this.context = null
     /** @type {?Request} */
     this.request = null
     /** @type {?Response} */
@@ -28,10 +30,102 @@ export default class Context {
     this.req = null
     /** @type {?http.ServerResponse} */
     this.res = null
-    /** @type {?string} */
-    this.originalUrl = null
-    /** @type {Object} */
-    this.state = null
+
+    /** @type {?string} */ this.originalUrl = null
+    /** @type {Object} */ this.state = null
+    /** @type {_goa.Cookies} */ this[COOKIES] = null
+
+    /**
+     * Bypass Koa's response.
+     * @param {boolean}
+     */
+    this.respond = true
+
+    // REQUEST delegates
+    // method
+    /** @type {?} **/
+    this.acceptsLanguages = undefined
+    /** @type {?} **/
+    this.acceptsEncodings = undefined
+    /** @type {?} **/
+    this.acceptsCharsets = undefined
+    /** @type {?} **/
+    this.accepts = undefined
+    /** @type {?} **/
+    this.get = undefined
+    /** @type {?} **/
+    this.is = undefined
+
+    // access
+    /** @type {?} **/
+    this.querystring = undefined
+    /** @type {?} **/
+    this.idempotent = undefined
+    /** @type {?} **/
+    this.socket = undefined
+    /** @type {?} **/
+    this.search = undefined
+    /** @type {?} **/
+    this.method = undefined
+    /** @type {?} **/
+    this.query = undefined
+    /** @type {?} **/
+    this.path = undefined
+    /** @type {?} **/
+    this.url = undefined
+    /** @type {Accepts} **/
+    this.accept = undefined
+
+    // getters
+    /** @type {?} **/
+    this.origin = undefined
+    /** @type {?} **/
+    this.href = undefined
+    /** @type {?} **/
+    this.subdomains = undefined
+    /** @type {?} **/
+    this.protocol = undefined
+    /** @type {?} **/
+    this.host = undefined
+    /** @type {?} **/
+    this.hostname = undefined
+    /** @type {?} **/
+    this.URL = undefined
+    /** @type {?} **/
+    this.header = undefined
+    /** @type {?} **/
+    this.headers = undefined
+    /** @type {?} **/
+    this.secure = undefined
+    /** @type {?} **/
+    this.stale = undefined
+    /** @type {?} **/
+    this.fresh = undefined
+    /** @type {?} **/
+    this.ips = undefined
+    /** @type {?} **/
+    this.ip = undefined
+
+    // RESPONSE delegates
+    // method
+    /** @type {?} **/ this.attachment = undefined
+    /** @type {?} **/ this.redirect = undefined
+    /** @type {?} **/ this.remove = undefined
+    /** @type {?} **/ this.vary = undefined
+    /** @type {?} **/ this.set = undefined
+    /** @type {?} **/ this.append = undefined
+    /** @type {?} **/ this.flushHeaders = undefined
+    // access
+    /** @type {?} **/ this.status = undefined
+    /** @type {?} **/ this.message = undefined
+    /** @type {?} **/ this.body = undefined
+    /** @type {?} **/ this.length = undefined
+    /** @type {?} **/ this.type = undefined
+    /** @type {?} **/ this.lastModified = undefined
+    /** @type {?} **/ this.etag = undefined
+    // getter
+    /** @type {boolean} **/ this.headerSent = undefined
+    /** @type {boolean} **/ this.writable = undefined
   }
   /**
    * util.inspect() implementation, which
@@ -40,7 +134,6 @@ export default class Context {
    * @return {Object}
    */
   inspect() {
-    // if (this == proto) return this
     return this.toJSON()
   }
 
@@ -56,13 +149,13 @@ export default class Context {
    */
   toJSON() {
     return {
-      request: this.request.toJSON(),
-      response: this.response.toJSON(),
-      app: this.app.toJSON(),
-      originalUrl: this.originalUrl,
-      req: '<original node req>',
-      res: '<original node res>',
-      socket: '<original node socket>',
+      'request': this.request.toJSON(),
+      'response': this.response.toJSON(),
+      'app': this.app.toJSON(),
+      'originalUrl': this.originalUrl,
+      'req': '<original node req>',
+      'res': '<original node res>',
+      'socket': '<original node socket>',
     }
   }
 
@@ -72,10 +165,6 @@ export default class Context {
    *    this.assert(this.user, 401, 'Please login!');
    *
    * See: https://github.com/jshttp/http-assert
-   *
-   * @param {Mixed} test
-   * @param {number} status
-   * @param {string} message
    */
   get assert() {
     return httpAssert
@@ -96,9 +185,7 @@ export default class Context {
    *
    * Note: `status` should only be passed as the first parameter.
    *
-   * @param {string|number|!Error} err, msg or status
-   * @param {string|number|!Error} [err, msg or status]
-   * @param {!Object} [props]
+   * @param {...(string|number|!Error)} args
    */
   throw(...args) {
     throw createError(...args)
@@ -120,7 +207,7 @@ export default class Context {
 
     let headerSent = false
     if (this.headerSent || !this.writable) {
-      headerSent = err.headerSent = true
+      headerSent = err['headerSent'] = true
     }
 
     // delegate
@@ -137,7 +224,7 @@ export default class Context {
 
     // first unset all headers
     /* istanbul ignore else */
-    if (typeof res.getHeaderNames === 'function') {
+    if (typeof res.getHeaderNames == 'function') {
       res.getHeaderNames().forEach(name => res.removeHeader(name))
     } else {
       res._headers = {} // Node < 7.7

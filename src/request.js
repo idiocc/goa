@@ -306,7 +306,8 @@ export default class Request {
    * may be enabled.
    */
   get protocol() {
-    /** @suppress {checkTypes} */
+    /** missing encrypted in externs
+     * @suppress {checkTypes} */
     const encrypted = this.socket['encrypted']
     if (encrypted) return 'https'
     if (!this.app.proxy) return 'http'

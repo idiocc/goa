@@ -8,12 +8,10 @@ import Response from './response'
 import Request from './request'
 import Context from './context'
 import only from '../modules/only'
-
-import onFinished from 'on-finished'
-import compose from 'koa-compose'
-import isJSON from 'koa-is-json'
-import statuses from 'statuses'
-import convert from 'koa-convert'
+import { empty } from '../modules/statuses'
+import isJSON from '../modules/koa-is-json'
+import onFinished from '../modules/on-finished'
+import compose from '../modules/koa-compose'
 
 const debug = Debug('koa:application')
 
@@ -30,10 +28,12 @@ export default class Application extends EventEmitter {
     this.proxy = false
     this.middleware = []
     this.subdomainOffset = 2
-    this.env = process.env['NODE_ENV'] || 'development'
+    this.env = process.env.NODE_ENV || 'development'
     this.context = new Context()
     this.request = new Request()
     this.response = new Response()
+
+    this.keys = undefined
     // if (util.inspect.custom) {
     //   this[util.inspect.custom] = this.inspect
     // }
@@ -85,13 +85,8 @@ export default class Application extends EventEmitter {
     if (typeof fn != 'function')
       throw new TypeError('middleware must be a function!')
     if (isGeneratorFunction(fn)) {
-      process.emitWarning(
-        'Support for generators will be removed in v3. ' +
-        'See the documentation for examples of how to convert old middleware ' +
-        'https://github.com/koajs/koa/blob/master/docs/migration.md',
-        'DeprecationWarning'
-      )
-      fn = convert(fn)
+      throw new Error(
+        'Generator functions are not supported by @goa/koa. Use koa-convert on them first.')
     }
     debug('use %s', fn._name || fn.name || '-')
     this.middleware.push(fn)
@@ -119,6 +114,7 @@ export default class Application extends EventEmitter {
 
   /**
    * Handle request in callback.
+   * @param {Context} ctx
    * @private
    */
   async handleRequest(ctx, fnMiddleware) {
@@ -190,7 +186,7 @@ function respond(ctx) {
   const code = ctx.status
 
   // ignore body
-  if (statuses.empty[code]) {
+  if (empty[code]) {
     // strip headers
     ctx.body = null
     return res.end()
