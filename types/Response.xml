@@ -16,13 +16,13 @@
     <prop type="function(string): void" name="vary">
        Vary on `field`.
     </prop>
-    <prop type="function(string|Object, string|Array<string>=): void" name="set">
+    <prop type="function((string|!Object), (string|Array<string>)=): void" name="set">
       Set header `field` to `val`, or pass an object of header fields. _Examples_:
       - `this.set('Foo', ['bar', 'baz'])`
       - `this.set('Accept', 'application/json')`
       - `this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })`.
     </prop>
-    <prop type="function(string, string|Array<string>): void" name="append">
+    <prop type="function(string, (string|Array<string>)): void" name="append">
       Append additional header `field` with value `val`. _Examples_:
       - `this.append('Link', ['<http://localhost>', '<http://localhost:3000>'])`
       - `this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')`
@@ -70,18 +70,18 @@
     </prop>
   </type>
 
-  <type interface extends="ContextDelegatedResponse" name="BaseResponse"
+  <type interface extends="_goa.ContextDelegatedResponse" name="BaseResponse"
     desc="The additional API not available via Context.">
     <prop type="!net.Socket" name="socket">
       Return the request socket.
     </prop>
-    <prop type="O!bject<string, string>" name="header">
+    <prop type="Object<string, string>" name="header">
       Return response header (_OutgoingHttpHeaders_).
     </prop>
     <prop type="!Object<string, string>" name="headers">
       Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
     </prop>
-    <prop type="function(string|!Array<string>, ...string): string|boolean" name="is">
+    <prop type="function((string|!Array<string>), ...string): string|boolean" name="is">
       Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
     </prop>
     <prop type="function(string): string" name="get">
@@ -91,7 +91,7 @@
     </prop>
   </type>
 
-  <type interface extends="BaseResponse" name="Response" desc="The response object.">
+  <type interface extends="_goa.BaseResponse" name="Response" desc="The response object.">
     <prop type="_goa.Application" name="app">
       The reference to the application.
     </prop>

@@ -1,4 +1,4 @@
-<types>
+<types namespace="_goa">
   <type interface name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.

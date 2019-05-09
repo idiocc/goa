@@ -1,19 +1,17 @@
 <types namespace="_goa">
   <type interface name="ContextDelegatedRequest" desc="The request API available via Context.">
-    <prop type="function(!Array<string>|string=, ...string): string|!Array<string>|boolean" name="acceptsLanguages">
+    <prop type="function((!Array<string>|string)=, ...string): string|!Array<string>|boolean" name="acceptsLanguages">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </prop>
-    <prop type="function(!Array<string>|string=, ...string): string|!Array<string>|boolean" name="acceptsEncodings">
+    <prop type="function((!Array<string>|string)=, ...string): string|!Array<string>|boolean" name="acceptsEncodings">
       Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
     </prop>
-    <prop type="function(!Array<string>|string=, ...string): string|!Array<string>|boolean" name="acceptsCharsets">
+    <prop type="function((!Array<string>|string)=, ...string): string|!Array<string>|boolean" name="acceptsCharsets">
       Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
     </prop>
-    <prop type="function(!Array<string>|string=, ...string): string|!Array<string>|boolean" name="accepts">
+    <prop type="function((!Array<string>|string)=, ...string): string|!Array<string>|boolean" name="accepts">
       Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
-
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned.
-
       _Examples_:
       - [Accept: text/html] `this.accepts('html') => "html"`
       - [Accept: text/*, application/json]
@@ -34,9 +32,8 @@
       - `this.get('content-type') => "text/plain"`
       - `this.get('Something') => undefined`
     </prop>
-    <prop type="function(!Array<string>|string, ...string)" name="is">
+    <prop type="function(((!Array<string>|string)), ...string)" name="is">
       Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
-
       _Examples_:
       - With Content-Type: text/html; charset=utf-8
         `this.is('html'); // => 'html'`
@@ -83,7 +80,6 @@
     </prop>
     <prop type="!Array<string>" name="subdomains">
       Return subdomains as an array.
-
       Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
       - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
       - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
