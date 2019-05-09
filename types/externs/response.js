@@ -3,7 +3,7 @@
  * The response API available via Context.
  * @interface
  */
-_goa.ContextDelegatedResponse = class {}
+_goa.ContextDelegatedResponse
 /**
  * Set Content-Disposition header to "attachment" with optional `filename`.
  * @type {function(string, ?): void}
@@ -109,7 +109,7 @@ _goa.ContextDelegatedResponse.prototype.writable
  * @extends {_goa.ContextDelegatedResponse}
  * @interface
  */
-_goa.BaseResponse = class {}
+_goa.BaseResponse
 /**
  * Return the request socket.
  * @type {!net.Socket}
@@ -142,7 +142,7 @@ _goa.BaseResponse.prototype.get
  * @extends {_goa.BaseResponse}
  * @interface
  */
-_goa.Response = class {}
+_goa.Response
 /**
  * The reference to the application.
  * @type {!_goa.Application}

@@ -6,7 +6,7 @@ var _goa = {}
  * @extends {events.EventEmitter}
  * @interface
  */
-_goa.Application = class {}
+_goa.Application
 /**
  * Whether the server is running behind a proxy.
  * @type {boolean|undefined}

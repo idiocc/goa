@@ -296,7 +296,7 @@ static-analysis@^1.3.3, static-analysis@^1.7.1:
     mismatch "^1.2.0"
     resolve-dependency "^1.0.3"
 
-typal@^1.12.0:
+typal@^1.12.0, typal@^1.13.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/typal/-/typal-1.13.0.tgz#605ed389290628b1e616246224fbe5151f44187c"
   integrity sha512-3VDLfW+soVazR1upK70X+t3YuStL8qmQbNMRkPoRU+Vnt605y4VbMv3NFYL7ETVl0X1Ap2AqQ7eh4xnvmKDASw==

@@ -3,7 +3,7 @@
  * The request API available via Context.
  * @interface
  */
-_goa.ContextDelegatedRequest = class {}
+_goa.ContextDelegatedRequest
 /**
  * Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
  * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
@@ -184,7 +184,7 @@ _goa.ContextDelegatedRequest.prototype.ip
  * @extends {_goa.ContextDelegatedRequest}
  * @interface
  */
-_goa.BaseRequest = class {}
+_goa.BaseRequest
 /**
  * Get the charset when present or undefined.
  * @type {string|undefined}
@@ -205,7 +205,7 @@ _goa.BaseRequest.prototype.type
  * @extends {_goa.BaseRequest}
  * @interface
  */
-_goa.Request = class {}
+_goa.Request
 /**
  * The reference to the application.
  * @type {!_goa.Application}

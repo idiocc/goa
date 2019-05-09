@@ -3,7 +3,7 @@
  * The context object for each request.
  * @interface
  */
-_goa.Context = class {}
+_goa.Context
 /**
  * The cookies instance.
  * @type {!_goa.Cookies}

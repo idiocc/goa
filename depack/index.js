@@ -12,20 +12,6 @@ const _crypto = require('crypto');
 const url = require('url');
 const net = require('net');
 const querystring = require('querystring');             
-_goa.M = class {
-};
-_goa.N = class {
-};
-_goa.K = class {
-};
-_goa.Request = class {
-};
-_goa.P = class {
-};
-_goa.L = class {
-};
-_goa.Response = class {
-};
 var aa = tty;
 const {format:m, inspect:p} = util;
 /*
@@ -39,7 +25,7 @@ function ba(a) {
     return ca(a);
   }
   if ("number" == c && isFinite(a)) {
-    return b.S ? (b = Math.abs(a), a = 864E5 <= b ? t(a, b, 864E5, "day") : 36E5 <= b ? t(a, b, 36E5, "hour") : 6E4 <= b ? t(a, b, 6E4, "minute") : 1000 <= b ? t(a, b, 1000, "second") : a + " ms") : (b = Math.abs(a), a = 864E5 <= b ? Math.round(a / 864E5) + "d" : 36E5 <= b ? Math.round(a / 36E5) + "h" : 6E4 <= b ? Math.round(a / 6E4) + "m" : 1000 <= b ? Math.round(a / 1000) + "s" : a + "ms"), a;
+    return b.C ? (b = Math.abs(a), a = 864E5 <= b ? t(a, b, 864E5, "day") : 36E5 <= b ? t(a, b, 36E5, "hour") : 6E4 <= b ? t(a, b, 6E4, "minute") : 1000 <= b ? t(a, b, 1000, "second") : a + " ms") : (b = Math.abs(a), a = 864E5 <= b ? Math.round(a / 864E5) + "d" : 36E5 <= b ? Math.round(a / 36E5) + "h" : 6E4 <= b ? Math.round(a / 6E4) + "m" : 1000 <= b ? Math.round(a / 1000) + "s" : a + "ms"), a;
   }
   throw Error("val is not a non-empty string or a valid number. val=" + JSON.stringify(a));
 }
@@ -168,12 +154,12 @@ function ha(a, b) {
 function ia(a) {
   var b = v.load();
   a.save(b);
-  a.b = [];
-  a.h = [];
+  a.g = [];
+  a.i = [];
   let c;
   const d = ("string" == typeof b ? b : "").split(/[\s,]+/), e = d.length;
   for (c = 0; c < e; c++) {
-    d[c] && (b = d[c].replace(/\*/g, ".*?"), "-" == b[0] ? a.h.push(new RegExp("^" + b.substr(1) + "$")) : a.b.push(new RegExp("^" + b + "$")));
+    d[c] && (b = d[c].replace(/\*/g, ".*?"), "-" == b[0] ? a.i.push(new RegExp("^" + b.substr(1) + "$")) : a.g.push(new RegExp("^" + b + "$")));
   }
   for (c = 0; c < a.a.length; c++) {
     b = a.a[c], b.enabled = a.enabled(b.namespace);
@@ -189,8 +175,8 @@ class ja {
     this.init = a.init;
     this.formatters = a.formatters || {};
     this.a = [];
-    this.b = [];
-    this.h = [];
+    this.g = [];
+    this.i = [];
   }
   destroy(a) {
     a = this.a.indexOf(a);
@@ -202,14 +188,14 @@ class ja {
     }
     let b, c;
     b = 0;
-    for (c = this.h.length; b < c; b++) {
-      if (this.h[b].test(a)) {
+    for (c = this.i.length; b < c; b++) {
+      if (this.i[b].test(a)) {
         return !1;
       }
     }
     b = 0;
-    for (c = this.b.length; b < c; b++) {
-      if (this.b[b].test(a)) {
+    for (c = this.g.length; b < c; b++) {
+      if (this.g[b].test(a)) {
         return !0;
       }
     }
@@ -234,12 +220,12 @@ a: {
   }
 }
 const z = y, na = z ? x(z) : {};
-const {createServer:oa} = http;
+const {OutgoingMessage:oa, createServer:pa} = http;
 var A = stream;
-var pa = events;
+var qa = events;
 var B = assert;
-const {extname:qa} = path;
-var C = {[100]:"Continue", [101]:"Switching Protocols", [102]:"Processing", [103]:"Early Hints", [200]:"OK", [201]:"Created", [202]:"Accepted", [203]:"Non-Authoritative Information", [204]:"No Content", [205]:"Reset Content", [206]:"Partial Content", [207]:"Multi-Status", [208]:"Already Reported", [226]:"IM Used", [300]:"Multiple Choices", [301]:"Moved Permanently", [302]:"Found", [303]:"See Other", [304]:"Not Modified", [305]:"Use Proxy", [306]:"(Unused)", [307]:"Temporary Redirect", [308]:"Permanent Redirect", 
+const {basename:C, extname:D} = path;
+var E = {[100]:"Continue", [101]:"Switching Protocols", [102]:"Processing", [103]:"Early Hints", [200]:"OK", [201]:"Created", [202]:"Accepted", [203]:"Non-Authoritative Information", [204]:"No Content", [205]:"Reset Content", [206]:"Partial Content", [207]:"Multi-Status", [208]:"Already Reported", [226]:"IM Used", [300]:"Multiple Choices", [301]:"Moved Permanently", [302]:"Found", [303]:"See Other", [304]:"Not Modified", [305]:"Use Proxy", [306]:"(Unused)", [307]:"Temporary Redirect", [308]:"Permanent Redirect", 
 [400]:"Bad Request", [401]:"Unauthorized", [402]:"Payment Required", [403]:"Forbidden", [404]:"Not Found", [405]:"Method Not Allowed", [406]:"Not Acceptable", [407]:"Proxy Authentication Required", [408]:"Request Timeout", [409]:"Conflict", [410]:"Gone", [411]:"Length Required", [412]:"Precondition Failed", [413]:"Payload Too Large", [414]:"URI Too Long", [415]:"Unsupported Media Type", [416]:"Range Not Satisfiable", [417]:"Expectation Failed", [418]:"I'm a teapot", [421]:"Misdirected Request", [422]:"Unprocessable Entity", 
 [423]:"Locked", [424]:"Failed Dependency", [425]:"Unordered Collection", [426]:"Upgrade Required", [428]:"Precondition Required", [429]:"Too Many Requests", [431]:"Request Header Fields Too Large", [451]:"Unavailable For Legal Reasons", [500]:"Internal Server Error", [501]:"Not Implemented", [502]:"Bad Gateway", [503]:"Service Unavailable", [504]:"Gateway Timeout", [505]:"HTTP Version Not Supported", [506]:"Variant Also Negotiates", [507]:"Insufficient Storage", [508]:"Loop Detected", [509]:"Bandwidth Limit Exceeded", 
 [510]:"Not Extended", [511]:"Network Authentication Required"};
@@ -249,12 +235,12 @@ var C = {[100]:"Continue", [101]:"Switching Protocols", [102]:"Processing", [103
  Copyright(c) 2016 Douglas Christopher Wilson
  MIT Licensed
 */
-const sa = ra(), ta = {[300]:!0, [301]:!0, [302]:!0, [303]:!0, [305]:!0, [307]:!0, [308]:!0}, D = {[204]:!0, [205]:!0, [304]:!0};
+const sa = ra(), ta = {[300]:!0, [301]:!0, [302]:!0, [303]:!0, [305]:!0, [307]:!0, [308]:!0}, F = {[204]:!0, [205]:!0, [304]:!0};
 function ra() {
-  var a = F;
+  var a = G;
   const b = [];
-  Object.keys(C).forEach(c => {
-    const d = C[c];
+  Object.keys(E).forEach(c => {
+    const d = E[c];
     c = Number(c);
     a[c] = d;
     a[d] = c;
@@ -263,9 +249,9 @@ function ra() {
   });
   return b;
 }
-function F(a) {
+function G(a) {
   if ("number" == typeof a) {
-    if (!F[a]) {
+    if (!G[a]) {
       throw Error("invalid status code: " + a);
     }
     return a;
@@ -275,18 +261,18 @@ function F(a) {
   }
   var b = parseInt(a, 10);
   if (!isNaN(b)) {
-    if (!F[b]) {
+    if (!G[b]) {
       throw Error("invalid status code: " + b);
     }
     return b;
   }
-  b = F[a.toLowerCase()];
+  b = G[a.toLowerCase()];
   if (!b) {
     throw Error('invalid status message: "' + a + '"');
   }
   return b;
 }
-;function G(a = {}, b = []) {
+;function I(a = {}, b = []) {
   "string" == typeof b && (b = b.split(/ +/));
   return b.reduce((c, d) => {
     if (null == a[d]) {
@@ -301,14 +287,14 @@ function F(a) {
  Copyright(c) 2014 Jonathan Ong
  MIT Licensed
 */
-function H(a, b) {
+function J(a, b) {
   function c() {
     d();
     b.apply(null, arguments);
   }
   function d() {
-    for (var r, E = 0; E < f.length; E++) {
-      r = f[E], r.H.removeListener(r.event, r.I);
+    for (var r, H = 0; H < f.length; H++) {
+      r = f[H], r.u.removeListener(r.event, r.w);
     }
   }
   function e(r) {
@@ -325,7 +311,7 @@ function H(a, b) {
     for (var h = k[0], l = 1; l < k.length; l++) {
       var n = k[l], q = ua(n, c);
       h.on(n, q);
-      f.push({H:h, event:n, I:q});
+      f.push({u:h, event:n, w:q});
     }
   }
   e.cancel = d;
@@ -345,10 +331,10 @@ function ua(a, b) {
  Copyright(c) 2014 Douglas Christopher Wilson
  MIT Licensed
 */
-function I(a, b) {
+function K(a, b) {
   var c = a.socket;
   c = "boolean" == typeof a.finished ? !!(a.finished || c && !c.writable) : "boolean" == typeof a.complete ? !(!a.upgrade && c && c.readable && (!a.complete || a.readable)) : void 0;
-  !1 !== c ? setImmediate(b, null, a) : (c = a.__onFinished, c && c.w || (c = a.__onFinished = va(a), wa(a, c)), c.w.push(b));
+  !1 !== c ? setImmediate(b, null, a) : (c = a.__onFinished, c && c.l || (c = a.__onFinished = va(a), wa(a, c)), c.l.push(b));
 }
 function wa(a, b) {
   function c(k) {
@@ -359,10 +345,10 @@ function wa(a, b) {
   }
   function d(k) {
     a.removeListener("socket", d);
-    f || g === e && (e = H([[k, "error", "close"]], c));
+    f || g === e && (e = J([[k, "error", "close"]], c));
   }
   var e, f = !1;
-  var g = e = H([[a, "end", "finish"]], c);
+  var g = e = J([[a, "end", "finish"]], c);
   if (a.socket) {
     d(a.socket);
   } else {
@@ -372,15 +358,15 @@ function wa(a, b) {
 function va(a) {
   function b(c) {
     a.__onFinished === b && (a.__onFinished = null);
-    if (b.w) {
-      var d = b.w;
-      b.w = null;
+    if (b.l) {
+      var d = b.l;
+      b.l = null;
       for (var e = 0; e < d.length; e++) {
         d[e](c, a);
       }
     }
   }
-  b.w = [];
+  b.l = [];
   return b;
 }
 ;const {ReadStream:xa} = fs;
@@ -411,11 +397,29 @@ function za() {
  Copyright(c) 2014-2017 Douglas Christopher Wilson
  MIT Licensed
 */
-/*
+const Aa = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/;
+function L(a) {
+  for (var b = 0, c = [], d = 0, e = 0, f = a.length; e < f; e++) {
+    switch(a.charCodeAt(e)) {
+      case 32:
+        d == b && (d = b = e + 1);
+        break;
+      case 44:
+        c.push(a.substring(d, b));
+        d = b = e + 1;
+        break;
+      default:
+        b = e + 1;
+    }
+  }
+  c.push(a.substring(d, b));
+  return c;
+}
+;/*
  MIT Copyright (c) 2014 Jonathan Ong me@jongleberry.com
  https://npmjs.com/package/mime-db
 */
-var J = {"application/1d-interleaved-parityfec":{source:"iana"}, "application/3gpdash-qoe-report+xml":{source:"iana", compressible:!0}, "application/3gpp-ims+xml":{source:"iana", compressible:!0}, "application/a2l":{source:"iana"}, "application/activemessage":{source:"iana"}, "application/activity+json":{source:"iana", compressible:!0}, "application/alto-costmap+json":{source:"iana", compressible:!0}, "application/alto-costmapfilter+json":{source:"iana", compressible:!0}, "application/alto-directory+json":{source:"iana", 
+var M = {"application/1d-interleaved-parityfec":{source:"iana"}, "application/3gpdash-qoe-report+xml":{source:"iana", compressible:!0}, "application/3gpp-ims+xml":{source:"iana", compressible:!0}, "application/a2l":{source:"iana"}, "application/activemessage":{source:"iana"}, "application/activity+json":{source:"iana", compressible:!0}, "application/alto-costmap+json":{source:"iana", compressible:!0}, "application/alto-costmapfilter+json":{source:"iana", compressible:!0}, "application/alto-directory+json":{source:"iana", 
 compressible:!0}, "application/alto-endpointcost+json":{source:"iana", compressible:!0}, "application/alto-endpointcostparams+json":{source:"iana", compressible:!0}, "application/alto-endpointprop+json":{source:"iana", compressible:!0}, "application/alto-endpointpropparams+json":{source:"iana", compressible:!0}, "application/alto-error+json":{source:"iana", compressible:!0}, "application/alto-networkmap+json":{source:"iana", compressible:!0}, "application/alto-networkmapfilter+json":{source:"iana", 
 compressible:!0}, "application/aml":{source:"iana"}, "application/andrew-inset":{source:"iana", extensions:["ez"]}, "application/applefile":{source:"iana"}, "application/applixware":{source:"apache", extensions:["aw"]}, "application/atf":{source:"iana"}, "application/atfx":{source:"iana"}, "application/atom+xml":{source:"iana", compressible:!0, extensions:["atom"]}, "application/atomcat+xml":{source:"iana", compressible:!0, extensions:["atomcat"]}, "application/atomdeleted+xml":{source:"iana", compressible:!0}, 
 "application/atomicmail":{source:"iana"}, "application/atomsvc+xml":{source:"iana", compressible:!0, extensions:["atomsvc"]}, "application/atsc-dwd+xml":{source:"iana", compressible:!0}, "application/atsc-held+xml":{source:"iana", compressible:!0}, "application/atsc-rsat+xml":{source:"iana", compressible:!0}, "application/atxml":{source:"iana"}, "application/auth-policy+xml":{source:"iana", compressible:!0}, "application/bacnet-xdd+zip":{source:"iana", compressible:!1}, "application/batch-smtp":{source:"iana"}, 
@@ -669,26 +673,26 @@ extensions:["flv"]}, "video/x-m4v":{source:"apache", extensions:["m4v"]}, "video
  Copyright (c) 2015 Douglas Christopher Wilson <doug@somethingdoug.com>
  https://npmjs.com/package/mime-types
 */
-const Aa = /^\s*([^;\s]*)(?:;|\s|$)/, Ba = /^text\//i, Ca = Object.create(null), K = Object.create(null);
-Da();
-function L(a) {
-  return a && "string" == typeof a ? (a = qa("x." + a).toLowerCase().substr(1)) ? K[a] || !1 : !1 : !1;
+const Ba = /^\s*([^;\s]*)(?:;|\s|$)/, Ca = /^text\//i, Da = Object.create(null), N = Object.create(null);
+Ea();
+function O(a) {
+  return a && "string" == typeof a ? (a = D("x." + a).toLowerCase().substr(1)) ? N[a] || !1 : !1 : !1;
 }
-function Da() {
+function Ea() {
   const a = ["nginx", "apache", void 0, "iana"];
-  Object.keys(J).forEach(b => {
-    const c = J[b], d = c.extensions;
+  Object.keys(M).forEach(b => {
+    const c = M[b], d = c.extensions;
     if (d && d.length) {
-      Ca[b] = d;
+      Da[b] = d;
       for (let e = 0; e < d.length; e++) {
         const f = d[e];
-        if (K[f]) {
-          const g = a.indexOf(J[K[f]].source), k = a.indexOf(c.source);
-          if ("application/octet-stream" != K[f] && (g > k || g == k && "application/" == K[f].substr(0, 12))) {
+        if (N[f]) {
+          const g = a.indexOf(M[N[f]].source), k = a.indexOf(c.source);
+          if ("application/octet-stream" != N[f] && (g > k || g == k && "application/" == N[f].substr(0, 12))) {
             continue;
           }
         }
-        K[f] = b;
+        N[f] = b;
       }
     }
   });
@@ -698,8 +702,8 @@ function Da() {
  Copyright(c) 2015 Douglas Christopher Wilson
  MIT Licensed
 */
-const M = /; *([!#$%&'*+.^_`|~0-9A-Za-z-]+) *= *("(?:[\u000b\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\u000b\u0020-\u00ff])*"|[!#$%&'*+.^_`|~0-9A-Za-z-]+) */g, Ea = /\\([\u000b\u0020-\u00ff])/g, Fa = /^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$/;
-function N(a) {
+const P = /; *([!#$%&'*+.^_`|~0-9A-Za-z-]+) *= *("(?:[\u000b\u0020\u0021\u0023-\u005b\u005d-\u007e\u0080-\u00ff]|\\[\u000b\u0020-\u00ff])*"|[!#$%&'*+.^_`|~0-9A-Za-z-]+) */g, Fa = /\\([\u000b\u0020-\u00ff])/g, Ga = /^[!#$%&'*+.^_`|~0-9A-Za-z-]+\/[!#$%&'*+.^_`|~0-9A-Za-z-]+$/;
+function Q(a) {
   if (!a) {
     throw new TypeError("argument string is required");
   }
@@ -719,21 +723,21 @@ function N(a) {
   }
   b = a.indexOf(";");
   var c = -1 != b ? a.substr(0, b).trim() : a.trim();
-  if (!Fa.test(c)) {
+  if (!Ga.test(c)) {
     throw new TypeError("invalid media type");
   }
-  c = new Ga(c.toLowerCase());
+  c = new Ha(c.toLowerCase());
   if (-1 != b) {
     let e;
     var d;
-    for (M.lastIndex = b; d = M.exec(a);) {
+    for (P.lastIndex = b; d = P.exec(a);) {
       if (d.index !== b) {
         throw new TypeError("invalid parameter format");
       }
       b += d[0].length;
       e = d[1].toLowerCase();
       d = d[2];
-      '"' == d[0] && (d = d.substr(1, d.length - 2).replace(Ea, "$1"));
+      '"' == d[0] && (d = d.substr(1, d.length - 2).replace(Fa, "$1"));
       c.parameters[e] = d;
     }
     if (b != a.length) {
@@ -742,7 +746,7 @@ function N(a) {
   }
   return c;
 }
-class Ga {
+class Ha {
   constructor(a) {
     this.parameters = Object.create(null);
     this.type = a;
@@ -753,27 +757,27 @@ class Ga {
  Copyright(c) 2014-2017 Douglas Christopher Wilson
  MIT Licensed
 */
-const Ha = /^ *([A-Za-z0-9][A-Za-z0-9!#$&^_-]{0,126})\/([A-Za-z0-9][A-Za-z0-9!#$&^_.+-]{0,126}) *$/;
+const Ia = /^ *([A-Za-z0-9][A-Za-z0-9!#$&^_-]{0,126})\/([A-Za-z0-9][A-Za-z0-9!#$&^_.+-]{0,126}) *$/;
 /*
  MIT
  Copyright(c) 2014 Jonathan Ong
  Copyright(c) 2014-2015 Douglas Christopher Wilson
  https://npmjs.org/type-is
 */
-function O(a, b) {
+function Ja(a, b) {
   var c = [];
   if ("string" != typeof a) {
     var d = null;
   } else {
     try {
-      var e = N(a).type;
+      var e = Q(a).type;
       if (!e) {
         throw new TypeError("argument string is required");
       }
       if ("string" != typeof e) {
         throw new TypeError("argument string is required to be a string");
       }
-      d = Ha.test(e.toLowerCase()) ? e : null;
+      d = Ia.test(e.toLowerCase()) ? e : null;
     } catch (g) {
       d = null;
     }
@@ -787,7 +791,7 @@ function O(a, b) {
     return a;
   }
   for (c = 0; c < b.length; c++) {
-    var f = Ia(d = b[c]);
+    var f = Ka(d = b[c]);
     !1 === f ? e = !1 : (e = a.split("/"), f = f.split("/"), e = 2 != e.length || 2 != f.length || "*" != f[0] && f[0] != e[0] ? !1 : "*+" == f[1].substr(0, 2) ? f[1].length <= e[1].length + 1 && f[1].substr(1) == e[1].substr(1 - f[1].length) : "*" != f[1] && f[1] != e[1] ? !1 : !0);
     if (e) {
       return "+" == d[0] || -1 !== d.indexOf("*") ? a : d;
@@ -795,16 +799,16 @@ function O(a, b) {
   }
   return !1;
 }
-function P(a, b, ...c) {
+function La(a, b, ...c) {
   var d = a.headers;
   d = void 0 !== d["transfer-encoding"] || !isNaN(d["content-length"]);
   if (!d) {
     return null;
   }
   2 < arguments.length && (b = [b, ...c]);
-  return O(a.headers["content-type"], b);
+  return Ja(a.headers["content-type"], b);
 }
-function Ia(a) {
+function Ka(a) {
   if ("string" != typeof a) {
     return !1;
   }
@@ -814,19 +818,70 @@ function Ia(a) {
     case "multipart":
       return "multipart/*";
   }
-  return "+" == a[0] ? "*/*" + a : -1 == a.indexOf("/") ? L(a) : a;
+  return "+" == a[0] ? "*/*" + a : -1 == a.indexOf("/") ? O(a) : a;
 }
 ;/*
  content-disposition
  Copyright(c) 2014-2017 Douglas Christopher Wilson
  MIT Licensed
 */
-/*
+var Ma = /[\x00-\x20"'()*,/:;<=>?@[\\\]{}\x7f]/g, Na = /%[0-9A-Fa-f]{2}/, Oa = /[^\x20-\x7e\xa0-\xff]/g, Pa = /([\\"])/g, Qa = /^[\x20-\x7e\x80-\xff]+$/, Ra = /^[!#$%&'*+.0-9A-Z^_`a-z|~-]+$/;
+function Sa(a, b) {
+  var c = b || {};
+  b = c.type || "attachment";
+  var d = c.B;
+  if (void 0 !== a) {
+    c = {};
+    if ("string" !== typeof a) {
+      throw new TypeError("filename must be a string");
+    }
+    void 0 === d && (d = !0);
+    if ("string" !== typeof d && "boolean" !== typeof d) {
+      throw new TypeError("fallback must be a string or boolean");
+    }
+    if ("string" === typeof d && Oa.test(d)) {
+      throw new TypeError("fallback must be ISO-8859-1 string");
+    }
+    a = C(a);
+    var e = Qa.test(a);
+    d = "string" !== typeof d ? d && String(a).replace(Oa, "?") : C(d);
+    var f = "string" === typeof d && d !== a;
+    if (f || !e || Na.test(a)) {
+      c["filename*"] = a;
+    }
+    if (e || f) {
+      c.filename = f ? d : a;
+    }
+  } else {
+    c = void 0;
+  }
+  c = new Ta(b, c);
+  b = c.parameters;
+  c = c.type;
+  if (!c || "string" !== typeof c || !Ra.test(c)) {
+    throw new TypeError("invalid type");
+  }
+  c = String(c).toLowerCase();
+  if (b && "object" === typeof b) {
+    for (e = Object.keys(b).sort(), d = 0; d < e.length; d++) {
+      a = e[d], f = "*" === a.substr(-1) ? "UTF-8''" + encodeURIComponent(String(b[a])).replace(Ma, Ua) : '"' + String(b[a]).replace(Pa, "\\$1") + '"', c += "; " + a + "=" + f;
+    }
+  }
+  return c;
+}
+function Ua(a) {
+  return "%" + String(a).charCodeAt(0).toString(16).toUpperCase();
+}
+function Ta(a, b) {
+  this.type = a;
+  this.parameters = b;
+}
+;/*
  MIT
  Author dead_horse <dead_horse@qq.com>
  https://github.com/node-modules/error-inject
 */
-function Ja(a, b) {
+function Va(a, b) {
   if (a instanceof A && !a.listeners("error").includes(b)) {
     a.on("error", b);
   }
@@ -838,17 +893,17 @@ function Ja(a, b) {
  [ylru] Author fengmk2
  https://github.com/node-modules/ylru
 */
-function Q(a, b, c) {
+function Wa(a, b, c) {
   a.cache.set(b, c);
   a.a++;
-  a.a >= a.max && (a.a = 0, a.b = a.cache, a.cache = new Map);
+  a.a >= a.max && (a.a = 0, a.g = a.cache, a.cache = new Map);
 }
-class Ka {
+class Xa {
   constructor(a) {
     this.max = a;
     this.a = 0;
     this.cache = new Map;
-    this.b = new Map;
+    this.g = new Map;
   }
   get(a, b = {}) {
     function c() {
@@ -858,40 +913,40 @@ class Ka {
     ({maxAge:b} = b);
     let e;
     if (d) {
-      return d.j && c() > d.j ? (d.j = 0, d.value = void 0) : void 0 !== b && (a = b ? c() + b : 0, d.j = a), d.value;
+      return d.h && c() > d.h ? (d.h = 0, d.value = void 0) : void 0 !== b && (a = b ? c() + b : 0, d.h = a), d.value;
     }
-    if (d = this.b.get(a)) {
-      return d.j && c() > d.j ? (d.j = 0, d.value = void 0) : (Q(this, a, d), void 0 !== b && (a = b ? c() + b : 0, d.j = a)), d.value;
+    if (d = this.g.get(a)) {
+      return d.h && c() > d.h ? (d.h = 0, d.value = void 0) : (Wa(this, a, d), void 0 !== b && (a = b ? c() + b : 0, d.h = a)), d.value;
     }
   }
   set(a, b, c = {}) {
     ({maxAge:c} = c);
     c = c ? Date.now() + c : 0;
     let d = this.cache.get(a);
-    d ? (d.j = c, d.value = b) : (d = {value:b, j:c}, Q(this, a, d));
+    d ? (d.h = c, d.value = b) : (d = {value:b, h:c}, Wa(this, a, d));
   }
   keys() {
     function a(d) {
       const e = d[0], f = d[1];
-      (d[1].value && !d[1].j || f.j >= c) && b.add(e);
+      (d[1].value && !d[1].h || f.h >= c) && b.add(e);
     }
     const b = new Set, c = Date.now();
     for (const d of this.cache.entries()) {
       a(d);
     }
-    for (const d of this.b.entries()) {
+    for (const d of this.g.entries()) {
       a(d);
     }
     return Array.from(b.keys());
   }
 }
-const R = new Ka(100);
+const Ya = new Xa(100);
 /*
  MIT
  Jonathan Ong
  https://npmjs.org/koa-is-json
 */
-function S(a) {
+function Za(a) {
   return !a || "string" == typeof a || "function" == typeof a.pipe || Buffer.isBuffer(a) ? !1 : !0;
 }
 ;/*
@@ -901,22 +956,176 @@ function S(a) {
  Copyright(c) 2015 Tiancheng "Timothy" Gu
  MIT Licensed
 */
-var La = /["'&<>]/;
+var $a = /["'&<>]/;
+const {createHmac:ab} = _crypto;
 /*
  keygrip
  Copyright(c) 2011-2014 Jed Schmidt
  MIT Licensed
 */
-/*
+class bb {
+  constructor(a, b = "sha1", c = "base64") {
+    if (!(a && 0 in a)) {
+      throw Error("Keys must be provided.");
+    }
+    this.a = b;
+    this.encoding = c;
+    this.keys = a;
+  }
+  sign(a) {
+    return cb(a, this.a, this.keys[0], this.encoding);
+  }
+  verify(a, b) {
+    return -1 < this.index(a, b);
+  }
+  index(a, b) {
+    for (let c = 0, d = this.keys.length; c < d; c++) {
+      const e = cb(a, this.a, this.keys[c], this.encoding);
+      if (db(b, e)) {
+        return c;
+      }
+    }
+    return -1;
+  }
+}
+function cb(a, b, c, d) {
+  return ab(b, c).update(a).digest(d).replace(/\/|\+|=/g, e => ({"/":"_", "+":"-", "=":""})[e]);
+}
+function db(a, b) {
+  if (null == a && null != b || null == b && null != a) {
+    return !1;
+  }
+  if (null == a && null == b) {
+    return !0;
+  }
+  if (a.length != b.length) {
+    return !1;
+  }
+  for (var c = 0, d = 0; d < a.length; d++) {
+    c |= a.charCodeAt(d) ^ b.charCodeAt(d);
+  }
+  return 0 === c;
+}
+;const R = /^[\u0009\u0020-\u007e\u0080-\u00ff]+$/, eb = /^(?:lax|strict)$/i;
+function fb(a) {
+  var b = a.toString();
+  a.maxAge && (a.expires = new Date(Date.now() + a.maxAge));
+  a.path && (b += "; path=" + a.path);
+  a.expires && (b += "; expires=" + a.expires.toUTCString());
+  a.domain && (b += "; domain=" + a.domain);
+  a.sameSite && (b += "; samesite=", b = !0 === a.sameSite ? b + "strict" : b + a.sameSite.toLowerCase());
+  a.secure && (b += "; secure");
+  a.httpOnly && (b += "; httponly");
+  return b;
+}
+class gb {
+  constructor(a, b, c) {
+    this.path = "/";
+    this.maxAge = this.domain = this.expires = void 0;
+    this.httpOnly = !0;
+    this.overwrite = this.secure = this.sameSite = !1;
+    if (!R.test(a)) {
+      throw new TypeError("argument name is invalid");
+    }
+    if (b && !R.test(b)) {
+      throw new TypeError("argument value is invalid");
+    }
+    b || (this.expires = new Date(0));
+    this.name = a;
+    this.value = b || "";
+    for (let d in c) {
+      this[d] = c[d];
+    }
+    if (this.path && !R.test(this.path)) {
+      throw new TypeError("option path is invalid");
+    }
+    if (this.domain && !R.test(this.domain)) {
+      throw new TypeError("option domain is invalid");
+    }
+    if (this.sameSite && !0 !== this.sameSite && !eb.test(this.sameSite)) {
+      throw new TypeError("option sameSite is invalid");
+    }
+  }
+  toString() {
+    return this.name + "=" + this.value;
+  }
+}
+;/*
  cookies
  Copyright(c) 2014 Jed Schmidt, http://jed.is/
  Copyright(c) 2015-2016 Douglas Christopher Wilson
  MIT Licensed
 */
-const Ma = /^\s*([^\s;]+)\s*(?:;(.*))?$/;
-function Na(a) {
+const S = {};
+class hb {
+  constructor(a, b, c) {
+    this.secure = void 0;
+    this.request = a;
+    this.response = b;
+    c && (this.keys = Array.isArray(c.keys) ? new bb(c.keys) : c.keys, this.secure = c.secure);
+  }
+  get(a, b) {
+    var c = a + ".sig", d, e = b && void 0 !== b.signed ? b.signed : !!this.keys;
+    if (d = this.request.headers.cookie) {
+      if (d = d.match(S[a] ? S[a] : S[a] = new RegExp("(?:^|;) *" + a.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&") + "=([^;]*)"))) {
+        d = d[1];
+        if (!b || !e) {
+          return d;
+        }
+        if (b = this.get(c)) {
+          a = a + "=" + d;
+          if (!this.keys) {
+            throw Error(".keys required for signed cookies");
+          }
+          b = this.keys.index(a, b);
+          if (0 > b) {
+            this.set(c, null, {path:"/", signed:!1});
+          } else {
+            return b && this.set(c, this.keys.sign(a), {signed:!1}), d;
+          }
+        }
+      }
+    }
+  }
+  set(a, b, c) {
+    const {response:d, request:e} = this;
+    let f = d.getHeader("Set-Cookie") || [];
+    "string" == typeof f && (f = [f]);
+    var g = e.protocol;
+    const k = e.connection.encrypted;
+    g = void 0 !== this.secure ? !!this.secure : "https" == g || k;
+    a = new gb(a, b, c);
+    b = c && void 0 !== c.signed ? c.signed : !!this.keys;
+    if (!g && c && c.secure) {
+      throw Error("Cannot send secure cookie over unencrypted connection");
+    }
+    a.secure = g;
+    c && "secure" in c && (a.secure = c.secure);
+    ib(f, a);
+    if (c && b) {
+      if (!this.keys) {
+        throw Error(".keys required for signed cookies");
+      }
+      a.value = this.keys.sign(a.toString());
+      a.name += ".sig";
+      ib(f, a);
+    }
+    (d.set ? oa.prototype.setHeader : d.setHeader).call(d, "Set-Cookie", f);
+    return this;
+  }
+}
+function ib(a, b) {
+  if (b.overwrite) {
+    for (var c = a.length - 1; 0 <= c; c--) {
+      0 === a[c].indexOf(b.name + "=") && a.splice(c, 1);
+    }
+  }
+  a.push(fb(b));
+}
+;const jb = /^\s*([^\s;]+)\s*(?:;(.*))?$/;
+function kb(a) {
   return a.split(",").map((b, c) => {
-    var d = Ma.exec(b.trim());
+    var d = jb.exec(b.trim());
     if (d) {
       b = d[1];
       var e = 1;
@@ -930,7 +1139,7 @@ function Na(a) {
           }
         }
       }
-      c = {charset:b, q:e, g:c};
+      c = {charset:b, q:e, f:c};
     } else {
       c = null;
     }
@@ -939,14 +1148,14 @@ function Na(a) {
     }
   }).filter(Boolean);
 }
-function Oa(a, b) {
-  const c = Na(void 0 === a ? "*" : a || "");
+function lb(a, b) {
+  const c = kb(void 0 === a ? "*" : a || "");
   if (!b) {
-    return c.filter(T).sort(U).map(Pa);
+    return c.filter(mb).sort(nb).map(ob);
   }
   const d = b.map((e, f) => {
     {
-      let k = {c:-1, q:0, f:0};
+      let k = {b:-1, q:0, c:0};
       for (let h = 0; h < c.length; h++) {
         a: {
           var g = c[h];
@@ -959,31 +1168,31 @@ function Oa(a, b) {
               break a;
             }
           }
-          g = {g:f, f:l, c:g.g, q:g.q};
+          g = {f, c:l, b:g.f, q:g.q};
         }
-        g && 0 > (k.f - g.f || k.q - g.q || k.c - g.c) && (k = g);
+        g && 0 > (k.c - g.c || k.q - g.q || k.b - g.b) && (k = g);
       }
       e = k;
     }
     return e;
   });
-  return d.filter(T).sort(U).map(e => b[d.indexOf(e)]);
+  return d.filter(mb).sort(nb).map(e => b[d.indexOf(e)]);
 }
-function U(a, b) {
-  return b.q - a.q || b.f - a.f || a.c - b.c || a.g - b.g || 0;
+function nb(a, b) {
+  return b.q - a.q || b.c - a.c || a.b - b.b || a.f - b.f || 0;
 }
-function Pa(a) {
+function ob(a) {
   return a.charset;
 }
-function T(a) {
+function mb(a) {
   return 0 < a.q;
 }
-;const Qa = /^\s*([^\s;]+)\s*(?:;(.*))?$/;
-function Ra(a) {
+;const pb = /^\s*([^\s;]+)\s*(?:;(.*))?$/;
+function qb(a) {
   a = a.split(",");
   for (var b = !1, c = 1, d = 0, e = 0; d < a.length; d++) {
     var f = d;
-    var g = Qa.exec(a[d].trim());
+    var g = pb.exec(a[d].trim());
     if (g) {
       var k = g[1], h = 1;
       if (g[2]) {
@@ -996,17 +1205,17 @@ function Ra(a) {
           }
         }
       }
-      f = {encoding:k, q:h, g:f};
+      f = {encoding:k, q:h, f};
     } else {
       f = null;
     }
-    f && (a[e++] = f, b = b || Sa("identity", f, void 0), c = Math.min(c, f.q || 1));
+    f && (a[e++] = f, b = b || rb("identity", f, void 0), c = Math.min(c, f.q || 1));
   }
-  b || (a[e++] = {encoding:"identity", q:c, g:d});
+  b || (a[e++] = {encoding:"identity", q:c, f:d});
   a.length = e;
   return a;
 }
-function Sa(a, b, c) {
+function rb(a, b, c) {
   var d = 0;
   if (b.encoding.toLowerCase() === a.toLowerCase()) {
     d |= 1;
@@ -1015,45 +1224,45 @@ function Sa(a, b, c) {
       return null;
     }
   }
-  return {g:c, c:b.g, q:b.q, f:d};
+  return {f:c, b:b.f, q:b.q, c:d};
 }
-function Ta(a, b) {
-  var c = Ra(a || "");
+function sb(a, b) {
+  var c = qb(a || "");
   if (!b) {
-    return c.filter(Ua).sort(Va).map(Wa);
+    return c.filter(tb).sort(ub).map(vb);
   }
   var d = b.map(function(e, f) {
-    for (var g = {c:-1, q:0, f:0}, k = 0; k < c.length; k++) {
-      var h = Sa(e, c[k], f);
-      h && 0 > (g.f - h.f || g.q - h.q || g.c - h.c) && (g = h);
+    for (var g = {b:-1, q:0, c:0}, k = 0; k < c.length; k++) {
+      var h = rb(e, c[k], f);
+      h && 0 > (g.c - h.c || g.q - h.q || g.b - h.b) && (g = h);
     }
     return g;
   });
-  return d.filter(Ua).sort(Va).map(function(e) {
+  return d.filter(tb).sort(ub).map(function(e) {
     return b[d.indexOf(e)];
   });
 }
-function Va(a, b) {
-  return b.q - a.q || b.f - a.f || a.c - b.c || a.g - b.g || 0;
+function ub(a, b) {
+  return b.q - a.q || b.c - a.c || a.b - b.b || a.f - b.f || 0;
 }
-function Wa(a) {
+function vb(a) {
   return a.encoding;
 }
-function Ua(a) {
+function tb(a) {
   return 0 < a.q;
 }
-;const Xa = /^\s*([^\s\-;]+)(?:-([^\s;]+))?\s*(?:;(.*))?$/;
-function Ya(a) {
+;const wb = /^\s*([^\s\-;]+)(?:-([^\s;]+))?\s*(?:;(.*))?$/;
+function xb(a) {
   a = a.split(",");
   for (var b = 0, c = 0; b < a.length; b++) {
-    var d = Za(a[b].trim(), b);
+    var d = yb(a[b].trim(), b);
     d && (a[c++] = d);
   }
   a.length = c;
   return a;
 }
-function Za(a, b) {
-  var c = Xa.exec(a);
+function yb(a, b) {
+  var c = wb.exec(a);
   if (!c) {
     return null;
   }
@@ -1068,74 +1277,74 @@ function Za(a, b) {
       "q" == k[0] && (f = parseFloat(k[1]));
     }
   }
-  return {prefix:a, T:d, q:f, g:b, u:e};
+  return {prefix:a, D:d, q:f, f:b, j:e};
 }
-function $a(a, b) {
-  var c = Ya(void 0 === a ? "*" : a || "");
+function zb(a, b) {
+  var c = xb(void 0 === a ? "*" : a || "");
   if (!b) {
-    return c.filter(ab).sort(bb).map(cb);
+    return c.filter(Ab).sort(Bb).map(Cb);
   }
   var d = b.map(function(e, f) {
-    for (var g = {c:-1, q:0, f:0}, k = 0; k < c.length; k++) {
+    for (var g = {b:-1, q:0, c:0}, k = 0; k < c.length; k++) {
       a: {
         var h = c[k];
-        var l = f, n = Za(e, void 0);
+        var l = f, n = yb(e, void 0);
         if (n) {
           var q = 0;
-          if (h.u.toLowerCase() === n.u.toLowerCase()) {
+          if (h.j.toLowerCase() === n.j.toLowerCase()) {
             q |= 4;
           } else {
-            if (h.prefix.toLowerCase() === n.u.toLowerCase()) {
+            if (h.prefix.toLowerCase() === n.j.toLowerCase()) {
               q |= 2;
             } else {
-              if (h.u.toLowerCase() === n.prefix.toLowerCase()) {
+              if (h.j.toLowerCase() === n.prefix.toLowerCase()) {
                 q |= 1;
               } else {
-                if ("*" !== h.u) {
+                if ("*" !== h.j) {
                   h = null;
                   break a;
                 }
               }
             }
           }
-          h = {g:l, c:h.g, q:h.q, f:q};
+          h = {f:l, b:h.f, q:h.q, c:q};
         } else {
           h = null;
         }
       }
-      h && 0 > (g.f - h.f || g.q - h.q || g.c - h.c) && (g = h);
+      h && 0 > (g.c - h.c || g.q - h.q || g.b - h.b) && (g = h);
     }
     return g;
   });
-  return d.filter(ab).sort(bb).map(function(e) {
+  return d.filter(Ab).sort(Bb).map(function(e) {
     return b[d.indexOf(e)];
   });
 }
-function bb(a, b) {
-  return b.q - a.q || b.f - a.f || a.c - b.c || a.g - b.g || 0;
+function Bb(a, b) {
+  return b.q - a.q || b.c - a.c || a.b - b.b || a.f - b.f || 0;
 }
-function cb(a) {
-  return a.u;
+function Cb(a) {
+  return a.j;
 }
-function ab(a) {
+function Ab(a) {
   return 0 < a.q;
 }
-;const db = /^\s*([^s/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
-function eb(a) {
+;const Db = /^\s*([^s/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
+function Eb(a) {
   a = a.split(",");
   for (var b = 1, c = 0; b < a.length; b++) {
-    0 == fb(a[c]) % 2 ? a[++c] = a[b] : a[c] += "," + a[b];
+    0 == Fb(a[c]) % 2 ? a[++c] = a[b] : a[c] += "," + a[b];
   }
   a.length = c + 1;
   for (c = b = 0; b < a.length; b++) {
-    var d = gb(a[b].trim(), b);
+    var d = Gb(a[b].trim(), b);
     d && (a[c++] = d);
   }
   a.length = c;
   return a;
 }
-function gb(a, b) {
-  var c = db.exec(a);
+function Gb(a, b) {
+  var c = Db.exec(a);
   if (!c) {
     return null;
   }
@@ -1144,13 +1353,13 @@ function gb(a, b) {
   if (c[3]) {
     c = c[3].split(";");
     for (var g = 1, k = 0; g < c.length; g++) {
-      0 == fb(c[k]) % 2 ? c[++k] = c[g] : c[k] += ";" + c[g];
+      0 == Fb(c[k]) % 2 ? c[++k] = c[g] : c[k] += ";" + c[g];
     }
     c.length = k + 1;
     for (g = 0; g < c.length; g++) {
       c[g] = c[g].trim();
     }
-    c = c.map(hb);
+    c = c.map(Hb);
     for (g = 0; g < c.length; g++) {
       var h = c[g];
       k = h[0].toLowerCase();
@@ -1162,10 +1371,10 @@ function gb(a, b) {
       a[k] = h;
     }
   }
-  return {type:f, B:e, A:a, q:d, g:b};
+  return {type:f, s:e, m:a, q:d, f:b};
 }
-function ib(a, b, c) {
-  var d = gb(a, void 0);
+function Ib(a, b, c) {
+  var d = Gb(a, void 0);
   a = 0;
   if (!d) {
     return null;
@@ -1177,57 +1386,57 @@ function ib(a, b, c) {
       return null;
     }
   }
-  if (b.B.toLowerCase() == d.B.toLowerCase()) {
+  if (b.s.toLowerCase() == d.s.toLowerCase()) {
     a |= 2;
   } else {
-    if ("*" != b.B) {
+    if ("*" != b.s) {
       return null;
     }
   }
-  var e = Object.keys(b.A);
+  var e = Object.keys(b.m);
   if (0 < e.length) {
     if (e.every(function(f) {
-      return "*" == b.A[f] || (b.A[f] || "").toLowerCase() == (d.A[f] || "").toLowerCase();
+      return "*" == b.m[f] || (b.m[f] || "").toLowerCase() == (d.m[f] || "").toLowerCase();
     })) {
       a |= 1;
     } else {
       return null;
     }
   }
-  return {g:c, c:b.g, q:b.q, f:a};
+  return {f:c, b:b.f, q:b.q, c:a};
 }
-function jb(a, b) {
-  var c = eb(void 0 === a ? "*/*" : a || "");
+function Jb(a, b) {
+  var c = Eb(void 0 === a ? "*/*" : a || "");
   if (!b) {
-    return c.filter(kb).sort(lb).map(mb);
+    return c.filter(Kb).sort(Lb).map(Mb);
   }
   var d = b.map(function(e, f) {
-    for (var g = {c:-1, q:0, f:0}, k = 0; k < c.length; k++) {
-      var h = ib(e, c[k], f);
-      h && 0 > (g.f - h.f || g.q - h.q || g.c - h.c) && (g = h);
+    for (var g = {b:-1, q:0, c:0}, k = 0; k < c.length; k++) {
+      var h = Ib(e, c[k], f);
+      h && 0 > (g.c - h.c || g.q - h.q || g.b - h.b) && (g = h);
     }
     return g;
   });
-  return d.filter(kb).sort(lb).map(function(e) {
+  return d.filter(Kb).sort(Lb).map(function(e) {
     return b[d.indexOf(e)];
   });
 }
-function lb(a, b) {
-  return b.q - a.q || b.f - a.f || a.c - b.c || a.g - b.g || 0;
+function Lb(a, b) {
+  return b.q - a.q || b.c - a.c || a.b - b.b || a.f - b.f || 0;
 }
-function mb(a) {
-  return a.type + "/" + a.B;
+function Mb(a) {
+  return a.type + "/" + a.s;
 }
-function kb(a) {
+function Kb(a) {
   return 0 < a.q;
 }
-function fb(a) {
+function Fb(a) {
   for (var b = 0, c = 0; -1 !== (c = a.indexOf('"', c));) {
     b++, c++;
   }
   return b;
 }
-function hb(a) {
+function Hb(a) {
   var b = a.indexOf("=");
   if (-1 === b) {
     var c = a;
@@ -1244,7 +1453,7 @@ function hb(a) {
  Copyright(c) 2015 Douglas Christopher Wilson
  https://npmjs.org/negotiator
 */
-class nb {
+class Nb {
   constructor(a) {
     this.request = a;
     this.headers = this.request.headers;
@@ -1253,25 +1462,25 @@ class nb {
     return (a = this.charsets(a)) && a[0];
   }
   charsets(a) {
-    return Oa(this.headers["accept-charset"], a);
+    return lb(this.headers["accept-charset"], a);
   }
   encoding(a) {
     return (a = this.encodings(a)) && a[0];
   }
   encodings(a) {
-    return Ta(this.headers["accept-encoding"], a);
+    return sb(this.headers["accept-encoding"], a);
   }
   language(a) {
     return (a = this.languages(a)) && a[0];
   }
   languages(a) {
-    return $a(this.headers["accept-language"], a);
+    return zb(this.headers["accept-language"], a);
   }
   mediaType(a) {
     return (a = this.mediaTypes(a)) && a[0];
   }
   mediaTypes(a) {
-    return jb(this.headers.accept, a);
+    return Jb(this.headers.accept, a);
   }
 }
 ;/*
@@ -1280,10 +1489,10 @@ class nb {
  Copyright(c) 2015 Douglas Christopher Wilson
  https://npmjs.org/accepts
 */
-class ob {
+class Ob {
   constructor(a) {
     this.headers = a.headers;
-    this.a = new nb(a);
+    this.a = new Nb(a);
   }
   types(a, ...b) {
     a && !Array.isArray(a) && (a = [a, ...b]);
@@ -1293,8 +1502,8 @@ class ob {
     if (!this.headers.accept) {
       return a[0];
     }
-    b = a.map(pb);
-    var c = this.a.mediaTypes(b.filter(qb));
+    b = a.map(Pb);
+    var c = this.a.mediaTypes(b.filter(Qb));
     [c] = c;
     return c ? a[b.indexOf(c)] : !1;
   }
@@ -1329,10 +1538,10 @@ class ob {
     return this.languages;
   }
 }
-function pb(a) {
-  return -1 == a.indexOf("/") ? L(a) : a;
+function Pb(a) {
+  return -1 == a.indexOf("/") ? O(a) : a;
 }
-function qb(a) {
+function Qb(a) {
   return "string" == typeof a;
 }
 ;/*
@@ -1345,9 +1554,9 @@ function qb(a) {
  MIT Licensed
 */
 sa.forEach(a => {
-  rb(F[a]).match(/Error$/);
+  Rb(G[a]).match(/Error$/);
 }, {});
-function rb(a) {
+function Rb(a) {
   return a.split(" ").map(function(b) {
     return b.charAt(0).toUpperCase() + b.slice(1);
   }).join("").replace(/[^ _0-9a-z]/gi, "");
@@ -1356,63 +1565,64 @@ function rb(a) {
  MIT Copyright (c) 2015 TJ Holowaychuk <tj@vision-media.ca>
  https://npmjs.org/delegates
 */
-function V(a, b) {
+function T(a, b) {
   const c = a.a, d = a.target;
-  a.h.push(b);
+  a.i.push(b);
   c.__defineGetter__(b, function() {
     return this[d][b];
   });
   return a;
 }
-function sb(a, b) {
+function Sb(a, b) {
   var c = a.a, d = a.target;
-  a.i.push(b);
+  a.v.push(b);
   c.__defineSetter__(b, function(e) {
     return this[d][b] = e;
   });
   return a;
 }
-class tb {
+class Tb {
   constructor(a, b) {
     this.a = a;
     this.target = b;
-    this.b = [];
-    this.h = [];
+    this.g = [];
     this.i = [];
+    this.v = [];
   }
   method(a) {
     const b = this.a, c = this.target;
-    this.b.push(a);
+    this.g.push(a);
     b[a] = function() {
       return this[c][a].apply(this[c], arguments);
     };
     return this;
   }
   access(a) {
-    return sb(V(this, a), a);
+    return Sb(T(this, a), a);
   }
 }
 ;/*
  MIT jshttp/http-assert
 */
-const {URL:ub, Url:W, format:vb, parse:wb} = url;
-const {parse:xb, stringify:yb} = querystring;
+const {URL:Ub, Url:U, format:Vb, parse:Wb} = url;
+const {isIP:Xb} = net;
+const {parse:Yb, stringify:Zb} = querystring;
 /*
  parseurl
  Copyright(c) 2014 Jonathan Ong
  Copyright(c) 2014-2017 Douglas Christopher Wilson
  MIT Licensed
 */
-function X(a) {
+function V(a) {
   var b = a.url;
   if (void 0 !== b) {
     var c = a._parsedUrl;
-    if ("object" === typeof c && null !== c && (void 0 === W || c instanceof W) && c._raw === b) {
+    if ("object" === typeof c && null !== c && (void 0 === U || c instanceof U) && c._raw === b) {
       return c;
     }
     a: {
       if ("string" !== typeof b || 47 !== b.charCodeAt(0)) {
-        c = wb(b);
+        c = Wb(b);
       } else {
         c = b;
         for (var d = null, e = null, f = 1; f < b.length; f++) {
@@ -1428,11 +1638,11 @@ function X(a) {
             case 35:
             case 160:
             case 65279:
-              c = wb(b);
+              c = Wb(b);
               break a;
           }
         }
-        f = void 0 !== W ? new W : {};
+        f = void 0 !== U ? new U : {};
         f.path = b;
         f.href = b;
         f.pathname = c;
@@ -1450,69 +1660,116 @@ function X(a) {
  Copyright(c) 2016-2017 Douglas Christopher Wilson
  MIT Licensed
 */
-Symbol("context#ip");
-class zb {
+var $b = /(?:^|,)\s*?no-cache\s*?(?:,|$)/;
+function ac(a, b) {
+  var c = a["if-modified-since"], d = a["if-none-match"];
+  if (!c && !d || (a = a["cache-control"]) && $b.test(a)) {
+    return !1;
+  }
+  if (d && "*" !== d) {
+    a = b.etag;
+    if (!a) {
+      return !1;
+    }
+    for (var e = !0, f = 0, g = [], k = 0, h = 0, l = d.length; h < l; h++) {
+      switch(d.charCodeAt(h)) {
+        case 32:
+          k === f && (k = f = h + 1);
+          break;
+        case 44:
+          g.push(d.substring(k, f));
+          k = f = h + 1;
+          break;
+        default:
+          f = h + 1;
+      }
+    }
+    g.push(d.substring(k, f));
+    for (d = 0; d < g.length; d++) {
+      if (f = g[d], f === a || f === "W/" + a || "W/" + f === a) {
+        e = !1;
+        break;
+      }
+    }
+    if (e) {
+      return !1;
+    }
+  }
+  return !c || (b = b["last-modified"], b && bc(b) <= bc(c)) ? !0 : !1;
+}
+function bc(a) {
+  a = a && Date.parse(a);
+  return "number" === typeof a ? a : NaN;
+}
+;const W = Symbol("context#ip");
+class cc {
   constructor() {
-    this.C = this.a = this.J = this.v = this.l = null;
-    this.h = "";
-    this.G = {};
-    this.m = this.i = null;
+    this.res = this.req = this.response = this.ctx = this.app = null;
+    this.originalUrl = "";
+    this.i = {};
+    this.g = this.a = null;
+  }
+  get header() {
+    return this.req.headers;
+  }
+  set header(a) {
+    this.req.headers = a;
   }
   get headers() {
-    return this.a.headers;
+    return this.req.headers;
   }
   set headers(a) {
-    this.a.headers = a;
+    this.req.headers = a;
   }
   get url() {
-    return this.a.url;
+    return this.req.url;
   }
   set url(a) {
-    this.a.url = a;
+    this.req.url = a;
   }
   get origin() {
     return `${this.protocol}://${this.host}`;
   }
   get href() {
-    return /^https?:\/\//i.test(this.h) ? this.h : this.origin + this.h;
+    return /^https?:\/\//i.test(this.originalUrl) ? this.originalUrl : this.origin + this.originalUrl;
   }
   get method() {
-    return this.a.method;
+    return this.req.method;
   }
   set method(a) {
-    this.a.method = a;
+    this.req.method = a;
   }
   get path() {
-    return X(this.a).pathname;
+    return V(this.req).pathname;
   }
   set path(a) {
-    const b = X(this.a);
-    b.pathname !== a && (b.pathname = a, b.path = null, this.url = vb(b));
+    const b = V(this.req);
+    b.pathname !== a && (b.pathname = a, b.path = null, this.url = Vb(b));
   }
   get query() {
-    const a = this.b, b = this.G;
-    return b[a] || (b[a] = xb(a));
+    const a = this.querystring, b = this.i;
+    return b[a] || (b[a] = Yb(a));
   }
   set query(a) {
-    this.b = yb(a);
+    this.querystring = Zb(a);
   }
-  get b() {
-    return this.a ? X(this.a).query || "" : "";
+  get querystring() {
+    return this.req ? V(this.req).query || "" : "";
   }
-  set b(a) {
-    const b = X(this.a);
-    b.search !== `?${a}` && (b.search = a, b.path = null, this.url = vb(b));
+  set querystring(a) {
+    const b = V(this.req);
+    b.search !== `?${a}` && (b.search = a, b.path = null, this.url = Vb(b));
   }
   get search() {
-    return this.b ? `?${this.b}` : "";
+    return this.querystring ? `?${this.querystring}` : "";
   }
   set search(a) {
-    this.b = a;
+    this.querystring = a;
   }
   get host() {
-    var {proxy:a} = this.l;
+    var {proxy:a} = this.app;
     a = a && this.get("X-Forwarded-Host");
-    a || (2 <= this.a.httpVersionMajor && (a = this.get(":authority")), a || (a = this.get("Host")));
+    a || (2 <= this.req.httpVersionMajor && (a = this.get(":authority")), a || (a = this.get("Host")));
     return a ? a.split(/\s*,\s*/, 1)[0] : "";
   }
   get hostname() {
@@ -1520,22 +1777,32 @@ class zb {
     return a ? "[" == a[0] ? this.URL.hostname || "" : a.split(":", 1)[0] : "";
   }
   get URL() {
-    if (!this.i) {
-      const a = this.protocol, b = this.host, c = this.h || "";
+    if (!this.a) {
+      const a = this.protocol, b = this.host, c = this.originalUrl || "";
       try {
-        this.i = new ub(`${a}://${b}${c}`);
+        this.a = new Ub(`${a}://${b}${c}`);
       } catch (d) {
-        this.i = Object.create(null);
+        this.a = Object.create(null);
       }
     }
-    return this.i;
+    return this.a;
   }
-  get D() {
-    return this.a.socket;
+  get fresh() {
+    const a = this.method, b = this.ctx.status;
+    return "GET" != a && "HEAD" != a ? !1 : 200 <= b && 300 > b || 304 == b ? ac(this.header, this.response.header) : !1;
+  }
+  get stale() {
+    return !this.fresh;
+  }
+  get idempotent() {
+    return "GET HEAD PUT DELETE OPTIONS TRACE".split(" ").includes(this.method);
+  }
+  get socket() {
+    return this.req.socket;
   }
   get charset() {
     try {
-      const {parameters:a} = N(this.a);
+      const {parameters:a} = Q(this.req);
       return a.charset || "";
     } catch (a) {
       return "";
@@ -1546,37 +1813,64 @@ class zb {
     return "" == a ? null : ~~a;
   }
   get protocol() {
-    if (this.D.encrypted) {
+    if (this.socket.encrypted) {
       return "https";
     }
-    if (!this.l.proxy) {
+    if (!this.app.proxy) {
       return "http";
     }
     const a = this.get("X-Forwarded-Proto");
     return a ? a.split(/\s*,\s*/, 1)[0] : "http";
   }
-  get s() {
-    return this.m || (this.m = new ob(this.a));
+  get secure() {
+    return "https" == this.protocol;
   }
-  set s(a) {
-    this.m = a;
+  get ips() {
+    const {proxy:a} = this.app, b = this.get("X-Forwarded-For");
+    return a && b ? b.split(/\s*,\s*/) : [];
   }
-  F(a, ...b) {
-    return this.s.types(a, ...b);
+  get ip() {
+    this[W] || (this[W] = this.ips[0] || this.socket.remoteAddress || "");
+    return this[W];
+  }
+  set ip(a) {
+    this[W] = a;
+  }
+  get subdomains() {
+    const a = this.app.subdomainOffset, b = this.hostname;
+    return Xb(b) ? [] : b.split(".").reverse().slice(a);
+  }
+  get accept() {
+    return this.g || (this.g = new Ob(this.req));
+  }
+  set accept(a) {
+    this.g = a;
+  }
+  accepts(a, ...b) {
+    return this.accept.types(a, ...b);
+  }
+  acceptsEncodings(a, ...b) {
+    return this.accept.encodings(a, ...b);
+  }
+  acceptsCharsets(a, ...b) {
+    return this.accept.charsets(a, ...b);
+  }
+  acceptsLanguages(a, ...b) {
+    return this.accept.languages(a, ...b);
   }
   is(a, ...b) {
     if (!a) {
-      return P(this.a);
+      return La(this.req);
     }
     Array.isArray(a) || (a = [a, ...b]);
-    return P(this.a, a);
+    return La(this.req, a);
   }
   get type() {
     const a = this.get("Content-Type");
     return a ? a.split(";")[0] : "";
   }
   get(a) {
-    const b = this.a;
+    const b = this.req;
     switch(a = a.toLowerCase()) {
       case "referer":
       case "referrer":
@@ -1586,23 +1880,23 @@ class zb {
     }
   }
 }
-;const Ab = Symbol("context#cookies");
+;const X = Symbol("context#cookies");
 function Y(a, b) {
   if (null != b) {
     b instanceof Error || (b = Error(m("non-error thrown: %j", b)));
     var c = !1;
-    if (a.h || !a.writable) {
+    if (a.headerSent || !a.writable) {
       c = b.headerSent = !0;
     }
-    a.i.emit("error", b, a);
+    a.app.emit("error", b, a);
     if (!c) {
-      var {a:d} = a;
+      var {res:d} = a;
       "function" == typeof d.getHeaderNames ? d.getHeaderNames().forEach(e => d.removeHeader(e)) : d._headers = {};
       a.set(b.headers);
       a.type = "text";
       "ENOENT" == b.code && (b.status = 404);
-      "number" == typeof b.status && F[b.status] || (b.status = 500);
-      c = F[b.status];
+      "number" == typeof b.status && G[b.status] || (b.status = 500);
+      c = G[b.status];
       c = b.expose ? b.message : c;
       a.status = b.status;
       a.length = Buffer.byteLength(c);
@@ -1612,75 +1906,124 @@ function Y(a, b) {
 }
 class Z {
   constructor() {
-    this.C = this.l = this.a = this.m = this.v = this.request = this.i = null;
-    this[Ab] = null;
-    this.url = this.path = this.query = this.method = this.search = this.D = this.b = this.is = this.get = this.F = void 0;
-    this.s = null;
-    this.type = this.length = this.body = this.message = this.status = this.set = this.remove = this.redirect = this.headers = this.URL = this.hostname = this.host = this.protocol = this.href = this.origin = void 0;
-    this.writable = this.h = !1;
+    this.state = this.originalUrl = this.res = this.req = this.response = this.request = this.app = null;
+    this[X] = null;
+    this.respond = !0;
+    this.url = this.path = this.query = this.method = this.search = this.socket = this.idempotent = this.querystring = this.is = this.get = this.accepts = this.acceptsCharsets = this.acceptsEncodings = this.acceptsLanguages = void 0;
+    this.accept = null;
+    this.etag = this.lastModified = this.type = this.length = this.body = this.message = this.status = this.flushHeaders = this.append = this.set = this.vary = this.remove = this.redirect = this.attachment = this.ip = this.ips = this.fresh = this.stale = this.secure = this.headers = this.header = this.URL = this.hostname = this.host = this.protocol = this.subdomains = this.href = this.origin = void 0;
+    this.writable = this.headerSent = !1;
   }
   inspect() {
     return this.toJSON();
   }
   toJSON() {
-    return {request:this.request.toJSON(), response:this.v.toJSON(), app:this.i.toJSON(), originalUrl:this.l, req:"<original node req>", res:"<original node res>", socket:"<original node socket>"};
+    return {request:this.request.toJSON(), response:this.response.toJSON(), app:this.app.toJSON(), originalUrl:this.originalUrl, req:"<original node req>", res:"<original node res>", socket:"<original node socket>"};
+  }
+  get cookies() {
+    this[X] || (this[X] = new hb(this.req, this.res, {keys:this.app.keys, secure:this.request.secure}));
+    return this[X];
+  }
+  set cookies(a) {
+    this[X] = a;
   }
 }
-V(V((new tb(Z.prototype, "response")).method("attachment").method("redirect").method("remove").method("vary").method("set").method("append").method("flushHeaders").access("status").access("message").access("body").access("length").access("type").access("lastModified").access("etag"), "headerSent"), "writable");
-V(V(V(V(V(V(V(V(V(V(V(V(V(V((new tb(Z.prototype, "request")).method("acceptsLanguages").method("acceptsEncodings").method("acceptsCharsets").method("accepts").method("get").method("is").access("querystring").access("idempotent").access("socket").access("search").access("method").access("query").access("path").access("url").access("accept"), "origin"), "href"), "subdomains"), "protocol"), "host"), "hostname"), "URL"), "header"), "headers"), "secure"), "stale"), "fresh"), "ips"), "ip");
-class Bb {
+T(T((new Tb(Z.prototype, "response")).method("attachment").method("redirect").method("remove").method("vary").method("set").method("append").method("flushHeaders").access("status").access("message").access("body").access("length").access("type").access("lastModified").access("etag"), "headerSent"), "writable");
+T(T(T(T(T(T(T(T(T(T(T(T(T(T((new Tb(Z.prototype, "request")).method("acceptsLanguages").method("acceptsEncodings").method("acceptsCharsets").method("accepts").method("get").method("is").access("querystring").access("idempotent").access("socket").access("search").access("method").access("query").access("path").access("url").access("accept"), "origin"), "href"), "subdomains"), "protocol"), "host"), "hostname"), "URL"), "header"), "headers"), "secure"), "stale"), "fresh"), "ips"), "ip");
+class dc {
   constructor() {
-    this.m = this.a = this.l = this.request = this.b = this.v = null;
-    this.s = void 0;
+    this.g = this.res = this.req = this.request = this.ctx = this.app = null;
+    this.a = void 0;
   }
-  get i() {
-    return this.a.getHeaders();
+  get socket() {
+    return this.res.socket;
+  }
+  get header() {
+    return this.res.getHeaders();
   }
   get headers() {
-    return this.i;
+    return this.header;
   }
   get status() {
-    return this.a.statusCode;
+    return this.res.statusCode;
   }
   set status(a) {
-    this.h || (B(Number.isInteger(a), "status code must be a number"), B(100 <= a && 999 >= a, `invalid status code: ${a}`), this.m = !0, this.a.statusCode = a, 2 > this.l.httpVersionMajor && (this.a.statusMessage = F[a]), this.body && D[a] && (this.body = null));
+    this.headerSent || (B(Number.isInteger(a), "status code must be a number"), B(100 <= a && 999 >= a, `invalid status code: ${a}`), this.g = !0, this.res.statusCode = a, 2 > this.req.httpVersionMajor && (this.res.statusMessage = G[a]), this.body && F[a] && (this.body = null));
   }
   get message() {
-    return this.a.statusMessage || F[this.status];
+    return this.res.statusMessage || G[this.status];
   }
   set message(a) {
-    this.a.statusMessage = a;
+    this.res.statusMessage = a;
   }
   get body() {
-    return this.s;
+    return this.a;
   }
   set body(a) {
-    const b = this.s;
-    this.s = a;
+    const b = this.a;
+    this.a = a;
     if (null == a) {
-      D[this.status] || (this.status = 204), this.remove("Content-Type"), this.remove("Content-Length"), this.remove("Transfer-Encoding");
+      F[this.status] || (this.status = 204), this.remove("Content-Type"), this.remove("Content-Length"), this.remove("Transfer-Encoding");
     } else {
-      this.m || (this.status = 200);
-      var c = !this.i["content-type"];
-      "string" == typeof a ? (c && (this.type = /^\s*</.test(a) ? "html" : "text"), this.length = Buffer.byteLength(a)) : Buffer.isBuffer(a) ? (c && (this.type = "bin"), this.length = a.length) : "function" == typeof a.pipe ? (I(this.a, ya.bind(null, a)), Ja(a, d => Y(this.b, d)), null != b && b != a && this.remove("Content-Length"), c && (this.type = "bin")) : (this.remove("Content-Length"), this.type = "json");
+      this.g || (this.status = 200);
+      var c = !this.header["content-type"];
+      "string" == typeof a ? (c && (this.type = /^\s*</.test(a) ? "html" : "text"), this.length = Buffer.byteLength(a)) : Buffer.isBuffer(a) ? (c && (this.type = "bin"), this.length = a.length) : "function" == typeof a.pipe ? (K(this.res, ya.bind(null, a)), Va(a, d => Y(this.ctx, d)), null != b && b != a && this.remove("Content-Length"), c && (this.type = "bin")) : (this.remove("Content-Length"), this.type = "json");
     }
   }
   set length(a) {
     this.set("Content-Length", a);
   }
   get length() {
-    const a = this.i["content-length"], b = this.body;
-    return null == a ? b ? "string" == typeof b ? Buffer.byteLength(b) : Buffer.isBuffer(b) ? b.length : S(b) ? Buffer.byteLength(JSON.stringify(b)) : null : null : Math.trunc(parseInt(a, 10)) || 0;
+    const a = this.header["content-length"], b = this.body;
+    return null == a ? b ? "string" == typeof b ? Buffer.byteLength(b) : Buffer.isBuffer(b) ? b.length : Za(b) ? Buffer.byteLength(JSON.stringify(b)) : null : null : Math.trunc(parseInt(a, 10)) || 0;
   }
-  get h() {
-    return this.a.headersSent;
+  get headerSent() {
+    return this.res.headersSent;
+  }
+  vary(a) {
+    if (!this.headerSent) {
+      {
+        var b = this.res;
+        if (!b || !b.getHeader || !b.setHeader) {
+          throw new TypeError("res argument is required");
+        }
+        let e = b.getHeader("Vary") || "";
+        var c = Array.isArray(e) ? e.join(", ") : `${e}`;
+        if ("string" != typeof c) {
+          throw new TypeError("header argument is required");
+        }
+        if (!a) {
+          throw new TypeError("field argument is required");
+        }
+        a = Array.isArray(a) ? a : L(`${a}`);
+        for (var d = 0; d < a.length; d++) {
+          if (!Aa.test(a[d])) {
+            throw new TypeError("field argument contains an invalid header name");
+          }
+        }
+        if ("*" == c) {
+          a = c;
+        } else {
+          if (d = c, c = L(c.toLowerCase()), a.includes("*") || c.includes("*")) {
+            a = "*";
+          } else {
+            for (let f = 0; f < a.length; f++) {
+              const g = a[f].toLowerCase();
+              c.includes(g) || (c.push(g), d = d ? d + ", " + a[f] : a[f]);
+            }
+            a = d;
+          }
+        }
+        (e = a) && b.setHeader("Vary", e);
+      }
+    }
   }
   redirect(a, b) {
-    "back" == a && (a = this.b.get("Referrer") || b || "/");
+    "back" == a && (a = this.ctx.get("Referrer") || b || "/");
     this.set("Location", a);
     ta[this.status] || (this.status = 302);
-    if (this.b.F("html")) {
-      var c = La.exec(a);
+    if (this.ctx.accepts("html")) {
+      var c = $a.exec(a);
       if (c) {
         b = "";
         var d, e = 0;
@@ -1716,16 +2059,20 @@ class Bb {
       this.type = "text/plain; charset=utf-8", this.body = `Redirecting to ${a}.`;
     }
   }
+  attachment(a, b) {
+    a && (this.type = D(a));
+    this.set("Content-Disposition", Sa(a, b));
+  }
   set type(a) {
-    var b = R.get(a);
+    var b = Ya.get(a);
     if (!b) {
       if (a && "string" == typeof a) {
-        if (b = -1 == a.indexOf("/") ? L(a) : a) {
+        if (b = -1 == a.indexOf("/") ? O(a) : a) {
           if (!b.includes("charset")) {
             var c;
             if (b && "string" == typeof b) {
-              var d = (c = Aa.exec(b)) && J[c[1].toLowerCase()];
-              c = d && d.charset ? d.charset : c && Ba.test(c[1]) ? "UTF-8" : !1;
+              var d = (c = Ba.exec(b)) && M[c[1].toLowerCase()];
+              c = d && d.charset ? d.charset : c && Ca.test(c[1]) ? "UTF-8" : !1;
             } else {
               c = !1;
             }
@@ -1737,9 +2084,24 @@ class Bb {
       } else {
         b = !1;
       }
-      R.set(a, b);
+      Ya.set(a, b);
     }
     (a = b) ? this.set("Content-Type", a) : this.remove("Content-Type");
+  }
+  set lastModified(a) {
+    "string" == typeof a && (a = new Date(a));
+    this.set("Last-Modified", a.toUTCString());
+  }
+  get lastModified() {
+    const a = this.get("last-modified");
+    return a ? new Date(a) : null;
+  }
+  set etag(a) {
+    /^(W\/)?"/.test(a) || (a = `"${a}"`);
+    this.set("ETag", a);
+  }
+  get etag() {
+    return this.get("ETag");
   }
   get type() {
     const a = this.get("Content-Type");
@@ -1751,15 +2113,15 @@ class Bb {
       return c || !1;
     }
     Array.isArray(a) || (a = [a, ...b]);
-    return O(c, a);
+    return Ja(c, a);
   }
   get(a) {
-    return this.i[a.toLowerCase()] || "";
+    return this.header[a.toLowerCase()] || "";
   }
   set(a, b) {
-    if (!this.h) {
+    if (!this.headerSent) {
       if (2 == arguments.length) {
-        Array.isArray(b) ? b = b.map(c => "string" == typeof c ? c : String(c)) : "string" != typeof b && (b = String(b)), this.a.setHeader(a, b);
+        Array.isArray(b) ? b = b.map(c => "string" == typeof c ? c : String(c)) : "string" != typeof b && (b = String(b)), this.res.setHeader(a, b);
       } else {
         for (const c in a) {
           this.set(c, a[c]);
@@ -1767,25 +2129,33 @@ class Bb {
       }
     }
   }
+  append(a, b) {
+    const c = this.get(a);
+    c && (b = Array.isArray(c) ? c.concat(b) : [c].concat(b));
+    return this.set(a, b);
+  }
   remove(a) {
-    this.h || this.a.removeHeader(a);
+    this.headerSent || this.res.removeHeader(a);
   }
   get writable() {
-    if (this.a.finished) {
+    if (this.res.finished) {
       return !1;
     }
-    const a = this.a.socket;
+    const a = this.res.socket;
     return a ? a.writable : !0;
   }
   inspect() {
-    if (this.a) {
+    if (this.res) {
       var a = this.toJSON();
       a.body = this.body;
       return a;
     }
   }
   toJSON() {
-    return G(this, ["status", "message", "header"]);
+    return I(this, ["status", "message", "header"]);
+  }
+  flushHeaders() {
+    this.res.flushHeaders();
   }
 }
 ;/*
@@ -1793,7 +2163,7 @@ class Bb {
  (c) dead-horse
  https://npmjs.org/koa-compose
 */
-function Cb(a) {
+function ec(a) {
   if (!Array.isArray(a)) {
     throw new TypeError("Middleware stack must be an array!");
   }
@@ -1816,7 +2186,7 @@ function Cb(a) {
     return await d(0);
   };
 }
-;const Db = function() {
+;const fc = function() {
   const a = new ja(v);
   return function(b) {
     const c = fa(a);
@@ -1836,17 +2206,17 @@ function Cb(a) {
     return c;
   };
 }()("@goa/koa:application");
-async function Eb(a, b) {
-  const c = a.a;
+async function gc(a, b) {
+  const c = a.res;
   c.statusCode = 404;
-  I(c, d => Y(a, d));
+  K(c, d => Y(a, d));
   try {
-    return await b(a), await Fb(a);
+    return await b(a), await hc(a);
   } catch (d) {
     Y(a, d);
   }
 }
-class Gb extends pa {
+class ic extends qa {
   constructor() {
     super();
     this.silent = this.proxy = !1;
@@ -1854,16 +2224,12 @@ class Gb extends pa {
     this.subdomainOffset = 2;
     this.env = process.env.NODE_ENV || "development";
     this.context = Z.prototype;
-    this.request = zb.prototype;
-    this.response = Bb.prototype;
+    this.request = cc.prototype;
+    this.response = dc.prototype;
     this.keys = void 0;
   }
-  listen(...a) {
-    Db("listen");
-    return oa(this.callback()).listen(...a);
-  }
   toJSON() {
-    return G(this, ["subdomainOffset", "proxy", "env"]);
+    return I(this, ["subdomainOffset", "proxy", "env"]);
   }
   inspect() {
     return this.toJSON();
@@ -1875,29 +2241,29 @@ class Gb extends pa {
     if ("function" != typeof a ? 0 : ma.test(la.call(a)) || (w ? x(a) == na : "[object GeneratorFunction]" == ka.call(a))) {
       throw Error("Generator functions are not supported by @goa/koa. Use koa-convert on them first.");
     }
-    Db("use %s", a.R || a.name || "-");
+    fc("use %s", a.A || a.name || "-");
     this.middleware.push(a);
     return this;
   }
   callback() {
-    const a = Cb(this.middleware);
+    const a = ec(this.middleware);
     if (!this.listenerCount("error")) {
       this.on("error", this.a);
     }
     return (b, c) => {
       {
-        const d = Object.create(this.context), e = d.request = Object.create(this.request), f = d.v = Object.create(this.response);
-        d.i = e.l = f.v = this;
-        d.m = e.a = f.l = b;
-        d.a = e.C = f.a = c;
-        e.v = f.b = d;
-        e.J = f;
+        const d = Object.create(this.context), e = d.request = Object.create(this.request), f = d.response = Object.create(this.response);
+        d.app = e.app = f.app = this;
+        d.req = e.req = f.req = b;
+        d.res = e.res = f.res = c;
+        e.ctx = f.ctx = d;
+        e.response = f;
         f.request = e;
-        d.l = e.h = b.url;
-        d.C = {};
+        d.originalUrl = e.originalUrl = b.url;
+        d.state = {};
         b = d;
       }
-      return Eb(b, a);
+      return gc(b, a);
     };
   }
   a(a) {
@@ -1907,17 +2273,17 @@ class Gb extends pa {
     404 == a.status || a.expose || this.silent || (a = a.stack || a.toString(), console.error(), console.error(a.replace(/^/gm, "  ")), console.error());
   }
 }
-function Fb(a) {
-  if (a.writable) {
-    var b = a.a, c = a.body, d = a.status;
-    if (D[d]) {
+function hc(a) {
+  if (0 != a.respond && a.writable) {
+    var b = a.res, c = a.body, d = a.status;
+    if (F[d]) {
       return a.body = null, b.end();
     }
     if ("HEAD" == a.method) {
-      return !b.headersSent && S(c) && (a.length = Buffer.byteLength(JSON.stringify(c))), b.end();
+      return !b.headersSent && Za(c) && (a.length = Buffer.byteLength(JSON.stringify(c))), b.end();
     }
     if (null == c) {
-      return 2 <= a.m.httpVersionMajor ? c = String(d) : c = a.message || String(d), b.headersSent || (a.type = "text", a.length = Buffer.byteLength(c)), b.end(c);
+      return 2 <= a.req.httpVersionMajor ? c = String(d) : c = a.message || String(d), b.headersSent || (a.type = "text", a.length = Buffer.byteLength(c)), b.end(c);
     }
     if (Buffer.isBuffer(c)) {
       return b.end(c);
@@ -1933,13 +2299,14 @@ function Fb(a) {
     b.end(c);
   }
 }
-;const Hb = new Gb;
-Hb.use(a => {
+;const jc = new ic;
+jc.use(a => {
   a.body = "hello world";
 });
-Hb.listen(3000, () => {
+fc("listen");
+pa(jc.callback()).listen(...[3000, () => {
   console.log("http://localhost:3000");
-});
+}]);
 
 
 //# sourceMappingURL=index.js.map
