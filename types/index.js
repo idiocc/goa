@@ -7,6 +7,16 @@ export {}
 /**
  * @typedef {Object} _goa.Application `@interface` The application interface.
  * @prop {boolean} [proxy] Whether the server is running behind a proxy.
+ * @prop {!Array<!_goa.Middleware>} middleware The array with middleware used on the server.
+ * @prop {!_goa.Context} context The context object for each request.
+ * @prop {!_goa.Request} request The request object for each request.
+ * @prop {!_goa.Response} response The response object for each request.
+ * @prop {string} [env="development"] The value from the `NODE_ENV` environment variable. Default `development`.
+ * @prop {string} originalUrl The URL set by the `parseurl` package.
+ * @prop {!(_goa.Keygrip|Array<string>)} [keys] The keys for signing of the cookies.
+ * @prop {boolean} [silent=false] Whether to not log an error when it happens. Default `false`.
+ * @prop {function(!_goa.Middleware): !_goa.Application} use Use the given middleware `fn`. Old-style middleware will be converted.
+ * @prop {function(): !Function} callback Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
  * @prop {number} [subdomainOffset] For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  */
 /**
@@ -73,9 +83,9 @@ export {}
  */
 /**
  * @typedef {Object} _goa.$BaseResponse `@interface` The additional API not available via Context.
- * @prop {net.Socket} socket Return the request socket.
- * @prop {Object<string, string>} header Return response header (_OutgoingHttpHeaders_).
- * @prop {Object<string, string>} headers Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
+ * @prop {!net.Socket} socket Return the request socket.
+ * @prop {O!bject<string, string>} header Return response header (_OutgoingHttpHeaders_).
+ * @prop {!Object<string, string>} headers Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
  * @prop {function(string|!Array<string>, ...string): string|boolean} is Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
  * @prop {function(string): string} get Return response header. _Examples_:
       - `this.get('Content-Type')` => `"text/plain"`
@@ -107,6 +117,66 @@ export {}
  * @prop {function(!Array<string>|string=, ...string): string|!Array<string>|boolean} acceptsEncodings Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
  * @prop {function(!Array<string>|string=, ...string): string|!Array<string>|boolean} acceptsCharsets Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
  * @prop {function(!Array<string>|string=, ...string): string|!Array<string>|boolean} accepts Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
+
+      The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned.
+
+      _Examples_:
+      - [Accept: text/html] `this.accepts('html') => "html"`
+      - [Accept: text/*, application/json]
+        `this.accepts('html') => "html"`
+        `this.accepts('text/html') => "text/html"`
+        `this.accepts('json', 'text') => "json"`
+        `this.accepts('application/json') => "application/json"`
+      - [Accept: text/*, application/json]
+        `this.accepts('image/png') => undefined`
+        `this.accepts('png') => undefined`
+      - [Accept: text/*;q=.5, application/json]
+        `this.accepts(['html', 'json']) => "json"`
+        `this.accepts('html', 'json') => "json"`
+ * @prop {function(string): string} get Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable. _Examples_:
+      - `this.get('Content-Type') => "text/plain"`
+      - `this.get('content-type') => "text/plain"`
+      - `this.get('Something') => undefined`
+ * @prop {function(!Array<string>|string, ...string)} is Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
+
+      _Examples_:
+      - With Content-Type: text/html; charset=utf-8
+        `this.is('html'); // => 'html'`
+        `this.is('text/html'); // => 'text/html'`
+        `this.is('text/*', 'application/json'); // => 'text/html'`
+      - When Content-Type is application/json
+        `this.is('json', 'urlencoded'); // => 'json'`
+        `this.is('application/json'); // => 'application/json'`
+        `this.is('html', 'application/*'); // => 'application/json'`
+        `this.is('html'); // => false`
+ * @prop {string} querystring Get/Set query string.
+ * @prop {boolean} idempotent Check if the request is idempotent.
+ * @prop {net.Socket} socket Return the request socket.
+ * @prop {string} search Get the search string. Same as the querystring except it includes the leading ?. Set the search string. Same as `response.querystring=` but included for ubiquity.
+ * @prop {string} method Get/Set request method.
+ * @prop {!Object|string} query Get parsed query-string. Set query-string as an object.
+ * @prop {string} path Get request pathname. Set pathname, retaining the query-string when present.
+ * @prop {string} url Get/Set request URL.
+ * @prop {accepts.Accepts} accept Get accept object. Lazily memoized.
+ * @prop {string} origin Get origin of URL.
+ * @prop {string} href Get full request URL.
+ * @prop {!Array<string>} subdomains Return subdomains as an array.
+
+      Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
+      - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
+      - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
+ * @prop {string} protocol Return the protocol string "http" or "https" when requested with TLS. When the proxy setting is enabled the "X-Forwarded-Proto" header is enabled the "X-Forwarded-Proto" header a reverse proxy that supplies https for you this may be enabled.
+ * @prop {string} host Parse the "Host" header field host and support X-Forwarded-Host when a proxy is enabled.
+ * @prop {string} hostname Parse the "Host" header field hostname and support X-Forwarded-Host when a proxy is enabled.
+ * @prop {url.URL} URL Get WHATWG parsed URL object.
+ * @prop {!Object<string, string>} header Return request header.
+ * @prop {!Object<string, string>} headers Return request header, alias as `request.header`.
+ * @prop {boolean} secure Short-hand for: `this.protocol == 'https'`.
+ * @prop {boolean} stale Check if the request is stale, aka "Last-Modified" and / or the "ETag" for the resource has changed.
+ * @prop {boolean} fresh Check if the request is fresh, aka Last-Modified and/or the ETag still match.
+ * @prop {!Array<string>} ips When `app.proxy` is `true`, parse the "X-Forwarded-For" ip address list. For example if the value were "client, proxy1, proxy2" you would receive the array `["client", "proxy1", "proxy2"]` where "proxy2" is the furthest down-stream.
+ * @prop {string} ip Request remote address. Supports X-Forwarded-For when app.proxy is true.
+ */
 
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned.
 
