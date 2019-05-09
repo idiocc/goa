@@ -53,5 +53,3 @@ function onOpenClose() {
  * Copyright(c) 2014 Jonathan Ong
  * https://npmjs.org/destroy
  */
-
-destroy(new ReadStream())

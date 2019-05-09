@@ -1,5 +1,6 @@
-import { parse, format } from './media-typer'
-import { lookup } from '@goa/accepts/src/mime-types'
+import { lookup } from '@goa/mime-types'
+import { parse } from '../content-type'
+import { test } from './media-typer'
 import http from 'http' // eslint-disable-line
 
 export { typeis as is }
@@ -197,10 +198,13 @@ function mimeMatch(expected, actual) {
  */
 function normalizeType(value) {
   // parse the type
-  const type = parse(value)
+  const type = parse(value).type
 
-  // reformat it
-  return format(type)
+  if (!test(type)) {
+    return null
+  }
+
+  return type
 }
 
 /**
@@ -209,7 +213,7 @@ function normalizeType(value) {
  * @private
  */
 function tryNormalizeType(value) {
-  if (!value) {
+  if (typeof value != 'string') {
     return null
   }
 

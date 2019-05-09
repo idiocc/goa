@@ -1,4 +1,4 @@
-import Koa from '../lib/application'
+import Koa from '../src/application'
 
 const app = new Koa()
 
