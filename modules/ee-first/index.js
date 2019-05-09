@@ -8,7 +8,7 @@
  * Get the first event in a set of event emitters and event pairs.
  *
  * @param {!Array} stuff
- * @param {function} done
+ * @param {Function} done
  */
 export default function first(stuff, done) {
   if (!Array.isArray(stuff))

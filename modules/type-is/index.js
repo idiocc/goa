@@ -17,7 +17,7 @@ export { mimeMatch as match }
  * Otherwise, the first `type` that matches is returned.
  *
  * @param {string} value
- * @param {!Array<string>|string} types
+ * @param {!Array<string>|string} [types]
  * @param {...string} args
  */
 function typeis(value, types, ...args) {
@@ -89,7 +89,7 @@ function hasbody(req) {
  *     this.is('html'); // => false
  *
  * @param {http.IncomingMessage} req
- * @param {string|!Array<string>} types
+ * @param {string|!Array<string>} [types]
  * @param {...string} args
  */
 export default function typeofrequest(req, types, ...args) {

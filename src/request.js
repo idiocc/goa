@@ -3,18 +3,21 @@ import { isIP } from 'net'
 import Accepts from '@goa/accepts'
 import { parse as qsParse, stringify as qsStringify } from 'querystring'
 import typeis from '../modules/type-is'
-import contentType from '../modules/content-type'
+import { parse as parseContentType } from '../modules/content-type'
 import parse from '../modules/parseurl'
 import fresh from '../modules/fresh'
 
 // import only from 'only'
 // import util from 'util'
 
-import Context from './Context' // eslint-disable-line
-import Response from './Response' // eslint-disable-line
+import Context from './context' // eslint-disable-line
+import Response from './response' // eslint-disable-line
 
 const IP = Symbol('context#ip')
 
+/**
+ * @implements {_goa.Request}
+ */
 export default class Request {
   constructor() {
     /** @type {?_goa.Application} */
@@ -23,19 +26,19 @@ export default class Request {
     this.ctx = null
     /** @type {?Response} */
     this.response = null
-    /** @type {?http.IncomingMessage} */
+    /** @type {http.IncomingMessage} */
     this.req = null
-    /** @type {?http.ServerResponse} */
+    /** @type {http.ServerResponse} */
     this.res = null
-    /** @type {?string} */
-    this.originalUrl = null
+    /** @type {string} */
+    this.originalUrl = ''
     /** @type {Object} */
     this._querycache = {}
-    /** @type {URL} */
+    /** @type {URL|Object} */
     this.memoizedURL = null
     /** @type {?string} */
     this.IP = null
-    /** @type {Accepts} */
+    /** @type {_goa.Accepts} */
     this._accept = null
   }
   /**
@@ -115,14 +118,14 @@ export default class Request {
    * Get request pathname.
    */
   get path() {
-    return parse(this.req).pathname
+    return parse(/** @type {!http.IncomingMessage} */ (this.req)).pathname
   }
 
   /**
    * Set pathname, retaining the query-string when present.
    */
   set path(path) {
-    const url = parse(this.req)
+    const url = parse(/** @type {!http.IncomingMessage} */ (this.req))
     if (url.pathname === path) return
 
     url.pathname = path
@@ -153,14 +156,14 @@ export default class Request {
    */
   get querystring() {
     if (!this.req) return ''
-    return parse(this.req).query || ''
+    return parse(/** @type {!http.IncomingMessage} */ (this.req)).query || ''
   }
 
   /**
    * Set querystring.
    */
   set querystring(str) {
-    const url = parse(this.req)
+    const url = parse(/** @type {!http.IncomingMessage} */ (this.req))
     if (url.search === `?${str}`) return
 
     url.search = str
@@ -281,7 +284,7 @@ export default class Request {
    */
   get charset() {
     try {
-      const { parameters } = contentType.parse(this.req)
+      const { parameters } = parseContentType(/** @type {!http.IncomingMessage} */ (this.req))
       return parameters.charset || ''
     } catch (e) {
       return ''
@@ -379,7 +382,7 @@ export default class Request {
    * @private
    */
   get accept() {
-    return this._accept || (this._accept = new Accepts(this.req))
+    return this._accept || (this._accept = new Accepts(/** @type {!http.IncomingMessage} */ (this.req)))
   }
 
   /**
@@ -420,10 +423,11 @@ export default class Request {
    *     this.accepts(['html', 'json']);
    *     this.accepts('html', 'json');
    *     // => "json"
+   * @param {!Array<string>|string} type
    * @param {...string} args
    */
-  accepts(...args) {
-    return this.accept.types(...args)
+  accepts(type, ...args) {
+    return this.accept.types(type, ...args)
   }
 
   /**
@@ -432,10 +436,11 @@ export default class Request {
    * an array sorted by quality is returned:
    *
    *     ['gzip', 'deflate']
+   * @param {!Array<string>|string} [encoding]
    * @param {...string} args
    */
-  acceptsEncodings(...args) {
-    return this.accept.encodings(...args)
+  acceptsEncodings(encoding, ...args) {
+    return this.accept.encodings(encoding, ...args)
   }
 
   /**
@@ -444,10 +449,11 @@ export default class Request {
    * an array sorted by quality is returned:
    *
    *     ['utf-8', 'utf-7', 'iso-8859-1']
+   * @param {!Array<string>|string} [charset]
    * @param {...string} args
    */
-  acceptsCharsets(...args) {
-    return this.accept.charsets(...args)
+  acceptsCharsets(charset, ...args) {
+    return this.accept.charsets(charset, ...args)
   }
 
   /**
@@ -456,10 +462,11 @@ export default class Request {
    * an array sorted by quality is returned:
    *
    *     ['es', 'pt', 'en']
+   * @param {!Array<string>|string} [lang]
    * @param {...string} args
    */
-  acceptsLanguages(...args) {
-    return this.accept.languages(...args)
+  acceptsLanguages(lang, ...args) {
+    return this.accept.languages(lang, ...args)
   }
 
   /**
@@ -483,9 +490,9 @@ export default class Request {
    * @param {...string} args
    */
   is(types, ...args) {
-    if (!types) return typeis(this.req)
+    if (!types) return typeis(/** @type {!http.IncomingMessage} */ (this.req))
     if (!Array.isArray(types)) types = [types, ...args]
-    return typeis(this.req, types)
+    return typeis(/** @type {!http.IncomingMessage} */ (this.req), types)
   }
 
   /**
@@ -518,8 +525,11 @@ export default class Request {
     case 'referer':
     case 'referrer':
       return req.headers.referrer || req.headers.referer || ''
-    default:
-      return req.headers[field] || ''
+    default: {
+      /** @suppress {checkTypes} */
+      const h = req.headers[field]
+      return h || ''
+    }
     }
   }
 

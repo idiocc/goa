@@ -3,20 +3,20 @@
  * The request API available via Context.
  * @interface
  */
-_goa.ContextDelegatedRequest
+_goa.ContextDelegatedRequest = class {}
 /**
  * Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
- * @type {function((!Array<string>|string)=, ...string): string|!Array<string>|boolean}
+ * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.acceptsLanguages
 /**
  * Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
- * @type {function((!Array<string>|string)=, ...string): string|!Array<string>|boolean}
+ * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.acceptsEncodings
 /**
  * Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
- * @type {function((!Array<string>|string)=, ...string): string|!Array<string>|boolean}
+ * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.acceptsCharsets
 /**
@@ -35,7 +35,7 @@ _goa.ContextDelegatedRequest.prototype.acceptsCharsets
       - [Accept: text/*;q=.5, application/json]
         `this.accepts(['html', 'json']) => "json"`
         `this.accepts('html', 'json') => "json"`
- * @type {function((!Array<string>|string)=, ...string): string|!Array<string>|boolean}
+ * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.accepts
 /**
@@ -103,7 +103,7 @@ _goa.ContextDelegatedRequest.prototype.path
 _goa.ContextDelegatedRequest.prototype.url
 /**
  * Get accept object. Lazily memoized.
- * @type {accepts.Accepts}
+ * @type {_goa.Accepts}
  */
 _goa.ContextDelegatedRequest.prototype.accept
 /**
@@ -141,7 +141,7 @@ _goa.ContextDelegatedRequest.prototype.host
 _goa.ContextDelegatedRequest.prototype.hostname
 /**
  * Get WHATWG parsed URL object.
- * @type {url.URL}
+ * @type {url.URL|Object}
  */
 _goa.ContextDelegatedRequest.prototype.URL
 /**
@@ -179,3 +179,60 @@ _goa.ContextDelegatedRequest.prototype.ips
  * @type {string}
  */
 _goa.ContextDelegatedRequest.prototype.ip
+/**
+ * The additional API not available via Context.
+ * @extends {_goa.ContextDelegatedRequest}
+ * @interface
+ */
+_goa.BaseRequest = class {}
+/**
+ * Get the charset when present or undefined.
+ * @type {string|undefined}
+ */
+_goa.BaseRequest.prototype.charset
+/**
+ * Return parsed Content-Length when present.
+ * @type {?number}
+ */
+_goa.BaseRequest.prototype.length
+/**
+ * Return the request mime type void of parameters such as "charset".
+ * @type {string|undefined}
+ */
+_goa.BaseRequest.prototype.type
+/**
+ * The request object.
+ * @extends {_goa.BaseRequest}
+ * @interface
+ */
+_goa.Request = class {}
+/**
+ * The reference to the application.
+ * @type {!_goa.Application}
+ */
+_goa.Request.prototype.app
+/**
+ * The reference to the context instance.
+ * @type {!_goa.Context}
+ */
+_goa.Request.prototype.ctx
+/**
+ * The reference to the request instance.
+ * @type {!_goa.Response}
+ */
+_goa.Request.prototype.response
+/**
+ * The message from the client.
+ * @type {!http.IncomingMessage}
+ */
+_goa.Request.prototype.req
+/**
+ * The response from the server.
+ * @type {!http.ServerResponse}
+ */
+_goa.Request.prototype.res
+/**
+ * The original url set by the `parseurl` package.
+ * @type {string|undefined}
+ */
+_goa.Request.prototype.originalUrl

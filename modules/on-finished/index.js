@@ -11,8 +11,8 @@ import first from '../ee-first'
  * Invoke callback when the response has finished, useful for
  * cleaning up resources afterwards.
  *
- * @param {!http.IncomingMessage|http.OutgoingMessage} msg
- * @param {function} listener
+ * @param {!(http.IncomingMessage|http.OutgoingMessage)} msg
+ * @param {!Function} listener
  */
 export default function onFinished(msg, listener) {
   if (isFinished(msg) !== false) {
@@ -42,7 +42,11 @@ export function isFinished(msg) {
 
   if (typeof msg.complete == 'boolean') {
     // IncomingMessage
-    return Boolean(msg.upgrade || !socket || !socket.readable || (msg.complete && !msg.readable))
+    /**
+     * @suppress {checkTypes}
+     */
+    const u = msg['upgrade']
+    return Boolean(u || !socket || !socket.readable || (msg.complete && !msg.readable))
   }
 
   // don't know
@@ -52,11 +56,10 @@ export function isFinished(msg) {
 /**
  * Attach a finished listener to the message.
  *
- * @param {object} msg
- * @param {function} callback
+ * @param {!(http.IncomingMessage|http.OutgoingMessage)} msg
+ * @param {Function} callback
  * @private
  */
-
 function attachFinishedListener(msg, callback) {
   var eeMsg
   var eeSocket
@@ -92,21 +95,14 @@ function attachFinishedListener(msg, callback) {
 
   // wait for socket to be assigned
   msg.on('socket', onSocket)
-
-  if (msg.socket === undefined) {
-    // node.js 0.8 patch
-    patchAssignSocket(msg, onSocket)
-  }
 }
 
 /**
  * Attach the listener to the message.
  *
- * @param {object} msg
- * @return {function}
+ * @param {!(http.IncomingMessage|http.OutgoingMessage)} msg
  * @private
  */
-
 function attachListener(msg, listener) {
   var attached = msg.__onFinished
 
@@ -122,11 +118,10 @@ function attachListener(msg, listener) {
 /**
  * Create listener on message.
  *
- * @param {object} msg
- * @return {function}
+ * @param {!(http.IncomingMessage|http.OutgoingMessage)} msg
+ * @return {Function}
  * @private
  */
-
 function createListener(msg) {
   function listener(err) {
     if (msg.__onFinished === listener) msg.__onFinished = null
@@ -145,28 +140,32 @@ function createListener(msg) {
   return listener
 }
 
-/**
- * Patch ServerResponse.prototype.assignSocket for node.js 0.8.
- *
- * @param {ServerResponse} res
- * @param {function} callback
- * @private
- */
-function patchAssignSocket(res, callback) {
-  var assignSocket = res.assignSocket
+// /**
+//  * Patch ServerResponse.prototype.assignSocket for node.js 0.8.
+//  *
+//  * @param {!http.ServerResponse} res
+//  * @param {Function} callback
+//  * @private
+//  */
+// function patchAssignSocket(res, callback) {
+//   /** @suppress {checkTypes} */
+//   const assignSocket = res['assignSocket']
 
-  if (typeof assignSocket !== 'function') return
+//   if (typeof assignSocket != 'function') return
 
-  // res.on('socket', callback) is broken in 0.8
-  res.assignSocket = function _assignSocket(socket) {
-    assignSocket.call(this, socket)
-    callback(socket)
-  }
-}
+//   // res.on('socket', callback) is broken in 0.8
+//   res.assignSocket = function _assignSocket(socket) {
+//     assignSocket.call(this, socket)
+//     callback(socket)
+//   }
+// }
 
 
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('http').IncomingMessage} http.IncomingMessage
+ */
+/**
+ * @suppress {nonStandardJsDocs}
  * @typedef {import('http').OutgoingMessage} http.OutgoingMessage
  */

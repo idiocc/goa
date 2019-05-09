@@ -3,10 +3,10 @@
  * The response API available via Context.
  * @interface
  */
-_goa.ContextDelegatedResponse
+_goa.ContextDelegatedResponse = class {}
 /**
  * Set Content-Disposition header to "attachment" with optional `filename`.
- * @type {function(string): void}
+ * @type {function(string, ?): void}
  */
 _goa.ContextDelegatedResponse.prototype.attachment
 /**
@@ -33,7 +33,7 @@ _goa.ContextDelegatedResponse.prototype.vary
       - `this.set('Foo', ['bar', 'baz'])`
       - `this.set('Accept', 'application/json')`
       - `this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })`.
- * @type {function((string|!Object), (string|Array<string>)=): void}
+ * @type {function((string|!Object), (string|!Array|number)=): void}
  */
 _goa.ContextDelegatedResponse.prototype.set
 /**
@@ -41,7 +41,7 @@ _goa.ContextDelegatedResponse.prototype.set
       - `this.append('Link', ['<http://localhost>', '<http://localhost:3000>'])`
       - `this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')`
       - `this.append('Warning', '199 Miscellaneous warning')`
- * @type {function(string, (string|Array<string>)): void}
+ * @type {function(string, (string|!Array)): void}
  */
 _goa.ContextDelegatedResponse.prototype.append
 /**
@@ -61,12 +61,12 @@ _goa.ContextDelegatedResponse.prototype.status
 _goa.ContextDelegatedResponse.prototype.message
 /**
  * Get/set response body.
- * @type {string|!Buffer|!Object|!stream.Stream}
+ * @type {string|!Buffer|Object|!stream.Stream}
  */
 _goa.ContextDelegatedResponse.prototype.body
 /**
  * Return parsed response `Content-Length` when present. Set `Content-Length` field to `n`.
- * @type {number}
+ * @type {?number}
  */
 _goa.ContextDelegatedResponse.prototype.length
 /**
@@ -83,7 +83,7 @@ _goa.ContextDelegatedResponse.prototype.type
  * Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date. _Examples_:
       - `this.response.lastModified = new Date()`
       - `this.response.lastModified = '2013-09-13'`
- * @type {Date}
+ * @type {string|Date}
  */
 _goa.ContextDelegatedResponse.prototype.lastModified
 /**
@@ -106,10 +106,10 @@ _goa.ContextDelegatedResponse.prototype.headerSent
 _goa.ContextDelegatedResponse.prototype.writable
 /**
  * The additional API not available via Context.
- * @extends {ContextDelegatedResponse}
+ * @extends {_goa.ContextDelegatedResponse}
  * @interface
  */
-_goa.BaseResponse
+_goa.BaseResponse = class {}
 /**
  * Return the request socket.
  * @type {!net.Socket}
@@ -117,7 +117,7 @@ _goa.BaseResponse
 _goa.BaseResponse.prototype.socket
 /**
  * Return response header (_OutgoingHttpHeaders_).
- * @type {Object<string, string>}
+ * @type {!Object<string, string>}
  */
 _goa.BaseResponse.prototype.header
 /**
@@ -127,7 +127,7 @@ _goa.BaseResponse.prototype.header
 _goa.BaseResponse.prototype.headers
 /**
  * Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
- * @type {function((string|!Array<string>), ...string): string|boolean}
+ * @type {function((string|!Array<string>), ...string): (string|boolean)}
  */
 _goa.BaseResponse.prototype.is
 /**
@@ -139,32 +139,32 @@ _goa.BaseResponse.prototype.is
 _goa.BaseResponse.prototype.get
 /**
  * The response object.
- * @extends {BaseResponse}
+ * @extends {_goa.BaseResponse}
  * @interface
  */
-_goa.Response
+_goa.Response = class {}
 /**
  * The reference to the application.
- * @type {_goa.Application}
+ * @type {!_goa.Application}
  */
 _goa.Response.prototype.app
 /**
  * The reference to the context instance.
- * @type {_goa.Context}
+ * @type {!_goa.Context}
  */
 _goa.Response.prototype.ctx
 /**
  * The reference to the request instance.
- * @type {_goa.Request}
+ * @type {!_goa.Request}
  */
 _goa.Response.prototype.request
 /**
  * The message from the client.
- * @type {http.IncomingMessage}
+ * @type {!http.IncomingMessage}
  */
 _goa.Response.prototype.req
 /**
  * The response from the server.
- * @type {http.ServerResponse}
+ * @type {!http.ServerResponse}
  */
 _goa.Response.prototype.res

@@ -84,7 +84,7 @@ export function format(obj) {
 /**
  * Parse media type to object.
  *
- * @param {string|!Object} string
+ * @param {string|!http.IncomingMessage|!http.ServerResponse} string
  */
 export function parse(string) {
   if (!string) {
@@ -149,17 +149,18 @@ export function parse(string) {
 /**
  * Get content-type from req/res objects.
  *
- * @param {{ getHeader, headers }|string} obj
+ * @param {!http.IncomingMessage|!http.ServerResponse|string} obj
  */
 function getcontenttype(obj) {
   let header
 
-  if (typeof obj['getHeader'] == 'function') {
+  if (typeof obj.getHeader == 'function') {
     // res-like
-    header = obj['getHeader']('content-type')
-  } else if (typeof obj['headers'] == 'object') {
+    header = obj.getHeader('content-type')
+  } else if (typeof obj.headers == 'object') {
     // req-like
-    header = obj['headers'] && obj['headers']['content-type']
+    const h = /** @type {!Object} */ (obj.headers)
+    header = h && h['content-type']
   }
 
   if (typeof header != 'string') {
@@ -199,3 +200,12 @@ class ContentType {
     this.type = type
   }
 }
+
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').IncomingMessage} http.IncomingMessage
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('http').ServerResponse} http.ServerResponse
+ */

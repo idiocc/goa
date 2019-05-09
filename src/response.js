@@ -12,8 +12,8 @@ import getType from '../modules/cache-content-type'
 import isJSON from '../modules/koa-is-json'
 import escape from '../modules/escape-html'
 
-import Context from './Context' // eslint-disable-line
-import Request from './Request' // eslint-disable-line
+import Context from './context' // eslint-disable-line
+import Request from './request' // eslint-disable-line
 
 /**
  * The response object.
@@ -21,15 +21,15 @@ import Request from './Request' // eslint-disable-line
  */
 export default class Response {
   constructor() {
-    /** @type {?_goa.Application} */
+    /** @type {_goa.Application} */
     this.app = null
-    /** @type {?Context} */
+    /** @type {Context} */
     this.ctx = null
-    /** @type {?Request} */
+    /** @type {Request} */
     this.request = null
-    /** @type {?http.IncomingMessage} */
+    /** @type {http.IncomingMessage} */
     this.req = null
-    /** @type {?http.ServerResponse} */
+    /** @type {http.ServerResponse} */
     this.res = null
     /** @type {?boolean} */
     this._explicitStatus = null
@@ -45,18 +45,13 @@ export default class Response {
 
   /**
    * Return response header.
-   * @return {!Object<string, string>}
    */
   get header() {
-    const { res } = this
-    return typeof res.getHeaders === 'function'
-      ? res.getHeaders()
-      : res['_headers'] || {}  // Node < 7.7
+    return this.res.getHeaders()
   }
 
   /**
    * Return response header, alias as response.header
-   * @return {Object}
    */
   get headers() {
     return this.header
@@ -92,7 +87,7 @@ export default class Response {
 
   /**
    * Set response status message.
-   * @param {String} msg
+   * @param {string} msg
    */
   set message(msg) {
     this.res.statusMessage = msg
@@ -100,6 +95,7 @@ export default class Response {
 
   /**
    * Get response body.
+   * @returns {string|!Buffer|Object|!stream.Stream}
    */
   get body() {
     return this._body
@@ -107,7 +103,7 @@ export default class Response {
 
   /**
    * Set response body.
-   * @param {string|!Buffer|!Object|!stream.Stream} val
+   * @param {string|!Buffer|Object|!stream.Stream} val
    */
   set body(val) {
     const original = this._body
@@ -144,7 +140,7 @@ export default class Response {
 
     // stream
     if ('function' == typeof val.pipe) {
-      onFinish(this.res, destroy.bind(null, val))
+      onFinish(/** @type {!http.ServerResponse} */ (this.res), destroy.bind(null, val))
       ensureErrorHandler(val, err => this.ctx.onerror(err))
 
       // overwriting
@@ -163,7 +159,7 @@ export default class Response {
    * Set Content-Length field to `n`.
    */
   set length(n) {
-    this.set('Content-Length', n)
+    this.set('Content-Length', /** @type {number} */ (n))
   }
 
   /**
@@ -181,7 +177,7 @@ export default class Response {
       return null
     }
 
-    return Math.trunc(len) || 0
+    return Math.trunc(parseInt(len, 10)) || 0
   }
 
   /**
@@ -252,7 +248,7 @@ export default class Response {
    *     this.type = 'json';
    *     this.type = 'application/json';
    *     this.type = 'png';
-   * @param {String} type
+   * @param {string} type
    */
   set type(type) {
     type = getType(type)
@@ -267,7 +263,7 @@ export default class Response {
    * Set the Last-Modified date using a string or a Date.
    *     this.response.lastModified = new Date();
    *     this.response.lastModified = '2013-09-13';
-   * @param {String|Date} type
+   * @param {string|Date} val
    */
   set lastModified(val) {
     if ('string' == typeof val) val = new Date(val)
@@ -289,7 +285,7 @@ export default class Response {
    *     this.response.etag = 'md5hashsum';
    *     this.response.etag = '"md5hashsum"';
    *     this.response.etag = 'W/"123456789"';
-   * @param {String} etag
+   * @param {string} val
    */
   set etag(val) {
     if (!/^(W\/)?"/.test(val)) val = `"${val}"`
@@ -316,9 +312,9 @@ export default class Response {
   /**
    * Check whether the response is one of the listed types.
    * Pretty much the same as `this.request.is()`.
-   * @param {string|Array<string>} types
+   * @param {string|!Array<string>} types
    * @param {...string} args
-   * @return {string|false}
+   * @return {string|boolean}
    */
   is(types, ...args) {
     const type = this.type
@@ -347,16 +343,17 @@ export default class Response {
    *    this.set('Foo', ['bar', 'baz']);
    *    this.set('Accept', 'application/json');
    *    this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' });
-   * @param {String|Object|Array} field
-   * @param {String} val
+   * @param {string|!Object} field
+   * @param {string|!Array|number} [val]
    */
   set(field, val) {
     if (this.headerSent) return
 
     if (2 == arguments.length) {
-      if (Array.isArray(val)) val = val.map(v => typeof v === 'string' ? v : String(v))
-      else if (typeof val !== 'string') val = String(val)
-      this.res.setHeader(field, val)
+      const f = /** @type {string} */ (field)
+      if (Array.isArray(val)) val = val.map(v => typeof v == 'string' ? v : String(v))
+      else if (typeof val != 'string') val = String(val)
+      this.res.setHeader(f, val)
     } else {
       for (const key in field) {
         this.set(key, field[key])
@@ -373,7 +370,7 @@ this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly');
 this.append('Warning', '199 Miscellaneous warning');
 ```
    * @param {string} field
-   * @param {!string|Array<string>} val
+   * @param {!string|!Array<string>} val
    */
   append(field, val) {
     const prev = this.get(field)
@@ -416,7 +413,7 @@ this.append('Warning', '199 Miscellaneous warning');
 
   /**
    * Inspect implementation.
-   * @return {Object}
+   * @return {Object | undefined}
    */
   inspect() {
     if (!this.res) return

@@ -26,12 +26,13 @@ export default class Application extends EventEmitter {
     super()
 
     this.proxy = false
+    this.silent = false
     this.middleware = []
     this.subdomainOffset = 2
     this.env = process.env.NODE_ENV || 'development'
     this.context = Context.prototype
-    this.request = new Request()
-    this.response = new Response()
+    this.request = Request.prototype
+    this.response = Response.prototype
 
     this.keys = undefined
     // if (util.inspect.custom) {
@@ -79,7 +80,7 @@ export default class Application extends EventEmitter {
    *
    * Old-style middleware will be converted.
    *
-   * @param {function} fn
+   * @param {!Function} fn
    */
   use(fn) {
     if (typeof fn != 'function')
@@ -96,14 +97,13 @@ export default class Application extends EventEmitter {
   /**
    * Return a request handler callback
    * for node's native http server.
-   *
-   * @return {Function}
    */
   callback() {
     const fn = compose(this.middleware)
 
     if (!this.listenerCount('error')) this.on('error', this.onerror)
 
+    /** @type {function(!http.IncomingMessage, !http.ServerResponse): !Promise} */
     const handleRequest = (req, res) => {
       const ctx = this.createContext(req, res)
       return this.handleRequest(ctx, fn)
@@ -114,18 +114,17 @@ export default class Application extends EventEmitter {
 
   /**
    * Handle request in callback.
-   * @param {Context} ctx
+   * @param {!Context} ctx
    * @private
    */
   async handleRequest(ctx, fnMiddleware) {
     const res = ctx.res
     res.statusCode = 404
     const onerror = err => ctx.onerror(err)
-    const handleResponse = () => respond(ctx)
     onFinished(res, onerror)
     try {
-      const r = await fnMiddleware(ctx)
-      await handleResponse(r)
+      await fnMiddleware(ctx)
+      return await respond(ctx)
     } catch (err) {
       onerror(err)
     }
@@ -133,16 +132,16 @@ export default class Application extends EventEmitter {
 
   /**
    * Initialize a new context.
-   * @param {http.IncomingMessage} req
-   * @param {http.ServerResponse} res
+   * @param {!http.IncomingMessage} req
+   * @param {!http.ServerResponse} res
    * @private
    */
   createContext(req, res) {
-    const context = /** @type {Context} */
+    const context = /** @type {!Context} */
       (Object.create(this.context))
-    const request = context.request = /** @type {Request} */
+    const request = context.request = /** @type {!Request} */
       (Object.create(this.request))
-    const response = context.response = /** @type {Response} */
+    const response = context.response = /** @type {!Response} */
       (Object.create(this.response))
     context.app = request.app = response.app = this
     context.req = request.req = response.req = req

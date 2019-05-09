@@ -39,6 +39,7 @@ function destroyReadStream(stream) {
 
 /**
  * On open handler to close stream.
+ * @this {Stream}
  * @private
  */
 function onOpenClose() {

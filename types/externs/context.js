@@ -3,7 +3,7 @@
  * The context object for each request.
  * @interface
  */
-_goa.Context
+_goa.Context = class {}
 /**
  * The cookies instance.
  * @type {!_goa.Cookies}
@@ -16,7 +16,7 @@ _goa.Context.prototype.cookies
 _goa.Context.prototype.respond
 /**
  * Get request original URL.
- * @type {?string}
+ * @type {string}
  */
 _goa.Context.prototype.originalUrl
 /**
@@ -26,26 +26,26 @@ _goa.Context.prototype.originalUrl
 _goa.Context.prototype.state
 /**
  * The reference to the application.
- * @type {_goa.Application}
+ * @type {!_goa.Application}
  */
 _goa.Context.prototype.app
 /**
- * The reference to the context instance.
- * @type {_goa.Context}
- */
-_goa.Context.prototype.ctx
-/**
  * The reference to the request instance.
- * @type {_goa.Request}
+ * @type {!_goa.Request}
  */
 _goa.Context.prototype.request
 /**
+ * The reference to the response instance.
+ * @type {!_goa.Response}
+ */
+_goa.Context.prototype.response
+/**
  * The message from the client.
- * @type {http.IncomingMessage}
+ * @type {!http.IncomingMessage}
  */
 _goa.Context.prototype.req
 /**
  * The response from the server.
- * @type {http.ServerResponse}
+ * @type {!http.ServerResponse}
  */
 _goa.Context.prototype.res

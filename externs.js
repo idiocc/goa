@@ -1,43 +1,12 @@
 /* eslint-disable */
-/**
- * @const
- * @see node_modules/http-errors/index.js:264
- */
-var ImATeapot
-
-/**
- * @type {string}
- */
-process.env.DEBUG
-/** @type {string} */
-process.env.FORCE_COLOR
-/** @type {string} */
-process.env.TERM
-/** @type {string} */
-process.env.TERM_PROGRAM
-/** @type {string} */
-process.env.CI_NAME
-/** @type {string} */
-process.env.COLORTERM
-/** @type {string} */
-process.env.TERM_PROGRAM_VERSION
-/** @type {string} */
-process.env.NO_DEPRECATION
-/** @type {boolean} */
-process.noDeprecation
-/** @type {string} */
-process.env.TRACE_DEPRECATION
-/** @type {boolean} */
-process.traceDeprecation
-/** @type {string} */
-process.env.TEAMCITY_VERSION
-
 /** @type {boolean} */
 Error.prototype.expose
-/** @type {number} */
+/** @type {?number} */
 Error.prototype.status
-/** @type {number} */
+/** @type {?number} */
 Error.prototype.statusCode
+/** @type {*} */
+Error.prototype.headers
 
 /** @type {!Object|undefined} */
 http.ServerResponse.prototype._headers
@@ -48,3 +17,22 @@ http.IncomingHttpHeaders.prototype.referer
 
 /** @type {string} */
 process.env.NODE_ENV
+
+/** @type {!net.Socket} */
+http.ServerResponse.prototype.socket
+
+/* onfinish updates stuff */
+/** @type {Function} */
+http.ServerResponse.prototype.__onFinished
+/** @type {Function} */
+http.IncomingMessage.prototype.__onFinished
+
+/* parseurl package updates the incoming message */
+/** @type {string} */
+http.IncomingMessage.prototype._raw
+/** @type {!Object} */
+http.IncomingMessage.prototype._parsedUrl
+/** @type {string} */
+http.IncomingMessage.prototype.originalUrl
+/** @type {!Object} */
+http.IncomingMessage.prototype._parsedOriginalUrl

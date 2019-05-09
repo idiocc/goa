@@ -3,9 +3,10 @@
 var _goa = {}
 /**
  * The application interface.
+ * @extends {events.EventEmitter}
  * @interface
  */
-_goa.Application
+_goa.Application = class {}
 /**
  * Whether the server is running behind a proxy.
  * @type {boolean|undefined}
@@ -36,11 +37,6 @@ _goa.Application.prototype.response
  * @type {string|undefined}
  */
 _goa.Application.prototype.env
-/**
- * The URL set by the `parseurl` package.
- * @type {string}
- */
-_goa.Application.prototype.originalUrl
 /**
  * The keys for signing of the cookies.
  * @type {(!(_goa.Keygrip|Array<string>))|undefined}

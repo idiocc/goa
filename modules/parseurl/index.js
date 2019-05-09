@@ -19,8 +19,7 @@ export default function parseurl (req) {
     return undefined
   }
 
-  /** @suppress {checkTypes} */
-  var parsed = req['_parsedUrl']
+  var parsed = req._parsedUrl
 
   if (fresh(url, parsed)) {
     // Return cached URL parse
@@ -29,9 +28,9 @@ export default function parseurl (req) {
 
   // Parse the URL
   parsed = fastparse(url)
-  parsed['_raw'] = url
+  parsed._raw = url
 
-  return (req['_parsedUrl'] = parsed)
+  return (req._parsedUrl = parsed)
 }
 
 /**
@@ -41,16 +40,14 @@ export default function parseurl (req) {
  */
 
 export function original (req) {
-  /** @suppress {checkTypes} */
-  var url = req['originalUrl']
+  const url = req.originalUrl
 
   if (typeof url !== 'string') {
     // Fallback
     return parseurl(req)
   }
 
-  /** @suppress {checkTypes} */
-  var parsed = req['_parsedOriginalUrl']
+  var parsed = req._parsedOriginalUrl
 
   if (fresh(url, parsed)) {
     // Return cached URL parse
@@ -59,9 +56,9 @@ export function original (req) {
 
   // Parse the URL
   parsed = fastparse(url)
-  parsed['_raw'] = url
+  parsed._raw = url
 
-  return (req['_parsedOriginalUrl'] = parsed)
+  return (req._parsedOriginalUrl = parsed)
 }
 
 /**

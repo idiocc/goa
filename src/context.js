@@ -7,8 +7,8 @@ import Delegate from '../modules/delegates'
 import httpAssert from '../modules/http-assert'
 import statuses from '../modules/statuses'
 
-import Request from './Request' // eslint-disable-line
-import Response from './Response' // eslint-disable-line
+import Request from './request' // eslint-disable-line
+import Response from './response' // eslint-disable-line
 
 const COOKIES = Symbol('context#cookies')
 
@@ -23,9 +23,9 @@ export default class Context {
     /** @type {?_goa.Application} */
     this.app = null
     /** @type {Request} */
-    this.request = {}
+    this.request = null
     /** @type {Response} */
-    this.response = {}
+    this.response = null
     /** @type {?http.IncomingMessage} */
     this.req = null
     /** @type {?http.ServerResponse} */
@@ -36,8 +36,8 @@ export default class Context {
     /** @type {_goa.Cookies} */ this[COOKIES] = null
 
     /**
-     * Bypass Koa's response.
-     * @param {boolean}
+     * Set to false to bypass Koa's response.
+     * @type {boolean}
      */
     this.respond = true
 
@@ -73,8 +73,8 @@ export default class Context {
     this.path = undefined
     /** @type {?} **/
     this.url = undefined
-    /** @type {Accepts} **/
-    this.accept = undefined
+    /** @type {_goa.Accepts} **/
+    this.accept = null
 
     // getters
     /** @type {?} **/
@@ -124,8 +124,8 @@ export default class Context {
     /** @type {?} **/ this.lastModified = undefined
     /** @type {?} **/ this.etag = undefined
     // getter
-    /** @type {boolean} **/ this.headerSent = undefined
-    /** @type {boolean} **/ this.writable = undefined
+    /** @type {boolean} **/ this.headerSent = false
+    /** @type {boolean} **/ this.writable = false
   }
   /**
    * util.inspect() implementation, which
@@ -252,10 +252,12 @@ export default class Context {
 
   get cookies() {
     if (!this[COOKIES]) {
-      this[COOKIES] = new Cookies(this.req, this.res, {
-        keys: this.app.keys,
-        secure: this.request.secure,
-      })
+      this[COOKIES] = new Cookies(
+        /** @type {!http.IncomingMessage} */ (this.req),
+        /** @type {!http.ServerResponse} */ (this.res), {
+          keys: this.app.keys, // change @goaCookies
+          secure: this.request.secure,
+        })
     }
     return this[COOKIES]
   }

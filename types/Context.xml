@@ -6,7 +6,7 @@
     <prop boolean name="respond">
       To bypass Koa's built-in response handling, you may explicitly set `ctx.respond = false;`
     </prop>
-    <prop type="?string" name="originalUrl">
+    <prop type="string" name="originalUrl">
       Get request original URL.
     </prop>
     <prop type="Object" name="state">
@@ -14,19 +14,19 @@
     </prop>
 
 
-    <prop type="_goa.Application" name="app">
+    <prop type="!_goa.Application" name="app">
       The reference to the application.
     </prop>
-    <prop type="_goa.Context" name="ctx">
-      The reference to the context instance.
-    </prop>
-    <prop type="_goa.Request" name="request">
+    <prop type="!_goa.Request" name="request">
       The reference to the request instance.
     </prop>
-    <prop type="http.IncomingMessage" name="req">
+    <prop type="!_goa.Response" name="response">
+      The reference to the response instance.
+    </prop>
+    <prop type="!http.IncomingMessage" name="req">
       The message from the client.
     </prop>
-    <prop type="http.ServerResponse" name="res">
+    <prop type="!http.ServerResponse" name="res">
       The response from the server.
     </prop>
   </type>

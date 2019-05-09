@@ -1,6 +1,6 @@
 <types namespace="_goa">
   <type interface name="ContextDelegatedResponse" desc="The response API available via Context.">
-    <prop type="function(string): void" name="attachment">
+    <prop type="function(string, ?): void" name="attachment">
       Set Content-Disposition header to "attachment" with optional `filename`.
     </prop>
     <prop type="function(string, string=): void" name="redirect">
@@ -16,13 +16,13 @@
     <prop type="function(string): void" name="vary">
        Vary on `field`.
     </prop>
-    <prop type="function((string|!Object), (string|Array<string>)=): void" name="set">
+    <prop type="function((string|!Object), (string|!Array|number)=): void" name="set">
       Set header `field` to `val`, or pass an object of header fields. _Examples_:
       - `this.set('Foo', ['bar', 'baz'])`
       - `this.set('Accept', 'application/json')`
       - `this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })`.
     </prop>
-    <prop type="function(string, (string|Array<string>)): void" name="append">
+    <prop type="function(string, (string|!Array)): void" name="append">
       Append additional header `field` with value `val`. _Examples_:
       - `this.append('Link', ['<http://localhost>', '<http://localhost:3000>'])`
       - `this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')`
@@ -37,10 +37,10 @@
     <prop string name="message">
       Get/set response status message.
     </prop>
-    <prop type="string|!Buffer|!Object|!stream.Stream" name="body">
+    <prop type="string|!Buffer|Object|!stream.Stream" name="body">
       Get/set response body.
     </prop>
-    <prop number name="length">
+    <prop type="?number" name="length">
       Return parsed response `Content-Length` when present. Set `Content-Length` field to `n`.
     </prop>
     <prop string name="type">
@@ -51,7 +51,7 @@
       - `this.type = 'application/json'`
       - `this.type = 'png'`
     </prop>
-    <prop type="Date" name="lastModified">
+    <prop type="string|Date" name="lastModified">
       Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date. _Examples_:
       - `this.response.lastModified = new Date()`
       - `this.response.lastModified = '2013-09-13'`
@@ -75,13 +75,13 @@
     <prop type="!net.Socket" name="socket">
       Return the request socket.
     </prop>
-    <prop type="Object<string, string>" name="header">
+    <prop type="!Object<string, string>" name="header">
       Return response header (_OutgoingHttpHeaders_).
     </prop>
     <prop type="!Object<string, string>" name="headers">
       Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
     </prop>
-    <prop type="function((string|!Array<string>), ...string): string|boolean" name="is">
+    <prop type="function((string|!Array<string>), ...string): (string|boolean)" name="is">
       Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
     </prop>
     <prop type="function(string): string" name="get">
@@ -92,19 +92,19 @@
   </type>
 
   <type interface extends="_goa.BaseResponse" name="Response" desc="The response object.">
-    <prop type="_goa.Application" name="app">
+    <prop type="!_goa.Application" name="app">
       The reference to the application.
     </prop>
-    <prop type="_goa.Context" name="ctx">
+    <prop type="!_goa.Context" name="ctx">
       The reference to the context instance.
     </prop>
-    <prop type="_goa.Request" name="request">
+    <prop type="!_goa.Request" name="request">
       The reference to the request instance.
     </prop>
-    <prop type="http.IncomingMessage" name="req">
+    <prop type="!http.IncomingMessage" name="req">
       The message from the client.
     </prop>
-    <prop type="http.ServerResponse" name="res">
+    <prop type="!http.ServerResponse" name="res">
       The response from the server.
     </prop>
   </type>
