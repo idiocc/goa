@@ -34,10 +34,15 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/accepts@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.0.2.tgz#b195e21172530c6e0df492f091f663e55707cbbc"
-  integrity sha512-iPxawN2YFVU3efg+ZKrGiI6NEdOwHv4r39Gwl3OwD0J3FqPP1WmJDA9eTadkV1r5ZMbVAy+XgKOYLFdFAGnvew==
+"@goa/accepts@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.0.3.tgz#94fc3013d767d477c84d1730a785d96a5a082589"
+  integrity sha512-qJZvtCMccXvOfC02BNWMAIBSQmbBc0oNVBYRHdB+y6TJH37D/UeA0ntkdCiCSB5oxMqTdFtwSVxdRe4uPrV8WA==
+
+"@goa/cookies@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.0.0.tgz#89b5a9198d985609cf0fd29801a7f9df4eff49f4"
+  integrity sha512-mbyH1exYp/9PVstmlO9jCnhVFv0PUffiXAFW0/xgUZCDBrNiqTfx/5eYUfCvpjM3+zQV9gj1zJrBsTMcbUE+Gg==
 
 "@goa/is-generator-function@^1.0.1":
   version "1.0.1"
@@ -54,12 +59,10 @@
   resolved "https://registry.yarnpkg.com/@goa/vary/-/vary-1.0.0.tgz#0170115ee3b61d836bc4013f9a03794690e2fbe5"
   integrity sha512-fAw4rn1efsYkUQzW6twcris/sLfLxZG1jSWrsyVjbso+VDE1/0+lwSo34o0uOPnxwgv6Jg5YDcc1+9NppUl5nA==
 
-"@idio/debug@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@idio/debug/-/debug-1.0.0.tgz#1de9ab4bfd4839098573ca66d9d3f11203975874"
-  integrity sha512-EYloarkhXZa2RzT2os68qSWDb+2NOdinTye9MC4YtXdPOKdUzuIkAYBb9ozlbA9DaVBAMsK24FdvFL9qKWWZCQ==
-  dependencies:
-    ms "^2.1.1"
+"@idio/debug@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@idio/debug/-/debug-1.1.0.tgz#73afa55109c2863ab6d025508d53886ab175192f"
+  integrity sha512-8qocr1l+9lPtwA595OP5XYROFnGVZm0JfuY0wRGds7SoTWzP4Rna5sjPDsDph3t2uL5wlMtaI9mfYFaIvBepLg==
 
 "@typedefs/parser@^1.3.0":
   version "1.3.0"
@@ -157,10 +160,10 @@ competent@^1.1.1:
     restream "^3.7.1"
     rexml "^1.4.0"
 
-documentary@^1.27.1:
-  version "1.27.1"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.1.tgz#abb5d4457470cdb6903b6ba5b439c2e5f3a67bfd"
-  integrity sha512-t6MJpENKlXPnpEQcbfLosb2obsy63gA0wS/7YDJHzX/SQpgq1Hbnzodl7pOI8YzszK2DBrGqp7xOMkuclZqZ0w==
+documentary@^1.27.2:
+  version "1.27.2"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.2.tgz#ca21678cd9a0923ea0e932520d96aa73a95efb89"
+  integrity sha512-N763hqO638BL++KXxKJXZs4W3TXthkOE5BW9DBhWFMJG65Oas7bHBWhsAXMwx78+oHMS3GoDJR+1q+73BUV9sA==
   dependencies:
     "@depack/cache" "^1.0.0"
     "@depack/render" "^1.1.4"
@@ -223,11 +226,6 @@ mismatch@^1.1.1, mismatch@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mismatch/-/mismatch-1.2.0.tgz#3f5021861e8084e36a14c2c1f9489941cd18f790"
   integrity sha512-kuw1k8ZHS+12fBVAVOBXMBJBXcNGnByFTJIDzH4W4v84OocejZ/qzxmT4ll9CLX5OD23NXr+NvrQDus0BsQ8xw==
-
-ms@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
-  integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 pedantry@^2.3.2:
   version "2.3.2"

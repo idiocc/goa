@@ -13,7 +13,7 @@ import isJSON from '../modules/koa-is-json'
 import onFinished from '../modules/on-finished'
 import compose from '../modules/koa-compose'
 
-const debug = Debug('koa:application')
+const debug = Debug('@goa/koa:application')
 
 /**
  * @implements {_goa.Application}
@@ -29,7 +29,7 @@ export default class Application extends EventEmitter {
     this.middleware = []
     this.subdomainOffset = 2
     this.env = process.env.NODE_ENV || 'development'
-    this.context = new Context()
+    this.context = Context.prototype
     this.request = new Request()
     this.response = new Response()
 
@@ -138,9 +138,12 @@ export default class Application extends EventEmitter {
    * @private
    */
   createContext(req, res) {
-    const context = new Context()
-    const request = context.request = Object.create(this.request)
-    const response = context.response = Object.create(this.response)
+    const context = /** @type {Context} */
+      (Object.create(this.context))
+    const request = context.request = /** @type {Request} */
+      (Object.create(this.request))
+    const response = context.response = /** @type {Response} */
+      (Object.create(this.response))
     context.app = request.app = response.app = this
     context.req = request.req = response.req = req
     context.res = request.res = response.res = res

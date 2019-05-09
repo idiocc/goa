@@ -1,4 +1,4 @@
-import { contentType } from '@goa/accepts/src/mime-types'
+import { contentType } from '@goa/mime-types'
 
 export default type => {
   let mimeType = typeLRUCache.get(type)

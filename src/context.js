@@ -3,7 +3,7 @@ import Cookies from '@goa/cookies'
 import Accepts from '@goa/accepts' // eslint-disable-line
 
 import createError from '../modules/http-errors'
-import delegate from '../modules/delegates'
+import Delegate from '../modules/delegates'
 import httpAssert from '../modules/http-assert'
 import statuses from '../modules/statuses'
 
@@ -22,10 +22,10 @@ export default class Context {
   constructor() {
     /** @type {?_goa.Application} */
     this.app = null
-    /** @type {?Request} */
-    this.request = null
-    /** @type {?Response} */
-    this.response = null
+    /** @type {Request} */
+    this.request = {}
+    /** @type {Response} */
+    this.response = {}
     /** @type {?http.IncomingMessage} */
     this.req = null
     /** @type {?http.ServerResponse} */
@@ -278,7 +278,7 @@ export default class Context {
 /**
  * Response delegation.
  */
-delegate(Context.prototype, 'response')
+new Delegate(Context.prototype, 'response')
   .method('attachment')
   .method('redirect')
   .method('remove')
@@ -299,7 +299,7 @@ delegate(Context.prototype, 'response')
 /**
  * Request delegation.
  */
-delegate(Context.prototype, 'request')
+new Delegate(Context.prototype, 'request')
   .method('acceptsLanguages')
   .method('acceptsEncodings')
   .method('acceptsCharsets')

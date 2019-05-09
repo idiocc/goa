@@ -35,10 +35,6 @@ export default class Response {
     this._explicitStatus = null
     /** @type {?} */
     this._body = undefined
-    /** @type {(string|undefined)} */
-    this.type = undefined
-    /** @type {(number|undefined)} */
-    this.length = undefined
   }
   /**
    * Return the request socket.
