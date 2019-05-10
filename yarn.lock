@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.1.1.tgz#0a68b9a061b5076ebaf948c150ea26d09c1e753f"
   integrity sha512-q5lO3vGUo0WgkSqzgzjL0HQdA9t2HzQqZISuVuQWMh9xqLuiLFP/ZTsxFc8vpMl7mNpGk7Mm0OeyFQ+Evrp0Cw==
 
-"@contexts/http@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@contexts/http/-/http-1.0.1.tgz#85728425920272bc83d560fd145cf5161c32401a"
-  integrity sha512-fMC3yMStDE92G5+WB37ooadcCxEL1kzy2VfVSzR92DuM6l05LgehltbI6WcX/FQZyiwUfzEVfflz+vyiO5qg/g==
+"@contexts/http@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@contexts/http/-/http-1.2.0.tgz#8a685f6f9bc73a4fd30b3eb200f50f0a4329a71b"
+  integrity sha512-abYcqDLfCgN2+sA12nAIxtv8SImRNrCC24R7LMyhqGsESE2PqZJgDf61+m/PKhkFLtTgCBlPzEEQNGvmcBoBDg==
   dependencies:
     "@artdeco/clean-stack" "^1.1.1"
     "@rqt/aqt" "^1.2.5"
