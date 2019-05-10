@@ -16,18 +16,22 @@ export default function compose(middleware) {
       throw new TypeError('Middleware must be composed of functions!')
   }
 
-  return async function(context, next) {
+  return function(context, next) {
     // last called middleware #
     let index = -1
-    return await dispatch(0)
+    return dispatch(0)
 
-    async function dispatch(i) {
-      if (i <= index) throw new Error('next() called multiple times')
+    function dispatch(i) {
+      if (i <= index) return Promise.reject(new Error('next() called multiple times'))
       index = i
       let fn = middleware[i]
       if (i === middleware.length) fn = next
-      if (!fn) return
-      await fn(context, dispatch.bind(null, i + 1))
+      if (!fn) return Promise.resolve()
+      try {
+        return Promise.resolve(fn(context, dispatch.bind(null, i + 1)))
+      } catch (err) {
+        return Promise.reject(err)
+      }
     }
   }
 }

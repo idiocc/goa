@@ -1,4 +1,9 @@
 <types namespace="_goa">
+  <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
+  <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
+  <import from="net" name="Socket" desc="The socket underlying the request." link="https://nodejs.org/api/net.html#net_class_net_socket" />
+  <import from="url" name="URL" desc="Browser-compatible URL class, implemented by following the `WHATWG` URL Standard." link="https://nodejs.org/api/url.html#url_class_url" />
+
   <type interface name="ContextDelegatedRequest" desc="The request API available via Context.">
     <prop type="function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)" name="acceptsLanguages">
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.

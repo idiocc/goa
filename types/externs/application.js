@@ -54,7 +54,7 @@ _goa.Application.prototype.silent
 _goa.Application.prototype.use
 /**
  * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
- * @type {function(): !Function}
+ * @type {function(): function(!http.IncomingMessage, !http.ServerResponse)}
  */
 _goa.Application.prototype.callback
 /**
@@ -62,3 +62,7 @@ _goa.Application.prototype.callback
  * @type {number|undefined}
  */
 _goa.Application.prototype.subdomainOffset
+/**
+ * @typedef {function(!_goa.Context, !Function): *}
+ */
+_goa.Middleware

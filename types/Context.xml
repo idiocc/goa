@@ -1,4 +1,8 @@
 <types namespace="_goa">
+  <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
+  <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
+  <import from="@goa/cookies/types" ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip." link="https://github.com/idiocc/cookies#type-_goacookies" />
+
   <type interface name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.

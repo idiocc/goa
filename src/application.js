@@ -30,9 +30,9 @@ export default class Application extends EventEmitter {
     this.middleware = []
     this.subdomainOffset = 2
     this.env = process.env.NODE_ENV || 'development'
-    this.context = Context.prototype
-    this.request = Request.prototype
-    this.response = Response.prototype
+    this.context = /** @type {!Context} */ (Object.create(Context.prototype))
+    this.request = /** @type {!Request} */ (Object.create(Request.prototype))
+    this.response = /** @type {!Response} */ (Object.create(Response.prototype))
 
     this.keys = undefined
     // if (util.inspect.custom) {
@@ -80,7 +80,7 @@ export default class Application extends EventEmitter {
    *
    * Old-style middleware will be converted.
    *
-   * @param {!Function} fn
+   * @param {_goa.Middleware} fn
    */
   use(fn) {
     if (typeof fn != 'function')
@@ -128,6 +128,10 @@ export default class Application extends EventEmitter {
     } catch (err) {
       onerror(err)
     }
+    // const onerror = err => ctx.onerror(err)
+    // const handleResponse = () => respond(ctx)
+    // onFinished(res, onerror)
+    // return fnMiddleware(ctx).then(handleResponse).catch(onerror)
   }
 
   /**
@@ -239,4 +243,8 @@ function respond(ctx) {
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('http').ServerResponse} http.ServerResponse
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('../types').Middleware} _goa.Middleware
  */
