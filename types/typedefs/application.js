@@ -36,14 +36,14 @@ export {}
  * @typedef {import('http').ServerResponse} http.ServerResponse
  */
 /**
- * @typedef {import('@goa/cookies/types').Keygrip} _goa.Keygrip
- */
-/**
  * @typedef {import('events').EventEmitter} events.EventEmitter
  */
 
 /**
+ * @typedef {import('../vendor/cookies').Keygrip} _goa.Keygrip
  * @typedef {import('./context').KoaContext} _goa.Context
  * @typedef {import('./request').Request} _goa.Request
  * @typedef {import('./response').Response} _goa.Response
  */
+
+// <import from="@goa/cookies/types" ns="_goa" name="Keygrip" desc="The Keygrip constructor." link="https://github.com/idiocc/cookies#type-_goakeygrip" />

@@ -14,13 +14,16 @@
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
     "d": "typal types/typedefs/* types/index.js types/externs",
+    "dv": "typal types/vendor/*",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
-    "build"
+    "build",
+    "types/index.js",
+    "types/typedefs",
+    "types/vendor"
   ],
-  "externs": "externs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/idiocc/goa.git"

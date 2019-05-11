@@ -6,6 +6,21 @@ class Koa extends _Koa {
    */
   constructor() {
     super()
+
+    /** When true proxy header fields will be trusted. Default `false`. */
+    this.proxy = false
+    /** Don't print errors to stdout. Default `false`. */
+    this.silent = false
+    this.middleware = []
+    this.subdomainOffset = 2
+    this.env = process.env.NODE_ENV || 'development'
+
+    /**
+     * The array with keys for signing secure cookies, or the Keygrip instance.
+     * @type {Array<string>|_goa.Keygrip}
+     * @see https://github.com/idiocc/cookies#class-keygrip
+     */
+    this.keys = undefined
   }
   /**
    * Shorthand for:
@@ -55,5 +70,8 @@ module.exports = Koa
  * @typedef {import('http').Server} http.Server
  * @typedef {import('http').IncomingMessage} http.IncomingMessage
  * @typedef {import('http').ServerResponse} http.ServerResponse
+ * @typedef {import('../types').Keygrip} _goa.Keygrip
  * @typedef {import('../types').Middleware} Middleware
+ * @typedef {import('../types').Application} Application
+ * @typedef {import('../types').Context} Context
  */
