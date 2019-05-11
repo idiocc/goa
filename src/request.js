@@ -422,7 +422,7 @@ export default class Request {
    *     this.accepts(['html', 'json']);
    *     this.accepts('html', 'json');
    *     // => "json"
-   * @param {!Array<string>|string} type
+   * @param {!Array<string>|string} [type]
    * @param {...string} args
    */
   accepts(type, ...args) {
@@ -550,9 +550,11 @@ export default class Request {
       'header': this.header,
     }
   }
-
-  get [inspect.custom]() {
-    return this.inspect
+  /**
+   * @suppress {checkTypes}
+   */
+  [inspect.custom]() {
+    return this.inspect()
   }
 }
 

@@ -438,9 +438,11 @@ this.append('Warning', '199 Miscellaneous warning');
   flushHeaders() {
     this.res.flushHeaders()
   }
-
-  get [inspect.custom]() {
-    return this.inspect
+  /**
+   * @suppress {checkTypes}
+   */
+  [inspect.custom]() {
+    return this.inspect()
   }
 }
 

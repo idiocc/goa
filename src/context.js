@@ -6,6 +6,7 @@ import createError from '../modules/http-errors'
 import Delegate from '../modules/delegates'
 import httpAssert from '../modules/http-assert'
 import statuses from '../modules/statuses'
+import { inspect } from 'util'
 
 import Request from './request' // eslint-disable-line
 import Response from './response' // eslint-disable-line
@@ -49,7 +50,7 @@ export default class Context {
     this.acceptsEncodings = undefined
     /** @type {?} **/
     this.acceptsCharsets = undefined
-    /** @type {_goa.Accepts} **/
+    /** @type {?} **/
     this.accepts = undefined
     /** @type {?} **/
     this.get = undefined
@@ -260,6 +261,12 @@ export default class Context {
 
   set cookies(_cookies) {
     this[COOKIES] = _cookies
+  }
+  /**
+   * @suppress {checkTypes}
+   */
+  [inspect.custom]() {
+    return this.inspect()
   }
 }
 

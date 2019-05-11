@@ -7,7 +7,7 @@ import { format } from 'util'
 import Response from './response'
 import Request from './request'
 import Context from './context'
-import only from '../modules/only'
+import { inspect } from 'util'
 import { empty } from '../modules/statuses'
 import isJSON from '../modules/koa-is-json'
 import onFinished from '../modules/on-finished'
@@ -39,6 +39,12 @@ export default class Application extends EventEmitter {
     //   this[util.inspect.custom] = this.inspect
     // }
   }
+  /**
+   * @suppress {checkTypes}
+   */
+  [inspect.custom]() {
+    return this.inspect()
+  }
 
   /**
    * Shorthand for:
@@ -66,8 +72,6 @@ export default class Application extends EventEmitter {
 
   /**
    * Inspect implementation.
-   *
-   * @return {Object}
    */
   inspect() {
     return this.toJSON()
