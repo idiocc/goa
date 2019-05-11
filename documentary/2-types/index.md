@@ -6,4 +6,6 @@
 
 %TYPEDEF types/Request.xml%
 
+%TYPEDEF types/Context.xml%
+
 %~%

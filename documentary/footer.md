@@ -8,6 +8,6 @@ The Koa web server by its [authors](https://github.com/koajs/koa).
 
 ---
 
-<IdioFooter />
+<idio-footer />
 
 %~ -1%
