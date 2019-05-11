@@ -2,5 +2,5 @@
 
 ### 0.0.0
 
-- Create `@idio/goa` with _[`My New Package`](https://mnpjs.org)_
+- Create `@goa/koa` with _[`My New Package`](https://mnpjs.org)_
 - [repository]: `src`, `test`

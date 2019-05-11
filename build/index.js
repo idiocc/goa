@@ -1,6 +1,6 @@
 const { debuglog } = require('util');
 
-const LOG = debuglog('@idio/goa')
+const LOG = debuglog('@goa/koa')
 
 /**
  * The Koa Fork Compiler With Google Closure Compiler.
@@ -14,7 +14,7 @@ const LOG = debuglog('@idio/goa')
     text,
   } = config
   if (!shouldRun) return
-  LOG('@idio/goa called with %s', text)
+  LOG('@goa/koa called with %s', text)
   return text
 }
 

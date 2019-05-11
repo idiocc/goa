@@ -1,9 +1,8 @@
 {
-  "name": "@idio/goa",
+  "name": "@goa/koa",
   "version": "0.0.0-pre",
   "description": "The Koa Fork Compiler With Google Closure Compiler.",
-  "main": "build/index.js",
-  "module": "src/index.js",
+  "main": "depack/index.js",
   "scripts": {
     "t": "zoroaster -a",
     "test": "yarn t test/spec test/mask",
@@ -14,15 +13,12 @@
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",
-    "b": "alamode src -o build -s",
     "d": "typal types/typedefs/* types/index.js types/externs",
     "build": "yarn-s d b doc",
     "e": "alanode"
   },
   "files": [
-    "build",
-    "src",
-    "externs.js"
+    "build"
   ],
   "externs": "externs.js",
   "repository": {
