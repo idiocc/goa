@@ -34,6 +34,9 @@ export default class Context extends Cookies {
     res.removeHeader = (k) => delete res._headers[k.toLowerCase()]
     return app.createContext(req, res)
   }
+  get context() {
+    return this.makeContext
+  }
   get ctx() {
     return this.makeContext()
   }
@@ -45,6 +48,12 @@ export default class Context extends Cookies {
   makeRequest(req, res, app) {
     const c = this.makeContext(req, res, app)
     return c.request
+  }
+  get request() {
+    return this.makeRequest
+  }
+  get req() {
+    return this.makeRequest()
   }
   /**
    * @param {http.IncomingMessage} req

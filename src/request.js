@@ -139,7 +139,7 @@ export default class Request {
    */
   get query() {
     const str = this.querystring
-    const c = this._querycache
+    const c = this._querycache = this._querycache || {}
     return c[str] || (c[str] = qsParse(str))
   }
 

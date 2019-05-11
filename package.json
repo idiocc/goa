@@ -41,7 +41,7 @@
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
     "@contexts/http": "^1.2.1",
-    "@goa/accepts": "^1.0.3",
+    "@goa/accepts": "^1.1.0",
     "@goa/cookies": "^1.0.0",
     "@goa/is-generator-function": "^1.0.1",
     "@goa/mime-types": "^1.0.0",

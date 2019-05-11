@@ -46,10 +46,10 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/accepts@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.0.3.tgz#94fc3013d767d477c84d1730a785d96a5a082589"
-  integrity sha512-qJZvtCMccXvOfC02BNWMAIBSQmbBc0oNVBYRHdB+y6TJH37D/UeA0ntkdCiCSB5oxMqTdFtwSVxdRe4uPrV8WA==
+"@goa/accepts@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.1.0.tgz#f597a2906b0118f6f4c0b853bb75204c0ba53e1b"
+  integrity sha512-IgtFdBcJDKoF6rgHgee0PlcUXD81ZCpTn2pBsK1F+pmWuc3Y29rRysjL/5BGwolkhdO2Z/A7jUMXUElHSMwMBg==
 
 "@goa/cookies@^1.0.0":
   version "1.0.0"

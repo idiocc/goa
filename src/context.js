@@ -49,7 +49,7 @@ export default class Context {
     this.acceptsEncodings = undefined
     /** @type {?} **/
     this.acceptsCharsets = undefined
-    /** @type {?} **/
+    /** @type {_goa.Accepts} **/
     this.accepts = undefined
     /** @type {?} **/
     this.get = undefined
@@ -339,4 +339,8 @@ new Delegate(Context.prototype, 'request')
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('http').ServerResponse} http.ServerResponse
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('@goa/accepts/types').Accepts} _goa.Accepts
  */
