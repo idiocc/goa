@@ -1,5 +1,9 @@
 ## 11 May 2019
 
+### [1.0.1](https://github.com/idiocc/goa/compare/v1.0.0...v1.0.1)
+
+- [jsdoc-fix] Link typedefs via `depack` entry.
+
 ### [1.0.0](https://github.com/idiocc/goa/compare/v0.0.0-pre...v1.0.0)
 
 - [package] Publish the `v1.0.0` of the package.
