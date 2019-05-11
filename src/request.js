@@ -7,8 +7,7 @@ import { parse as parseContentType } from '../modules/content-type'
 import parse from '../modules/parseurl'
 import fresh from '../modules/fresh'
 
-// import only from 'only'
-// import util from 'util'
+import { inspect } from 'util'
 
 import Context from './context' // eslint-disable-line
 import Response from './response' // eslint-disable-line
@@ -533,26 +532,28 @@ export default class Request {
     }
   }
 
-  // /**
-  //  * Inspect implementation.
-  //  * @return {Object}
-  //  */
-  // inspect() {
-  //   if (!this.req) return
-  //   return this.toJSON()
-  // }
+  /**
+   * Inspect implementation.
+   */
+  inspect() {
+    if (!this.req) return
+    return this.toJSON()
+  }
 
-  // /**
-  //  * Return JSON representation.
-  //  * @return {Object}
-  //  */
-  // toJSON() {
-  //   return only(this, [
-  //     'method',
-  //     'url',
-  //     'header',
-  //   ])
-  // }
+  /**
+   * Return JSON representation.
+   */
+  toJSON() {
+    return {
+      'method': this.method,
+      'url': this.url,
+      'header': this.header,
+    }
+  }
+
+  get [inspect.custom]() {
+    return this.inspect
+  }
 }
 
 /**
@@ -567,12 +568,3 @@ export default class Request {
  * @suppress {nonStandardJsDocs}
  * @typedef {import('http').ServerResponse} http.ServerResponse
  */
-// /**
-//  * Custom inspection implementation for newer Node.js versions.
-////  * @return {Object}
-//  */
-// /* istanbul ignore else */
-// if (util.inspect.custom) {
-//   module.exports[util.inspect.custom] = module.exports.inspect
-// }
-

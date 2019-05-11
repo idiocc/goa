@@ -1,19 +1,10 @@
-import Http from '@contexts/http'
 import { equal } from 'assert'
-import Koa from '../../../src'
+import Context from '../../context'
 
-class App {
-  _init() {
-    this.app1 = new Koa()
-    this.app1.context.msg = 'hello'
-    this.app2 = new Koa()
-  }
-}
-
-/** @type {Object<string, (a: App, h:Http)>} */
+/** @type {Object<string, (a: Context)>} */
 const TS = {
-  context: [App, Http],
-  async 'merges properties'({ app1 }, { startPlain }) {
+  context: Context,
+  async 'merges properties'({ app1, startPlain }) {
     app1.use((ctx) => {
       equal(ctx.msg, 'hello')
       ctx.status = 204
@@ -22,12 +13,12 @@ const TS = {
       .get('/')
       .assert(204)
   },
-  async 'does not affect the original prototype'({ app2 }, { startPlain }) {
-    app2.use((ctx) => {
+  async 'does not affect the original prototype'({ app, startPlain }) {
+    app.use((ctx) => {
       equal(ctx.msg, undefined)
       ctx.status = 204
     })
-    await startPlain(app2.callback())
+    await startPlain(app.callback())
       .get('/')
       .assert(204)
   },

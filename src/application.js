@@ -55,15 +55,13 @@ export default class Application extends EventEmitter {
   /**
    * Return JSON representation.
    * We only bother showing settings.
-   *
-   * @return {Object}
    */
   toJSON() {
-    return only(this, [
-      'subdomainOffset',
-      'proxy',
-      'env',
-    ])
+    return {
+      'subdomainOffset': this.subdomainOffset,
+      'proxy': this.proxy,
+      'env': this.env,
+    }
   }
 
   /**

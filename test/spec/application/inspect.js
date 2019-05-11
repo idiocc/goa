@@ -1,14 +1,10 @@
 import { deepEqual, equal } from '@zoroaster/assert'
-import Koa from '../../../src'
 import { inspect } from 'util'
+import Context from '../../context'
 
-/** @type {Object<string, (a: App, h:Http)>} */
+/** @type {TestSuite} */
 const TS = {
-  context: class {
-    _init() {
-      this.app = new Koa()
-    }
-  },
+  context: Context,
   'works'({ app }) {
     const str = inspect(app)
     equal("{ subdomainOffset: 2, proxy: false, env: 'development' }", str)
@@ -32,3 +28,7 @@ const TS = {
 }
 
 export default TS
+
+/**
+ * @typedef {import('../../context').TestSuite} TestSuite
+ */

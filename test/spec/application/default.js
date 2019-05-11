@@ -1,32 +1,21 @@
-import Http from '@contexts/http'
-import { equal, throws } from '@zoroaster/assert'
 import Koa from '../../../src'
+import { equal, throws } from '@zoroaster/assert'
+import Context from '../../context'
 
-/** @type {Object<string, (h:Http)>} */
+/** @type {TestSuite} */
 const TS = {
-  context: Http,
-  async 'handles socket errors'({ start }) {
-    const app = new Koa()
-
+  context: Context,
+  async 'handles socket errors'({ app, startPlain, expectError }) {
     app.use((ctx) => {
       // triggers ctx.socket.writable == false
       ctx.socket.emit('error', new Error('boom'))
     })
 
-    const p = new Promise((r, j) => {
-      app.on('error', err => {
-        try {
-          equal(err.message, 'boom')
-          r()
-        } catch (e) {
-          j(e)
-        }
-      })
-    })
+    const p = expectError({ message: 'boom' })
 
     await throws({
       async fn() {
-        await start(app.callback())
+        await startPlain(app.callback())
           .get('/')
       },
       message: /socket hang up/,
@@ -34,9 +23,7 @@ const TS = {
     await p
   },
 
-  async 'does not .writeHead when !socket.writable'({ startPlain }) {
-    const app = new Koa()
-
+  async 'does not .writeHead when !socket.writable'({ app, startPlain }) {
     app.use((ctx) => {
       // set .writable to false
       ctx.socket.writable = false
@@ -67,9 +54,14 @@ const TS = {
     const NODE_ENV = process.env.NODE_ENV
     process.env.NODE_ENV = ''
     const app = new Koa()
-    process.env.NODE_ENV = NODE_ENV
+    if (NODE_ENV) process.env.NODE_ENV = NODE_ENV
+    else delete process.env.NODE_ENV
     equal(app.env, 'development')
   },
 }
 
 export default TS
+
+/**
+ * @typedef {import('../../context').TestSuite} TestSuite
+ */

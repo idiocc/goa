@@ -1,10 +1,10 @@
 import assert from 'assert'
 import { extname } from 'path'
 import statuses, { empty, redirect } from '../modules/statuses'
-import only from '../modules/only'
 import onFinish from '../modules/on-finished'
 import destroy from '../modules/destroy'
 import vary from '@goa/vary'
+import { inspect } from 'util'
 import { is } from '../modules/type-is'
 import contentDisposition from '../modules/content-disposition'
 import ensureErrorHandler from '../modules/error-inject'
@@ -413,7 +413,6 @@ this.append('Warning', '199 Miscellaneous warning');
 
   /**
    * Inspect implementation.
-   * @return {Object | undefined}
    */
   inspect() {
     if (!this.res) return
@@ -424,14 +423,13 @@ this.append('Warning', '199 Miscellaneous warning');
 
   /**
    * Return JSON representation.
-   * @return {!Object}
    */
   toJSON() {
-    return only(this, [
-      'status',
-      'message',
-      'header',
-    ])
+    return {
+      'status': this.status,
+      'message': this.message,
+      'header': this.header,
+    }
   }
 
   /**
@@ -440,15 +438,11 @@ this.append('Warning', '199 Miscellaneous warning');
   flushHeaders() {
     this.res.flushHeaders()
   }
-}
 
-// /**
-//  * Custom inspection implementation for newer Node.js versions.
-////  * @return {Object}
-//  */
-// if (util.inspect.custom) {
-//   module.exports[util.inspect.custom] = module.exports.inspect
-// }
+  get [inspect.custom]() {
+    return this.inspect
+  }
+}
 
 /**
  * @suppress {nonStandardJsDocs}

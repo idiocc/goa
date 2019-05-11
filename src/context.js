@@ -130,8 +130,6 @@ export default class Context {
   /**
    * util.inspect() implementation, which
    * just returns the JSON output.
-   *
-   * @return {Object}
    */
   inspect() {
     return this.toJSON()
@@ -144,8 +142,6 @@ export default class Context {
    * object, as iteration will otherwise fail due
    * to the getters and cause utilities such as
    * clone() to fail.
-   *
-   * @return {Object}
    */
   toJSON() {
     return {

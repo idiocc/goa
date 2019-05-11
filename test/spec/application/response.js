@@ -1,50 +1,44 @@
-import Http from '@contexts/http'
+import Context from '../../context'
 import { equal } from 'assert'
-import Koa from '../../../src'
 
-class App {
-  _init() {
-    this.app1 = new Koa()
-    this.app1.response.msg = 'hello'
-    this.app2 = new Koa()
-    this.app3 = new Koa()
-  }
-}
-
-/** @type {Object<string, (a: App, h:Http)>} */
+/** @type {TestSuite} */
 const TS = {
-  context: [App, Http],
-  async 'merges properties'({ app1 }, { start }) {
+  context: Context,
+  async 'merges properties'({ app1, startPlain }) {
     app1.use((ctx) => {
       equal(ctx.response.msg, 'hello')
       ctx.status = 204
     })
 
-    await start(app1.callback())
+    await startPlain(app1.callback())
       .get('/')
       .assert(204)
   },
 
-  async 'does not affect the original prototype'({ app2 }, { start }) {
-    app2.use((ctx) => {
+  async 'does not affect the original prototype'({ app, startPlain }) {
+    app.use((ctx) => {
       equal(ctx.response.msg, undefined)
       ctx.status = 204
     })
 
-    await start(app2.callback())
+    await startPlain(app.callback())
       .get('/')
       .assert(204)
   },
 
-  async 'does not include status message in body for http2'({ app3 }, { start }) {
-    app3.use((ctx) => {
+  async 'does not include status message in body for http2'({ app, startPlain }) {
+    app.use((ctx) => {
       ctx.req.httpVersionMajor = 2
       ctx.status = 404
     })
-    await start(app3.callback())
+    await startPlain(app.callback())
       .get('/')
       .assert(404, '404')
   },
 }
 
 export default TS
+
+/**
+ * @typedef {import('../../context').TestSuite} TestSuite
+ */

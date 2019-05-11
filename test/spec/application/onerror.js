@@ -64,3 +64,7 @@ const TS = {
 }
 
 export default TS
+
+/**
+ * @typedef {import('../../context').TestSuite} TestSuite
+ */

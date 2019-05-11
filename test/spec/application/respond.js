@@ -1,19 +1,15 @@
-import statuses from '../../../modules/statuses'
-import Http from '@contexts/http'
-import Koa from '../../../src'
 import { equal, deepEqual } from '@zoroaster/assert'
 import { createReadStream, readFileSync } from 'fs'
-import { ConsoleMock } from '../../context'
+import Context, { ConsoleMock } from '../../context'
+import statuses from '../../../modules/statuses'
 import pkg from '../../../package'
 
 /** @type {TestSuite} */
 const TS = {
-  context: Http,
+  context: Context,
   persistentContext: ConsoleMock,
   'when ctx.respond === false': {
-    async 'should function (ctx)'({ startPlain }) {
-      const app = new Koa()
-
+    async 'should function (ctx)'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -31,8 +27,7 @@ const TS = {
         .assert(200, 'lol')
     },
 
-    async 'ignores set header after header sent'({ startPlain }) {
-      const app = new Koa()
+    async 'ignores set header after header sent'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -49,8 +44,7 @@ const TS = {
         .assert(200, 'lol')
         .assert('foo', null)
     },
-    async 'ignores set status after header sent'({ startPlain }) {
-      const app = new Koa()
+    async 'ignores set status after header sent'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -69,9 +63,7 @@ const TS = {
   },
 
   'when this.type === null': {
-    async 'does not send Content-Type header'({ startPlain }) {
-      const app = new Koa()
-
+    async 'does not send Content-Type header'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = ''
         ctx.type = null
@@ -85,9 +77,7 @@ const TS = {
   },
 
   'when HEAD is used': {
-    async 'does not respond with the body'({ startPlain }) {
-      const app = new Koa()
-
+    async 'does not respond with the body'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'Hello'
       })
@@ -98,9 +88,7 @@ const TS = {
         .assert('content-type', 'text/plain; charset=utf-8')
         .assert('content-length', 5)
     },
-    async 'keeps json headers'({ startPlain }) {
-      const app = new Koa()
-
+    async 'keeps json headers'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = { hello: 'world' }
       })
@@ -112,9 +100,7 @@ const TS = {
         .assert('content-length', 17)
     },
 
-    async 'keeps string headers'({ startPlain }) {
-      const app = new Koa()
-
+    async 'keeps string headers'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'hello world'
       })
@@ -126,9 +112,7 @@ const TS = {
         .assert('content-length', 11)
     },
 
-    async 'keeps buffer headers'({ startPlain }) {
-      const app = new Koa()
-
+    async 'keeps buffer headers'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = Buffer.from('hello world')
       })
@@ -140,9 +124,7 @@ const TS = {
         .assert('content-length', 11)
     },
 
-    async 'responds with a 404 if no body was set'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds with a 404 if no body was set'({ app, startPlain }) {
       app.use(() => {
 
       })
@@ -152,9 +134,7 @@ const TS = {
         .assert(404)
     },
 
-    async 'responds with a 200 if body = ""'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds with a 200 if body = ""'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = ''
       })
@@ -164,9 +144,7 @@ const TS = {
         .assert(200)
     },
 
-    async 'does not overwrite the content-type'({ startPlain }) {
-      const app = new Koa()
-
+    async 'does not overwrite the content-type'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.type = 'application/javascript'
@@ -180,9 +158,7 @@ const TS = {
   },
 
   'when no middleware are present': {
-    async 'should 404'({ startPlain }) {
-      const app = new Koa()
-
+    async 'should 404'({ app, startPlain }) {
       await startPlain(app.callback())
         .get('/')
         .assert(404)
@@ -190,9 +166,7 @@ const TS = {
   },
 
   'when res has already been written to': {
-    async 'should not cause an app error'({ startPlain }) {
-      const app = new Koa()
-
+    async 'should not cause an app error'({ app, startPlain }) {
       app.use((ctx) => {
         const { res } = ctx
         ctx.status = 200
@@ -208,15 +182,13 @@ const TS = {
         .assert(200)
     },
 
-    async 'sends the right body'({ startPlain }) {
-      const app = new Koa()
-
-      app.use((ctx) => {
+    async 'sends the right body'({ app, startPlain }) {
+      app.use(async (ctx) => {
         const { res } = ctx
         ctx.status = 200
         res.setHeader('Content-Type', 'text/html')
         res.write('Hello')
-        return new Promise(resolve => {
+        await new Promise(resolve => {
           setTimeout(() => {
             res.end('Goodbye')
             resolve()
@@ -232,9 +204,7 @@ const TS = {
 
   'when .body is missing': {
     'with status=400': {
-      async 'responds with the associated status message'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds with the associated status message'({ app, startPlain }) {
         app.use(ctx => {
           ctx.status = 400
         })
@@ -247,9 +217,7 @@ const TS = {
     },
 
     'with status=204': {
-      async 'responds without a body'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds without a body'({ app, startPlain }) {
         app.use(ctx => {
           ctx.status = 204
         })
@@ -262,9 +230,7 @@ const TS = {
     },
 
     'with status=205': {
-      async 'responds without a body'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds without a body'({ app, startPlain }) {
         app.use(ctx => {
           ctx.status = 205
         })
@@ -277,9 +243,7 @@ const TS = {
     },
 
     'with status=304': {
-      async 'responds without a body'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds without a body'({ app, startPlain }) {
         app.use(ctx => {
           ctx.status = 304
         })
@@ -292,8 +256,7 @@ const TS = {
     },
 
     'with custom status=700': {
-      async 'responds with the associated status message'({ startPlain }) {
-        const app = new Koa()
+      async 'responds with the associated status message'({ app, startPlain }) {
         statuses['700'] = 'custom status'
 
         app.use(ctx => {
@@ -310,9 +273,7 @@ const TS = {
     },
 
     'with custom statusMessage=ok': {
-      async 'responds with the custom status message'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds with the custom status message'({ app, startPlain }) {
         app.use(ctx => {
           ctx.status = 200
           ctx.message = 'ok'
@@ -328,9 +289,7 @@ const TS = {
     },
 
     'with custom status without message': {
-      async 'responds with the status code number'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds with the status code number'({ app, startPlain }) {
         app.use(ctx => {
           ctx.res.statusCode = 701
         })
@@ -343,9 +302,7 @@ const TS = {
   },
 
   'when .body is a null': {
-    async 'responds 204 by default'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds 204 by default'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = null
       })
@@ -356,9 +313,7 @@ const TS = {
         .assert('content-type', null)
     },
 
-    async 'responds 204 with status=200'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds 204 with status=200'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.body = null
@@ -370,9 +325,7 @@ const TS = {
         .assert('content-type', null)
     },
 
-    async 'responds 205 with status=205'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds 205 with status=205'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 205
         ctx.body = null
@@ -384,9 +337,7 @@ const TS = {
         .assert('content-type', null)
     },
 
-    async 'responds 304 with status=304'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds 304 with status=304'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 304
         ctx.body = null
@@ -400,9 +351,7 @@ const TS = {
   },
 
   'when .body is a string': {
-    async 'responds'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'Hello'
       })
@@ -414,9 +363,7 @@ const TS = {
   },
 
   'when .body is a Buffer': {
-    async 'responds'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = Buffer.from('Hello')
       })
@@ -428,9 +375,7 @@ const TS = {
   },
 
   'when .body is a Stream': {
-    async 'responds'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = createReadStream('package.json')
         ctx.set('Content-Type', 'application/json; charset=utf-8')
@@ -445,9 +390,7 @@ const TS = {
         })
     },
 
-    async 'strips content-length when overwriting'({ startPlain }) {
-      const app = new Koa()
-
+    async 'strips content-length when overwriting'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = 'hello'
         ctx.body = createReadStream('package.json')
@@ -463,9 +406,7 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if not overwritten'({ startPlain }) {
-      const app = new Koa()
-
+    async 'keeps content-length if not overwritten'({ app, startPlain }) {
       const { length } = readFileSync('package.json')
       app.use(ctx => {
         ctx.length = length
@@ -482,9 +423,7 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if overwritten with the same stream'({ startPlain }) {
-      const app = new Koa()
-
+    async 'keeps content-length if overwritten with the same stream'({ app, startPlain }) {
       const { length } = readFileSync('package.json')
 
       app.use(ctx => {
@@ -503,9 +442,7 @@ const TS = {
           deepEqual(body, pkg)
         })
     },
-    async 'handles errors'({ startPlain }) {
-      const app = new Koa()
-
+    async 'handles errors'({ app, startPlain }) {
       app.use(ctx => {
         ctx.set('Content-Type', 'application/json; charset=utf-8')
         ctx.body = createReadStream('does not exist')
@@ -517,9 +454,7 @@ const TS = {
         .assert(404)
     },
 
-    async 'handles errors when no content status'({ startPlain }) {
-      const app = new Koa()
-
+    async 'handles errors when no content status'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 204
         ctx.body = createReadStream('does not exist')
@@ -529,9 +464,7 @@ const TS = {
         .get('/')
         .assert(204)
     },
-    async 'handles all intermediate stream body errors'({ startPlain }) {
-      const app = new Koa()
-
+    async 'handles all intermediate stream body errors'({ app, startPlain }) {
       app.use(ctx => {
         ctx.body = createReadStream('does not exist')
         ctx.body = createReadStream('does not exist')
@@ -545,8 +478,7 @@ const TS = {
   },
 
   'when .body is an Object': {
-    async 'responds with json'({ startPlain }) {
-      const app = new Koa()
+    async 'responds with json'({ app, startPlain }) {
       const body = { hello: 'world' }
 
       app.use(ctx => {
@@ -560,23 +492,12 @@ const TS = {
   },
 
   'when an error occurs': {
-    async 'emits "error" on the app'({ startPlain }) {
-      const app = new Koa()
-
+    async 'emits "error" on the app'({ app, startPlain, expectError }) {
       app.use(() => {
         throw new Error('boom')
       })
 
-      const p = new Promise((r, j) => {
-        app.on('error', err => {
-          try {
-            equal(err.message, 'boom')
-            r()
-          } catch (e) {
-            j(e)
-          }
-        })
-      })
+      const p = expectError({ message: 'boom' })
 
       await startPlain(app.callback())
         .get('/')
@@ -584,9 +505,7 @@ const TS = {
     },
 
     'with an .expose property': {
-      async ' expose the message'({ startPlain }) {
-        const app = new Koa()
-
+      async ' expose the message'({ app, startPlain }) {
         app.use(() => {
           const err = new Error('sorry!')
           err.status = 403
@@ -601,9 +520,7 @@ const TS = {
     },
 
     'with a .status property': {
-      async 'responds with .status'({ startPlain }) {
-        const app = new Koa()
-
+      async 'responds with .status'({ app, startPlain }) {
         app.use(() => {
           const err = new Error('s3 explodes')
           err.status = 403
@@ -616,9 +533,7 @@ const TS = {
       },
     },
 
-    async 'responds with 500'({ startPlain }) {
-      const app = new Koa()
-
+    async 'responds with 500'({ app, startPlain }) {
       app.use(() => {
         throw new Error('boom!')
       })
@@ -628,9 +543,7 @@ const TS = {
         .assert(500, 'Internal Server Error')
     },
 
-    async 'is catchable'({ startPlain }) {
-      const app = new Koa()
-
+    async 'is catchable'({ app, startPlain }) {
       app.use((ctx, next) => {
         return next().then(() => {
           ctx.body = 'Hello'
@@ -650,9 +563,7 @@ const TS = {
   },
 
   'when status and body property': {
-    async 'should 200'({ startPlain }) {
-      const app = new Koa()
-
+    async 'should 200'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 304
         ctx.body = 'hello'
@@ -664,9 +575,7 @@ const TS = {
         .assert(200, 'hello')
     },
 
-    async 'should 204'({ startPlain }) {
-      const app = new Koa()
-
+    async 'should 204'({ app, startPlain }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.body = 'hello'
@@ -685,8 +594,5 @@ const TS = {
 export default TS
 
 /**
- * @typedef {Object<string, Test&TestSuite2>} TestSuite
- * @typedef {Object<string, Test&TestSuite1>} TestSuite2
- * @typedef {Object<string, Test>} TestSuite1
- * @typedef {(h:Http)} Test
+ * @typedef {import('../../context').TestSuite} TestSuite
  */

@@ -1,13 +1,10 @@
-import Cookies from '@contexts/http/cookies'
-import Koa from '../../../src'
+import Context from '../../context'
 
 /** @type {TestSuite} */
 const TS = {
-  context: Cookies,
+  context: Context,
   'ctx.cookies.set()': {
-    async 'sets an unsigned cookie'({ startPlain }) {
-      const app = new Koa()
-
+    async 'sets an unsigned cookie'({ app, startPlain }) {
       app.use((ctx) => {
         ctx.cookies.set('name', 'jon')
         ctx.status = 204
@@ -21,9 +18,7 @@ const TS = {
 
     'with .signed': {
       'when no .keys are set': {
-        async 'should error'({ startPlain }) {
-          const app = new Koa()
-
+        async 'should error'({ app, startPlain }) {
           app.use((ctx) => {
             try {
               ctx.cookies.set('foo', 'bar', { signed: true })
@@ -38,9 +33,7 @@ const TS = {
         },
       },
 
-      async 'sends a signed cookie'({ startPlain }) {
-        const app = new Koa()
-
+      async 'sends a signed cookie'({ app, startPlain }) {
         app.keys = ['a', 'b']
 
         app.use((ctx) => {
@@ -57,9 +50,7 @@ const TS = {
     },
 
     'with secure': {
-      async 'gets secure from the request'({ startPlain }) {
-        const app = new Koa()
-
+      async 'gets secure from the request'({ app, startPlain }) {
         app.proxy = true
         app.keys = ['a', 'b']
 
@@ -81,9 +72,7 @@ const TS = {
   },
 
   'ctx.cookies=': {
-    async 'overrides cookie work'({ startPlain }) {
-      const app = new Koa()
-
+    async 'overrides cookie work'({ app, startPlain }) {
       app.use((ctx) => {
         ctx.cookies = {
           set(key, value){
@@ -105,8 +94,5 @@ const TS = {
 export default TS
 
 /**
- * @typedef {Object<string, Test&TestSuite2>} TestSuite
- * @typedef {Object<string, Test&TestSuite1>} TestSuite2
- * @typedef {Object<string, Test>} TestSuite1
- * @typedef {(h:Cookies)} Test
+ * @typedef {import('../../context').TestSuite} TestSuite
  */
