@@ -6,7 +6,6 @@
 
 <img src="doc/ic.png" alt="Compiled Source Code In 2400 lines." align="right">
 
-
 ```sh
 yarn add @goa/koa
 ```

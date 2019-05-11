@@ -6,7 +6,6 @@
 
 <img src="doc/ic.png" alt="Compiled Source Code In 2400 lines." align="right">
 
-
 <!-- therefore they work not just with TypeScript-based editors and don't require downloading additional data. -->
 
 ```sh
