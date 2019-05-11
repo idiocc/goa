@@ -41,9 +41,9 @@ export {}
 
 /**
  * @typedef {import('../vendor/cookies').Keygrip} _goa.Keygrip
- * @typedef {import('./context').KoaContext} _goa.Context
- * @typedef {import('./request').Request} _goa.Request
- * @typedef {import('./response').Response} _goa.Response
+ * @typedef {import('../../depack').Context} _goa.Context
+ * @typedef {import('../../depack').Request} _goa.Request
+ * @typedef {import('../../depack').Response} _goa.Response
  */
 
 // <import from="@goa/cookies/types" ns="_goa" name="Keygrip" desc="The Keygrip constructor." link="https://github.com/idiocc/cookies#type-_goakeygrip" />

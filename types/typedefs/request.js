@@ -108,7 +108,7 @@ export {}
 
 /**
  * @typedef {import('../vendor/accepts').Accepts} _goa.Application
- * @typedef {import('./application').Application} _goa.Application
- * @typedef {import('./context').KoaContext} _goa.Context
- * @typedef {import('./response').Response} _goa.Response
+ * @typedef {import('../../depack').Application} _goa.Application
+ * @typedef {import('../../depack').Context} _goa.Context
+ * @typedef {import('../../depack').Response} _goa.Response
  */

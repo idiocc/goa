@@ -30,11 +30,11 @@ export {}
 
 /**
  * @typedef {import('../vendor/cookies').Cookies} _goa.Cookies
- * @typedef {import('./application').Application} _goa.Application
- * @typedef {import('./request').Request} _goa.Request
- * @typedef {import('./request').ContextDelegatedRequest} ContextDelegatedRequest
- * @typedef {import('./response').ContextDelegatedResponse} ContextDelegatedResponse
- * @typedef {import('./response').Response} _goa.Response
+ * @typedef {import('../../depack').Application} _goa.Application
+ * @typedef {import('../../depack').Request} _goa.Request
+ * @typedef {import('../../depack').ContextDelegatedRequest} ContextDelegatedRequest
+ * @typedef {import('../../depack').ContextDelegatedResponse} ContextDelegatedResponse
+ * @typedef {import('../../depack').Response} _goa.Response
  */
 
 /**
