@@ -58,6 +58,16 @@ _goa.Application.prototype.use
  */
 _goa.Application.prototype.callback
 /**
+ * `@private` Initialize a new context.
+ * @type {function(!http.IncomingMessage, !http.ServerResponse)}
+ */
+_goa.Application.prototype.createContext
+/**
+ * `@private` Default error handler.
+ * @type {function(!Error)}
+ */
+_goa.Application.prototype.onerror
+/**
  * For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @type {number|undefined}
  */

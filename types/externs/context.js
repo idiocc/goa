@@ -25,6 +25,31 @@ _goa.Context.prototype.originalUrl
  */
 _goa.Context.prototype.state
 /**
+ * util.inspect() implementation, which just returns the JSON output.
+ * @type {function(): ?}
+ */
+_goa.Context.prototype.inspect
+/**
+ * Return JSON representation.
+ * @type {function(): ?}
+ */
+_goa.Context.prototype.toJSON
+/**
+ * Similar to .throw(), adds assertion.
+ * @type {function()}
+ */
+_goa.Context.prototype.assert
+/**
+ * Throw an error with `msg` and optional `status` defaulting to 500. Note that these are user-level errors, and the message may be exposed to the client.
+ * @type {function()}
+ */
+_goa.Context.prototype.throw
+/**
+ * Default error handling.
+ * @type {function(!Error): void}
+ */
+_goa.Context.prototype.onerror
+/**
  * The reference to the application.
  * @type {!_goa.Application}
  */

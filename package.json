@@ -10,7 +10,7 @@
     "spec": "yarn t test/spec",
     "mask": "yarn t test/mask",
     "depack": "GOOGLE_CLOSURE_COMPILER=/Volumes/backup/closure-compiler/target/closure-compiler-1.0-SNAPSHOT.jar depack-dev koa -o depack -c -a -p --externs types/externs/application.js --externs types/externs/context.js --externs types/externs/request.js --externs types/externs/response.js --externs externs.js -S",
-    "depack-lib": "GOOGLE_CLOSURE_COMPILER=/Volumes/backup/closure-compiler/target/closure-compiler-1.0-SNAPSHOT.jar depack-dev src/depack -o depack -l -a -p --externs types/externs/application.js --externs types/externs/context.js --externs types/externs/request.js --externs types/externs/response.js --externs externs.js -S",
+    "depack-lib": "GOOGLE_CLOSURE_COMPILER=/Volumes/backup/closure-compiler/target/closure-compiler-1.0-SNAPSHOT.jar depack-dev src/depack -o depack -l -a -p --externs types/externs/application.js --externs types/externs/context.js --externs types/externs/request.js --externs types/externs/response.js --externs externs.js --externs modules/content-disposition/externs.js -S",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
     "doc": "NODE_DEBUG=doc doc -o README.md",

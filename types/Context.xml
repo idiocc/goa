@@ -17,6 +17,21 @@
       The recommended namespace for passing information through middleware and to your frontend views.
     </prop>
 
+    <prop type="function(): ?" name="inspect">
+      util.inspect() implementation, which just returns the JSON output.
+    </prop>
+    <prop type="function(): ?" name="toJSON">
+      Return JSON representation.
+    </prop>
+    <prop type="function()" name="assert">
+      Similar to .throw(), adds assertion.
+    </prop>
+    <prop type="function()" name="throw">
+      Throw an error with `msg` and optional `status` defaulting to 500. Note that these are user-level errors, and the message may be exposed to the client.
+    </prop>
+    <prop type="function(!Error): void" name="onerror">
+      Default error handling.
+    </prop>
 
     <prop type="!_goa.Application" name="app">
       The reference to the application.

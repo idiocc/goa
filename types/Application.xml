@@ -35,6 +35,12 @@
     <prop type="function(): function(!http.IncomingMessage, !http.ServerResponse)" name="callback">
       Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
     </prop>
+    <prop type="function(!http.IncomingMessage, !http.ServerResponse)" name="createContext">
+      `@private` Initialize a new context.
+    </prop>
+    <prop type="function(!Error)" name="onerror">
+      `@private` Default error handler.
+    </prop>
     <prop opt number name="subdomainOffset">
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>

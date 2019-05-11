@@ -19,6 +19,8 @@ export {}
  * @prop {boolean} [silent=false] Whether to not log an error when it happens. Default `false`.
  * @prop {function(!_goa.Middleware): !_goa.Application} use Use the given middleware `fn`. Old-style middleware will be converted.
  * @prop {function(): function(!http.IncomingMessage, !http.ServerResponse)} callback Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+ * @prop {function(!http.IncomingMessage, !http.ServerResponse)} createContext `@private` Initialize a new context.
+ * @prop {function(!Error)} onerror `@private` Default error handler.
  * @prop {number} [subdomainOffset] For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  */
 /**

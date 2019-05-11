@@ -10,6 +10,11 @@ export {}
  * @prop {boolean} respond To bypass Koa's built-in response handling, you may explicitly set `ctx.respond = false;`
  * @prop {string} originalUrl Get request original URL.
  * @prop {Object} state The recommended namespace for passing information through middleware and to your frontend views.
+ * @prop {function(): ?} inspect util.inspect() implementation, which just returns the JSON output.
+ * @prop {function(): ?} toJSON Return JSON representation.
+ * @prop {function()} assert Similar to .throw(), adds assertion.
+ * @prop {function()} throw Throw an error with `msg` and optional `status` defaulting to 500. Note that these are user-level errors, and the message may be exposed to the client.
+ * @prop {function(!Error): void} onerror Default error handling.
  * @prop {!_goa.Application} app The reference to the application.
  * @prop {!_goa.Request} request The reference to the request instance.
  * @prop {!_goa.Response} response The reference to the response instance.

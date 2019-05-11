@@ -233,6 +233,7 @@ export default class Response {
   /**
    * Set Content-Disposition header to "attachment" with optional `filename`.
    * @param {string} filename
+   * @param {!_goa.ContentDisposition} [options]
    */
   attachment(filename, options) {
     if (filename) this.type = extname(filename)

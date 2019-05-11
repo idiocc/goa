@@ -1,37 +1,40 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { relative } from 'path'
 
-let [,,file] = process.argv
-file = relative('', file)
+let [,,...files] = process.argv
 
-let content = `${readFileSync(file)}`
-content = content
-  .replace(`
-'use strict';
+files.forEach((file) => {
+  file = relative('', file)
 
-`, '')
-  .replace(`'../..'`, `'../../src'`)
-  .replace('const request = require(\'supertest\');\n', '')
-  .replace(
-    /const (.+?) = require\('(.+?)'\)/g, (m, what, where) => {
-      return `import ${what} from '${where}'`
+  let content = `${readFileSync(file)}`
+  content = content
+    .replace(`
+  'use strict';
+
+  `, '')
+    .replace(`'../..'`, `'../../src'`)
+    .replace('const request = require(\'supertest\');\n', '')
+    .replace(
+      /const (.+?) = require\('(.+?)'\)/g, (m, what, where) => {
+        return `import ${what} from '${where}'`
+      })
+    .replace(/it\('(.+?)', function \((.*?)\) {/g, (m, n) => {
+      return `'${n}'() {`
     })
-  .replace(/it\('(.+?)', function \((.*?)\) {/g, (m, n) => {
-    return `'${n}'() {`
-  })
-  .replace(/it\('(.+?)', \((.*?)\) => {/g, (m, n) => {
-    return `'${n}'() {`
-  })
-  .replace(/describe\('(.+?)', \(\) => {/g, (m, n) => {
-    return `'${n}': {`
-  })
-  .replace(/should return/g, 'returns')
+    .replace(/it\('(.+?)', \((.*?)\) => {/g, (m, n) => {
+      return `'${n}'() {`
+    })
+    .replace(/describe\('(.+?)', \(\) => {/g, (m, n) => {
+      return `'${n}': {`
+    })
+    .replace(/should return/g, 'returns')
 
-// console.log(content)
-const out = file.replace(/^test/, 'test/spec')
-console.log(out)
-writeFileSync(out, content)
-return
+  // console.log(content)
+  const out = file.replace(/^test/, 'test/spec')
+  console.log(out)
+  writeFileSync(out, content)
+})
+// return
 
 const lex = content.split(/(it\(|describe\(|.)/)
 
