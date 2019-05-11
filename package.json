@@ -1,6 +1,6 @@
 {
   "name": "@goa/koa",
-  "version": "0.0.0-pre",
+  "version": "1.0.0",
   "description": "The Koa Fork Compiler With Google Closure Compiler.",
   "main": "depack/index.js",
   "scripts": {
