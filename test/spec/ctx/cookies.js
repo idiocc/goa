@@ -15,7 +15,6 @@ const TS = {
         .assert(204)
         .value('name', 'jon')
     },
-
     'with .signed': {
       'when no .keys are set': {
         async 'should error'({ app, startPlain }) {
@@ -32,7 +31,6 @@ const TS = {
             .assert(200, '.keys required for signed cookies')
         },
       },
-
       async 'sends a signed cookie'({ app, startPlain }) {
         app.keys = ['a', 'b']
 
@@ -48,7 +46,6 @@ const TS = {
           .value('name.sig', 'FbCmGlw6Fv7VhZ3y8DO7x-Zdjgo')
       },
     },
-
     'with secure': {
       async 'gets secure from the request'({ app, startPlain }) {
         app.proxy = true
@@ -70,7 +67,6 @@ const TS = {
       },
     },
   },
-
   'ctx.cookies=': {
     async 'overrides cookie work'({ app, startPlain }) {
       app.use((ctx) => {

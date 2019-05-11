@@ -52,8 +52,14 @@ export default class Context extends Cookies {
   get request() {
     return this.makeRequest
   }
+  get Response() {
+    return this.makeResponse
+  }
   get req() {
     return this.makeRequest()
+  }
+  get res() {
+    return this.makeResponse()
   }
   /**
    * @param {http.IncomingMessage} req
@@ -61,7 +67,7 @@ export default class Context extends Cookies {
    * @param {Koa} [app]
    */
   makeResponse(req, res, app) {
-    const c = Context(req, res, app)
+    const c = this.makeContext(req, res, app)
     return c.response
   }
   get app() {
@@ -94,6 +100,22 @@ export default class Context extends Cookies {
       })
     })
   }
+  /**
+   * Starts the app for testing.
+   */
+  startApp() {
+    return this.startPlain(this._app.callback())
+  }
+  escape(html){
+    return `${html}`
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+  }
+  sleep(time){
+    return new Promise(resolve => setTimeout(resolve, time))
+  }
 }
 
 /**
@@ -103,7 +125,9 @@ export default class Context extends Cookies {
 
 
 /**
- * @typedef {Object<string, Test&TestSuite2>} TestSuite
+ * @typedef {Object<string, Test&TestSuite4>} TestSuite
+ * @typedef {Object<string, Test&TestSuite3>} TestSuite4
+ * @typedef {Object<string, Test&TestSuite2>} TestSuite3
  * @typedef {Object<string, Test&TestSuite1>} TestSuite2
  * @typedef {Object<string, Test>} TestSuite1
  * @typedef {(c:Context, m: ConsoleMock)} Test
