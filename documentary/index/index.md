@@ -18,3 +18,9 @@ yarn add @goa/koa
 %TOC%
 
 %~%
+
+## Types
+
+The types detailed information can be found [here](doc/TYPES.md). This is a detailed breakdown of type annotations that was used for compilation, therefore it's rather raw because it's meant for generates externs and typedefs for JSDoc. The Koa documentation can be found on its page.
+
+%~%

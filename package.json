@@ -12,7 +12,8 @@
     "depack-lib": "GOOGLE_CLOSURE_COMPILER=/Volumes/backup/closure-compiler/target/closure-compiler-1.0-SNAPSHOT.jar depack-dev src/depack -o depack -l -a -p --externs types/externs/application.js --externs types/externs/context.js --externs types/externs/request.js --externs types/externs/response.js --externs externs.js --externs modules/content-disposition/externs.js -S",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc -o README.md",
+    "doc": "NODE_DEBUG=doc doc documentary/index -o README.md",
+    "doc-types": "NODE_DEBUG=doc doc documentary/2-types -o doc/TYPES.md",
     "d": "typal types/typedefs/* types/index.js types/externs",
     "dv": "typal types/vendor/*",
     "build": "yarn-s d b doc",
@@ -30,7 +31,13 @@
   },
   "keywords": [
     "goa",
-    "idio"
+    "koa",
+    "idio",
+    "gcc",
+    "google closure compiler",
+    "web",
+    "server",
+    "http"
   ],
   "author": "Anton <anton@adc.sh>",
   "license": "MIT",
