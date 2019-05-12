@@ -1,8 +1,7 @@
 import { equal, deepEqual } from '@zoroaster/assert'
-import { createReadStream, readFileSync } from 'fs'
 import Context, { ConsoleMock } from '../../context'
+import { createReadStream } from 'fs'
 import statuses from '../../../modules/statuses'
-import pkg from '../../../package'
 
 /** @type {TestSuite} */
 const TS = {
@@ -375,9 +374,9 @@ const TS = {
   },
 
   'when .body is a Stream': {
-    async 'responds'({ app, startApp }) {
+    async 'responds'({ app, startApp, stream, pkg }) {
       app.use(ctx => {
-        ctx.body = createReadStream('package.json')
+        ctx.body = stream
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
@@ -390,10 +389,10 @@ const TS = {
         })
     },
 
-    async 'strips content-length when overwriting'({ app, startApp }) {
+    async 'strips content-length when overwriting'({ app, startApp, stream, pkg }) {
       app.use(ctx => {
         ctx.body = 'hello'
-        ctx.body = createReadStream('package.json')
+        ctx.body = stream
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
@@ -406,11 +405,11 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if not overwritten'({ app, startApp }) {
-      const { length } = readFileSync('package.json')
+    async 'keeps content-length if not overwritten'({ app, startApp, readFileSync, stream, pkg }) {
+      const { length } = readFileSync()
       app.use(ctx => {
         ctx.length = length
-        ctx.body = createReadStream('package.json')
+        ctx.body = stream
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
@@ -423,12 +422,11 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if overwritten with the same stream'({ app, startApp }) {
-      const { length } = readFileSync('package.json')
+    async 'keeps content-length if overwritten with the same stream'({ app, startApp, readFileSync, stream, pkg }) {
+      const { length } = readFileSync()
 
       app.use(ctx => {
         ctx.length = length
-        const stream = createReadStream('package.json')
         ctx.body = stream
         ctx.body = stream
         ctx.set('Content-Type', 'application/json; charset=utf-8')

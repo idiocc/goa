@@ -1,7 +1,9 @@
 import { equal } from 'assert'
 import Cookies from '@contexts/http/cookies'
 import { Duplex, Readable, Writable } from 'stream'
+import { join } from 'path'
 import Koa from '../../src'
+import { createReadStream, readFileSync } from 'fs'
 
 export class ConsoleMock {
   _init() {
@@ -99,6 +101,15 @@ export default class Context extends Cookies {
         }
       })
     })
+  }
+  get stream() {
+    return createReadStream(join(__dirname, '../fixture/package.json'))
+  }
+  get pkg() {
+    return require('../fixture/package')
+  }
+  readFileSync() {
+    return readFileSync(join(__dirname, '../fixture/package.json'))
   }
   /**
    * Starts the app for testing.

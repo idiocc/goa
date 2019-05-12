@@ -1,0 +1,5 @@
+{
+  "name": "@goa/goa",
+  "description": "The Goa Source Code For Compilation Into @Goa/Koa That Includes Modules, Tests, Types And Dependencies.",
+  "version": "1.0.0"
+}
