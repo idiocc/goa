@@ -14,13 +14,13 @@ const TS = {
       .get('/')
       .assert(204)
   },
-  async 'does not affect the original prototype'({ app, startPlain }) {
+  async 'does not affect the original prototype'({ app, startApp }) {
     app.use((ctx) => {
       equal(ctx.request.message, undefined)
       ctx.status = 204
     })
 
-    await startPlain(app.callback())
+    await startApp()
       .get('/')
       .assert(204)
   },

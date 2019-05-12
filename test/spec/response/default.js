@@ -57,13 +57,13 @@ export const attachment = {
       const str = 'attachment; filename="include-no-ascii-char-???-ok.png"; filename*=UTF-8\'\'include-no-ascii-char-%E4%B8%AD%E6%96%87%E5%90%8D-ok.png'
       equal(ctx.response.header['content-disposition'], str)
     },
-    async 'works with http client'({ app, startPlain }) {
+    async 'works with http client'({ app, startApp }) {
       app.use((ctx) => {
         ctx.attachment('path/to/include-no-ascii-char-中文名-ok.json')
         ctx.body = { foo: 'bar' }
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('content-disposition', 'attachment; filename="include-no-ascii-char-???-ok.json"; filename*=UTF-8\'\'include-no-ascii-char-%E4%B8%AD%E6%96%87%E5%90%8D-ok.json')
         .assert(200, { foo: 'bar' })

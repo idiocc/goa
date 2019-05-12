@@ -4,20 +4,20 @@ import Context from '../../context'
 const TS = {
   context: Context,
   'ctx.cookies.set()': {
-    async 'sets an unsigned cookie'({ app, startPlain }) {
+    async 'sets an unsigned cookie'({ app, startApp }) {
       app.use((ctx) => {
         ctx.cookies.set('name', 'jon')
         ctx.status = 204
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(204)
         .value('name', 'jon')
     },
     'with .signed': {
       'when no .keys are set': {
-        async 'should error'({ app, startPlain }) {
+        async 'should error'({ app, startApp }) {
           app.use((ctx) => {
             try {
               ctx.cookies.set('foo', 'bar', { signed: true })
@@ -26,12 +26,12 @@ const TS = {
             }
           })
 
-          await startPlain(app.callback())
+          await startApp()
             .get('/')
             .assert(200, '.keys required for signed cookies')
         },
       },
-      async 'sends a signed cookie'({ app, startPlain }) {
+      async 'sends a signed cookie'({ app, startApp }) {
         app.keys = ['a', 'b']
 
         app.use((ctx) => {
@@ -39,7 +39,7 @@ const TS = {
           ctx.status = 204
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(204)
           .value('name', 'jon')
@@ -47,7 +47,7 @@ const TS = {
       },
     },
     'with secure': {
-      async 'gets secure from the request'({ app, startPlain }) {
+      async 'gets secure from the request'({ app, startApp }) {
         app.proxy = true
         app.keys = ['a', 'b']
 
@@ -56,7 +56,7 @@ const TS = {
           ctx.status = 204
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .set('x-forwarded-proto', 'https') // mock secure
           .assert(204)
@@ -68,7 +68,7 @@ const TS = {
     },
   },
   'ctx.cookies=': {
-    async 'overrides cookie work'({ app, startPlain }) {
+    async 'overrides cookie work'({ app, startApp }) {
       app.use((ctx) => {
         ctx.cookies = {
           set(key, value){
@@ -79,7 +79,7 @@ const TS = {
         ctx.status = 204
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('name', 'jon')
         .assert(204)

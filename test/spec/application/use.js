@@ -1,13 +1,11 @@
-import Http from '@contexts/http'
 import { throws } from 'assert'
 import { deepEqual } from '@zoroaster/assert'
-import Koa from '../../../src'
+import Context from '../../context'
 
-/** @type {Object<string, (a: App, h:Http)>} */
+/** @type {Object<string, (c: Context)>} */
 const TS = {
-  context: Http,
-  async 'composes middleware'({ start }) {
-    const app = new Koa()
+  context: Context,
+  async 'composes middleware'({ app, startApp }) {
     const calls = []
 
     app.use((ctx, next) => {
@@ -31,7 +29,7 @@ const TS = {
       })
     })
 
-    await start(app.callback())
+    await startApp()
       .get('/')
       .assert(404)
 
@@ -39,19 +37,15 @@ const TS = {
   },
 
   // https://github.com/koajs/koa/pull/530#issuecomment-148138051
-  async 'catches thrown errors in non-async functions'({ start }) {
-    const app = new Koa()
-
+  async 'catches thrown errors in non-async functions'({ app, startApp }) {
     app.use(ctx => ctx.throw(404, 'Not Found'))
 
-    await start(app.callback())
+    await startApp()
       .get('/')
       .assert(404)
   },
 
-  'should throw error for non function'() {
-    const app = new Koa();
-
+  'throws error for non function'({ app }) {
     [null, undefined, 0, false, 'not a function'].forEach(v => {
       throws(() => app.use(v), /middleware must be a function!/)
     })

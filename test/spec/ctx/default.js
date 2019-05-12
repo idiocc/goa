@@ -4,12 +4,12 @@ import Context from '../../context'
 /** @type {TestSuite} */
 export const state = {
   context: Context,
-  async 'provides a ctx.state namespace'({ app, startPlain }) {
+  async 'provides a ctx.state namespace'({ app, startApp }) {
     app.use(ctx => {
       deepEqual(ctx.state, {})
     })
 
-    await startPlain(app.callback())
+    await startApp()
       .get('/')
       .assert(404)
   },

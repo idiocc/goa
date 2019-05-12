@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
-    "@contexts/http": "^1.2.1",
+    "@contexts/http": "^1.2.6",
     "@goa/accepts": "^1.1.0",
     "@goa/cookies": "^1.0.0",
     "@goa/is-generator-function": "^1.0.1",
@@ -57,7 +57,6 @@
     "alamode": "^2.1.2",
     "documentary": "^1.27.2",
     "eslint-config-artdeco": "1.0.1",
-    "ms": "^2.1.1",
     "typal": "^1.13.0",
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"

@@ -9,7 +9,7 @@ const TS = {
   context: Context,
   persistentContext: ConsoleMock,
   'when ctx.respond === false': {
-    async 'should function (ctx)'({ app, startPlain }) {
+    async 'should function (ctx)'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -22,12 +22,12 @@ const TS = {
         })
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'lol')
     },
 
-    async 'ignores set header after header sent'({ app, startPlain }) {
+    async 'ignores set header after header sent'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -39,12 +39,12 @@ const TS = {
         ctx.set('foo', 'bar')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'lol')
         .assert('foo', null)
     },
-    async 'ignores set status after header sent'({ app, startPlain }) {
+    async 'ignores set status after header sent'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'Hello'
         ctx.respond = false
@@ -56,20 +56,20 @@ const TS = {
         ctx.status = 201
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'lol')
     },
   },
 
   'when this.type === null': {
-    async 'does not send Content-Type header'({ app, startPlain }) {
+    async 'does not send Content-Type header'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = ''
         ctx.type = null
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200)
         .assert('content-type', null)
@@ -77,80 +77,80 @@ const TS = {
   },
 
   'when HEAD is used': {
-    async 'does not respond with the body'({ app, startPlain }) {
+    async 'does not respond with the body'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'Hello'
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(200, '')
         .assert('content-type', 'text/plain; charset=utf-8')
         .assert('content-length', 5)
     },
-    async 'keeps json headers'({ app, startPlain }) {
+    async 'keeps json headers'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = { hello: 'world' }
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(200, '')
         .assert('content-type', 'application/json; charset=utf-8')
         .assert('content-length', 17)
     },
 
-    async 'keeps string headers'({ app, startPlain }) {
+    async 'keeps string headers'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'hello world'
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(200, '')
         .assert('content-type', 'text/plain; charset=utf-8')
         .assert('content-length', 11)
     },
 
-    async 'keeps buffer headers'({ app, startPlain }) {
+    async 'keeps buffer headers'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = Buffer.from('hello world')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(200, '')
         .assert('content-type', 'application/octet-stream')
         .assert('content-length', 11)
     },
 
-    async 'responds with a 404 if no body was set'({ app, startPlain }) {
+    async 'responds with a 404 if no body was set'({ app, startApp }) {
       app.use(() => {
 
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(404)
     },
 
-    async 'responds with a 200 if body = ""'({ app, startPlain }) {
+    async 'responds with a 200 if body = ""'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = ''
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert(200)
     },
 
-    async 'does not overwrite the content-type'({ app, startPlain }) {
+    async 'does not overwrite the content-type'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.type = 'application/javascript'
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .head('/')
         .assert('content-type', /application\/javascript/)
         .assert(200)
@@ -158,15 +158,15 @@ const TS = {
   },
 
   'when no middleware are present': {
-    async 'should 404'({ app, startPlain }) {
-      await startPlain(app.callback())
+    async 'should 404'({ app, startApp }) {
+      await startApp()
         .get('/')
         .assert(404)
     },
   },
 
   'when res has already been written to': {
-    async 'should not cause an app error'({ app, startPlain }) {
+    async 'should not cause an app error'({ app, startApp }) {
       app.use((ctx) => {
         const { res } = ctx
         ctx.status = 200
@@ -177,12 +177,12 @@ const TS = {
 
       app.on('error', err => { throw err })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200)
     },
 
-    async 'sends the right body'({ app, startPlain }) {
+    async 'sends the right body'({ app, startApp }) {
       app.use(async (ctx) => {
         const { res } = ctx
         ctx.status = 200
@@ -196,7 +196,7 @@ const TS = {
         })
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'HelloGoodbye')
     },
@@ -204,12 +204,12 @@ const TS = {
 
   'when .body is missing': {
     'with status=400': {
-      async 'responds with the associated status message'({ app, startPlain }) {
+      async 'responds with the associated status message'({ app, startApp }) {
         app.use(ctx => {
           ctx.status = 400
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(400, 'Bad Request')
           .assert('Content-Length', 11)
@@ -217,12 +217,12 @@ const TS = {
     },
 
     'with status=204': {
-      async 'responds without a body'({ app, startPlain }) {
+      async 'responds without a body'({ app, startApp }) {
         app.use(ctx => {
           ctx.status = 204
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(204, '')
           .assert('content-type', null)
@@ -230,12 +230,12 @@ const TS = {
     },
 
     'with status=205': {
-      async 'responds without a body'({ app, startPlain }) {
+      async 'responds without a body'({ app, startApp }) {
         app.use(ctx => {
           ctx.status = 205
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(205, '')
           .assert('content-type', null)
@@ -243,12 +243,12 @@ const TS = {
     },
 
     'with status=304': {
-      async 'responds without a body'({ app, startPlain }) {
+      async 'responds without a body'({ app, startApp }) {
         app.use(ctx => {
           ctx.status = 304
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(304, '')
           .assert('content-type', null)
@@ -256,14 +256,14 @@ const TS = {
     },
 
     'with custom status=700': {
-      async 'responds with the associated status message'({ app, startPlain }) {
+      async 'responds with the associated status message'({ app, startApp }) {
         statuses['700'] = 'custom status'
 
         app.use(ctx => {
           ctx.status = 700
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(700, 'custom status')
           .assert(({ statusMessage }) => {
@@ -273,13 +273,13 @@ const TS = {
     },
 
     'with custom statusMessage=ok': {
-      async 'responds with the custom status message'({ app, startPlain }) {
+      async 'responds with the custom status message'({ app, startApp }) {
         app.use(ctx => {
           ctx.status = 200
           ctx.message = 'ok'
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(200, 'ok')
           .assert(({ statusMessage }) => {
@@ -289,12 +289,12 @@ const TS = {
     },
 
     'with custom status without message': {
-      async 'responds with the status code number'({ app, startPlain }) {
+      async 'responds with the status code number'({ app, startApp }) {
         app.use(ctx => {
           ctx.res.statusCode = 701
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(701, '701')
       },
@@ -302,48 +302,48 @@ const TS = {
   },
 
   'when .body is a null': {
-    async 'responds 204 by default'({ app, startPlain }) {
+    async 'responds 204 by default'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = null
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(204, '')
         .assert('content-type', null)
     },
 
-    async 'responds 204 with status=200'({ app, startPlain }) {
+    async 'responds 204 with status=200'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.body = null
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(204, '')
         .assert('content-type', null)
     },
 
-    async 'responds 205 with status=205'({ app, startPlain }) {
+    async 'responds 205 with status=205'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 205
         ctx.body = null
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(205, '')
         .assert('content-type', null)
     },
 
-    async 'responds 304 with status=304'({ app, startPlain }) {
+    async 'responds 304 with status=304'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 304
         ctx.body = null
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(304, '')
         .assert('content-type', null)
@@ -351,37 +351,37 @@ const TS = {
   },
 
   'when .body is a string': {
-    async 'responds'({ app, startPlain }) {
+    async 'responds'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'Hello'
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'Hello')
     },
   },
 
   'when .body is a Buffer': {
-    async 'responds'({ app, startPlain }) {
+    async 'responds'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = Buffer.from('Hello')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, `${Buffer.from('Hello')}`)
     },
   },
 
   'when .body is a Stream': {
-    async 'responds'({ app, startPlain }) {
+    async 'responds'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = createReadStream('package.json')
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'application/json; charset=utf-8')
         .assert('content-length', null)
@@ -390,14 +390,14 @@ const TS = {
         })
     },
 
-    async 'strips content-length when overwriting'({ app, startPlain }) {
+    async 'strips content-length when overwriting'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = 'hello'
         ctx.body = createReadStream('package.json')
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'application/json; charset=utf-8')
         .assert('content-length', null)
@@ -406,7 +406,7 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if not overwritten'({ app, startPlain }) {
+    async 'keeps content-length if not overwritten'({ app, startApp }) {
       const { length } = readFileSync('package.json')
       app.use(ctx => {
         ctx.length = length
@@ -414,7 +414,7 @@ const TS = {
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'application/json; charset=utf-8')
         .assert('content-length', length)
@@ -423,7 +423,7 @@ const TS = {
         })
     },
 
-    async 'keeps content-length if overwritten with the same stream'({ app, startPlain }) {
+    async 'keeps content-length if overwritten with the same stream'({ app, startApp }) {
       const { length } = readFileSync('package.json')
 
       app.use(ctx => {
@@ -434,7 +434,7 @@ const TS = {
         ctx.set('Content-Type', 'application/json; charset=utf-8')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'application/json; charset=utf-8')
         .assert('content-length', length)
@@ -442,70 +442,70 @@ const TS = {
           deepEqual(body, pkg)
         })
     },
-    async 'handles errors'({ app, startPlain }) {
+    async 'handles errors'({ app, startApp }) {
       app.use(ctx => {
         ctx.set('Content-Type', 'application/json; charset=utf-8')
         ctx.body = createReadStream('does not exist')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'text/plain; charset=utf-8')
         .assert(404)
     },
 
-    async 'handles errors when no content status'({ app, startPlain }) {
+    async 'handles errors when no content status'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 204
         ctx.body = createReadStream('does not exist')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(204)
     },
-    async 'handles all intermediate stream body errors'({ app, startPlain }) {
+    async 'handles all intermediate stream body errors'({ app, startApp }) {
       app.use(ctx => {
         ctx.body = createReadStream('does not exist')
         ctx.body = createReadStream('does not exist')
         ctx.body = createReadStream('does not exist')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(404)
     },
   },
 
   'when .body is an Object': {
-    async 'responds with json'({ app, startPlain }) {
+    async 'responds with json'({ app, startApp }) {
       const body = { hello: 'world' }
 
       app.use(ctx => {
         ctx.body = body
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert('Content-Type', 'application/json; charset=utf-8', body)
     },
   },
 
   'when an error occurs': {
-    async 'emits "error" on the app'({ app, startPlain, expectError }) {
+    async 'emits "error" on the app'({ app, startApp, expectError }) {
       app.use(() => {
         throw new Error('boom')
       })
 
       const p = expectError({ message: 'boom' })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
       await p
     },
 
     'with an .expose property': {
-      async ' expose the message'({ app, startPlain }) {
+      async ' expose the message'({ app, startApp }) {
         app.use(() => {
           const err = new Error('sorry!')
           err.status = 403
@@ -513,37 +513,37 @@ const TS = {
           throw err
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(403, 'sorry!')
       },
     },
 
     'with a .status property': {
-      async 'responds with .status'({ app, startPlain }) {
+      async 'responds with .status'({ app, startApp }) {
         app.use(() => {
           const err = new Error('s3 explodes')
           err.status = 403
           throw err
         })
 
-        await startPlain (app.callback())
+        await startApp()
           .get('/')
           .assert(403, 'Forbidden')
       },
     },
 
-    async 'responds with 500'({ app, startPlain }) {
+    async 'responds with 500'({ app, startApp }) {
       app.use(() => {
         throw new Error('boom!')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(500, 'Internal Server Error')
     },
 
-    async 'is catchable'({ app, startPlain }) {
+    async 'is catchable'({ app, startApp }) {
       app.use((ctx, next) => {
         return next().then(() => {
           ctx.body = 'Hello'
@@ -556,26 +556,26 @@ const TS = {
         throw new Error('boom!')
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'Got error')
     },
   },
 
   'when status and body property': {
-    async 'should 200'({ app, startPlain }) {
+    async 'should 200'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 304
         ctx.body = 'hello'
         ctx.status = 200
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(200, 'hello')
     },
 
-    async 'should 204'({ app, startPlain }) {
+    async 'should 204'({ app, startApp }) {
       app.use(ctx => {
         ctx.status = 200
         ctx.body = 'hello'
@@ -583,7 +583,7 @@ const TS = {
         ctx.status = 204
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(204)
         .assert('content-type', null)

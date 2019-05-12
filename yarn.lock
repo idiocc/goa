@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@artdeco/clean-stack/-/clean-stack-1.1.1.tgz#0a68b9a061b5076ebaf948c150ea26d09c1e753f"
   integrity sha512-q5lO3vGUo0WgkSqzgzjL0HQdA9t2HzQqZISuVuQWMh9xqLuiLFP/ZTsxFc8vpMl7mNpGk7Mm0OeyFQ+Evrp0Cw==
 
-"@contexts/http@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@contexts/http/-/http-1.2.1.tgz#be0816b149e2c1c7e644104487962cf9aa4f1a83"
-  integrity sha512-u1gansFdwMaZ6f4p9ZVG+sESNT/lTtGGCXLL2gxcouq6+Ki6M+YHcKuXCfklbji98hE8AvB71Y/U5o/r1BJikg==
+"@contexts/http@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@contexts/http/-/http-1.2.6.tgz#e1aeb1a275eab9413fce86b81488582fc3d782de"
+  integrity sha512-kub/d8UThPS80XDddlIJPoEYTHCtTRzV78jTzUhGmw1Pxg/I3s3or5Mt5SjHmeElRcNM4/O6I8+atm51q1L/zA==
   dependencies:
     "@artdeco/clean-stack" "^1.1.1"
     "@rqt/aqt" "^1.2.5"
@@ -265,11 +265,6 @@ mismatch@^1.1.1, mismatch@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mismatch/-/mismatch-1.2.0.tgz#3f5021861e8084e36a14c2c1f9489941cd18f790"
   integrity sha512-kuw1k8ZHS+12fBVAVOBXMBJBXcNGnByFTJIDzH4W4v84OocejZ/qzxmT4ll9CLX5OD23NXr+NvrQDus0BsQ8xw==
-
-ms@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
-  integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 pedantry@^2.3.2:
   version "2.3.2"

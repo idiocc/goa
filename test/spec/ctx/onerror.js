@@ -4,20 +4,20 @@ import Context, { ConsoleMock } from '../../context'
 /** @type {TestSuite} */
 const TS = {
   context: [Context, ConsoleMock],
-  async 'responds'({ app, startPlain }, _) {
+  async 'responds'({ app, startApp }, _) {
     app.use((ctx) => {
       ctx.body = 'something else'
 
       ctx.throw(418, 'boom')
     })
 
-    await startPlain(app.callback())
+    await startApp()
       .get('/')
       .assert(418)
       .assert('Content-Type', 'text/plain; charset=utf-8')
       .assert('Content-Length', 4)
   },
-  async 'unsets all headers'({ app, startPlain }, _) {
+  async 'unsets all headers'({ app, startApp }, _) {
     app.use((ctx) => {
       ctx.set('Vary', 'Accept-Encoding')
       ctx.set('X-CSRF-Token', 'asdf')
@@ -26,7 +26,7 @@ const TS = {
       ctx.throw(418, 'boom')
     })
 
-    await startPlain(app.callback())
+    await startApp()
       .get('/')
       .assert(418)
       .assert('Content-Type', 'text/plain; charset=utf-8')
@@ -35,7 +35,7 @@ const TS = {
       .assert('x-csrf-token', null)
   },
 
-  async 'sets headers specified in the error'({ app, startPlain }, _) {
+  async 'sets headers specified in the error'({ app, startApp }, _) {
     app.use((ctx) => {
       ctx.set('Vary', 'Accept-Encoding')
       ctx.set('X-CSRF-Token', 'asdf')
@@ -50,7 +50,7 @@ const TS = {
       })
     })
 
-    await startPlain(app.callback())
+    await startApp()
       .get('/')
       .assert(418)
       .assert('Content-Type', 'text/plain; charset=utf-8')
@@ -78,7 +78,7 @@ const TS = {
 
   'when invalid err.status': {
     'not number': {
-      async 'responds 500'({ app, startPlain }, _) {
+      async 'responds 500'({ app, startApp }, _) {
         app.use((ctx) => {
           ctx.body = 'something else'
           const err = new Error('some error')
@@ -86,14 +86,14 @@ const TS = {
           throw err
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(500, 'Internal Server Error')
           .assert('Content-Type', 'text/plain; charset=utf-8')
       },
     },
     'when ENOENT error': {
-      async 'responds 404'({ app, startPlain }, _) {
+      async 'responds 404'({ app, startApp }, _) {
         app.use((ctx) => {
           ctx.body = 'something else'
           const err = new Error('test for ENOENT')
@@ -101,14 +101,14 @@ const TS = {
           throw err
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(404, 'Not Found')
           .assert('Content-Type', 'text/plain; charset=utf-8')
       },
     },
     'not http status code': {
-      async 'responds 500'({ app, startPlain }, _) {
+      async 'responds 500'({ app, startApp }, _) {
         app.use((ctx) => {
           ctx.body = 'something else'
           const err = new Error('some error')
@@ -116,7 +116,7 @@ const TS = {
           throw err
         })
 
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
           .assert(500, 'Internal Server Error')
           .assert('Content-Type', 'text/plain; charset=utf-8')
@@ -124,12 +124,12 @@ const TS = {
     },
   },
   'when non-error thrown': {
-    async 'responds with non-error thrown message'({ app, startPlain }, _) {
+    async 'responds with non-error thrown message'({ app, startApp }, _) {
       app.use(() => {
         throw 'string error'
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(500, 'Internal Server Error')
         .assert('Content-Type', 'text/plain; charset=utf-8')
@@ -151,14 +151,14 @@ const TS = {
 
       equal(removed, 2)
     },
-    async 'stringifies error if it is an object'({ app, startPlain, expectError }, _) {
+    async 'stringifies error if it is an object'({ app, startApp, expectError }, _) {
       const p = expectError('Error: non-error thrown: {"key":"value"}')
 
       app.use(async () => {
         throw { key: 'value' } // eslint-disable-line no-throw-literal
       })
 
-      await startPlain(app.callback())
+      await startApp()
         .get('/')
         .assert(500, 'Internal Server Error')
       await p

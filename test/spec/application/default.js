@@ -5,7 +5,7 @@ import Context from '../../context'
 /** @type {TestSuite} */
 const TS = {
   context: Context,
-  async 'handles socket errors'({ app, startPlain, expectError }) {
+  async 'handles socket errors'({ app, startApp, expectError }) {
     app.use((ctx) => {
       // triggers ctx.socket.writable == false
       ctx.socket.emit('error', new Error('boom'))
@@ -15,7 +15,7 @@ const TS = {
 
     await throws({
       async fn() {
-        await startPlain(app.callback())
+        await startApp()
           .get('/')
       },
       message: /socket hang up/,
