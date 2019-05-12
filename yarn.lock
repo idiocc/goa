@@ -61,10 +61,12 @@
   resolved "https://registry.yarnpkg.com/@goa/is-generator-function/-/is-generator-function-1.0.1.tgz#2ad692706bbc6da7be2797f531bb472d87f74ff4"
   integrity sha512-Zt9q5/E+HrmS91NJLT9AVNKvLpBmFHzRTXZcb+PfFRDt9XzGXDqr/pumfA1+girr3Qw9haVf9MmcEa1dMak2cg==
 
-"@goa/mime-types@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@goa/mime-types/-/mime-types-1.0.0.tgz#b669a626997679ef31ee73bacbddd76e7dc68f50"
-  integrity sha512-K7pjSeQtTc6+PEMLQogzn+Fckf8gyQ7H5yxSwC2jZR4Bho4dB31AkHYBzLVbIspuqrKylwTn36/w8YwEXr4Yww==
+"@goa/mime-types@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@goa/mime-types/-/mime-types-1.1.0.tgz#35b5c0e43e4e748dce71dd0aded4437e95e32a68"
+  integrity sha512-BC3LWDvpAJOp7NnN1JLA5ZaDoX/6BdiFDmW9r+/nZiwF5V2/VCfeWvNCWB9pT16proMAh5WPk5kSvEWNR4G0Kw==
+  dependencies:
+    mime-db "^1.40.0"
 
 "@goa/negotiator@^1.0.1":
   version "1.0.1"
@@ -260,6 +262,11 @@ makepromise@^3.0.3, makepromise@^3.1.0:
   integrity sha512-wbRpYfLteGKd3j96r30G2xCrqp3blk/kYOzGKBPnEix4a/VcHcxcYFwJ79fCZFtcEqMn8MGSh8h+D+/LlI+JQQ==
   dependencies:
     erotic "^2.1.0"
+
+mime-db@^1.40.0:
+  version "1.40.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.40.0.tgz#a65057e998db090f732a68f6c276d387d4126c32"
+  integrity sha512-jYdeOMPy9vnxEqFRRo6ZvTZ8d9oPb+k18PKoYNYUe2stVEBPPwsln/qWzdbmaIvnhZ9v2P+CuecK+fpUfsV2mA==
 
 mismatch@^1.1.1, mismatch@^1.2.0:
   version "1.2.0"

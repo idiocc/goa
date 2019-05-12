@@ -50,7 +50,7 @@
     "@goa/accepts": "^1.1.0",
     "@goa/cookies": "^1.0.0",
     "@goa/is-generator-function": "^1.0.1",
-    "@goa/mime-types": "^1.0.0",
+    "@goa/mime-types": "^1.1.0",
     "@goa/negotiator": "^1.0.1",
     "@goa/vary": "^1.0.0",
     "@idio/debug": "^1.1.1",
@@ -61,5 +61,7 @@
     "yarn-s": "1.1.0",
     "zoroaster": "^4.1.1-alpha"
   },
-  "dependencies": {}
+  "dependencies": {
+    "mime-db": "^1.40.0"
+  }
 }
