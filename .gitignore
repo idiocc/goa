@@ -58,3 +58,4 @@ typings/
 .env
 .documentary/cache
 v.js
+test/zoroaster.js

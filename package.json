@@ -19,7 +19,8 @@
     "modules",
     "src",
     "types",
-    "externs.js"
+    "externs.js",
+    "test"
   ],
   "externs": [
     "types/externs/application.js",
