@@ -1,5 +1,9 @@
 ## 12 May 2019
 
+### [1.1.1](https://github.com/idiocc/goa/compare/v1.1.0...v1.1.1)
+
+- [tests] Don't depend on the _package.json_ for testing, add the _stream_ fixture.
+
 ### [1.1.0](https://github.com/idiocc/goa/compare/v1.0.0...v1.1.0)
 
 - [package] Publish tests to be able to test the compiled version.
