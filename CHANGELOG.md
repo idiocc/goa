@@ -1,5 +1,9 @@
 ## 20 June 2019
 
+### [1.2.1](https://github.com/idiocc/goa/compare/v1.2.0...v1.2.1)
+
+- [package] Export the app via main.
+
 ### [1.2.0](https://github.com/idiocc/goa/compare/v1.1.1...v1.2.0)
 
 - [types] Fix types with `@` for TypeScript 3.5.

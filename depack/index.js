@@ -1,4 +1,4 @@
-export {}
+export { default } from '../src'
 
 /**
  * @typedef {import('http').Server} http.Server
