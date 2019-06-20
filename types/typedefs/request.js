@@ -2,10 +2,10 @@ export {}
 
 /* typal types/Request.xml closure noSuppress */
 /**
- * @typedef {_goa.ContextDelegatedRequest} ContextDelegatedRequest `@interface` The request API available via Context.
+ * @typedef {_goa.ContextDelegatedRequest} ContextDelegatedRequest `＠interface` The request API available via Context.
  */
 /**
- * @typedef {Object} _goa.ContextDelegatedRequest `@interface` The request API available via Context.
+ * @typedef {Object} _goa.ContextDelegatedRequest `＠interface` The request API available via Context.
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsLanguages Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsEncodings Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsCharsets Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
@@ -67,25 +67,25 @@ export {}
  * @prop {string} ip Request remote address. Supports X-Forwarded-For when app.proxy is true.
  */
 /**
- * @typedef {_goa.BaseRequest} BaseRequest `@interface` The additional API not available via Context.
+ * @typedef {_goa.BaseRequest} BaseRequest `＠interface` The additional API not available via Context.
  */
 /**
- * @typedef {_goa.ContextDelegatedRequest & _goa.$BaseRequest} _goa.BaseRequest `@interface` The additional API not available via Context.
+ * @typedef {_goa.ContextDelegatedRequest & _goa.$BaseRequest} _goa.BaseRequest `＠interface` The additional API not available via Context.
  */
 /**
- * @typedef {Object} _goa.$BaseRequest `@interface` The additional API not available via Context.
+ * @typedef {Object} _goa.$BaseRequest `＠interface` The additional API not available via Context.
  * @prop {string} [charset] Get the charset when present or undefined.
  * @prop {?number} length Return parsed Content-Length when present.
  * @prop {string} [type] Return the request mime type void of parameters such as "charset".
  */
 /**
- * @typedef {_goa.Request} Request `@interface` The request object.
+ * @typedef {_goa.Request} Request `＠interface` The request object.
  */
 /**
- * @typedef {_goa.BaseRequest & _goa.$Request} _goa.Request `@interface` The request object.
+ * @typedef {_goa.BaseRequest & _goa.$Request} _goa.Request `＠interface` The request object.
  */
 /**
- * @typedef {Object} _goa.$Request `@interface` The request object.
+ * @typedef {Object} _goa.$Request `＠interface` The request object.
  * @prop {!_goa.Application} app The reference to the application.
  * @prop {!_goa.Context} ctx The reference to the context instance.
  * @prop {!_goa.Response} response The reference to the request instance.

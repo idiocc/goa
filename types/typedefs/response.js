@@ -2,10 +2,10 @@ export {}
 
 /* typal types/Response.xml closure noSuppress */
 /**
- * @typedef {_goa.ContextDelegatedResponse} ContextDelegatedResponse `@interface` The response API available via Context.
+ * @typedef {_goa.ContextDelegatedResponse} ContextDelegatedResponse `＠interface` The response API available via Context.
  */
 /**
- * @typedef {Object} _goa.ContextDelegatedResponse `@interface` The response API available via Context.
+ * @typedef {Object} _goa.ContextDelegatedResponse `＠interface` The response API available via Context.
  * @prop {function(string, ?): void} attachment Set Content-Disposition header to "attachment" with optional `filename`.
  * @prop {function(string, string=): void} redirect Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used. _Examples_:
       - `this.redirect('back')`
@@ -44,13 +44,13 @@ export {}
  * @prop {boolean} writable Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
  */
 /**
- * @typedef {_goa.BaseResponse} BaseResponse `@interface` The additional API not available via Context.
+ * @typedef {_goa.BaseResponse} BaseResponse `＠interface` The additional API not available via Context.
  */
 /**
- * @typedef {_goa.ContextDelegatedResponse & _goa.$BaseResponse} _goa.BaseResponse `@interface` The additional API not available via Context.
+ * @typedef {_goa.ContextDelegatedResponse & _goa.$BaseResponse} _goa.BaseResponse `＠interface` The additional API not available via Context.
  */
 /**
- * @typedef {Object} _goa.$BaseResponse `@interface` The additional API not available via Context.
+ * @typedef {Object} _goa.$BaseResponse `＠interface` The additional API not available via Context.
  * @prop {!net.Socket} socket Return the request socket.
  * @prop {!Object<string, string>} header Return response header (_OutgoingHttpHeaders_).
  * @prop {!Object<string, string>} headers Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
@@ -60,13 +60,13 @@ export {}
       - `this.get('content-type')` => `"text/plain"`
  */
 /**
- * @typedef {_goa.Response} Response `@interface` The response object.
+ * @typedef {_goa.Response} Response `＠interface` The response object.
  */
 /**
- * @typedef {_goa.BaseResponse & _goa.$Response} _goa.Response `@interface` The response object.
+ * @typedef {_goa.BaseResponse & _goa.$Response} _goa.Response `＠interface` The response object.
  */
 /**
- * @typedef {Object} _goa.$Response `@interface` The response object.
+ * @typedef {Object} _goa.$Response `＠interface` The response object.
  * @prop {!_goa.Application} app The reference to the application.
  * @prop {!_goa.Context} ctx The reference to the context instance.
  * @prop {!_goa.Request} request The reference to the request instance.

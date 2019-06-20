@@ -2,10 +2,10 @@ export {}
 
 /* typal types/Context.xml closure noSuppress */
 /**
- * @typedef {_goa.Context} Context `@interface` The context object for each request.
+ * @typedef {_goa.Context} Context `＠interface` The context object for each request.
  */
 /**
- * @typedef {Object} _goa.Context `@interface` The context object for each request.
+ * @typedef {Object} _goa.Context `＠interface` The context object for each request.
  * @prop {!_goa.Cookies} cookies The cookies instance.
  * @prop {boolean} respond To bypass Koa's built-in response handling, you may explicitly set `ctx.respond = false;`
  * @prop {string} originalUrl Get request original URL.

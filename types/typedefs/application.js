@@ -2,13 +2,13 @@ export {}
 
 /* typal types/Application.xml closure noSuppress */
 /**
- * @typedef {_goa.Application} Application `@interface` The application interface.
+ * @typedef {_goa.Application} Application `＠interface` The application interface.
  */
 /**
- * @typedef {events.EventEmitter & _goa.$Application} _goa.Application `@interface` The application interface.
+ * @typedef {events.EventEmitter & _goa.$Application} _goa.Application `＠interface` The application interface.
  */
 /**
- * @typedef {Object} _goa.$Application `@interface` The application interface.
+ * @typedef {Object} _goa.$Application `＠interface` The application interface.
  * @prop {boolean} [proxy] Whether the server is running behind a proxy.
  * @prop {!Array<!_goa.Middleware>} middleware The array with middleware used on the server.
  * @prop {!_goa.Context} context The context object for each request.
