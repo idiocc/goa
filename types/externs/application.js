@@ -58,12 +58,12 @@ _goa.Application.prototype.use
  */
 _goa.Application.prototype.callback
 /**
- * `@private` Initialize a new context.
+ * `＠private` Initialize a new context.
  * @type {function(!http.IncomingMessage, !http.ServerResponse)}
  */
 _goa.Application.prototype.createContext
 /**
- * `@private` Default error handler.
+ * `＠private` Default error handler.
  * @type {function(!Error)}
  */
 _goa.Application.prototype.onerror
