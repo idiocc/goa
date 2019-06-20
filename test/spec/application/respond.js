@@ -157,7 +157,7 @@ const TS = {
   },
 
   'when no middleware are present': {
-    async 'should 404'({ app, startApp }) {
+    async 'should 404'({ startApp }) {
       await startApp()
         .get('/')
         .assert(404)

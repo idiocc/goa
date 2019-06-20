@@ -1,10 +1,4 @@
 /**
- * @license MIT
- * (c) dead-horse
- * https://npmjs.org/koa-compose
- */
-
-/**
  * Compose `middleware` returning a fully valid middleware comprised of all those which are passed.
  * @param {!Array<!Function>} middleware
  */
@@ -35,3 +29,9 @@ export default function compose(middleware) {
     }
   }
 }
+
+/**
+ * @license MIT
+ * (c) dead-horse
+ * https://npmjs.org/koa-compose
+ */
