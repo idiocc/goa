@@ -1,3 +1,10 @@
+## 20 June 2019
+
+### [1.2.0](https://github.com/idiocc/goa/compare/v1.1.1...v1.2.0)
+
+- [types] Fix types with `@` for TypeScript 3.5.
+- [package] Export main field with the types.
+
 ## 12 May 2019
 
 ### [1.1.1](https://github.com/idiocc/goa/compare/v1.1.0...v1.1.1)
