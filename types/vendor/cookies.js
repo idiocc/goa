@@ -1,10 +1,10 @@
 export {}
 /* typal node_modules/@goa/cookies/types/index.xml closure noSuppress */
 /**
- * @typedef {_goa.Cookies} Cookies `@interface` The interface for Cookies: signed and unsigned cookies based on Keygrip.
+ * @typedef {_goa.Cookies} Cookies `＠interface` The interface for Cookies: signed and unsigned cookies based on Keygrip.
  */
 /**
- * @typedef {Object} _goa.Cookies `@interface` The interface for Cookies: signed and unsigned cookies based on Keygrip.
+ * @typedef {Object} _goa.Cookies `＠interface` The interface for Cookies: signed and unsigned cookies based on Keygrip.
  * @prop {!_goa.Keygrip} keys The keys object constructed from passed keys (private, will be installed from options).
  * @prop {boolean} [secure] Explicitly specifies if the connection is secure (private, will be installed from options).
  * @prop {function(string, { signed: boolean }): (string|undefined)} get This extracts the cookie with the given name from the Cookie header in the request. If such a cookie exists, its value is returned. Otherwise, nothing is returned. `{ signed: true }` can optionally be passed as the second parameter options. In this case, a signature cookie (a cookie of same name ending with the .sig suffix appended) is fetched. If no such cookie exists, nothing is returned.
@@ -40,10 +40,10 @@ export {}
 
 /* typal node_modules/@goa/cookies/types/keygrip.xml closure noSuppress */
 /**
- * @typedef {_goa.Keygrip} Keygrip `@interface` Signing and verifying data (such as cookies or URLs) through a rotating credential system.
+ * @typedef {_goa.Keygrip} Keygrip `＠interface` Signing and verifying data (such as cookies or URLs) through a rotating credential system.
  */
 /**
- * @typedef {Object} _goa.Keygrip `@interface` Signing and verifying data (such as cookies or URLs) through a rotating credential system.
+ * @typedef {Object} _goa.Keygrip `＠interface` Signing and verifying data (such as cookies or URLs) through a rotating credential system.
  * @prop {function(?): string} sign This creates a SHA1 HMAC based on the _first_ key in the keylist, and outputs it as a 27-byte url-safe base64 digest (base64 without padding, replacing `+` with `-` and `/` with `_`).
  * @prop {function(?, string): number} index This loops through all of the keys currently in the keylist until the digest of the current key matches the given digest, at which point the current index is returned. If no key is matched, -1 is returned.
       The idea is that if the index returned is greater than `0`, the data should be re-signed to prevent premature credential invalidation, and enable better performance for subsequent challenges.

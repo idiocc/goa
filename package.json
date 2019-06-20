@@ -2,7 +2,7 @@
   "name": "@goa/goa",
   "version": "1.1.1",
   "description": "The Goa Source Code For Compilation Into @Goa/Koa That Includes Modules, Tests, Types And Dependencies.",
-  "main": "index.js",
+  "main": "depack/index.js",
   "module": "src/application.js",
   "scripts": {
     "t": "zoroaster -a",

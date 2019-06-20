@@ -1,10 +1,10 @@
 export {}
 /* typal node_modules/@goa/accepts/types/index.xml noSuppress closure */
 /**
- * @typedef {_goa.Accepts} Accepts `@interface` Higher-Level Content Negotiation.
+ * @typedef {_goa.Accepts} Accepts `＠interface` Higher-Level Content Negotiation.
  */
 /**
- * @typedef {Object} _goa.Accepts `@interface` Higher-Level Content Negotiation.
+ * @typedef {Object} _goa.Accepts `＠interface` Higher-Level Content Negotiation.
  * @prop {function((string|!Array<string>)=, ...string): (string|!Array<string>|boolean)} types Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order. _Examples_:
       - [Accept: text/html]
