@@ -68,6 +68,7 @@
     "@goa/negotiator": "^1.0.1",
     "@goa/vary": "^1.0.0",
     "@idio/debug": "^1.1.1",
+    "@typedefs/goa": "^0.0.1",
     "mime-db": "^1.40.0"
   }
 }
