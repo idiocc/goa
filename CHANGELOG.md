@@ -1,3 +1,9 @@
+## 21 June 2019
+
+### [1.3.0](https://github.com/idiocc/goa/compare/v1.2.0...v1.3.0)
+
+- [package] Publish types as an independent package.
+
 ## 20 June 2019
 
 ### [1.2.1](https://github.com/idiocc/goa/compare/v1.2.0...v1.2.1)
