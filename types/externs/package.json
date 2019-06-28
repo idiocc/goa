@@ -1,0 +1,14 @@
+{
+  "name": "@externs/goa",
+  "description": "The Goa Web-Server Externs.",
+  "version": "0.1.0",
+  "externs": [
+    "application.js",
+    "context.js",
+    "request.js",
+    "response.js",
+    "index.js",
+    "content-disposition.js"
+  ],
+  "keywords": ["goa", "externs", "gcc", "google closure compiler"]
+}

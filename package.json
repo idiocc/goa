@@ -20,7 +20,6 @@
     "modules",
     "src",
     "types",
-    "externs.js",
     "test"
   ],
   "externs": [
@@ -28,8 +27,8 @@
     "types/externs/context.js",
     "types/externs/request.js",
     "types/externs/response.js",
-    "externs.js",
-    "modules/content-disposition/externs.js"
+    "types/externs/index.js",
+    "types/externs/content-disposition.js"
   ],
   "repository": {
     "type": "git",
