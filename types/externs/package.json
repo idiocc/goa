@@ -1,5 +1,6 @@
 {
   "name": "@externs/goa",
+  "module": "module.js",
   "description": "The Goa Web-Server Externs.",
   "version": "0.1.0",
   "externs": [
@@ -10,5 +11,10 @@
     "index.js",
     "content-disposition.js"
   ],
-  "keywords": ["goa", "externs", "gcc", "google closure compiler"]
+  "keywords": [
+    "goa",
+    "externs",
+    "gcc",
+    "google closure compiler"
+  ]
 }
