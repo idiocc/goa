@@ -157,7 +157,7 @@ const TS = {
   },
 
   'when no middleware are present': {
-    async 'should 404'({ startApp }) {
+    async 'should 404'({ /* keep app as getter */ app, startApp }) { // eslint-disable-line
       await startApp()
         .get('/')
         .assert(404)

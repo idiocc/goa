@@ -485,7 +485,7 @@ export const Inspect = {
 
 /** @type {TestSuite} */
 export const is = {
-  'should ignore params'({ res }) {
+  'ignores params'({ res }) {
     res.type = 'text/html; charset=utf-8'
     equal(res.is('text/*'), 'text/html')
   },
