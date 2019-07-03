@@ -57,8 +57,8 @@ const TS = {
         })
 
         await startApp()
-          .get('/')
           .set('x-forwarded-proto', 'https') // mock secure
+          .get('/')
           .assert(204)
           .value('name', 'jon')
           .value('name.sig', 'FbCmGlw6Fv7VhZ3y8DO7x-Zdjgo')
