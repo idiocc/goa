@@ -1,3 +1,9 @@
+## 3 July 2019
+
+### [1.3.1](https://github.com/idiocc/goa/compare/v1.3.0...v1.3.1)
+
+- [deps] Move code to `@goa/content-type` and `@goa/type-is` packages.
+
 ## 21 June 2019
 
 ### [1.3.0](https://github.com/idiocc/goa/compare/v1.2.0...v1.3.0)
