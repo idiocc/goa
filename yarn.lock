@@ -78,10 +78,10 @@
   resolved "https://registry.yarnpkg.com/@goa/negotiator/-/negotiator-1.0.1.tgz#d0b0dccfafc4dc4a990ae92a65c4faedfbe884f7"
   integrity sha512-Hzu2cXJBI5/WKb+9nuLRfefLcRWUlgWTlWHaZbtrM/7BHQHQIX4FJWNzywQARmWDl9g8hoHdeWw58SPcx5ET4Q==
 
-"@goa/type-is@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@goa/type-is/-/type-is-1.0.1.tgz#de098ce800c38bd842668ab30598d2ff9e65b868"
-  integrity sha512-JkK2oDWixdQO4k8bOqgOn0G/EfjGzyx5XTeVIGzlnrLPGtAt9BDh574RewCfweJlTkzY9tI8IkuqYsSZn4Me/w==
+"@goa/type-is@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@goa/type-is/-/type-is-1.0.2.tgz#90df59329db41c5f677d4e7ca1620765fd31335d"
+  integrity sha512-OzQBeFqkBp9tSyOqVl9BD9O+Fe/1AEso5YiXEEyNGxGpc+DIfDA7ZNQvCGvjJxHjym07fyrJ/UgNi60D1x9k0A==
   dependencies:
     mime-db "^1.40.0"
 
