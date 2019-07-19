@@ -1,9 +1,14 @@
-/* alanode example/ */
-import goa from '../src'
+import aqt from '@rqt/aqt'
+/* start example */
+import Goa from '../src'
 
-(async () => {
-  const res = await goa({
-    text: 'example',
-  })
-  console.log(res)
-})()
+const app = new Goa()
+app.use((ctx) => {
+  ctx.body = 'hello world'
+})
+/* end example */
+app.listen(async function() {
+  const { body } = await aqt('http://localhost:'+this.address().port)
+  console.log(body)
+  this.close()
+})

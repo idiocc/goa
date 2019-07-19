@@ -51,9 +51,9 @@
   },
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
-    "@contexts/http": "^1.4.0",
+    "@contexts/http": "^1.5.1",
     "alamode": "^2.3.4",
-    "documentary": "^1.27.4",
+    "documentary": "^1.27.5",
     "eslint-config-artdeco": "1.0.1",
     "typal": "^1.14.0",
     "yarn-s": "1.1.0",
@@ -68,7 +68,7 @@
     "@goa/negotiator": "^1.0.1",
     "@goa/type-is": "^1.0.2",
     "@goa/vary": "^1.0.0",
-    "@idio/debug": "^1.1.1",
+    "@idio/debug": "^1.2.3",
     "@typedefs/goa": "^0.0.2",
     "mime-db": "^1.40.0"
   }

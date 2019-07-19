@@ -15,16 +15,82 @@ yarn add @goa/koa
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
+- [Goa](#goa)
 - [Types](#types)
+- [Packages](#packages)
 - [Copyright](#copyright)
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
+
+## Goa
+
+Goa is the same application, as Koa. It has the same interface for the app object, as well as context, request and response API.
+
+<table>
+<tr/>
+<tr><td>
+
+```js
+import Goa from '@goa/goa'
+
+const app = new Goa()
+app.use((ctx) => {
+  ctx.body = 'hello world'
+})
+```
+</td>
+<td>
+
+```
+hello world
+```
+</td></tr>
+</table>
 
 ## Types
 
 The types detailed information can be found [here](doc/TYPES.md). This is a detailed breakdown of type annotations that was used for compilation, therefore it's rather raw because it's meant for generates externs and typedefs for JSDoc. The Koa documentation can be found on its page.
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
+
+## Packages
+
+The Koa dependencies as packages had to be rewritten in ES6. Some of them were created as separate packages, and some were included in the source code (repository) in the `modules` directory.
+
+|      Dependency       |  Type  |
+| --------------------- | ------ |
+| `cache-content-type` | module |
+| `content-disposition` | module |
+| `delegates` | module |
+| `ee-first` | module |
+| `error-inject` | module |
+| `escape-html` | module |
+| `fresh` | module |
+| `http-assert` | module |
+| `http-errors` | module |
+| `koa-compose` | module |
+| `koa-is-json` | module |
+| `on-finished` | module |
+| `only` | module |
+| `parseurl` | module |
+| `statuses` | module |
+
+The external modules were created with tests also written to ensure their source and compiled versions work as expected.
+
+|          Dependency          | Type (dev) |                           Description                            |
+| ---------------------------- | ---------- | ---------------------------------------------------------------- |
+| `@goa/accepts` | npm        | Higher-Level Content Negotiation.                                |
+| `@goa/content-type` | npm        | Create and parse HTTP Content-Type header according to RFC 7231. |
+| `@goa/cookies` | npm        | Signed And Unsigned Cookies Based On Keygrip.                    |
+| `@goa/is-generator-function` | npm        | Checks If The Function Is An ES6 Generator.                      |
+| `@goa/mime-types` | npm        | The Ultimate Javascript Content-Type Utility.                    |
+| `@goa/negotiator` | npm        | HTTP Content Negotiation.                                        |
+| `@goa/type-is` | npm        | Infer The Content-Type Of A Request.                             |
+| `@goa/vary` | npm        | Manipulate The HTTP Vary header.                                 |
+| `@idio/debug` | npm        | Log Debugging Information.                                       |
+| `mime-db` | npm-prod   | Installed Aia @goa/mime-types.                                   |
+
+<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
 
 ## Copyright
 
