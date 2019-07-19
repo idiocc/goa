@@ -1,6 +1,6 @@
 {
   "name": "@goa/goa",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "The Goa Source Code For Compilation Into @Goa/Koa That Includes Modules, Tests, Types And Dependencies.",
   "module": "src/application.js",
   "scripts": {
