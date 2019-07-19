@@ -4,9 +4,10 @@
 
 This is the source code for the `@goa/koa` repository that actually compiles this source code. Please navigate there for the documentation.
 
+<img src="doc/ic.png" alt="Compiled Source Code In 2400 lines." align="right">
+
 `@goa/koa` is the [Koa web-sever](https://koajs.com) compiled and optimised with _Google Closure Compiler_ so that it has only 1 dependency (`mime-db`, for easy access to upgrades). The types are written as JSDoc and don't require installing typings. The aim of this project is to demonstrate how to modernise the old-school NPM package making, including starting to use import/export statements without _Babel_, restoring to pure _JSDoc_ without TypeScript, and compiling the code into the single executable using the compiler, and testing the code with [_Zoroaster_](https://contexttesting.com) testing framework which is twice as fast and weighs 500KB against 50MB compared with _Jest_ (as used in the original repository).
 
-<img src="doc/ic.png" alt="Compiled Source Code In 2400 lines." align="right">
 
 ```sh
 yarn add @goa/koa
@@ -27,7 +28,7 @@ yarn add @goa/koa
 Goa is the same application, as Koa. It has the same interface for the app object, as well as context, request and response API.
 
 <table>
-<tr/>
+<tr><th><a href="example/index.js">Source</th><th>Output</th></tr>
 <tr><td>
 
 ```js
