@@ -103,7 +103,7 @@ The external modules were created with tests also written to ensure their source
 
 The tests were updated for [context testing](https://contexttesting.com) and include all original Koa tests.
 
-[View all tests](/doc/TESTS.md)
+<kbd>✅ [View all tests](/doc/TESTS.md)</kbd>
 
 <p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true"></a></p>
 
