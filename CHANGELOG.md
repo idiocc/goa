@@ -1,3 +1,9 @@
+## 19 July 2019
+
+### [1.3.3](https://github.com/idiocc/goa/compare/v1.3.2...v1.3.3)
+
+- [doc] Add some documentation, remove unused files.
+
 ## 3 July 2019
 
 ### [1.3.2](https://github.com/idiocc/goa/compare/v1.3.1...v1.3.2)

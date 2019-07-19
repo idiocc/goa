@@ -2,7 +2,6 @@
   "name": "@goa/goa",
   "version": "1.3.2",
   "description": "The Goa Source Code For Compilation Into @Goa/Koa That Includes Modules, Tests, Types And Dependencies.",
-  "main": "depack/index.js",
   "module": "src/application.js",
   "scripts": {
     "t": "zoroaster -a",
@@ -23,14 +22,6 @@
     "src",
     "types",
     "test"
-  ],
-  "externs": [
-    "types/externs/application.js",
-    "types/externs/context.js",
-    "types/externs/request.js",
-    "types/externs/response.js",
-    "types/externs/index.js",
-    "types/externs/content-disposition.js"
   ],
   "repository": {
     "type": "git",
