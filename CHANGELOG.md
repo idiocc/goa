@@ -1,3 +1,14 @@
+## 21 July 2019
+
+### [1.3.4](https://github.com/idiocc/goa/compare/v1.3.3...v1.3.4)
+
+- [deps] Update `cookies` to fix warnings and make keys optional property of the _Cookies_ class.
+- [deps] Update [`is-generator-fn`](https://github.com/idiocc/is-generator-function) for correctly annotated _!Function_ type.
+- [annotations] Cast stream.
+    ```
+    onFinish(/** @type {!http.ServerResponse} */ (this.res), destroy.bind(null, /** @type {stream.Stream} */ (val)))
+    ```
+
 ## 19 July 2019
 
 ### [1.3.3](https://github.com/idiocc/goa/compare/v1.3.2...v1.3.3)
