@@ -140,7 +140,7 @@ export default class Response {
 
     // stream
     if ('function' == typeof val.pipe) {
-      onFinish(/** @type {!http.ServerResponse} */ (this.res), destroy.bind(null, val))
+      onFinish(/** @type {!http.ServerResponse} */ (this.res), destroy.bind(null, /** @type {stream.Stream} */ (val)))
       ensureErrorHandler(val, err => this.ctx.onerror(err))
 
       // overwriting

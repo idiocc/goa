@@ -57,15 +57,15 @@
   resolved "https://registry.yarnpkg.com/@goa/content-type/-/content-type-1.0.1.tgz#c5df9764f4263b31b5462822a3da54c15b28d526"
   integrity sha512-GhVWCLHWK27arlztGHwNjqn+PksXYHeEsUy2GwyhWP1YNDT/U6ps+ltzJTAUgRQhIZIRVBJ5rf9mInbfHkankw==
 
-"@goa/cookies@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.0.0.tgz#89b5a9198d985609cf0fd29801a7f9df4eff49f4"
-  integrity sha512-mbyH1exYp/9PVstmlO9jCnhVFv0PUffiXAFW0/xgUZCDBrNiqTfx/5eYUfCvpjM3+zQV9gj1zJrBsTMcbUE+Gg==
+"@goa/cookies@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.4.tgz#104aa1b32fd404a390219e980bd7a3773d1ff8e9"
+  integrity sha512-7JSjzCtzx5gN32zKQz52UtWqsh4MyluCQv4vg4fZOlR/UeLEY4YTgKkTcN60g8f9BZT5X/ozxKZDLsLyFCawzg==
 
-"@goa/is-generator-function@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@goa/is-generator-function/-/is-generator-function-1.0.1.tgz#2ad692706bbc6da7be2797f531bb472d87f74ff4"
-  integrity sha512-Zt9q5/E+HrmS91NJLT9AVNKvLpBmFHzRTXZcb+PfFRDt9XzGXDqr/pumfA1+girr3Qw9haVf9MmcEa1dMak2cg==
+"@goa/is-generator-function@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@goa/is-generator-function/-/is-generator-function-1.0.2.tgz#f001b3bdb4b39330fee3afe534dea1fd78a73b2d"
+  integrity sha512-Vo5IS92aTbygksryZuETbn2dfjRKWqJfyUDaxUyi4oL5Vyv6asJLNVkEK0aZp+1A+ORTFA8+p26x6zte02YL7A==
 
 "@goa/mime-types@^1.1.0":
   version "1.1.0"
@@ -224,10 +224,10 @@ differently@^1.0.0:
   dependencies:
     erte "^1.2.0"
 
-documentary@^1.27.5:
-  version "1.27.5"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.5.tgz#98a6b62d67b69edaf372539eeea1dc33a91b80c9"
-  integrity sha512-wSJ3RX9VhH4Y+bu0Ol2AYBfBqlAZSz7dk+B4tbBat97zrc0/Bq4w1SyMSJyzh1e6ZVx13cGAFIIAp1G3OLDiTA==
+documentary@^1.27.7:
+  version "1.27.7"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.7.tgz#b01b2296ef41b7a8e8f0e90f41c59e2e35372f1c"
+  integrity sha512-V/bZsNvq3kYqeuL2A1ZPPI9Wcm1lR5802elTYztW6aKzQlYAzhLx/sX6rZdR/XVfl3WN+JQJUTbWJttRU/1UcA==
   dependencies:
     "@depack/cache" "^1.0.0"
     "@depack/render" "^1.2.0"
