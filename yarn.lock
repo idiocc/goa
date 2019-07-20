@@ -57,10 +57,10 @@
   resolved "https://registry.yarnpkg.com/@goa/content-type/-/content-type-1.0.1.tgz#c5df9764f4263b31b5462822a3da54c15b28d526"
   integrity sha512-GhVWCLHWK27arlztGHwNjqn+PksXYHeEsUy2GwyhWP1YNDT/U6ps+ltzJTAUgRQhIZIRVBJ5rf9mInbfHkankw==
 
-"@goa/cookies@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.4.tgz#104aa1b32fd404a390219e980bd7a3773d1ff8e9"
-  integrity sha512-7JSjzCtzx5gN32zKQz52UtWqsh4MyluCQv4vg4fZOlR/UeLEY4YTgKkTcN60g8f9BZT5X/ozxKZDLsLyFCawzg==
+"@goa/cookies@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.5.tgz#7545f39b28a900c05636ba2cbc3bd6a9cb31b0b3"
+  integrity sha512-55Y1GPZypfytlmXabqTlgQV9FCDWKGQY+JiigiXqzKKp7BGhr0OmuugEmYD+gDPT46ESjB6NrHL3U6+Ysy8fSw==
 
 "@goa/is-generator-function@^1.0.2":
   version "1.0.2"
