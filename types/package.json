@@ -5,7 +5,8 @@
   "description": "JSDoc typededs for @goa/goa",
   "files": [
     "typedefs",
-    "vendor"
+    "vendor",
+    "goa"
   ],
   "homepage": "typedef.page",
   "license": "MIT"
