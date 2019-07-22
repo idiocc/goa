@@ -1,6 +1,6 @@
 export {}
 
-/* typal types/Application.xml closure noSuppress */
+/* typal types/Application.xml closure noSuppress ignore:_goa.Keygrip */
 /**
  * @typedef {_goa.Application} Application `＠interface` The application interface.
  */
