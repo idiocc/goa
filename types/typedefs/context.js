@@ -27,19 +27,25 @@ export {}
 /**
  * @typedef {import('http').ServerResponse} http.ServerResponse
  */
+/**
+ * @typedef {import('..').Cookies} _goa.Cookies
+ */
+/**
+ * @typedef {import('..').Application} _goa.Application
+ */
+/**
+ * @typedef {import('..').Request} _goa.Request
+ */
+/**
+ * @typedef {import('..').Response} _goa.Response
+ */
 
 /**
- * @typedef {import('../vendor/cookies').Cookies} _goa.Cookies
- * @typedef {import('..').Application} _goa.Application
- * @typedef {import('..').Request} _goa.Request
  * @typedef {import('..').ContextDelegatedRequest} ContextDelegatedRequest
  * @typedef {import('..').ContextDelegatedResponse} ContextDelegatedResponse
- * @typedef {import('..').Response} _goa.Response
  */
 
 /**
  * @typedef {_goa.KoaContext} KoaContext
  * @typedef {Context & ContextDelegatedResponse & ContextDelegatedRequest} _goa.KoaContext
  */
-
-// <import from="@goa/cookies/types" ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip." link="https://github.com/idiocc/cookies#type-_goacookies" />

@@ -2,6 +2,11 @@
   <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
   <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
 
+  <import from=".." ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip" link="https://github.com/idiocc/cookies/wiki/Cookies-Class#type-cookies" />
+  <import from=".." ns="_goa" name="Application" desc="The application interface." link="https://github.com/idiocc/goa/wiki/Application#type-_goaapplication" />
+  <import from=".." ns="_goa" name="Request" desc="The request object." link="https://github.com/idiocc/goa/wiki/Request#type-_goarequest" />
+  <import from=".." ns="_goa" name="Response" desc="The response object." link="https://github.com/idiocc/goa/wiki/Response#type-_goaresponse" />
+
   <type interface name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.

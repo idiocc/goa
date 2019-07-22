@@ -3,6 +3,7 @@ export {}
 /* typework */
 /**
  * @typedef {import('./vendor/cookies').Keygrip} Keygrip
+ * @typedef {import('./vendor/cookies').Cookies} Cookies
  * @typedef {import('./typedefs/application').Middleware} Middleware
  * @typedef {import('./typedefs/application').Application} Application
  * @typedef {import('./typedefs/context').KoaContext} Context

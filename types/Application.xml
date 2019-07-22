@@ -3,7 +3,10 @@
   <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
   <import from="events" name="EventEmitter" desc="All EventEmitters emit the event 'newListener' when new listeners are added and 'removeListener' when existing listeners are removed." link="https://nodejs.org/api/events.html#events_class_eventemitter" />
 
-  <import from="@goa/cookies" ns="_goa" name="Keygrip" desc="Keygrip is a tool to encrypt sessions using a set of keys" link="https://github.com/idiocc/cookies/wiki/Keygrip" />
+  <import from=".." ns="_goa" name="Keygrip" desc="Keygrip is a tool to encrypt sessions using a set of keys" link="https://github.com/idiocc/cookies/wiki/Keygrip#type-_goakeygrip" />
+  <import from=".." ns="_goa" name="Context" desc="<should be dynamic> The context object." link="Context#type-_goacontext" />
+  <import from=".." ns="_goa" name="Request" desc="<should be dynamic> The request object." link="Request#type-_goarequest" />
+  <import from=".." ns="_goa" name="Response" desc="<should be dynamic> The response object." link="Response#type-_goaresponse" />
 
   <type interface extends="events.EventEmitter" name="Application" desc="The application interface.">
     <prop opt boolean name="proxy">

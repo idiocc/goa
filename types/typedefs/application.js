@@ -1,6 +1,6 @@
 export {}
 
-/* typal types/Application.xml closure noSuppress ignore:_goa.Keygrip */
+/* typal types/Application.xml closure noSuppress */
 /**
  * @typedef {_goa.Application} Application `＠interface` The application interface.
  */
@@ -39,12 +39,15 @@ export {}
 /**
  * @typedef {import('events').EventEmitter} events.EventEmitter
  */
-
 /**
- * @typedef {import('../vendor/cookies').Keygrip} _goa.Keygrip
+ * @typedef {import('..').Keygrip} _goa.Keygrip
+ */
+/**
  * @typedef {import('..').Context} _goa.Context
+ */
+/**
  * @typedef {import('..').Request} _goa.Request
+ */
+/**
  * @typedef {import('..').Response} _goa.Response
  */
-
-// <import from="@goa/cookies/types" ns="_goa" name="Keygrip" desc="The Keygrip constructor." link="https://github.com/idiocc/cookies#type-_goakeygrip" />
