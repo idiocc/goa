@@ -105,10 +105,15 @@ export {}
 /**
  * @typedef {import('url').URL} url.URL
  */
-
 /**
- * @typedef {import('../vendor/accepts').Accepts} _goa.Application
+ * @typedef {import('..').Accepts} _goa.Accepts
+ */
+/**
  * @typedef {import('..').Application} _goa.Application
+ */
+/**
  * @typedef {import('..').Context} _goa.Context
+ */
+/**
  * @typedef {import('..').Response} _goa.Response
  */

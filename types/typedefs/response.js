@@ -79,6 +79,18 @@ export {}
 /**
  * @typedef {import('http').ServerResponse} http.ServerResponse
  */
+/**
+ * @typedef {import('stream').Stream} stream.Stream
+ */
+/**
+ * @typedef {import('..').Application} _goa.Application
+ */
+/**
+ * @typedef {import('..').Context} _goa.Context
+ */
+/**
+ * @typedef {import('..').Request} _goa.Request
+ */
 
 /**
  * @typedef {import('..').Application} _goa.Application

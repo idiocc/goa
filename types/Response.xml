@@ -2,6 +2,12 @@
   <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
   <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
 
+  <import from="stream" name="Stream" desc="Body can be set as a stream to send data to clients." link="https://nodejs.org/api/stream.html#stream" />
+
+  <import from=".." ns="_goa" name="Application" desc="The application interface." link="Application#type-_goaapplication" />
+  <import from=".." ns="_goa" name="Context" desc="The context object." link="Context#type-_goacontext" />
+  <import from=".." ns="_goa" name="Request" desc="The request object." link="Request#type-_goarequest" />
+
   <type interface name="ContextDelegatedResponse" desc="The response API available via Context.">
     <prop type="function(string, ?): void" name="attachment">
       Set Content-Disposition header to "attachment" with optional `filename`.

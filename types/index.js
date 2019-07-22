@@ -4,6 +4,7 @@ export {}
 /**
  * @typedef {import('./vendor/cookies').Keygrip} Keygrip
  * @typedef {import('./vendor/cookies').Cookies} Cookies
+ * @typedef {import('./vendor/accepts').Accepts} Accepts
  * @typedef {import('./typedefs/application').Middleware} Middleware
  * @typedef {import('./typedefs/application').Application} Application
  * @typedef {import('./typedefs/context').KoaContext} Context
