@@ -47,5 +47,5 @@
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>
   </type>
-  <type type="function(!_goa.Context, !Function): *" name="Middleware"/>
+  <type type="function(!_goa.Context, !Function): *" name="Middleware" desc="The function to handle requests which can be installed with the `.use` method."/>
 </types>

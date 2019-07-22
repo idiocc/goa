@@ -48,6 +48,11 @@ _goa.Application.prototype.keys
  */
 _goa.Application.prototype.silent
 /**
+ * Shorthand for: `http.createServer(app.callback()).listen(...)`
+ * @type {function()}
+ */
+_goa.Application.prototype.listen
+/**
  * Use the given middleware `fn`. Old-style middleware will be converted.
  * @type {function(!_goa.Middleware): !_goa.Application}
  */
@@ -73,6 +78,7 @@ _goa.Application.prototype.onerror
  */
 _goa.Application.prototype.subdomainOffset
 /**
+ * The function to handle requests which can be installed with the `.use` method.
  * @typedef {function(!_goa.Context, !Function): *}
  */
 _goa.Middleware
