@@ -1,8 +1,18 @@
 The context is created from the base prototype for each request. It can be used to quickly access the request and response APIs, like negotiating content-encoding, or writing an object to `body` to get it serialised as JSON.
 
-<img src="https://github.com/idiocc/goa/blob/master/wiki/context.gif" alt="Context API">
+<table>
+<tr><th>Table Of Contents</th></tr>
+<!-- block-start -->
+<tr><td>
 
 %TOC%
+<img src="https://github.com/idiocc/goa/blob/master/wiki/context.gif" alt="Context API">
+
+</td></tr>
+<!-- /block-end -->
+</table>
+
+
 
 The total context consists of
 - the _BaseContext_ class,
