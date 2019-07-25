@@ -31,9 +31,6 @@
     <prop type="function(string): void" name="remove">
       Remove header `field`.
     </prop>
-    <prop type="function(string): void" name="vary">
-      Vary on `field`.
-    </prop>
     <prop type="function((string|!Object), (string|!Array|number)=): void" name="set">
       Set header `field` to `val`, or pass an object of header fields.
 
@@ -44,6 +41,9 @@
       this.set('Accept', 'application/json')
       this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
       ```
+    </prop>
+    <prop type="function(string): void" name="vary">
+      Vary on `field`.
     </prop>
     <prop type="function(string, (string|!Array)): void" name="append">
       Append additional header `field` with value `val`.
@@ -85,6 +85,9 @@
       this.type = 'png'
       ```
     </prop>
+    <prop boolean name="writable">
+      Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
+    </prop>
     <prop type="string|Date" name="lastModified">
       Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date.
 
@@ -94,6 +97,9 @@
       this.response.lastModified = new Date()
       this.response.lastModified = '2013-09-13'
       ```
+    </prop>
+    <prop boolean name="headerSent">
+      Check if a header has been written to the socket.
     </prop>
     <prop string name="etag">
       Get/Set the ETag of a response. This will normalize the quotes if necessary.
@@ -105,12 +111,6 @@
       this.response.etag = '"md5hashsum"'
       this.response.etag = 'W/"123456789"'
       ```
-    </prop>
-    <prop boolean name="headerSent">
-      Check if a header has been written to the socket.
-    </prop>
-    <prop boolean name="writable">
-      Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
     </prop>
   </type>
 
@@ -125,10 +125,7 @@
     <prop type="!Object<string, string>" name="headers">
       Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
     </prop>
-    <prop type="function((string|!Array<string>), ...string): (string|boolean)" name="is">
-      Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
-    </prop>
-    <prop type="function(string): string" name="get">
+     <prop type="function(string): string" name="get">
       Return response header.
 
       _Examples_:
@@ -137,6 +134,9 @@
       this.get('Content-Type') // => "text/plain"
       this.get('content-type') // => "text/plain"
       ```
+    </prop>
+    <prop type="function((string|!Array<string>), ...string): (string|boolean)" name="is">
+      Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
     </prop>
   </type>
 
