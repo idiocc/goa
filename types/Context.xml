@@ -1,11 +1,13 @@
 <types namespace="_goa">
-  <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
-  <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
+  <import from="http" name="IncomingMessage" />
+  <import from="http" name="ServerResponse" />
 
-  <import from=".." ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip." link="https://github.com/idiocc/cookies/wiki/Cookies-Class#type-cookies" />
-  <import from=".." ns="_goa" name="Application" desc="The application interface." link="Application#type-_goaapplication" />
-  <import from=".." ns="_goa" name="Request" desc="The request object." link="Request#type-_goarequest" />
-  <import from=".." ns="_goa" name="Response" desc="The response object." link="Response#type-_goaresponse" />
+  <!-- The cookies are vendored in types/vendor -->
+  <import from=".." ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip." link="https://github.com/idiocc/cookies/wiki/Cookies#type-cookies" />
+
+  <import from=".." ns="_goa" name="Application" />
+  <import from=".." ns="_goa" name="Request" />
+  <import from=".." ns="_goa" name="Response" />
 
   <type interface name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">

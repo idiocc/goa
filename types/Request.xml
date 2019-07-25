@@ -1,15 +1,16 @@
 <types namespace="_goa">
-  <import from="http" name="IncomingMessage" desc="The first argument to the 'request' event." link="https://nodejs.org/api/http.html#http_class_http_incomingmessage" />
-  <import from="http" name="ServerResponse" desc="The second parameter to the 'request' event." link="https://nodejs.org/api/http.html#http_response_socket" />
-
-  <import from="net" name="Socket" desc="The socket underlying the request." link="https://nodejs.org/api/net.html#net_class_net_socket" />
-
-  <import from="url" name="URL" desc="Browser-compatible URL class, implemented by following the `WHATWG` URL Standard." link="https://nodejs.org/api/url.html#url_class_url" />
+  <import from="http" name="IncomingMessage" />
+  <import from="http" name="ServerResponse" />
+  <import from="url" name="URL" />
+  <import from="net" name="Socket">
+    The socket underlying the request.
+  </import>
 
   <import from=".." ns="_goa" name="Accepts" desc="The _Accepts_ API." link="https://github.com/idiocc/accepts/wiki/Accepts#type-_goaaccepts" />
-  <import from=".." ns="_goa" name="Application" desc="The application interface." link="Application#type-_goaapplication" />
-  <import from=".." ns="_goa" name="Context" desc="The context object." link="Context#type-_goacontext" />
-  <import from=".." ns="_goa" name="Response" desc="The response object." link="Response#type-_goaresponse" />
+
+  <import from=".." ns="_goa" name="Application" />
+  <import from=".." ns="_goa" name="Context" />
+  <import from=".." ns="_goa" name="Response" />
 
   <type interface name="ContextDelegatedRequest" desc="The request API available via Context.">
     <prop type="function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)" name="acceptsLanguages">

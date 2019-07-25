@@ -137,10 +137,10 @@ export {}
  * @typedef {import('http').ServerResponse} http.ServerResponse
  */
 /**
- * @typedef {import('net').Socket} net.Socket
+ * @typedef {import('url').URL} url.URL
  */
 /**
- * @typedef {import('url').URL} url.URL
+ * @typedef {import('net').Socket} net.Socket
  */
 /**
  * @typedef {import('..').Accepts} _goa.Accepts
