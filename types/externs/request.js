@@ -20,45 +20,82 @@ _goa.ContextDelegatedRequest.prototype.acceptsEncodings
  */
 _goa.ContextDelegatedRequest.prototype.acceptsCharsets
 /**
- * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
-      The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned.
-      _Examples_:
-      - [Accept: text/html] `this.accepts('html') => "html"`
-      - [Accept: text/*, application/json]
-        `this.accepts('html') => "html"`
-        `this.accepts('text/html') => "text/html"`
-        `this.accepts('json', 'text') => "json"`
-        `this.accepts('application/json') => "application/json"`
-      - [Accept: text/*, application/json]
-        `this.accepts('image/png') => undefined`
-        `this.accepts('png') => undefined`
-      - [Accept: text/*;q=.5, application/json]
-        `this.accepts(['html', 'json']) => "json"`
-        `this.accepts('html', 'json') => "json"`
+ * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
+ *
+ * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
+ *
+ * _Examples_:
+ *
+ * - Accept: text/html
+ *
+ *     ```js
+ *     this.types('html') => "html"
+ *     ```
+ * - Accept: text/＊, application/json
+ *
+ *     ```js
+ *     this.types('html') => "html"
+ *     this.types('text/html') => "text/html"
+ *     this.types('json', 'text') => "json"
+ *     this.types('application/json') => "application/json"
+ *     ```
+ * - Accept: text/＊, application/json
+ *
+ *     ```js
+ *     this.types('image/png') => false
+ *     this.types('png') => false
+ *     ```
+ * - Accept: text/＊;q=.5, application/json
+ *
+ *     ```js
+ *     this.types(['html', 'json']) => "json"
+ *     this.types('html', 'json') => "json"
+ *     ```
+ * - Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain
+ *
+ *     ```js
+ *     this.types() => ["text/html", "text/plain",
+ *       "image/jpeg", "application/＊"]
+ *     ```
  * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.accepts
 /**
- * Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable. _Examples_:
-      - `this.get('Content-Type') => "text/plain"`
-      - `this.get('content-type') => "text/plain"`
-      - `this.get('Something') => undefined`
+ * Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.get('Content-Type') => "text/plain"
+ * this.get('content-type') => "text/plain"
+ * this.get('Something') => undefined
+ * ```
  * @type {function(string): string}
  */
 _goa.ContextDelegatedRequest.prototype.get
 /**
  * Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
-      _Examples_:
-      - With Content-Type: text/html; charset=utf-8
-        `this.is('html'); // => 'html'`
-        `this.is('text/html'); // => 'text/html'`
-        `this.is('text/*', 'application/json'); // => 'text/html'`
-      - When Content-Type is application/json
-        `this.is('json', 'urlencoded'); // => 'json'`
-        `this.is('application/json'); // => 'application/json'`
-        `this.is('html', 'application/*'); // => 'application/json'`
-        `this.is('html'); // => false`
- * @type {function(((!Array<string>|string)), ...string)}
+ *
+ * _Examples_:
+ *
+ * - With Content-Type: text/html; charset=utf-8
+ *
+ *     ```js
+ *     this.is('html'); // => 'html'
+ *     this.is('text/html'); // => 'text/html'
+ *     this.is('text/*', 'application/json');
+ *       // => 'text/html'
+ *     ```
+ * - When Content-Type is application/json
+ *
+ *     ```js
+ *     this.is('json', 'urlencoded'); // => 'json'
+ *     this.is('application/json'); // => 'application/json'
+ *     this.is('html', 'application/*');
+ *               // => 'application/json'
+ *     this.is('html'); // => false
+ *     ```
+ * @type {function(((!Array<string>|string)), ...string): ?(string|boolean)}
  */
 _goa.ContextDelegatedRequest.prototype.is
 /**
@@ -118,9 +155,9 @@ _goa.ContextDelegatedRequest.prototype.origin
 _goa.ContextDelegatedRequest.prototype.href
 /**
  * Return subdomains as an array.
-      Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
-      - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
-      - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
+ * Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
+ * - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
+ * - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
  * @type {!Array<string>}
  */
 _goa.ContextDelegatedRequest.prototype.subdomains

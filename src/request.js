@@ -37,7 +37,7 @@ export default class Request {
     this.memoizedURL = null
     /** @type {?string} */
     this.IP = null
-    /** @type {_goa.Accepts} */
+    /** @type {Accepts} */
     this._accept = null
   }
   /**

@@ -11,10 +11,10 @@ _goa.ContextDelegatedResponse
 _goa.ContextDelegatedResponse.prototype.attachment
 /**
  * Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used. _Examples_:
-      - `this.redirect('back')`
-      - `this.redirect('back', '/index.html')`
-      - `this.redirect('/login')`
-      - `this.redirect('http://google.com')`
+ * - `this.redirect('back')`
+ * - `this.redirect('back', '/index.html')`
+ * - `this.redirect('/login')`
+ * - `this.redirect('http://google.com')`
  * @type {function(string, string=): void}
  */
 _goa.ContextDelegatedResponse.prototype.redirect
@@ -30,17 +30,17 @@ _goa.ContextDelegatedResponse.prototype.remove
 _goa.ContextDelegatedResponse.prototype.vary
 /**
  * Set header `field` to `val`, or pass an object of header fields. _Examples_:
-      - `this.set('Foo', ['bar', 'baz'])`
-      - `this.set('Accept', 'application/json')`
-      - `this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })`.
+ * - `this.set('Foo', ['bar', 'baz'])`
+ * - `this.set('Accept', 'application/json')`
+ * - `this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })`.
  * @type {function((string|!Object), (string|!Array|number)=): void}
  */
 _goa.ContextDelegatedResponse.prototype.set
 /**
  * Append additional header `field` with value `val`. _Examples_:
-      - `this.append('Link', ['<http://localhost>', '<http://localhost:3000>'])`
-      - `this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')`
-      - `this.append('Warning', '199 Miscellaneous warning')`
+ * - `this.append('Link', ['<http://localhost>', '<http://localhost:3000>'])`
+ * - `this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')`
+ * - `this.append('Warning', '199 Miscellaneous warning')`
  * @type {function(string, (string|!Array)): void}
  */
 _goa.ContextDelegatedResponse.prototype.append
@@ -71,26 +71,26 @@ _goa.ContextDelegatedResponse.prototype.body
 _goa.ContextDelegatedResponse.prototype.length
 /**
  * Return the response mime type void of parameters such as "charset". Set Content-Type response header with `type` through `mime.lookup()` when it does not contain a charset. _Examples_:
-      - `this.type = '.html'`
-      - `this.type = 'html'`
-      - `this.type = 'json'`
-      - `this.type = 'application/json'`
-      - `this.type = 'png'`
+ * - `this.type = '.html'`
+ * - `this.type = 'html'`
+ * - `this.type = 'json'`
+ * - `this.type = 'application/json'`
+ * - `this.type = 'png'`
  * @type {string}
  */
 _goa.ContextDelegatedResponse.prototype.type
 /**
  * Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date. _Examples_:
-      - `this.response.lastModified = new Date()`
-      - `this.response.lastModified = '2013-09-13'`
+ * - `this.response.lastModified = new Date()`
+ * - `this.response.lastModified = '2013-09-13'`
  * @type {string|Date}
  */
 _goa.ContextDelegatedResponse.prototype.lastModified
 /**
  * Get/Set the ETag of a response. This will normalize the quotes if necessary. _Examples_:
-      - `this.response.etag = 'md5hashsum'`
-      - `this.response.etag = '"md5hashsum"'`
-      - `this.response.etag = 'W/"123456789"'`
+ * - `this.response.etag = 'md5hashsum'`
+ * - `this.response.etag = '"md5hashsum"'`
+ * - `this.response.etag = 'W/"123456789"'`
  * @type {string}
  */
 _goa.ContextDelegatedResponse.prototype.etag
@@ -132,8 +132,8 @@ _goa.BaseResponse.prototype.headers
 _goa.BaseResponse.prototype.is
 /**
  * Return response header. _Examples_:
-      - `this.get('Content-Type')` => `"text/plain"`
-      - `this.get('content-type')` => `"text/plain"`
+ * - `this.get('Content-Type')` => `"text/plain"`
+ * - `this.get('content-type')` => `"text/plain"`
  * @type {function(string): string}
  */
 _goa.BaseResponse.prototype.get

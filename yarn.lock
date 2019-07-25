@@ -47,10 +47,10 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/accepts@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.2.0.tgz#eb32eebe1f6e60349122aad71693215dd2923ceb"
-  integrity sha512-cBRqIskylLz+jWU/feO2gvIIpp/qHeirD78/+GZwElVz+dp/NhsDpUL0BCQ6sukociVIamBuMNdX/Hcsrot27Q==
+"@goa/accepts@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.2.1.tgz#0839494dbec2c602aa0c78c39a15d6a9068a7bfe"
+  integrity sha512-xQtgQDAhXlR0Pp2EBAgW7a+cesm3tP/z9yY146faC7uLXOXoAxDNYTe0GXdshMPRgngrBrEH9PCz1fQkkvy1jw==
   dependencies:
     mime-db "^1.40.0"
 

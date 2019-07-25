@@ -9,36 +9,73 @@ export {}
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsLanguages Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsEncodings Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
  * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsCharsets Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
- * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} accepts Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `undefined`, in which case you should respond with 406 "Not Acceptable".
-      The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned.
-      _Examples_:
-      - [Accept: text/html] `this.accepts('html') => "html"`
-      - [Accept: text/*, application/json]
-        `this.accepts('html') => "html"`
-        `this.accepts('text/html') => "text/html"`
-        `this.accepts('json', 'text') => "json"`
-        `this.accepts('application/json') => "application/json"`
-      - [Accept: text/*, application/json]
-        `this.accepts('image/png') => undefined`
-        `this.accepts('png') => undefined`
-      - [Accept: text/*;q=.5, application/json]
-        `this.accepts(['html', 'json']) => "json"`
-        `this.accepts('html', 'json') => "json"`
- * @prop {function(string): string} get Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable. _Examples_:
-      - `this.get('Content-Type') => "text/plain"`
-      - `this.get('content-type') => "text/plain"`
-      - `this.get('Something') => undefined`
- * @prop {function(((!Array<string>|string)), ...string)} is Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
-      _Examples_:
-      - With Content-Type: text/html; charset=utf-8
-        `this.is('html'); // => 'html'`
-        `this.is('text/html'); // => 'text/html'`
-        `this.is('text/*', 'application/json'); // => 'text/html'`
-      - When Content-Type is application/json
-        `this.is('json', 'urlencoded'); // => 'json'`
-        `this.is('application/json'); // => 'application/json'`
-        `this.is('html', 'application/*'); // => 'application/json'`
-        `this.is('html'); // => false`
+ * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} accepts Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
+ *
+ * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
+ *
+ * _Examples_:
+ *
+ * - Accept: text/html
+ *
+ *     ```js
+ *     this.types('html') => "html"
+ *     ```
+ * - Accept: text/＊, application/json
+ *
+ *     ```js
+ *     this.types('html') => "html"
+ *     this.types('text/html') => "text/html"
+ *     this.types('json', 'text') => "json"
+ *     this.types('application/json') => "application/json"
+ *     ```
+ * - Accept: text/＊, application/json
+ *
+ *     ```js
+ *     this.types('image/png') => false
+ *     this.types('png') => false
+ *     ```
+ * - Accept: text/＊;q=.5, application/json
+ *
+ *     ```js
+ *     this.types(['html', 'json']) => "json"
+ *     this.types('html', 'json') => "json"
+ *     ```
+ * - Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain
+ *
+ *     ```js
+ *     this.types() => ["text/html", "text/plain",
+ *       "image/jpeg", "application/＊"]
+ *     ```
+ * @prop {function(string): string} get Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.get('Content-Type') => "text/plain"
+ * this.get('content-type') => "text/plain"
+ * this.get('Something') => undefined
+ * ```
+ * @prop {function(((!Array<string>|string)), ...string): ?(string|boolean)} is Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
+ *
+ * _Examples_:
+ *
+ * - With Content-Type: text/html; charset=utf-8
+ *
+ *     ```js
+ *     this.is('html'); // => 'html'
+ *     this.is('text/html'); // => 'text/html'
+ *     this.is('text/*', 'application/json');
+ *       // => 'text/html'
+ *     ```
+ * - When Content-Type is application/json
+ *
+ *     ```js
+ *     this.is('json', 'urlencoded'); // => 'json'
+ *     this.is('application/json'); // => 'application/json'
+ *     this.is('html', 'application/*');
+ *               // => 'application/json'
+ *     this.is('html'); // => false
+ *     ```
  * @prop {string} querystring Get/Set query string.
  * @prop {boolean} idempotent Check if the request is idempotent.
  * @prop {net.Socket} socket Return the request socket.
@@ -51,9 +88,9 @@ export {}
  * @prop {string} origin Get origin of URL.
  * @prop {string} href Get full request URL.
  * @prop {!Array<string>} subdomains Return subdomains as an array.
-      Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
-      - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
-      - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
+ * Subdomains are the dot-separated parts of the host before the main domain of the app. By default, the domain of the app is assumed to be the last two parts of the host. This can be changed by setting `app.subdomainOffset`. For example, if the domain is "tobi.ferrets.example.com":
+ * - If `app.subdomainOffset` is not set, this.subdomains is `["ferrets", "tobi"]`.
+ * - If `app.subdomainOffset` is 3, this.subdomains is `["tobi"]`.
  * @prop {string} protocol Return the protocol string "http" or "https" when requested with TLS. When the proxy setting is enabled the "X-Forwarded-Proto" header is enabled the "X-Forwarded-Proto" header a reverse proxy that supplies https for you this may be enabled.
  * @prop {string} host Parse the "Host" header field host and support X-Forwarded-Host when a proxy is enabled.
  * @prop {string} hostname Parse the "Host" header field hostname and support X-Forwarded-Host when a proxy is enabled.

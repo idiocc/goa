@@ -12,8 +12,6 @@ The context is created from the base prototype for each request. It can be used 
 <!-- /block-end -->
 </table>
 
-
-
 The total context consists of
 - the _BaseContext_ class,
 - the Request API from the _ContextDelegatedRequest_
