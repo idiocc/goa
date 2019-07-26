@@ -37,7 +37,7 @@
   dependencies:
     mismatch "^1.2.0"
 
-"@depack/render@^1.2.0":
+"@depack/render@^1.2.0", "@depack/render@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@depack/render/-/render-1.2.1.tgz#c8454b2b39721b30656afdade764fee3f0ea90e0"
   integrity sha512-c14hQdLYFncLJTp20Rk4tWgG4RqCVC1wqfik3liOEYlN2XE56yJCqiKhoQhg+LxKCQlARwKz5+bP3+/fTNRc9g==
@@ -59,10 +59,10 @@
   resolved "https://registry.yarnpkg.com/@goa/content-type/-/content-type-1.0.1.tgz#c5df9764f4263b31b5462822a3da54c15b28d526"
   integrity sha512-GhVWCLHWK27arlztGHwNjqn+PksXYHeEsUy2GwyhWP1YNDT/U6ps+ltzJTAUgRQhIZIRVBJ5rf9mInbfHkankw==
 
-"@goa/cookies@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.5.tgz#7545f39b28a900c05636ba2cbc3bd6a9cb31b0b3"
-  integrity sha512-55Y1GPZypfytlmXabqTlgQV9FCDWKGQY+JiigiXqzKKp7BGhr0OmuugEmYD+gDPT46ESjB6NrHL3U6+Ysy8fSw==
+"@goa/cookies@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.6.tgz#b91f15259ac64af6c7d338600f945639702687de"
+  integrity sha512-qBsbUkau9WlDDeqoIlgLO34Mp2oCVRMgpR/Wxh/J+5Ti/+NYG92uZ8eJRsOgm3F3o9V/9Z9g2JT53M5fEwmCSA==
 
 "@goa/is-generator-function@^1.0.2":
   version "1.0.2"
@@ -116,10 +116,10 @@
   resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.0.4.tgz#e88050ff36d6478bbe7c65451f316a616f724a2f"
   integrity sha512-EYYgdHcuKuv3F4AWrc5fHDc4sYbcK5inALcS3Op4izD4qJQdpTNgKQzgoITMxaJOco8SeXKyk0In7+iPlWBjHQ==
 
-"@typedefs/parser@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@typedefs/parser/-/parser-1.3.1.tgz#1c20fd3852c3553b50d7000c6261e8824e91d3b6"
-  integrity sha512-pTOxV2yeLQZz+SaBIJvstSFlkeyGu+52gBh71hKvvQZ3yp/dKNnhjJ936e7q1dsEulCr5c3mRGiTtEaVTI+KzQ==
+"@typedefs/parser@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@typedefs/parser/-/parser-1.3.2.tgz#38f25cc0d2f01c1c5306c9ae7db00a4ba8affef2"
+  integrity sha512-gb6kBAl6qbrUPGJyEDfU7v87WjVfanfRaACRhccbs4JuIYNWl5fugovy3ftMnenXHuIuGu/dOHt+s+XIhdC2KA==
 
 "@wrote/clone@^1.2.1":
   version "1.2.1"
@@ -226,13 +226,13 @@ differently@^1.0.0:
   dependencies:
     erte "^1.2.0"
 
-documentary@^1.27.7:
-  version "1.27.7"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.27.7.tgz#b01b2296ef41b7a8e8f0e90f41c59e2e35372f1c"
-  integrity sha512-V/bZsNvq3kYqeuL2A1ZPPI9Wcm1lR5802elTYztW6aKzQlYAzhLx/sX6rZdR/XVfl3WN+JQJUTbWJttRU/1UcA==
+documentary@^1.28.0:
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.28.0.tgz#040c44010341de7c621ef2e984e154da90e0a7c2"
+  integrity sha512-3+wzMp8qtpyfZgwbL3kHZwMkoBMZtOfx7aiTjlTv+ENItkYwmJ2t602Bd3ipD4sGxna+WitIuaacQvSnr3I01w==
   dependencies:
     "@depack/cache" "^1.0.0"
-    "@depack/render" "^1.2.0"
+    "@depack/render" "^1.2.1"
     "@wrote/clone" "^1.2.1"
     "@wrote/ensure-path" "^1.1.0"
     "@wrote/write" "^1.0.4"
@@ -247,11 +247,11 @@ documentary@^1.27.7:
     pedantry "^2.4.0"
     preact "8.4.2"
     resolve-dependency "^1.0.3"
-    restream "^3.7.1"
+    restream "^3.7.2"
     rexml "^2.0.2"
     spawncommand "^2.2.0"
     static-analysis "^1.7.1"
-    typal "^1.14.0"
+    typal "^1.16.0"
     usually "^1.2.0"
     which-stream "^1.1.0"
 
@@ -317,10 +317,10 @@ resolve-dependency@^1.0.2, resolve-dependency@^1.0.3:
   dependencies:
     "@wrote/exists" "^1.0.3"
 
-restream@^3.7.1:
-  version "3.7.1"
-  resolved "https://registry.yarnpkg.com/restream/-/restream-3.7.1.tgz#4ffefbd2a008965413e90d50fa7f0898889b3a61"
-  integrity sha512-OZLcbqwcZ1VMW3MziEjE4xaeqXvl8r367pBmgviRNl3dywyzdi+ueKFW5p1qPaYaZwIRvaR/TqAlB0XKJVX90g==
+restream@^3.7.1, restream@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/restream/-/restream-3.7.2.tgz#657e06c1944161c190dcede2d688af0be207b859"
+  integrity sha512-nVffinRmO+TEdS6YlkyVeBKHTF2Qv1BU7ML02y3IlosDx0n7zsGUBMNydkVFMgJs/RHl4a4u/X1wNduh1dD1SQ==
   dependencies:
     "@artdeco/clean-stack" "^1.1.1"
     catchment "^3.3.0"
@@ -359,12 +359,12 @@ static-analysis@^1.3.3, static-analysis@^1.7.1:
     mismatch "^1.2.0"
     resolve-dependency "^1.0.3"
 
-typal@^1.14.0, typal@^1.15.3:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/typal/-/typal-1.15.3.tgz#cb8b7a95e7e30c7ca75a584dbf481d46706ff12d"
-  integrity sha512-VZlt21qxQcmVjCUMstz0UauZw8pG4Mk1EJKNPwehWknx3afKpCEXsQ/jyj26opejiF5sTfqN14ug7gyKW/i1xw==
+typal@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.16.0.tgz#fcd5ea00fa79a1bad42a5c3aeee1f9863192daea"
+  integrity sha512-nuRfWuuMo+krpS1yrRYn5CTTDEYhx8+cV8dKs9vwFo6kqgzj147AAaYAmA/i57uaJUrmLlUHsrWD9dNwVzRCXQ==
   dependencies:
-    "@typedefs/parser" "^1.3.1"
+    "@typedefs/parser" "^1.3.2"
     mismatch "^1.2.0"
     rexml "^2.0.2"
 
