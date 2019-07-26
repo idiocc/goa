@@ -1,3 +1,10 @@
+## 26 July 2019
+
+### [1.3.5](https://github.com/idiocc/goa/compare/v1.3.4...v1.3.5)
+
+- [deps] Non-functional update of _accepts_, _cookies_.
+- [doc] Create wiki with all types.
+
 ## 21 July 2019
 
 ### [1.3.4](https://github.com/idiocc/goa/compare/v1.3.3...v1.3.4)
