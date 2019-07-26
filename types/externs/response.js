@@ -29,11 +29,6 @@ _goa.ContextDelegatedResponse.prototype.redirect
  */
 _goa.ContextDelegatedResponse.prototype.remove
 /**
- * Vary on `field`.
- * @type {function(string): void}
- */
-_goa.ContextDelegatedResponse.prototype.vary
-/**
  * Set header `field` to `val`, or pass an object of header fields.
  *
  * _Examples_:
@@ -46,6 +41,11 @@ _goa.ContextDelegatedResponse.prototype.vary
  * @type {function((string|!Object), (string|!Array|number)=): void}
  */
 _goa.ContextDelegatedResponse.prototype.set
+/**
+ * Vary on `field`.
+ * @type {function(string): void}
+ */
+_goa.ContextDelegatedResponse.prototype.vary
 /**
  * Append additional header `field` with value `val`.
  *
@@ -101,6 +101,11 @@ _goa.ContextDelegatedResponse.prototype.length
  */
 _goa.ContextDelegatedResponse.prototype.type
 /**
+ * Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
+ * @type {boolean}
+ */
+_goa.ContextDelegatedResponse.prototype.writable
+/**
  * Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date.
  *
  * _Examples_:
@@ -112,6 +117,11 @@ _goa.ContextDelegatedResponse.prototype.type
  * @type {string|Date}
  */
 _goa.ContextDelegatedResponse.prototype.lastModified
+/**
+ * Check if a header has been written to the socket.
+ * @type {boolean}
+ */
+_goa.ContextDelegatedResponse.prototype.headerSent
 /**
  * Get/Set the ETag of a response. This will normalize the quotes if necessary.
  *
@@ -125,16 +135,6 @@ _goa.ContextDelegatedResponse.prototype.lastModified
  * @type {string}
  */
 _goa.ContextDelegatedResponse.prototype.etag
-/**
- * Check if a header has been written to the socket.
- * @type {boolean}
- */
-_goa.ContextDelegatedResponse.prototype.headerSent
-/**
- * Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
- * @type {boolean}
- */
-_goa.ContextDelegatedResponse.prototype.writable
 /**
  * The additional API not available via Context.
  * @extends {_goa.ContextDelegatedResponse}
@@ -157,11 +157,6 @@ _goa.BaseResponse.prototype.header
  */
 _goa.BaseResponse.prototype.headers
 /**
- * Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
- * @type {function((string|!Array<string>), ...string): (string|boolean)}
- */
-_goa.BaseResponse.prototype.is
-/**
  * Return response header.
  *
  * _Examples_:
@@ -173,6 +168,11 @@ _goa.BaseResponse.prototype.is
  * @type {function(string): string}
  */
 _goa.BaseResponse.prototype.get
+/**
+ * Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
+ * @type {function((string|!Array<string>), ...string): (string|boolean)}
+ */
+_goa.BaseResponse.prototype.is
 /**
  * The response object.
  * @extends {_goa.BaseResponse}

@@ -18,7 +18,6 @@ export {}
  * this.redirect('http://google.com')
  * ```
  * @prop {function(string): void} remove Remove header `field`.
- * @prop {function(string): void} vary Vary on `field`.
  * @prop {function((string|!Object), (string|!Array|number)=): void} set Set header `field` to `val`, or pass an object of header fields.
  *
  * _Examples_:
@@ -28,6 +27,7 @@ export {}
  * this.set('Accept', 'application/json')
  * this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
  * ```
+ * @prop {function(string): void} vary Vary on `field`.
  * @prop {function(string, (string|!Array)): void} append Append additional header `field` with value `val`.
  *
  * _Examples_:
@@ -54,6 +54,7 @@ export {}
  * this.type = 'application/json'
  * this.type = 'png'
  * ```
+ * @prop {boolean} writable Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
  * @prop {string|Date} lastModified Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date.
  *
  * _Examples_:
@@ -62,6 +63,7 @@ export {}
  * this.response.lastModified = new Date()
  * this.response.lastModified = '2013-09-13'
  * ```
+ * @prop {boolean} headerSent Check if a header has been written to the socket.
  * @prop {string} etag Get/Set the ETag of a response. This will normalize the quotes if necessary.
  *
  * _Examples_:
@@ -71,8 +73,6 @@ export {}
  * this.response.etag = '"md5hashsum"'
  * this.response.etag = 'W/"123456789"'
  * ```
- * @prop {boolean} headerSent Check if a header has been written to the socket.
- * @prop {boolean} writable Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
  */
 /**
  * @typedef {_goa.BaseResponse} BaseResponse `＠interface` The additional API not available via Context.
@@ -85,7 +85,6 @@ export {}
  * @prop {!net.Socket} socket Return the request socket.
  * @prop {!Object<string, string>} header Return response header (_OutgoingHttpHeaders_).
  * @prop {!Object<string, string>} headers Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
- * @prop {function((string|!Array<string>), ...string): (string|boolean)} is Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
  * @prop {function(string): string} get Return response header.
  *
  * _Examples_:
@@ -94,6 +93,7 @@ export {}
  * this.get('Content-Type') // => "text/plain"
  * this.get('content-type') // => "text/plain"
  * ```
+ * @prop {function((string|!Array<string>), ...string): (string|boolean)} is Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
  */
 /**
  * @typedef {_goa.Response} Response `＠interface` The response object.
