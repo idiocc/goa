@@ -1,6 +1,6 @@
 {
   "name": "@typedefs/goa",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "index.js",
   "description": "JSDoc typededs for @goa/goa",
   "files": [
@@ -9,5 +9,9 @@
     "goa"
   ],
   "homepage": "typedef.page",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/idiocc/goa.git"
+  }
 }
