@@ -47,10 +47,10 @@
   resolved "https://registry.yarnpkg.com/@depack/split/-/split-1.0.0.tgz#37fea28d9bc6f01e5a2da87d393f402781bb7e99"
   integrity sha512-PNJPl01VFMKtyN7qBZ2cds4N/lO2KvzLrR7JamODFiuuL2X8mGoTKp1SI8fxlT2MwLV8mScCUKn55QPwsUX7iA==
 
-"@goa/accepts@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.2.1.tgz#0839494dbec2c602aa0c78c39a15d6a9068a7bfe"
-  integrity sha512-xQtgQDAhXlR0Pp2EBAgW7a+cesm3tP/z9yY146faC7uLXOXoAxDNYTe0GXdshMPRgngrBrEH9PCz1fQkkvy1jw==
+"@goa/accepts@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@goa/accepts/-/accepts-1.2.2.tgz#ebd73c2f97e8f54653e1378d4e468b32174f9b2d"
+  integrity sha512-QvtRHSP3L7ZOZbEYLmKGmG+Z3WPQtR5EtBc9Jb3DK515h0zFqQ8Qsv21rf9VW+f/C1vBPn2KBLaqxLyGGzIqPA==
   dependencies:
     mime-db "^1.40.0"
 
@@ -111,10 +111,10 @@
     catchment "^3.3.0"
     erotic "^2.1.1"
 
-"@typedefs/goa@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.0.4.tgz#e88050ff36d6478bbe7c65451f316a616f724a2f"
-  integrity sha512-EYYgdHcuKuv3F4AWrc5fHDc4sYbcK5inALcS3Op4izD4qJQdpTNgKQzgoITMxaJOco8SeXKyk0In7+iPlWBjHQ==
+"@typedefs/goa@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.0.5.tgz#21c73e87651d7b2ce12adaa8a8051fedb189652c"
+  integrity sha512-MhO5gT4CLFLYkWZY0c06eZ9lwXzqLAA0PaLXOKFDwVSUVsCnBPhcp46JjxRfnOTKEjnr57Yh64qY5IjqnXk4Ww==
 
 "@typedefs/parser@^1.3.2":
   version "1.3.2"
