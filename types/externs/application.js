@@ -56,12 +56,6 @@ _goa.Application.prototype.silent
  */
 _goa.Application.prototype.listen = function() {}
 /**
- * Use the given middleware `fn`. Old-style middleware will be converted.
- * @param {!_goa.Middleware} arg0
- * @return {!_goa.Application}
- */
-_goa.Application.prototype.use = function(arg0) {}
-/**
  * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
  * @return {function(!http.IncomingMessage, !http.ServerResponse)}
  */
@@ -82,6 +76,20 @@ _goa.Application.prototype.onerror = function(arg0) {}
  * @type {number|undefined}
  */
 _goa.Application.prototype.subdomainOffset
+/**
+ * Use the given middleware `fn`. Old-style middleware will be converted.
+ * @param {!_goa.Middleware} middleware The middleware to install.
+ * @return {!_goa.Application}
+ */
+_goa.Application.prototype.use = function(middleware) {}
+/**
+ * The function to handle requests which can be installed with the `.use` method.
+ * @param {!_goa.Context} ctx The context.
+ * @param {!Function} next The callback.
+ * @return {Promise}
+ */
+_goa.Middleware = function(ctx, next) {}
+
 /**
  * The function to handle requests which can be installed with the `.use` method.
  * @typedef {function(!_goa.Context, !Function): *}

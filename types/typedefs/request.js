@@ -1,15 +1,21 @@
 export {}
 
-/* typal types/Request.xml closure noSuppress */
+/* typal types/Request.xml namespace */
 /**
+ * @typedef {import('http').IncomingMessage} http.IncomingMessage
+ * @typedef {import('http').ServerResponse} http.ServerResponse
+ * @typedef {import('url').URL} url.URL
+ * @typedef {import('net').Socket} net.Socket
+ * @typedef {import('..').Accepts} _goa.Accepts
+ * @typedef {import('..').Application} _goa.Application
+ * @typedef {import('..').Context} _goa.Context
+ * @typedef {import('..').Response} _goa.Response
  * @typedef {_goa.ContextDelegatedRequest} ContextDelegatedRequest `＠interface` The request API available via Context.
- */
-/**
  * @typedef {Object} _goa.ContextDelegatedRequest `＠interface` The request API available via Context.
- * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsLanguages Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
- * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsEncodings Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
- * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} acceptsCharsets Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
- * @prop {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)} accepts Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
+ * @prop {(arg0?: (!Array<string>|string), ...args: string[]) => (string|!Array<string>|boolean)} acceptsLanguages Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
+ * @prop {(arg0?: (!Array<string>|string), ...args: string[]) => (string|!Array<string>|boolean)} acceptsEncodings Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
+ * @prop {(arg0?: (!Array<string>|string), ...args: string[]) => (string|!Array<string>|boolean)} acceptsCharsets Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
+ * @prop {(arg0?: (!Array<string>|string), ...args: string[]) => (string|!Array<string>|boolean)} accepts Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
  *
  * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
  *
@@ -46,7 +52,7 @@ export {}
  *     this.types() => ["text/html", "text/plain",
  *       "image/jpeg", "application/＊"]
  *     ```
- * @prop {function(string): string} get Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
+ * @prop {(arg0: string) => string} get Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
  *
  * _Examples_:
  *
@@ -55,7 +61,7 @@ export {}
  * this.get('content-type') => "text/plain"
  * this.get('Something') => undefined
  * ```
- * @prop {function(((!Array<string>|string)), ...string): ?(string|boolean)} is Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
+ * @prop {(arg0: (!Array<string>|string), ...args: string[]) => ?} is Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
  *
  * _Examples_:
  *
@@ -102,26 +108,14 @@ export {}
  * @prop {boolean} fresh Check if the request is fresh, aka Last-Modified and/or the ETag still match.
  * @prop {!Array<string>} ips When `app.proxy` is `true`, parse the "X-Forwarded-For" ip address list. For example if the value were "client, proxy1, proxy2" you would receive the array `["client", "proxy1", "proxy2"]` where "proxy2" is the furthest down-stream.
  * @prop {string} ip Request remote address. Supports X-Forwarded-For when app.proxy is true.
- */
-/**
  * @typedef {_goa.BaseRequest} BaseRequest `＠interface` The additional API not available via Context.
- */
-/**
  * @typedef {_goa.ContextDelegatedRequest & _goa.$BaseRequest} _goa.BaseRequest `＠interface` The additional API not available via Context.
- */
-/**
  * @typedef {Object} _goa.$BaseRequest `＠interface` The additional API not available via Context.
  * @prop {string} [charset] Get the charset when present or undefined.
  * @prop {?number} length Return parsed Content-Length when present.
  * @prop {string} [type] Return the request mime type void of parameters such as "charset".
- */
-/**
  * @typedef {_goa.Request} Request `＠interface` The request object.
- */
-/**
  * @typedef {_goa.BaseRequest & _goa.$Request} _goa.Request `＠interface` The request object.
- */
-/**
  * @typedef {Object} _goa.$Request `＠interface` The request object.
  * @prop {!_goa.Application} app The reference to the application.
  * @prop {!_goa.Context} ctx The reference to the context instance.
@@ -129,28 +123,4 @@ export {}
  * @prop {!http.IncomingMessage} req The message from the client.
  * @prop {!http.ServerResponse} res The response from the server.
  * @prop {string} [originalUrl] The original url set by the `parseurl` package.
- */
-/**
- * @typedef {import('http').IncomingMessage} http.IncomingMessage
- */
-/**
- * @typedef {import('http').ServerResponse} http.ServerResponse
- */
-/**
- * @typedef {import('url').URL} url.URL
- */
-/**
- * @typedef {import('net').Socket} net.Socket
- */
-/**
- * @typedef {import('..').Accepts} _goa.Accepts
- */
-/**
- * @typedef {import('..').Application} _goa.Application
- */
-/**
- * @typedef {import('..').Context} _goa.Context
- */
-/**
- * @typedef {import('..').Response} _goa.Response
  */

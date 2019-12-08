@@ -38,9 +38,10 @@
     <prop type="function()" name="listen">
       Shorthand for: `http.createServer(app.callback()).listen(...)`
     </prop>
-    <prop type="function(!_goa.Middleware): !_goa.Application" name="use">
+    <fn name="use" return="!_goa.Application">
+      <arg type="!_goa.Middleware" name="middleware">The middleware to install.</arg>
       Use the given middleware `fn`. Old-style middleware will be converted.
-    </prop>
+    </fn>
     <prop type="function(): function(!http.IncomingMessage, !http.ServerResponse)" name="callback">
       Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
     </prop>
@@ -55,5 +56,9 @@
     </prop>
   </type>
 
-  <type type="function(!_goa.Context, !Function): *" name="Middleware" desc="The function to handle requests which can be installed with the `.use` method."/>
+  <method name="Middleware" async>
+    <arg type="!_goa.Context" name="ctx">The context.</arg>
+    <arg type="!Function" name="next">The callback.</arg>
+    The function to handle requests which can be installed with the `.use` method.
+  </method>
 </types>
