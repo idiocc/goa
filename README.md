@@ -1,6 +1,6 @@
 # @goa/koa
 
-[![npm version](https://badge.fury.io/js/%40goa%2Fgoa.svg)](https://npmjs.org/package/@goa/goa)
+[![npm version](https://badge.fury.io/js/%40goa%2Fgoa.svg)](https://www.npmjs.com/package/@goa/goa)
 
 This is the source code for the `@goa/koa` repository that actually compiles this source code. Please navigate there for the documentation.
 
@@ -22,7 +22,9 @@ yarn add @goa/koa
 - [Tests](#tests)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/0.svg?sanitize=true">
+</a></p>
 
 ## Goa
 
@@ -53,7 +55,9 @@ hello world
 
 The types detailed information can be found [here](doc/TYPES.md). This is a detailed breakdown of type annotations that was used for compilation, therefore it's rather raw because it's meant for generates externs and typedefs for JSDoc. The Koa documentation can be found on its page.
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/1.svg?sanitize=true">
+</a></p>
 
 ## Packages
 
@@ -97,7 +101,9 @@ The external modules were created with tests also written to ensure their source
 | [`@idio/debug`](https://www.npmjs.com/package/@idio/debug)     | dev  | Log Debugging Information.                                       |
 | `mime-db`                                                  | prod | Installed Via @goa/mime-types.                                   |
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/2.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/2.svg?sanitize=true">
+</a></p>
 
 ## Tests
 
@@ -105,7 +111,9 @@ The tests were updated for [context testing](https://contexttesting.com) and inc
 
 <kbd>✅ [View 326 tests](/doc/TESTS.md)</kbd>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/3.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/3.svg?sanitize=true">
+</a></p>
 
 ## Copyright
 
@@ -137,4 +145,6 @@ The Koa web server by its [authors](https://github.com/koajs/koa).
   </tr>
 </table>
 
-<p align="center"><a href="#table-of-contents"><img src="/.documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/-1.svg?sanitize=true">
+</a></p>

@@ -1,3 +1,10 @@
+## 9 December 2019
+
+### [1.3.6](https://github.com/idiocc/goa/compare/v1.3.5...v1.3.6)
+
+- [fix] Remove some warnings.
+- [fix] Types are easier to understand.
+
 ## 26 July 2019
 
 ### [1.3.5](https://github.com/idiocc/goa/compare/v1.3.4...v1.3.5)
