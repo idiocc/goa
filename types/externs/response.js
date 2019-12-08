@@ -1,3 +1,7 @@
+/**
+ * @fileoverview
+ * @externs
+ */
 /* typal types/Response.xml externs skipNsDecl */
 /**
  * The response API available via Context.
@@ -29,20 +33,6 @@ _goa.ContextDelegatedResponse.prototype.redirect = function(arg0, arg1) {}
  * @param {string} arg0
  */
 _goa.ContextDelegatedResponse.prototype.remove = function(arg0) {}
-/**
- * Set header `field` to `val`, or pass an object of header fields.
- *
- * _Examples_:
- *
- * ```js
- * this.set('Foo', ['bar', 'baz'])
- * this.set('Accept', 'application/json')
- * this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
- * ```
- * @param {(string|!Object)} arg0
- * @param {(string|!Array|number)=} [arg1]
- */
-_goa.ContextDelegatedResponse.prototype.set = function(arg0, arg1) {}
 /**
  * Vary on `field`.
  * @param {string} arg0
@@ -137,6 +127,20 @@ _goa.ContextDelegatedResponse.prototype.headerSent
  * @type {string}
  */
 _goa.ContextDelegatedResponse.prototype.etag
+/**
+ * Set header `field` to `val`, or pass an object of header fields.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.set('Foo', ['bar', 'baz'])
+ * this.set('Accept', 'application/json')
+ * this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
+ * ```
+ * @param {(string|!Object)} field The field to set, or an object of header fields.
+ * @param {(string|!Array|number)=} [val] The value to set, when passing a single field.
+ */
+_goa.ContextDelegatedResponse.prototype.set = function(field, val) {}
 /**
  * The additional API not available via Context.
  * @extends {_goa.ContextDelegatedResponse}

@@ -1,3 +1,7 @@
+/**
+ * @fileoverview
+ * @externs
+ */
 /* typal types/Application.xml externs */
 /** @const */
 var _goa = {}

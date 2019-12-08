@@ -1,3 +1,7 @@
+/**
+ * @fileoverview
+ * @externs
+ */
 /* typal types/Request.xml externs skipNsDecl */
 /**
  * The request API available via Context.

@@ -1,4 +1,7 @@
-/* eslint-disable */
+/**
+ * @fileoverview
+ * @externs
+ */
 /** @type {boolean} */
 Error.prototype.expose
 /** @type {?number} */

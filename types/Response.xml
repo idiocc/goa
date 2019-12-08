@@ -31,7 +31,13 @@
     <prop type="function(string): void" name="remove">
       Remove header `field`.
     </prop>
-    <prop type="function((string|!Object), (string|!Array|number)=): void" name="set">
+    <fn void name="set">
+      <arg type="string|!Object" name="field">
+        The field to set, or an object of header fields.
+      </arg>
+      <arg type="string|!Array|number" name="val" opt>
+        The value to set, when passing a single field.
+      </arg>
       Set header `field` to `val`, or pass an object of header fields.
 
       _Examples_:
@@ -41,7 +47,7 @@
       this.set('Accept', 'application/json')
       this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
       ```
-    </prop>
+    </fn>
     <prop type="function(string): void" name="vary">
       Vary on `field`.
     </prop>

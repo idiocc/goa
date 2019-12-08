@@ -1,3 +1,7 @@
+/**
+ * @fileoverview
+ * @externs
+ */
 /* typal types/Context.xml externs skipNsDecl */
 /**
  * The context object for each request.
