@@ -16,23 +16,42 @@ const COOKIES = Symbol('context#cookies')
 /**
  * Context prototype.
  * @implements {_goa.Context}
- * @implements {_goa.ContextDelegatedRequest}
- * @implements {_goa.ContextDelegatedResponse}
  */
 export default class Context {
   constructor() {
-    /** @type {?_goa.Application} */
+    // suppress types here so that can access
+    // the properties without casting later
+    /**
+     * @suppress {checkTypes}
+     * @type {?_goa.Application}
+     */
     this.app = null
-    /** @type {Request} */
+    /**
+     * @suppress {checkTypes}
+     * @type {Request}
+     */
     this.request = null
-    /** @type {Response} */
+    /**
+     * @suppress {checkTypes}
+     * @type {Response}
+     */
     this.response = null
-    /** @type {?http.IncomingMessage} */
+    /**
+     * @suppress {checkTypes}
+     * @type {?http.IncomingMessage}
+     */
     this.req = null
-    /** @type {?http.ServerResponse} */
+    /**
+     * @suppress {checkTypes}
+     * @type {?http.ServerResponse}
+     */
     this.res = null
 
-    /** @type {?string} */ this.originalUrl = null
+    /**
+     * @suppress {checkTypes}
+     * @type {?string}
+     */
+    this.originalUrl = null
     /** @type {Object} */ this.state = null
     /** @type {_goa.Cookies} */ this[COOKIES] = null
 

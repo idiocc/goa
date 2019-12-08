@@ -19,15 +19,30 @@ const IP = Symbol('context#ip')
  */
 export default class Request {
   constructor() {
-    /** @type {?_goa.Application} */
+    /**
+     * @suppress {checkTypes}
+     * @type {?_goa.Application}
+     */
     this.app = null
-    /** @type {?Context} */
+    /**
+     * @suppress {checkTypes}
+     * @type {?Context}
+     */
     this.ctx = null
-    /** @type {?Response} */
+    /**
+     * @suppress {checkTypes}
+     * @type {?Response}
+     */
     this.response = null
-    /** @type {http.IncomingMessage} */
+    /**
+     * @suppress {checkTypes}
+     * @type {http.IncomingMessage}
+     */
     this.req = null
-    /** @type {http.ServerResponse} */
+    /**
+     * @suppress {checkTypes}
+     * @type {http.ServerResponse}
+     */
     this.res = null
     /** @type {string} */
     this.originalUrl = ''

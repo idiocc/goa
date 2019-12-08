@@ -174,10 +174,15 @@ preact@8.5.2:
   resolved "https://registry.yarnpkg.com/preact/-/preact-8.5.2.tgz#2f532da485287c07369e08150cf4d23921a09789"
   integrity sha512-37tlDJGq5IQKqGUbqPZ7qPtsTOWFyxe+ojAOFfzKo0dEPreenqrqgJuS83zGpeGAqD9h9L9Yr7QuxH2W4ZrKxg==
 
-typal@^1.22.6, typal@^1.22.8:
+typal@^1.22.6:
   version "1.22.8"
   resolved "https://registry.yarnpkg.com/typal/-/typal-1.22.8.tgz#5eb07a23e01c019fea24525a3a396404832d1976"
   integrity sha512-EXHMSoQAsbzxjIHo2AkweLwThKmJrAMVmRth2uYLid0ZRiR51RrV4E97fb3WdY0ROwdPu1//LtcfW39atAewCA==
+
+typal@^1.22.9:
+  version "1.22.9"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.22.9.tgz#3c251d6843eee28d036be616f37960387a3bf156"
+  integrity sha512-wR4RwD7kh03rFpJrQ0pefUQBikBtAtAfwfWMXs0cdnxr3uKEADmhbfaJPfc0HpzkPloqMMXhImdePtJXxY0MVw==
 
 yarn-s@1.2.1:
   version "1.2.1"

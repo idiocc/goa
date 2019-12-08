@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "do": "yarn-s doc doc-types doc-tests",
     "doc": "NODE_DEBUG=doc doc documentary/index -o README.md",
-    "compile": "depack koa -a -c -o koa/out.js",
+    "compile": "depack koa -a -c -o koa/out.js --externs http",
     "wiki": "NODE_DEBUG=doc doc doc-wiki -W wiki",
     "doc-types": "NODE_DEBUG=doc doc documentary/2-types -o doc/TYPES.md",
     "doc-tests": "NODE_DEBUG=doc doc documentary/3-test.md -o doc/TESTS.md",
@@ -55,7 +55,7 @@
     "depack": "^1.0.1",
     "documentary": "^1.34.1",
     "eslint-config-artdeco": "1.0.1",
-    "typal": "^1.22.8",
+    "typal": "^1.22.9",
     "yarn-s": "1.2.1",
     "zoroaster": "^4.1.2"
   },

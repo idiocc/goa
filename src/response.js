@@ -21,15 +21,30 @@ import Request from './request' // eslint-disable-line
  */
 export default class Response {
   constructor() {
-    /** @type {_goa.Application} */
+    /**
+     * @suppress {checkTypes}
+     * @type {_goa.Application}
+     */
     this.app = null
-    /** @type {Context} */
+    /**
+     * @suppress {checkTypes}
+     * @type {Context}
+     */
     this.ctx = null
-    /** @type {Request} */
+    /**
+     * @suppress {checkTypes}
+     * @type {Request}
+     */
     this.request = null
-    /** @type {http.IncomingMessage} */
+    /**
+     * @suppress {checkTypes}
+     * @type {http.IncomingMessage}
+     */
     this.req = null
-    /** @type {http.ServerResponse} */
+    /**
+     * @suppress {checkTypes}
+     * @type {http.ServerResponse}
+     */
     this.res = null
     /** @type {?boolean} */
     this._explicitStatus = null
