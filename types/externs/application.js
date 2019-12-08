@@ -43,35 +43,36 @@ _goa.Application.prototype.env
  */
 _goa.Application.prototype.keys
 /**
- * Whether to not log an error when it happens.
+ * Whether to not log an error when it happens. Default `false`.
  * @type {boolean|undefined}
  */
 _goa.Application.prototype.silent
 /**
  * Shorthand for: `http.createServer(app.callback()).listen(...)`
- * @type {function()}
  */
-_goa.Application.prototype.listen
+_goa.Application.prototype.listen = function() {}
 /**
  * Use the given middleware `fn`. Old-style middleware will be converted.
- * @type {function(!_goa.Middleware): !_goa.Application}
+ * @param {!_goa.Middleware} arg0
+ * @return {!_goa.Application}
  */
-_goa.Application.prototype.use
+_goa.Application.prototype.use = function(arg0) {}
 /**
  * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
- * @type {function(): function(!http.IncomingMessage, !http.ServerResponse)}
+ * @return {function(!http.IncomingMessage, !http.ServerResponse)}
  */
-_goa.Application.prototype.callback
+_goa.Application.prototype.callback = function() {}
 /**
  * `＠private` Initialize a new context.
- * @type {function(!http.IncomingMessage, !http.ServerResponse)}
+ * @param {!http.IncomingMessage} arg0
+ * @param {!http.ServerResponse} arg1
  */
-_goa.Application.prototype.createContext
+_goa.Application.prototype.createContext = function(arg0, arg1) {}
 /**
  * `＠private` Default error handler.
- * @type {function(!Error)}
+ * @param {!Error} arg0
  */
-_goa.Application.prototype.onerror
+_goa.Application.prototype.onerror = function(arg0) {}
 /**
  * For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @type {number|undefined}

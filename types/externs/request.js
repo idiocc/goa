@@ -6,19 +6,25 @@
 _goa.ContextDelegatedRequest
 /**
  * Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
- * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
+ * @param {(!Array<string>|string)=} [arg0]
+ * @param {...string} args
+ * @return {(string|!Array<string>|boolean)}
  */
-_goa.ContextDelegatedRequest.prototype.acceptsLanguages
+_goa.ContextDelegatedRequest.prototype.acceptsLanguages = function(arg0, ...args) {}
 /**
  * Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
- * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
+ * @param {(!Array<string>|string)=} [arg0]
+ * @param {...string} args
+ * @return {(string|!Array<string>|boolean)}
  */
-_goa.ContextDelegatedRequest.prototype.acceptsEncodings
+_goa.ContextDelegatedRequest.prototype.acceptsEncodings = function(arg0, ...args) {}
 /**
  * Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
- * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
+ * @param {(!Array<string>|string)=} [arg0]
+ * @param {...string} args
+ * @return {(string|!Array<string>|boolean)}
  */
-_goa.ContextDelegatedRequest.prototype.acceptsCharsets
+_goa.ContextDelegatedRequest.prototype.acceptsCharsets = function(arg0, ...args) {}
 /**
  * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
  *
@@ -57,9 +63,11 @@ _goa.ContextDelegatedRequest.prototype.acceptsCharsets
  *     this.types() => ["text/html", "text/plain",
  *       "image/jpeg", "application/＊"]
  *     ```
- * @type {function((!Array<string>|string)=, ...string): (string|!Array<string>|boolean)}
+ * @param {(!Array<string>|string)=} [arg0]
+ * @param {...string} args
+ * @return {(string|!Array<string>|boolean)}
  */
-_goa.ContextDelegatedRequest.prototype.accepts
+_goa.ContextDelegatedRequest.prototype.accepts = function(arg0, ...args) {}
 /**
  * Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
  *
@@ -70,9 +78,10 @@ _goa.ContextDelegatedRequest.prototype.accepts
  * this.get('content-type') => "text/plain"
  * this.get('Something') => undefined
  * ```
- * @type {function(string): string}
+ * @param {string} arg0
+ * @return {string}
  */
-_goa.ContextDelegatedRequest.prototype.get
+_goa.ContextDelegatedRequest.prototype.get = function(arg0) {}
 /**
  * Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
  *
@@ -95,9 +104,11 @@ _goa.ContextDelegatedRequest.prototype.get
  *               // => 'application/json'
  *     this.is('html'); // => false
  *     ```
- * @type {function(((!Array<string>|string)), ...string): ?(string|boolean)}
+ * @param {(!Array<string>|string)} arg0
+ * @param {...string} args
+ * @return {?}
  */
-_goa.ContextDelegatedRequest.prototype.is
+_goa.ContextDelegatedRequest.prototype.is = function(arg0, ...args) {}
 /**
  * Get/Set query string.
  * @type {string}

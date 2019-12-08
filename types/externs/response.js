@@ -8,7 +8,7 @@ _goa.ContextDelegatedResponse
  * Set Content-Disposition header to "attachment" with optional `filename`.
  * @type {function(string, ?): void}
  */
-_goa.ContextDelegatedResponse.prototype.attachment
+_goa.ContextDelegatedResponse.prototype.attachment = function() {}
 /**
  * Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
  *
@@ -20,14 +20,15 @@ _goa.ContextDelegatedResponse.prototype.attachment
  * this.redirect('/login')
  * this.redirect('http://google.com')
  * ```
- * @type {function(string, string=): void}
+ * @param {string} arg0
+ * @param {string=} [arg1]
  */
-_goa.ContextDelegatedResponse.prototype.redirect
+_goa.ContextDelegatedResponse.prototype.redirect = function(arg0, arg1) {}
 /**
  * Remove header `field`.
- * @type {function(string): void}
+ * @param {string} arg0
  */
-_goa.ContextDelegatedResponse.prototype.remove
+_goa.ContextDelegatedResponse.prototype.remove = function(arg0) {}
 /**
  * Set header `field` to `val`, or pass an object of header fields.
  *
@@ -38,14 +39,15 @@ _goa.ContextDelegatedResponse.prototype.remove
  * this.set('Accept', 'application/json')
  * this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
  * ```
- * @type {function((string|!Object), (string|!Array|number)=): void}
+ * @param {(string|!Object)} arg0
+ * @param {(string|!Array|number)=} [arg1]
  */
-_goa.ContextDelegatedResponse.prototype.set
+_goa.ContextDelegatedResponse.prototype.set = function(arg0, arg1) {}
 /**
  * Vary on `field`.
- * @type {function(string): void}
+ * @param {string} arg0
  */
-_goa.ContextDelegatedResponse.prototype.vary
+_goa.ContextDelegatedResponse.prototype.vary = function(arg0) {}
 /**
  * Append additional header `field` with value `val`.
  *
@@ -57,14 +59,14 @@ _goa.ContextDelegatedResponse.prototype.vary
  * this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
  * this.append('Warning', '199 Miscellaneous warning')
  * ```
- * @type {function(string, (string|!Array)): void}
+ * @param {string} arg0
+ * @param {(string|!Array)} arg1
  */
-_goa.ContextDelegatedResponse.prototype.append
+_goa.ContextDelegatedResponse.prototype.append = function(arg0, arg1) {}
 /**
  * Flush any set headers, and begin the body.
- * @type {function(): void}
  */
-_goa.ContextDelegatedResponse.prototype.flushHeaders
+_goa.ContextDelegatedResponse.prototype.flushHeaders = function() {}
 /**
  * Get/set response status code.
  * @type {number}
@@ -165,14 +167,17 @@ _goa.BaseResponse.prototype.headers
  * this.get('Content-Type') // => "text/plain"
  * this.get('content-type') // => "text/plain"
  * ```
- * @type {function(string): string}
+ * @param {string} arg0
+ * @return {string}
  */
-_goa.BaseResponse.prototype.get
+_goa.BaseResponse.prototype.get = function(arg0) {}
 /**
  * Check whether the response is one of the listed types. Pretty much the same as `this.request.is()`.
- * @type {function((string|!Array<string>), ...string): (string|boolean)}
+ * @param {(string|!Array<string>)} arg0
+ * @param {...string} args
+ * @return {(string|boolean)}
  */
-_goa.BaseResponse.prototype.is
+_goa.BaseResponse.prototype.is = function(arg0, ...args) {}
 /**
  * The response object.
  * @extends {_goa.BaseResponse}
