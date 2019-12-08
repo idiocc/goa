@@ -35,9 +35,9 @@
     <prop boolean name="silent" default="false">
       Whether to not log an error when it happens.
     </prop>
-    <prop type="function()" name="listen">
+    <fn name="listen">
       Shorthand for: `http.createServer(app.callback()).listen(...)`
-    </prop>
+    </fn>
     <fn name="use" return="!_goa.Application">
       <arg type="!_goa.Middleware" name="middleware">The middleware to install.</arg>
       Use the given middleware `fn`. Old-style middleware will be converted.
@@ -48,15 +48,16 @@
     <prop type="function(!http.IncomingMessage, !http.ServerResponse)" name="createContext">
       `＠private` Initialize a new context.
     </prop>
-    <prop type="function(!Error)" name="onerror">
+    <fn name="onerror">
+      <arg type="!Error" name="error">The error.</arg>
       `＠private` Default error handler.
-    </prop>
+    </fn>
     <prop opt number name="subdomainOffset">
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>
   </type>
 
-  <method name="Middleware" return="!Promise|void">
+  <method name="Middleware" return="(!Promise|void)">
     <arg type="!_goa.Context" name="ctx">The context.</arg>
     <arg type="!Function" name="next">The callback.</arg>
     The function to handle requests which can be installed with the `.use` method.

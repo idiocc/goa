@@ -5,6 +5,7 @@
 /* typal types/Context.xml externs skipNsDecl */
 /**
  * The context object for each request.
+ * @extends {_goa.ContextDelegatedResponse}
  * @interface
  */
 _goa.Context
@@ -47,11 +48,6 @@ _goa.Context.prototype.assert = function() {}
  */
 _goa.Context.prototype.throw = function() {}
 /**
- * Default error handling.
- * @param {!Error} arg0
- */
-_goa.Context.prototype.onerror = function(arg0) {}
-/**
  * The reference to the application.
  * @type {!_goa.Application}
  */
@@ -76,3 +72,8 @@ _goa.Context.prototype.req
  * @type {!http.ServerResponse}
  */
 _goa.Context.prototype.res
+/**
+ * Default error handling.
+ * @param {!Error} error The error.
+ */
+_goa.Context.prototype.onerror = function(error) {}

@@ -8,8 +8,10 @@ export {}
  * @typedef {import('..').Application} _goa.Application
  * @typedef {import('..').Request} _goa.Request
  * @typedef {import('..').Response} _goa.Response
+ * @typedef {import('..').ContextDelegatedResponse} _goa.ContextDelegatedResponse
  * @typedef {_goa.Context} Context `＠interface` The context object for each request.
- * @typedef {Object} _goa.Context `＠interface` The context object for each request.
+ * @typedef {_goa.ContextDelegatedResponse & _goa.$Context} _goa.Context `＠interface` The context object for each request.
+ * @typedef {Object} _goa.$Context `＠interface` The context object for each request.
  * @prop {!_goa.Cookies} cookies The cookies instance.
  * @prop {boolean} respond To bypass Koa's built-in response handling, you may explicitly set `ctx.respond = false;`
  * @prop {string} originalUrl Get request original URL.
@@ -18,20 +20,10 @@ export {}
  * @prop {() => ?} toJSON Return JSON representation.
  * @prop {() => ?} assert Similar to .throw(), adds assertion.
  * @prop {() => ?} throw Throw an error with `msg` and optional `status` defaulting to 500. Note that these are user-level errors, and the message may be exposed to the client.
- * @prop {(arg0: !Error) => void} onerror Default error handling.
  * @prop {!_goa.Application} app The reference to the application.
  * @prop {!_goa.Request} request The reference to the request instance.
  * @prop {!_goa.Response} response The reference to the response instance.
  * @prop {!http.IncomingMessage} req The message from the client.
  * @prop {!http.ServerResponse} res The response from the server.
- */
-
-/**
- * @typedef {import('..').ContextDelegatedRequest} ContextDelegatedRequest
- * @typedef {import('..').ContextDelegatedResponse} ContextDelegatedResponse
- */
-
-/**
- * @typedef {_goa.KoaContext} KoaContext
- * @typedef {Context & ContextDelegatedResponse & ContextDelegatedRequest} _goa.KoaContext
+ * @prop {(error: !Error) => ?} onerror Default error handling.
  */

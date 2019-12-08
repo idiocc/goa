@@ -8,8 +8,9 @@
   <import from=".." ns="_goa" name="Application" />
   <import from=".." ns="_goa" name="Request" />
   <import from=".." ns="_goa" name="Response" />
+  <import from=".." ns="_goa" name="ContextDelegatedResponse" />
 
-  <type interface name="Context" desc="The context object for each request.">
+  <type interface extends="_goa.ContextDelegatedResponse" name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.
     </prop>
@@ -35,9 +36,10 @@
     <prop type="function()" name="throw">
       Throw an error with `msg` and optional `status` defaulting to 500. Note that these are user-level errors, and the message may be exposed to the client.
     </prop>
-    <prop type="function(!Error): void" name="onerror">
+    <fn name="onerror">
+      <arg type="!Error" name="error">The error.</arg>
       Default error handling.
-    </prop>
+    </fn>
 
     <prop type="!_goa.Application" name="app">
       The reference to the application.

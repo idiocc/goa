@@ -52,10 +52,6 @@ _goa.Application.prototype.keys
  */
 _goa.Application.prototype.silent
 /**
- * Shorthand for: `http.createServer(app.callback()).listen(...)`
- */
-_goa.Application.prototype.listen = function() {}
-/**
  * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
  * @return {function(!http.IncomingMessage, !http.ServerResponse)}
  */
@@ -67,15 +63,14 @@ _goa.Application.prototype.callback = function() {}
  */
 _goa.Application.prototype.createContext = function(arg0, arg1) {}
 /**
- * `＠private` Default error handler.
- * @param {!Error} arg0
- */
-_goa.Application.prototype.onerror = function(arg0) {}
-/**
  * For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @type {number|undefined}
  */
 _goa.Application.prototype.subdomainOffset
+/**
+ * Shorthand for: `http.createServer(app.callback()).listen(...)`
+ */
+_goa.Application.prototype.listen = function() {}
 /**
  * Use the given middleware `fn`. Old-style middleware will be converted.
  * @param {!_goa.Middleware} middleware The middleware to install.
@@ -83,8 +78,13 @@ _goa.Application.prototype.subdomainOffset
  */
 _goa.Application.prototype.use = function(middleware) {}
 /**
+ * `＠private` Default error handler.
+ * @param {!Error} error The error.
+ */
+_goa.Application.prototype.onerror = function(error) {}
+/**
  * The function to handle requests which can be installed with the `.use` method.
- * @typedef {function(!_goa.Context,!Function): !Promise|void}
+ * @typedef {function(!_goa.Context,!Function): (!Promise|void)}
  */
 _goa.Middleware
 
