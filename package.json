@@ -53,7 +53,7 @@
     "@contexts/http": "^1.5.1",
     "alamode": "^3.2.0",
     "depack": "^1.0.1",
-    "documentary": "^1.34.1",
+    "documentary": "^1.34.2",
     "eslint-config-artdeco": "1.0.1",
     "typal": "^1.22.9",
     "yarn-s": "1.2.1",

@@ -9,55 +9,6 @@
  */
 _goa.ContextDelegatedResponse
 /**
- * Set Content-Disposition header to "attachment" with optional `filename`.
- * @type {function(string, ?): void}
- */
-_goa.ContextDelegatedResponse.prototype.attachment = function() {}
-/**
- * Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
- *
- * _Examples_:
- *
- * ```js
- * this.redirect('back')
- * this.redirect('back', '/index.html')
- * this.redirect('/login')
- * this.redirect('http://google.com')
- * ```
- * @param {string} arg0
- * @param {string=} [arg1]
- */
-_goa.ContextDelegatedResponse.prototype.redirect = function(arg0, arg1) {}
-/**
- * Remove header `field`.
- * @param {string} arg0
- */
-_goa.ContextDelegatedResponse.prototype.remove = function(arg0) {}
-/**
- * Vary on `field`.
- * @param {string} arg0
- */
-_goa.ContextDelegatedResponse.prototype.vary = function(arg0) {}
-/**
- * Append additional header `field` with value `val`.
- *
- * _Examples_:
- *
- * ```js
- * this.append('Link', ['<http://localhost>',
- *                      '<http://localhost:3000>'])
- * this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
- * this.append('Warning', '199 Miscellaneous warning')
- * ```
- * @param {string} arg0
- * @param {(string|!Array)} arg1
- */
-_goa.ContextDelegatedResponse.prototype.append = function(arg0, arg1) {}
-/**
- * Flush any set headers, and begin the body.
- */
-_goa.ContextDelegatedResponse.prototype.flushHeaders = function() {}
-/**
  * Get/set response status code.
  * @type {number}
  */
@@ -128,6 +79,32 @@ _goa.ContextDelegatedResponse.prototype.headerSent
  */
 _goa.ContextDelegatedResponse.prototype.etag
 /**
+ * Set Content-Disposition header to "attachment" with optional `filename`.
+ * @param {string} filename The filename.
+ * @param {!_goa.ContentDisposition} options Options.
+ */
+_goa.ContextDelegatedResponse.prototype.attachment = function(filename, options) {}
+/**
+ * Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.redirect('back')
+ * this.redirect('back', '/index.html')
+ * this.redirect('/login')
+ * this.redirect('http://google.com')
+ * ```
+ * @param {string} url The URL to redirect to.
+ * @param {string=} [referrer] The referrer to set when redirecting.
+ */
+_goa.ContextDelegatedResponse.prototype.redirect = function(url, referrer) {}
+/**
+ * Remove header `field`.
+ * @param {string} field The name of the header to remove.
+ */
+_goa.ContextDelegatedResponse.prototype.remove = function(field) {}
+/**
  * Set header `field` to `val`, or pass an object of header fields.
  *
  * _Examples_:
@@ -141,6 +118,30 @@ _goa.ContextDelegatedResponse.prototype.etag
  * @param {(string|!Array|number)=} [val] The value to set, when passing a single field.
  */
 _goa.ContextDelegatedResponse.prototype.set = function(field, val) {}
+/**
+ * Vary on `field`.
+ * @param {string} field The name of the header to vary on.
+ */
+_goa.ContextDelegatedResponse.prototype.vary = function(field) {}
+/**
+ * Append additional header `field` with value `val`.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.append('Link', ['<http://localhost>',
+ *                      '<http://localhost:3000>'])
+ * this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
+ * this.append('Warning', '199 Miscellaneous warning')
+ * ```
+ * @param {string} field The header name to append values to.
+ * @param {(string|!Array)} val The value or values to append.
+ */
+_goa.ContextDelegatedResponse.prototype.append = function(field, val) {}
+/**
+ * Flush any set headers, and begin the body.
+ */
+_goa.ContextDelegatedResponse.prototype.flushHeaders = function() {}
 /**
  * The additional API not available via Context.
  * @extends {_goa.ContextDelegatedResponse}

@@ -13,10 +13,18 @@
   <import from=".." ns="_goa" name="Request" />
 
   <type interface name="ContextDelegatedResponse" desc="The response API available via Context.">
-    <prop type="function(string, ?): void" name="attachment">
+    <fn void name="attachment">
+      <arg string name="filename">The filename.</arg>
+      <arg type="!_goa.ContentDisposition" name="options"?>Options.</arg>
       Set Content-Disposition header to "attachment" with optional `filename`.
-    </prop>
-    <prop type="function(string, string=): void" name="redirect">
+    </fn>
+    <fn void name="redirect">
+      <arg type="string" name="url">
+        The URL to redirect to.
+      </arg>
+      <arg type="string" name="referrer" opt>
+        The referrer to set when redirecting.
+      </arg>
       Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
 
       _Examples_:
@@ -27,10 +35,11 @@
       this.redirect('/login')
       this.redirect('http://google.com')
       ```
-    </prop>
-    <prop type="function(string): void" name="remove">
+    </fn>
+    <fn name="remove" void>
+      <arg string name="field">The name of the header to remove.</arg>
       Remove header `field`.
-    </prop>
+    </fn>
     <fn void name="set">
       <arg type="string|!Object" name="field">
         The field to set, or an object of header fields.
@@ -48,10 +57,14 @@
       this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
       ```
     </fn>
-    <prop type="function(string): void" name="vary">
+    <fn void name="vary">
+      <arg string name="field">The name of the header to vary on.</arg>
       Vary on `field`.
-    </prop>
-    <prop type="function(string, (string|!Array)): void" name="append">
+    </fn>
+    <fn void name="append">
+     type="function(string, (string|!Array)): void"
+      <arg string name="field">The header name to append values to.</arg>
+      <arg type="string|!Array" name="val">The value or values to append.</arg>
       Append additional header `field` with value `val`.
 
       _Examples_:
@@ -62,10 +75,10 @@
       this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
       this.append('Warning', '199 Miscellaneous warning')
       ```
-    </prop>
-    <prop type="function(): void" name="flushHeaders">
+    </fn>
+    <fn void name="flushHeaders">
       Flush any set headers, and begin the body.
-    </prop>
+    </fn>
     <prop number name="status">
       Get/set response status code.
     </prop>

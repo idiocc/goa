@@ -6,7 +6,7 @@ The context is created from the base prototype for each request. It can be used 
 <tr><td>
 
 %TOC%
-<img src="https://github.com/idiocc/goa/blob/master/wiki/context.gif" alt="Context API">
+<img src="https://github.com/idiocc/goa/blob/master/doc-wiki/context.gif" alt="Context API">
 
 </td></tr>
 <!-- /block-end -->
@@ -25,8 +25,8 @@ The base _Context_ contains the cookies, error throwing, state and other APIs, a
 
 <typedef flatten narrow name="ContextDelegatedResponse">../goa/types/Response.xml</typedef>
 
-The methods from the [_Response_](Response.md) API are proxied in the context.
+The methods from the [_Response_](Response) API are proxied in the context.
 
 <typedef flatten narrow name="ContextDelegatedRequest">../goa/types/Request.xml</typedef>
 
-The methods from the [_Request_](Request.md) API are also available in the context for easier access.
+The methods from the [_Request_](Request) API are also available in the context for easier access.

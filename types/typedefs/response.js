@@ -11,30 +11,6 @@ export {}
  * @typedef {import('..').Request} _goa.Request
  * @typedef {_goa.ContextDelegatedResponse} ContextDelegatedResponse `＠interface` The response API available via Context.
  * @typedef {Object} _goa.ContextDelegatedResponse `＠interface` The response API available via Context.
- * @prop {function(string, ?): void} attachment Set Content-Disposition header to "attachment" with optional `filename`.
- * @prop {(arg0: string, arg1?: string) => void} redirect Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
- *
- * _Examples_:
- *
- * ```js
- * this.redirect('back')
- * this.redirect('back', '/index.html')
- * this.redirect('/login')
- * this.redirect('http://google.com')
- * ```
- * @prop {(arg0: string) => void} remove Remove header `field`.
- * @prop {(arg0: string) => void} vary Vary on `field`.
- * @prop {(arg0: string, arg1: (string|!Array)) => void} append Append additional header `field` with value `val`.
- *
- * _Examples_:
- *
- * ```js
- * this.append('Link', ['<http://localhost>',
- *                      '<http://localhost:3000>'])
- * this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
- * this.append('Warning', '199 Miscellaneous warning')
- * ```
- * @prop {() => void} flushHeaders Flush any set headers, and begin the body.
  * @prop {number} status Get/set response status code.
  * @prop {string} message Get/set response status message.
  * @prop {string|!Buffer|Object|!stream.Stream} body Get/set response body.
@@ -69,6 +45,18 @@ export {}
  * this.response.etag = '"md5hashsum"'
  * this.response.etag = 'W/"123456789"'
  * ```
+ * @prop {(filename: string, options: !_goa.ContentDisposition) => void} attachment Set Content-Disposition header to "attachment" with optional `filename`.
+ * @prop {(url: string, referrer?: string) => void} redirect Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.redirect('back')
+ * this.redirect('back', '/index.html')
+ * this.redirect('/login')
+ * this.redirect('http://google.com')
+ * ```
+ * @prop {(field: string) => void} remove Remove header `field`.
  * @prop {(field: (string|!Object), val?: (string|!Array|number)) => void} set Set header `field` to `val`, or pass an object of header fields.
  *
  * _Examples_:
@@ -78,6 +66,18 @@ export {}
  * this.set('Accept', 'application/json')
  * this.set({ Accept: 'text/plain', 'X-API-Key': 'tobi' })
  * ```
+ * @prop {(field: string) => void} vary Vary on `field`.
+ * @prop {(field: string, val: (string|!Array)) => void} append Append additional header `field` with value `val`.
+ *
+ * _Examples_:
+ *
+ * ```js
+ * this.append('Link', ['<http://localhost>',
+ *                      '<http://localhost:3000>'])
+ * this.append('Set-Cookie', 'foo=bar; Path=/; HttpOnly')
+ * this.append('Warning', '199 Miscellaneous warning')
+ * ```
+ * @prop {() => void} flushHeaders Flush any set headers, and begin the body.
  * @typedef {_goa.BaseResponse} BaseResponse `＠interface` The additional API not available via Context.
  * @typedef {_goa.ContextDelegatedResponse & _goa.$BaseResponse} _goa.BaseResponse `＠interface` The additional API not available via Context.
  * @typedef {Object} _goa.$BaseResponse `＠interface` The additional API not available via Context.
