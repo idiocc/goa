@@ -84,14 +84,7 @@ _goa.Application.prototype.subdomainOffset
 _goa.Application.prototype.use = function(middleware) {}
 /**
  * The function to handle requests which can be installed with the `.use` method.
- * @param {!_goa.Context} ctx The context.
- * @param {!Function} next The callback.
- * @return {Promise}
- */
-_goa.Middleware = function(ctx, next) {}
-
-/**
- * The function to handle requests which can be installed with the `.use` method.
- * @typedef {function(!_goa.Context, !Function): *}
+ * @typedef {function(!_goa.Context,!Function): !Promise|void}
  */
 _goa.Middleware
+

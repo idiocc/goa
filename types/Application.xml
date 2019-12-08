@@ -56,7 +56,7 @@
     </prop>
   </type>
 
-  <method name="Middleware" async>
+  <method name="Middleware" return="!Promise|void">
     <arg type="!_goa.Context" name="ctx">The context.</arg>
     <arg type="!Function" name="next">The callback.</arg>
     The function to handle requests which can be installed with the `.use` method.

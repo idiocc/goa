@@ -27,5 +27,5 @@ export {}
  * @prop {number} [subdomainOffset] For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @prop {(middleware: !_goa.Middleware) => !_goa.Application} use Use the given middleware `fn`. Old-style middleware will be converted.
  * @typedef {_goa.Middleware} Middleware The function to handle requests which can be installed with the `.use` method.
- * @typedef {(ctx: !_goa.Context, next: !Function) => void} _goa.Middleware The function to handle requests which can be installed with the `.use` method.
+ * @typedef {(ctx: !_goa.Context, next: !Function) => !Promise|void} _goa.Middleware The function to handle requests which can be installed with the `.use` method.
  */

@@ -11,10 +11,14 @@
     "lint": "eslint .",
     "do": "yarn-s doc doc-types doc-tests",
     "doc": "NODE_DEBUG=doc doc documentary/index -o README.md",
+    "compile": "depack koa -a -c -o koa/out.js",
     "wiki": "NODE_DEBUG=doc doc doc-wiki -W wiki",
     "doc-types": "NODE_DEBUG=doc doc documentary/2-types -o doc/TYPES.md",
     "doc-tests": "NODE_DEBUG=doc doc documentary/3-test.md -o doc/TESTS.md",
-    "d": "typal types/typedefs/* types/index.js types/externs",
+    "d": "yarn-s d1 typedef externs",
+    "d1": "typal types/index.js ",
+    "typedef": "typal types/typedefs/* -u",
+    "externs": "typal types/externs -e",
     "dv": "typal types/vendor/*",
     "build": "yarn-s d b doc",
     "e": "alanode"
@@ -48,9 +52,10 @@
   "devDependencies": {
     "@contexts/http": "^1.5.1",
     "alamode": "^3.2.0",
+    "depack": "^1.0.1",
     "documentary": "^1.34.1",
     "eslint-config-artdeco": "1.0.1",
-    "typal": "^1.22.7",
+    "typal": "^1.22.8",
     "yarn-s": "1.2.1",
     "zoroaster": "^4.1.2"
   },
