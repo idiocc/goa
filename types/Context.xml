@@ -9,8 +9,9 @@
   <import from=".." ns="_goa" name="Request" />
   <import from=".." ns="_goa" name="Response" />
   <import from=".." ns="_goa" name="ContextDelegatedResponse" />
+  <import from=".." ns="_goa" name="ContextDelegatedRequest" />
 
-  <type interface extends="_goa.ContextDelegatedResponse" name="Context" desc="The context object for each request.">
+  <type interface extends="_goa.ContextDelegatedResponse,_goa.ContextDelegatedRequest" name="Context" desc="The context object for each request.">
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.
     </prop>

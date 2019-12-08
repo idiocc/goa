@@ -9,8 +9,9 @@ export {}
  * @typedef {import('..').Request} _goa.Request
  * @typedef {import('..').Response} _goa.Response
  * @typedef {import('..').ContextDelegatedResponse} _goa.ContextDelegatedResponse
+ * @typedef {import('..').ContextDelegatedRequest} _goa.ContextDelegatedRequest
  * @typedef {_goa.Context} Context `＠interface` The context object for each request.
- * @typedef {_goa.ContextDelegatedResponse & _goa.$Context} _goa.Context `＠interface` The context object for each request.
+ * @typedef {_goa.ContextDelegatedResponse & _goa.ContextDelegatedRequest & _goa.$Context} _goa.Context `＠interface` The context object for each request.
  * @typedef {Object} _goa.$Context `＠interface` The context object for each request.
  * @prop {!_goa.Cookies} cookies The cookies instance.
  * @prop {boolean} respond To bypass Koa's built-in response handling, you may explicitly set `ctx.respond = false;`

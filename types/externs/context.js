@@ -6,6 +6,7 @@
 /**
  * The context object for each request.
  * @extends {_goa.ContextDelegatedResponse}
+ * @extends {_goa.ContextDelegatedRequest}
  * @interface
  */
 _goa.Context
