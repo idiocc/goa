@@ -11,7 +11,7 @@ import { inspect } from 'util'
 import { empty } from '../modules/statuses'
 import isJSON from '../modules/koa-is-json'
 import onFinished from '../modules/on-finished'
-import compose from '../modules/koa-compose'
+import compose from '@goa/compose'
 
 const debug = Debug('@goa/koa:application')
 
