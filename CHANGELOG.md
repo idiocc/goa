@@ -1,3 +1,9 @@
+## 13 December 2019
+
+### [1.3.7](https://github.com/idiocc/goa/compare/v1.3.6...v1.3.7)
+
+- [deps] Install `@goa/compose` separately.
+
 ## 9 December 2019
 
 ### [1.3.6](https://github.com/idiocc/goa/compare/v1.3.5...v1.3.6)
