@@ -2,14 +2,6 @@
  * @fileoverview
  * @externs
  */
-/** @type {boolean} */
-Error.prototype.expose
-/** @type {?number} */
-Error.prototype.status
-/** @type {?number} */
-Error.prototype.statusCode
-/** @type {*} */
-Error.prototype.headers
 
 /** @type {!Object|undefined} */
 http.ServerResponse.prototype._headers

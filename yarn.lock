@@ -52,6 +52,11 @@
   resolved "https://registry.yarnpkg.com/@goa/cookies/-/cookies-1.1.6.tgz#b91f15259ac64af6c7d338600f945639702687de"
   integrity sha512-qBsbUkau9WlDDeqoIlgLO34Mp2oCVRMgpR/Wxh/J+5Ti/+NYG92uZ8eJRsOgm3F3o9V/9Z9g2JT53M5fEwmCSA==
 
+"@goa/http-errors@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@goa/http-errors/-/http-errors-1.0.0.tgz#bf79e339165823d81f2871b75a13379ed2b0462b"
+  integrity sha512-R1P3JyTKALOm7rlUsDYgDKy5NeE9Y0UjII45xGajDCMOY7PjOtvKcPcxcYiA6fXYnFyEQqBq/BGf4/7dSfA6Eg==
+
 "@goa/is-generator-function@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@goa/is-generator-function/-/is-generator-function-1.0.2.tgz#f001b3bdb4b39330fee3afe534dea1fd78a73b2d"
@@ -68,6 +73,11 @@
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@goa/negotiator/-/negotiator-1.0.1.tgz#d0b0dccfafc4dc4a990ae92a65c4faedfbe884f7"
   integrity sha512-Hzu2cXJBI5/WKb+9nuLRfefLcRWUlgWTlWHaZbtrM/7BHQHQIX4FJWNzywQARmWDl9g8hoHdeWw58SPcx5ET4Q==
+
+"@goa/statuses@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@goa/statuses/-/statuses-1.0.1.tgz#1ac83df2fbabb4b357e9f8bd7c5638dd1f21b27f"
+  integrity sha512-gBhnn5XnasK9Vb4Diy0r71qU2LXpyx6ewsG4da/rxeY8N4xUTS78w1RS+KcdetBGBB2yYkdxblXyV4AwT1q+IA==
 
 "@goa/type-is@^1.0.2":
   version "1.0.2"

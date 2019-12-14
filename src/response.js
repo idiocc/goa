@@ -1,6 +1,6 @@
 import assert from 'assert'
 import { extname } from 'path'
-import statuses, { empty, redirect } from '../modules/statuses'
+import statuses, { empty, redirect } from '@goa/statuses'
 import onFinish from '../modules/on-finished'
 import destroy from '../modules/destroy'
 import vary from '@goa/vary'

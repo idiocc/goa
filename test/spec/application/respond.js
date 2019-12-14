@@ -1,7 +1,7 @@
 import { equal, deepEqual } from '@zoroaster/assert'
 import Context, { ConsoleMock } from '../../context'
 import { createReadStream } from 'fs'
-import statuses from '../../../modules/statuses'
+import statuses from '@goa/statuses'
 
 /** @type {TestSuite} */
 const TS = {

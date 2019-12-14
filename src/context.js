@@ -2,10 +2,10 @@ import { format } from 'util'
 import Cookies from '@goa/cookies'
 import Accepts from '@goa/accepts' // eslint-disable-line
 
-import createError from '../modules/http-errors'
+import createError from '@goa/http-errors'
 import Delegate from '../modules/delegates'
 import httpAssert from '../modules/http-assert'
-import statuses from '../modules/statuses'
+import statuses from '@goa/statuses'
 import { inspect } from 'util'
 
 import Request from './request' // eslint-disable-line
