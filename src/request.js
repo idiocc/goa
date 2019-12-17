@@ -237,11 +237,9 @@ export default class Request {
    */
   get URL() {
     if (!this.memoizedURL) {
-      const protocol = this.protocol
-      const host = this.host
       const originalUrl = this.originalUrl || '' // avoid undefined in template string
       try {
-        this.memoizedURL = new URL(`${protocol}://${host}${originalUrl}`)
+        this.memoizedURL = new URL(`${this.origin}${originalUrl}`)
       } catch (err) {
         this.memoizedURL = Object.create(null)
       }
