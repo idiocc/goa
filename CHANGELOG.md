@@ -1,3 +1,10 @@
+## 18 December 2019
+
+### [1.4.0](https://github.com/idiocc/goa/compare/v1.3.7...v1.4.0)
+
+- [feature] Rewrite all types to use functions and JSDoc examples.
+- [license] Update license to _Affero_.
+
 ## 13 December 2019
 
 ### [1.3.7](https://github.com/idiocc/goa/compare/v1.3.6...v1.3.7)
