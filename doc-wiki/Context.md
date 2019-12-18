@@ -23,7 +23,7 @@ This allows to write the delegator classes, which are then extended both by the 
 
 The base _Context_ contains the cookies, error throwing, state and other APIs, and also allows to access the request and response instances.
 
-<typedef flatten narrow name="ContextDelegatedResponse">../goa/types/Response.xml</typedef>
+<typedef flatten narrow slimFunctions name="ContextDelegatedResponse">../goa/types/Response.xml</typedef>
 
 The methods from the [_Response_](Response) API are proxied in the context.
 

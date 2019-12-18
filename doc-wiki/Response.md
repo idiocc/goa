@@ -4,7 +4,7 @@ Similarly to the request, the response API is accessed from `ctx.request`, but s
 
 The rest of the properties not delegated to the context, can only be referenced from the `ctx.request` object.
 
-<typedef flatten narrow name="BaseResponse">../goa/types/Response.xml</typedef>
+<typedef flatten narrow slimFunctions name="BaseResponse">../goa/types/Response.xml</typedef>
 
 <typedef flatten narrow name="Response">../goa/types/Response.xml</typedef>
 <!-- <typedef flatten narrow name="BaseResponse">../goa/types/Response.xml</typedef> -->
