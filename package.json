@@ -1,6 +1,6 @@
 {
   "name": "@goa/goa",
-  "version": "1.3.7",
+  "version": "1.4.0",
   "description": "The Goa Source Code For Compilation Into @Goa/Koa That Includes Modules, Tests, Types And Dependencies.",
   "main": "types/index.js",
   "module": "src/application.js",
@@ -65,16 +65,16 @@
   },
   "dependencies": {
     "@goa/accepts": "^1.2.2",
+    "@goa/compose": "^1.0.0",
     "@goa/content-type": "^1.0.1",
     "@goa/cookies": "^1.1.6",
+    "@goa/http-errors": "^1.0.0",
     "@goa/is-generator-function": "^1.0.2",
     "@goa/mime-types": "^1.1.0",
     "@goa/negotiator": "^1.0.1",
+    "@goa/statuses": "^1.0.1",
     "@goa/type-is": "^1.0.2",
     "@goa/vary": "^1.0.0",
-    "@goa/compose": "^1.0.0",
-    "@goa/http-errors": "^1.0.0",
-    "@goa/statuses": "^1.0.1",
     "@idio/debug": "^1.2.3",
     "@typedefs/goa": "^0.0.6",
     "mime-db": "^1.42.0"
