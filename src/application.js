@@ -61,6 +61,7 @@ export default class Application extends EventEmitter {
   /**
    * Return JSON representation.
    * We only bother showing settings.
+   * @return {!Object}
    */
   toJSON() {
     return {

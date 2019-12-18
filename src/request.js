@@ -555,6 +555,7 @@ export default class Request {
 
   /**
    * Return JSON representation.
+   * @return {!Object}
    */
   toJSON() {
     return {

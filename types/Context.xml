@@ -31,15 +31,12 @@
     <fn name="toJSON" return="!Object">
       Return JSON representation.
     </fn>
-    <fn name="assert">
+    <fn void name="assert" example="example/jsdoc/context/assert.js">
       <arg name="value">The value the presence of which to assert on.</arg>
-      <arg number name="status">The error status code.</arg>
+      <arg number name="status" opt>The error status code.</arg>
       <arg string name="message" opt>The error message.</arg>
       <arg type="!Object" name="opts" opt>The error properties.</arg>
       Similar to .throw(), adds assertion.
-      ```js
-      ctx.assert(ctx.user, 401, 'Please login!')
-      ```
     </fn>
     <fn name="throw" example="example/jsdoc/context/throw.js">
       <arg number name="status" opt>The status code as number.</arg>

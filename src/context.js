@@ -162,6 +162,7 @@ export default class Context {
    * object, as iteration will otherwise fail due
    * to the getters and cause utilities such as
    * clone() to fail.
+   * @return {!Object}
    */
   toJSON() {
     return {
@@ -191,11 +192,11 @@ export default class Context {
    * `msg`. Note that these are user-level
    * errors, and the message may be exposed to the client.
    *
-   * See: https://github.com/jshttp/http-errors
+   * See: https://github.com/idiocc/http-errors
    *
    * Note: `status` should only be passed as the first parameter.
    *
-   * @param {...(string|number|!Error)} args
+   * @param {...(string|number|!Error)} [args]
    */
   throw(...args) {
     throw createError(...args)

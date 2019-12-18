@@ -439,6 +439,7 @@ this.append('Warning', '199 Miscellaneous warning');
 
   /**
    * Return JSON representation.
+   * @return {!Object}
    */
   toJSON() {
     return {

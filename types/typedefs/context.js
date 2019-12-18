@@ -24,7 +24,7 @@ export {}
  * @prop {!http.ServerResponse} res The response from the server.
  * @prop {() => !Object} inspect `util.inspect()` implementation, which just returns the JSON output.
  * @prop {() => !Object} toJSON Return JSON representation.
- * @prop {(value: *, status: number, message?: string, opts?: !Object) => ?} assert Similar to .throw(), adds assertion.
+ * @prop {(value: *, status?: number, message?: string, opts?: !Object) => void} assert Similar to .throw(), adds assertion.
  * ```js
  * ctx.assert(ctx.user, 401, 'Please login!')
  * ```

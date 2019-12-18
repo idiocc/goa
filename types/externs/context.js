@@ -67,11 +67,8 @@ _goa.Context.prototype.inspect = function() {}
 _goa.Context.prototype.toJSON = function() {}
 /**
  * Similar to .throw(), adds assertion.
- * ```js
- * ctx.assert(ctx.user, 401, 'Please login!')
- * ```
  * @param {*} value The value the presence of which to assert on.
- * @param {number} status The error status code.
+ * @param {number=} [status] The error status code.
  * @param {string=} [message] The error message.
  * @param {!Object=} [opts] The error properties.
  */
