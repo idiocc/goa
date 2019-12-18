@@ -42,12 +42,18 @@
       <arg type="!_goa.Middleware" name="middleware">The middleware to install.</arg>
       Use the given middleware `fn`. Old-style middleware will be converted.
     </fn>
-    <prop type="function(): function(!http.IncomingMessage, !http.ServerResponse)" name="callback">
+    <fn return="function(!http.IncomingMessage, !http.ServerResponse)" name="callback">
       Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
-    </prop>
-    <prop type="function(!http.IncomingMessage, !http.ServerResponse)" name="createContext">
+    </fn>
+    <fn name="createContext" return="!_goa.Context">
+      <arg type="!http.IncomingMessage" name="req">
+        The request object.
+      </arg>
+      <arg type="!http.ServerResponse" name="res">
+        The response object.
+      </arg>
       `＠private` Initialize a new context.
-    </prop>
+    </fn>
     <fn name="onerror">
       <arg type="!Error" name="error">The error.</arg>
       `＠private` Default error handler.
@@ -59,7 +65,7 @@
 
   <method name="Middleware" return="(!Promise|void)">
     <arg type="!_goa.Context" name="ctx">The context.</arg>
-    <arg type="!Function" name="next">The callback.</arg>
+    <arg type="!Function" name="next" opt>The callback.</arg>
     The function to handle requests which can be installed with the `.use` method.
   </method>
 </types>

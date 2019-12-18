@@ -18,7 +18,7 @@
       <arg type="!_goa.ContentDisposition" name="options"?>Options.</arg>
       Set Content-Disposition header to "attachment" with optional `filename`.
     </fn>
-    <fn void name="redirect" example="example/jsdoc/response/redirect.js">
+    <fn void name="redirect" example="../example/jsdoc/response/redirect.js">
       <arg type="string" name="url">
         The URL to redirect to.
       </arg>
@@ -31,7 +31,7 @@
       <arg string name="field">The name of the header to remove.</arg>
       Remove header `field`.
     </fn>
-    <fn void name="set" example="example/jsdoc/response/set.js">
+    <fn void name="set" example="../example/jsdoc/response/set.js">
       <arg type="string|!Object" name="field">
         The field to set, or an object of header fields.
       </arg>
@@ -44,7 +44,7 @@
       <arg string name="field">The name of the header to vary on.</arg>
       Vary on `field`.
     </fn>
-    <fn void name="append" example="example/jsdoc/response/append.js">
+    <fn void name="append" example="../example/jsdoc/response/append.js">
       <arg string name="field">The header name to append values to.</arg>
       <arg type="string|!Array" name="val">The value or values to append.</arg>
       Append additional header `field` with value `val`.
@@ -64,19 +64,19 @@
     <prop type="?number" name="length">
       Return parsed response `Content-Length` when present. Set `Content-Length` field to `n`.
     </prop>
-    <prop string name="type" example="example/jsdoc/response/type.js">
+    <prop string name="type" example="../example/jsdoc/response/type.js">
       Return the response mime type void of parameters such as "charset". Set Content-Type response header with `type` through `mime.lookup()` when it does not contain a charset.
     </prop>
     <prop boolean name="writable">
       Checks if the request is writable. Tests for the existence of the socket as _Node.JS_ sometimes does not set it.
     </prop>
-    <prop type="string|Date" name="lastModified" example="example/jsdoc/response/last-modified.js">
+    <prop type="string|Date" name="lastModified" example="../example/jsdoc/response/last-modified.js">
       Get the Last-Modified date in Date form, if it exists. Set the Last-Modified date using a string or a Date.
     </prop>
     <prop boolean name="headerSent">
       Check if a header has been written to the socket.
     </prop>
-    <prop string name="etag" example="example/jsdoc/response/etag.js">
+    <prop string name="etag" example="../example/jsdoc/response/etag.js">
       Get/Set the ETag of a response. This will normalize the quotes if necessary.
     </prop>
   </type>
@@ -92,7 +92,7 @@
     <prop type="!Object<string, string>" name="headers">
       Return response header, alias as `response.header` (_OutgoingHttpHeaders_).
     </prop>
-    <fn return="string" name="get" example="example/jsdoc/response/get.js">
+    <fn return="string" name="get" example="../example/jsdoc/response/get.js">
       <arg string name="header">The name of the response header.</arg>
       Return response header.
     </fn>

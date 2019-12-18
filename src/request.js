@@ -52,7 +52,7 @@ export default class Request {
     this.memoizedURL = null
     /** @type {?string} */
     this.IP = null
-    /** @type {Accepts} */
+    /** @type {_goa.Accepts} */
     this._accept = null
   }
   /**
@@ -583,4 +583,8 @@ export default class Request {
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('http').ServerResponse} http.ServerResponse
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('@goa/accepts/types').Accepts} _goa.Accepts
  */

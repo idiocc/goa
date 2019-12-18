@@ -83,7 +83,7 @@ export default class Application extends EventEmitter {
    *
    * Old-style middleware will be converted.
    *
-   * @param {_goa.Middleware} fn
+   * @param {!_goa.Middleware} fn
    */
   use(fn) {
     if (typeof fn != 'function')
@@ -98,8 +98,7 @@ export default class Application extends EventEmitter {
   }
 
   /**
-   * Return a request handler callback
-   * for node's native http server.
+   * Return a request handler callback for node's native http server.
    */
   callback() {
     const fn = compose(this.middleware)
@@ -117,16 +116,17 @@ export default class Application extends EventEmitter {
 
   /**
    * Handle request in callback.
-   * @param {!Context} ctx
+   * @param {!_goa.Context} ctx
+   * @param {!_goa.Middleware} middleware Composed middleware.
    * @private
    */
-  async handleRequest(ctx, fnMiddleware) {
+  async handleRequest(ctx, middleware) {
     const res = ctx.res
     res.statusCode = 404
     const onerror = err => ctx.onerror(err)
     onFinished(res, onerror)
     try {
-      await fnMiddleware(ctx)
+      await middleware(ctx)
       return respond(ctx)
     } catch (err) {
       onerror(err)
@@ -182,7 +182,7 @@ export default class Application extends EventEmitter {
 
 /**
  * Response helper.
- * @param {Context} ctx
+ * @param {!_goa.Context} ctx
  */
 function respond(ctx) {
   // allow bypassing koa
@@ -190,9 +190,8 @@ function respond(ctx) {
 
   if (!ctx.writable) return
 
-  const res = ctx.res
+  const { res, status: code } = ctx
   let body = ctx.body
-  const code = ctx.status
 
   // ignore body
   if (empty[code]) {
@@ -250,4 +249,8 @@ function respond(ctx) {
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('../types').Middleware} _goa.Middleware
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('../types').Context} _goa.Context
  */

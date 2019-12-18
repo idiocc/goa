@@ -20,12 +20,12 @@ export {}
  * @prop {string} [env="development"] The value from the `NODE_ENV` environment variable. Default `development`.
  * @prop {!(_goa.Keygrip|Array<string>)} [keys] The keys for signing of the cookies.
  * @prop {boolean} [silent=false] Whether to not log an error when it happens. Default `false`.
- * @prop {() => function(!http.IncomingMessage, !http.ServerResponse)} callback Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
- * @prop {(arg0: !http.IncomingMessage, arg1: !http.ServerResponse) => ?} createContext `＠private` Initialize a new context.
  * @prop {number} [subdomainOffset] For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @prop {() => ?} listen Shorthand for: `http.createServer(app.callback()).listen(...)`
  * @prop {(middleware: !_goa.Middleware) => !_goa.Application} use Use the given middleware `fn`. Old-style middleware will be converted.
+ * @prop {() => function(!http.IncomingMessage, !http.ServerResponse)} callback Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+ * @prop {(req: !http.IncomingMessage, res: !http.ServerResponse) => !_goa.Context} createContext `＠private` Initialize a new context.
  * @prop {(error: !Error) => ?} onerror `＠private` Default error handler.
  * @typedef {_goa.Middleware} Middleware The function to handle requests which can be installed with the `.use` method.
- * @typedef {(ctx: !_goa.Context, next: !Function) => (!Promise|void)} _goa.Middleware The function to handle requests which can be installed with the `.use` method.
+ * @typedef {(ctx: !_goa.Context, next?: !Function) => (!Promise|void)} _goa.Middleware The function to handle requests which can be installed with the `.use` method.
  */

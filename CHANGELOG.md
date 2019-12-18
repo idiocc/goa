@@ -1,5 +1,10 @@
 ## 18 December 2019
 
+### [1.4.1](https://github.com/idiocc/goa/compare/v1.4.0...v1.4.1)
+
+- [package] Publish examples.
+- [types] Fix some type errors.
+
 ### [1.4.0](https://github.com/idiocc/goa/compare/v1.3.7...v1.4.0)
 
 - [feature] Rewrite all types to use functions and JSDoc examples.

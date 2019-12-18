@@ -52,17 +52,6 @@ _goa.Application.prototype.keys
  */
 _goa.Application.prototype.silent
 /**
- * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
- * @return {function(!http.IncomingMessage, !http.ServerResponse)}
- */
-_goa.Application.prototype.callback = function() {}
-/**
- * `＠private` Initialize a new context.
- * @param {!http.IncomingMessage} arg0
- * @param {!http.ServerResponse} arg1
- */
-_goa.Application.prototype.createContext = function(arg0, arg1) {}
-/**
  * For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
  * @type {number|undefined}
  */
@@ -78,13 +67,25 @@ _goa.Application.prototype.listen = function() {}
  */
 _goa.Application.prototype.use = function(middleware) {}
 /**
+ * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+ * @return {function(!http.IncomingMessage, !http.ServerResponse)}
+ */
+_goa.Application.prototype.callback = function() {}
+/**
+ * `＠private` Initialize a new context.
+ * @param {!http.IncomingMessage} req The request object.
+ * @param {!http.ServerResponse} res The response object.
+ * @return {!_goa.Context}
+ */
+_goa.Application.prototype.createContext = function(req, res) {}
+/**
  * `＠private` Default error handler.
  * @param {!Error} error The error.
  */
 _goa.Application.prototype.onerror = function(error) {}
 /**
  * The function to handle requests which can be installed with the `.use` method.
- * @typedef {function(!_goa.Context,!Function): (!Promise|void)}
+ * @typedef {function(!_goa.Context,!Function=): (!Promise|void)}
  */
 _goa.Middleware
 

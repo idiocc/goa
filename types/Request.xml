@@ -40,7 +40,7 @@
       </arg>
       Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
     </fn>
-    <fn return="(string|!Array<string>|boolean)" name="accepts" example="example/jsdoc/request/accepts.js">
+    <fn return="(string|!Array<string>|boolean)" name="accepts" example="../example/jsdoc/request/accepts.js">
       <arg type="!Array<string>|string" name="type" opt>
         The type to check as a parameter, or multiple types as an array.
       </arg>
@@ -51,11 +51,11 @@
 
       The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
     </fn>
-    <fn name="get" example="example/jsdoc/request/get.js" return="string">
+    <fn name="get" example="../example/jsdoc/request/get.js" return="string">
       <arg string name="header">The name of the header to get.</arg>
       Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
     </fn>
-    <fn return="string|boolean|null" name="is" example="example/jsdoc/request/is.js">
+    <fn return="string|boolean|null" name="is" example="../example/jsdoc/request/is.js">
       <arg type="!Array<string>|string" name="type">
         The type to check as a parameter, or multiple types as an array.
       </arg>
