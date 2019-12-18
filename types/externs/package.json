@@ -2,7 +2,7 @@
   "name": "@externs/goa",
   "module": "module.js",
   "description": "The Goa Web-Server Externs.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "externs": [
     "application.js",
     "context.js",
