@@ -55,9 +55,6 @@
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
     "@contexts/http": "^1.6.1",
-    "@goa/compose": "^1.0.0",
-    "@goa/http-errors": "^1.0.0",
-    "@goa/statuses": "^1.0.1",
     "alamode": "^3.3.0",
     "depack": "^1.0.1",
     "documentary": "^1.34.7",
@@ -75,6 +72,9 @@
     "@goa/negotiator": "^1.0.1",
     "@goa/type-is": "^1.0.2",
     "@goa/vary": "^1.0.0",
+    "@goa/compose": "^1.0.0",
+    "@goa/http-errors": "^1.0.0",
+    "@goa/statuses": "^1.0.1",
     "@idio/debug": "^1.2.3",
     "@typedefs/goa": "^0.0.6",
     "mime-db": "^1.42.0"

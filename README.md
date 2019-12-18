@@ -61,7 +61,7 @@ The types detailed information can be found [here](doc/TYPES.md). This is a deta
 
 ## Packages
 
-The Koa dependencies as packages had to be rewritten in ES6. Some of them were created as separate packages, and some were included in the source code (repository) in the `modules` directory.
+Koa dependencies as packages had to be rewritten in ES6. Some of them were created as separate packages, and some were included in the source code (repository) in the `modules` directory.
 
 <details>
 <summary>Show included modules (updated to ES6 and annotated for <a href="https://compiler.page">Node.JS Compiler)</a>.
@@ -77,29 +77,29 @@ The Koa dependencies as packages had to be rewritten in ES6. Some of them were c
 | `escape-html` | module |
 | `fresh` | module |
 | `http-assert` | module |
-| `http-errors` | module |
-| `koa-compose` | module |
 | `koa-is-json` | module |
 | `on-finished` | module |
 | `only` | module |
 | `parseurl` | module |
-| `statuses` | module |
 </details>
 
 The external modules were created with tests also written to ensure their source and compiled versions work as expected.
 
-|                                        Dependency                                        | Dep  |                           Description                            |
-| ---------------------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
-| [`@goa/accepts`](https://www.npmjs.com/package/@goa/accepts)    | dev  | Higher-Level Content Negotiation.                                |
-| [`@goa/content-type`](https://www.npmjs.com/package/@goa/content-type) | dev  | Create and parse HTTP Content-Type header according to RFC 7231. |
-| [`@goa/cookies`](https://www.npmjs.com/package/@goa/cookies)    | dev  | Signed And Unsigned Cookies Based On Keygrip.                    |
-| [`@goa/is-generator-function`](https://www.npmjs.com/package/@goa/is-generator-function) | dev  | Checks If The Function Is An ES6 Generator.                      |
-| [`@goa/mime-types`](https://www.npmjs.com/package/@goa/mime-types) | dev  | The Ultimate Javascript Content-Type Utility.                    |
-| [`@goa/negotiator`](https://www.npmjs.com/package/@goa/negotiator) | dev  | HTTP Content Negotiation.                                        |
-| [`@goa/type-is`](https://www.npmjs.com/package/@goa/type-is)    | dev  | Infer The Content-Type Of A Request.                             |
-| [`@goa/vary`](https://www.npmjs.com/package/@goa/vary)       | dev  | Manipulate The HTTP Vary header.                                 |
-| [`@idio/debug`](https://www.npmjs.com/package/@idio/debug)     | dev  | Log Debugging Information.                                       |
-| `mime-db`                                                  | prod | Installed Via @goa/mime-types.                                   |
+|                                        Dependency                                        | Dep  |                            Description                             |
+| ---------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------ |
+| [`@goa/accepts`](https://www.npmjs.com/package/@goa/accepts)    | dev  | Higher-Level Content Negotiation.                                  |
+| [`@goa/content-type`](https://www.npmjs.com/package/@goa/content-type) | dev  | Create and parse HTTP Content-Type header according to RFC 7231.   |
+| [`@goa/cookies`](https://www.npmjs.com/package/@goa/cookies)    | dev  | Signed And Unsigned Cookies Based On Keygrip.                      |
+| [`@goa/is-generator-function`](https://www.npmjs.com/package/@goa/is-generator-function) | dev  | Checks If The Function Is An ES6 Generator.                        |
+| [`@goa/mime-types`](https://www.npmjs.com/package/@goa/mime-types) | dev  | The Ultimate Javascript Content-Type Utility.                      |
+| [`@goa/negotiator`](https://www.npmjs.com/package/@goa/negotiator) | dev  | HTTP Content Negotiation.                                          |
+| [`@goa/type-is`](https://www.npmjs.com/package/@goa/type-is)    | dev  | Infer The Content-Type Of A Request.                               |
+| [`@goa/vary`](https://www.npmjs.com/package/@goa/vary)       | dev  | Manipulate The HTTP Vary header.                                   |
+| [`@goa/compose`](https://www.npmjs.com/package/@goa/compose)    | dev  | Compose a single middleware function for Goa out of many.          |
+| [`@goa/http-errors`](https://www.npmjs.com/package/@goa/http-errors) | dev  | Creates HTTP Errors For Goa Apps.                                  |
+| [`@goa/statuses`](https://www.npmjs.com/package/@goa/statuses)   | dev  | HTTP status utility..                                              |
+| [`@idio/debug`](https://www.npmjs.com/package/@idio/debug)     | dev  | Log Debugging Information.                                         |
+| `mime-db`                                                  | prod | Required for `@goa/mime-types`, `@goa/accepts` and `@goa/type-is`. |
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/2.svg?sanitize=true">
