@@ -20,7 +20,7 @@ yarn add @goa/koa
 - [Types](#types)
 - [Packages](#packages)
 - [Tests](#tests)
-- [Copyright](#copyright)
+- [Copyright & License](#copyright--license)
 
 <p align="center"><a href="#table-of-contents">
   <img src="/.documentary/section-breaks/0.svg?sanitize=true">
@@ -115,11 +115,11 @@ The tests were updated for [context testing](https://contexttesting.com) and inc
   <img src="/.documentary/section-breaks/3.svg?sanitize=true">
 </a></p>
 
-## Copyright
+## Copyright & License
 
-The Koa web server by its [authors](https://github.com/koajs/koa).
+GNU Affero General Public License v3.0
 
----
+Original work on the [Koa Web Server](https://github.com/koajs/koa) by its authors under MIT License found in [COPYING](COPYING).
 
 <table>
   <tr>

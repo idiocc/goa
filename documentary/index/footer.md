@@ -2,11 +2,11 @@
 
 - [ ] Add a new item to the todo list. -->
 
-## Copyright
+## Copyright & License
 
-The Koa web server by its [authors](https://github.com/koajs/koa).
+GNU Affero General Public License v3.0
 
----
+Original work on the [Koa Web Server](https://github.com/koajs/koa) by its authors under MIT License found in [COPYING](COPYING).
 
 <idio-footer />
 
