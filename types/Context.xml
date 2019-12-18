@@ -12,6 +12,9 @@
   <import from=".." ns="_goa" name="ContextDelegatedRequest" />
 
   <interface extends="_goa.ContextDelegatedResponse,_goa.ContextDelegatedRequest" name="Context" desc="The context object for each request.">
+    <fn name="constructor">
+      The application will construct instances of _Context_ for each request manually.
+    </fn>
     <prop type="!_goa.Cookies" name="cookies">
       The cookies instance.
     </prop>

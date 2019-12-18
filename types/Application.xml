@@ -1,6 +1,7 @@
 <types namespace="_goa">
   <import from="http" name="IncomingMessage" />
   <import from="http" name="ServerResponse" />
+  <import from="http" name="Server" />
   <import from="events" name="EventEmitter" />
 
   <!-- The .. are required in types JS files to correctly link together. -->
@@ -35,8 +36,9 @@
     <prop boolean name="silent" default="false">
       Whether to not log an error when it happens.
     </prop>
-    <fn name="listen">
-      Shorthand for: `http.createServer(app.callback()).listen(...)`
+    <fn name="listen" return="!http.Server" template-no-return>
+      <arg name="...args">The arguments as [described](https://nodejs.org/api/net.html#net_server_listen).</arg>
+      Shorthand for: `http.createServer(app.callback()).listen(...)`.
     </fn>
     <fn name="use" return="!_goa.Application">
       <arg type="!_goa.Middleware" name="middleware">The middleware to install.</arg>
@@ -57,6 +59,12 @@
     <fn name="onerror">
       <arg type="!Error" name="error">The error.</arg>
       `＠private` Default error handler.
+    </fn>
+    <fn name="toJSON" return="!Object" template-no-return>
+      Return JSON representation.
+    </fn>
+    <fn name="inspect" return="!Object" template-no-return>
+      `util.inspect()` implementation, which just returns the JSON output.
     </fn>
     <prop opt number name="subdomainOffset">
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.

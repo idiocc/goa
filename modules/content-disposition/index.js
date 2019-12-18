@@ -200,34 +200,26 @@ function createparams (filename, fallback) {
 
 /**
  * Format object to Content-Disposition header.
- *
- * @param {Object} obj
- * @param {string} obj.type
- * @param {Object} [obj.parameters]
- * @return {string}
+ * @param {!ContentDisposition} obj
  * @private
  */
-
-function format (obj) {
-  var parameters = obj.parameters
-  var type = obj.type
-
-  if (!type || typeof type !== 'string' || !TOKEN_REGEXP.test(type)) {
+function format({ parameters, type }) {
+  if (typeof type != 'string' || !TOKEN_REGEXP.test(type)) {
     throw new TypeError('invalid type')
   }
 
   // start with normalized type
-  var string = String(type).toLowerCase()
+  let string = `${type}`.toLowerCase()
 
   // append parameters
-  if (parameters && typeof parameters === 'object') {
-    var param
-    var params = Object.keys(parameters).sort()
+  if (parameters && typeof parameters == 'object') {
+    let param
+    const params = Object.keys(parameters).sort()
 
-    for (var i = 0; i < params.length; i++) {
+    for (let i = 0; i < params.length; i++) {
       param = params[i]
 
-      var val = param.substr(-1) === '*'
+      const val = param.substr(-1) == '*'
         ? ustring(parameters[param])
         : qstring(parameters[param])
 
@@ -261,14 +253,14 @@ function decodefield (str) {
   var binary = encoded.replace(HEX_ESCAPE_REPLACE_REGEXP, pdecode)
 
   switch (charset) {
-    case 'iso-8859-1':
-      value = getlatin1(binary)
-      break
-    case 'utf-8':
-      value = Buffer.from(binary, 'binary').toString('utf8')
-      break
-    default:
-      throw new TypeError('unsupported charset in extended field')
+  case 'iso-8859-1':
+    value = getlatin1(binary)
+    break
+  case 'utf-8':
+    value = Buffer.from(binary, 'binary').toString('utf8')
+    break
+  default:
+    throw new TypeError('unsupported charset in extended field')
   }
 
   return value
@@ -429,14 +421,14 @@ function ustring (val) {
 
 /**
  * Class for parsed Content-Disposition header for v8 optimization
- *
- * @public
- * @param {string} type
- * @param {Object} parameters
- * @constructor
  */
-
-function ContentDisposition (type, parameters) {
-  this.type = type
-  this.parameters = parameters
+class ContentDisposition {
+  /**
+   * @param {string} type
+   * @param {Object} parameters
+   */
+  constructor(type, parameters) {
+    this.type = type
+    this.parameters = parameters
+  }
 }

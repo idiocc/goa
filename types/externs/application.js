@@ -58,8 +58,10 @@ _goa.Application.prototype.silent
 _goa.Application.prototype.subdomainOffset
 /**
  * Shorthand for: `http.createServer(app.callback()).listen(...)`
+ * @param {...*} args The arguments as [described](https://nodejs.org/api/net.html#net_server_listen).
+ * @return {!http.Server}
  */
-_goa.Application.prototype.listen = function() {}
+_goa.Application.prototype.listen = function(...args) {}
 /**
  * Use the given middleware `fn`. Old-style middleware will be converted.
  * @param {!_goa.Middleware} middleware The middleware to install.
@@ -83,6 +85,16 @@ _goa.Application.prototype.createContext = function(req, res) {}
  * @param {!Error} error The error.
  */
 _goa.Application.prototype.onerror = function(error) {}
+/**
+ * Return JSON representation.
+ * @return {!Object}
+ */
+_goa.Application.prototype.toJSON = function() {}
+/**
+ * `util.inspect()` implementation, which just returns the JSON output.
+ * @return {!Object}
+ */
+_goa.Application.prototype.inspect = function() {}
 /**
  * The function to handle requests which can be installed with the `.use` method.
  * @typedef {function(!_goa.Context,!Function=): (!Promise|void)}
