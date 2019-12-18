@@ -9,111 +9,6 @@
  */
 _goa.ContextDelegatedRequest
 /**
- * Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
- * @param {(!Array<string>|string)=} [arg0]
- * @param {...string} args
- * @return {(string|!Array<string>|boolean)}
- */
-_goa.ContextDelegatedRequest.prototype.acceptsLanguages = function(arg0, ...args) {}
-/**
- * Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
- * @param {(!Array<string>|string)=} [arg0]
- * @param {...string} args
- * @return {(string|!Array<string>|boolean)}
- */
-_goa.ContextDelegatedRequest.prototype.acceptsEncodings = function(arg0, ...args) {}
-/**
- * Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
- * @param {(!Array<string>|string)=} [arg0]
- * @param {...string} args
- * @return {(string|!Array<string>|boolean)}
- */
-_goa.ContextDelegatedRequest.prototype.acceptsCharsets = function(arg0, ...args) {}
-/**
- * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
- *
- * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
- *
- * _Examples_:
- *
- * - Accept: text/html
- *
- *     ```js
- *     this.types('html') => "html"
- *     ```
- * - Accept: text/＊, application/json
- *
- *     ```js
- *     this.types('html') => "html"
- *     this.types('text/html') => "text/html"
- *     this.types('json', 'text') => "json"
- *     this.types('application/json') => "application/json"
- *     ```
- * - Accept: text/＊, application/json
- *
- *     ```js
- *     this.types('image/png') => false
- *     this.types('png') => false
- *     ```
- * - Accept: text/＊;q=.5, application/json
- *
- *     ```js
- *     this.types(['html', 'json']) => "json"
- *     this.types('html', 'json') => "json"
- *     ```
- * - Accept: application/＊;q=0.2, image/jpeg;q=0.8, text/html, text/plain
- *
- *     ```js
- *     this.types() => ["text/html", "text/plain",
- *       "image/jpeg", "application/＊"]
- *     ```
- * @param {(!Array<string>|string)=} [arg0]
- * @param {...string} args
- * @return {(string|!Array<string>|boolean)}
- */
-_goa.ContextDelegatedRequest.prototype.accepts = function(arg0, ...args) {}
-/**
- * Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
- *
- * _Examples_:
- *
- * ```js
- * this.get('Content-Type') => "text/plain"
- * this.get('content-type') => "text/plain"
- * this.get('Something') => undefined
- * ```
- * @param {string} arg0
- * @return {string}
- */
-_goa.ContextDelegatedRequest.prototype.get = function(arg0) {}
-/**
- * Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
- *
- * _Examples_:
- *
- * - With Content-Type: text/html; charset=utf-8
- *
- *     ```js
- *     this.is('html'); // => 'html'
- *     this.is('text/html'); // => 'text/html'
- *     this.is('text/*', 'application/json');
- *       // => 'text/html'
- *     ```
- * - When Content-Type is application/json
- *
- *     ```js
- *     this.is('json', 'urlencoded'); // => 'json'
- *     this.is('application/json'); // => 'application/json'
- *     this.is('html', 'application/*');
- *               // => 'application/json'
- *     this.is('html'); // => false
- *     ```
- * @param {(!Array<string>|string)} arg0
- * @param {...string} args
- * @return {?}
- */
-_goa.ContextDelegatedRequest.prototype.is = function(arg0, ...args) {}
-/**
  * Get/Set query string.
  * @type {string}
  */
@@ -231,6 +126,49 @@ _goa.ContextDelegatedRequest.prototype.ips
  * @type {string}
  */
 _goa.ContextDelegatedRequest.prototype.ip
+/**
+ * Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
+ * @param {(!Array<string>|string)=} [language] The language to check as a parameter, or multiple languages as an array.
+ * @param {...string} languages Languages to check as parameters.
+ * @return {(string|!Array<string>|boolean)}
+ */
+_goa.ContextDelegatedRequest.prototype.acceptsLanguages = function(language, ...languages) {}
+/**
+ * Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
+ * @param {(!Array<string>|string)=} [encoding] The encoding to check as a parameter, or multiple encodings as an array.
+ * @param {...string} encodings Encodings to check as parameters.
+ * @return {(string|!Array<string>|boolean)}
+ */
+_goa.ContextDelegatedRequest.prototype.acceptsEncodings = function(encoding, ...encodings) {}
+/**
+ * Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
+ * @param {(!Array<string>|string)=} [charset] The charset to check as a parameter, or multiple charsets as an array.
+ * @param {...string} charsets Charsets to check as parameters.
+ * @return {(string|!Array<string>|boolean)}
+ */
+_goa.ContextDelegatedRequest.prototype.acceptsCharsets = function(charset, ...charsets) {}
+/**
+ * Check if the given `type(s)` is acceptable, returning the best match when true, otherwise `false`, in which case you should respond with 406 "Not Acceptable".
+ *
+ * The `type` value may be a single mime type string such as "application/json", the extension name such as "json" or an array `["json", "html", "text/plain"]`. When a list or array is given the _best_ match, if any is returned. When no types are given as arguments, returns all types accepted by the client in the preference order.
+ * @param {(!Array<string>|string)=} [type] The type to check as a parameter, or multiple types as an array.
+ * @param {...string} types Types to check as parameters.
+ * @return {(string|!Array<string>|boolean)}
+ */
+_goa.ContextDelegatedRequest.prototype.accepts = function(type, ...types) {}
+/**
+ * Return request header. The `Referrer` header field is special-cased, both `Referrer` and `Referer` are interchangeable.
+ * @param {string} header The name of the header to get.
+ * @return {string}
+ */
+_goa.ContextDelegatedRequest.prototype.get = function(header) {}
+/**
+ * Check if the incoming request contains the "Content-Type" header field, and it contains any of the give mime `type`s. If there is no request body, `null` is returned. If there is no content type, `false` is returned. Otherwise, it returns the first `type` that matches.
+ * @param {(!Array<string>|string)} type The type to check as a parameter, or multiple types as an array.
+ * @param {...string} types Types to check as parameters.
+ * @return {(string|boolean|null)}
+ */
+_goa.ContextDelegatedRequest.prototype.is = function(type, ...types) {}
 /**
  * The additional API not available via Context.
  * @extends {_goa.ContextDelegatedRequest}

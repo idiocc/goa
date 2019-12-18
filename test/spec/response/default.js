@@ -416,7 +416,6 @@ export const header = {
     deepEqual(res.header, { 'x-foo': 'bar', 'x-number': '200' })
   },
   'uses res.getHeaders() accessor when available'({ res }) {
-    res.res._headers = null
     res.res.getHeaders = () => ({ 'x-foo': 'baz' })
     deepEqual(res.header, { 'x-foo': 'baz' })
   },

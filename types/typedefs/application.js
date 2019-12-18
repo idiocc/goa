@@ -12,8 +12,8 @@ export {}
  * @typedef {_goa.Application} Application `＠interface` The application interface.
  * @typedef {events.EventEmitter & _goa.$Application} _goa.Application `＠interface` The application interface.
  * @typedef {Object} _goa.$Application `＠interface` The application interface.
- * @prop {boolean} [proxy] Whether the server is running behind a proxy.
- * @prop {!Array<!_goa.Middleware>} middleware The array with middleware used on the server.
+ * @prop {boolean} [proxy=false] Whether the server is running behind a proxy. Default `false`.
+ * @prop {!Array<!_goa.Middleware>} middleware The array with middleware used on the server. Default `[]`.
  * @prop {!_goa.Context} context The context object for each request.
  * @prop {!_goa.Request} request The request object for each request.
  * @prop {!_goa.Response} response The response object for each request.

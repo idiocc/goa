@@ -126,7 +126,7 @@ export default class Application extends EventEmitter {
     onFinished(res, onerror)
     try {
       await fnMiddleware(ctx)
-      return await respond(ctx)
+      return respond(ctx)
     } catch (err) {
       onerror(err)
     }

@@ -3,8 +3,6 @@
  * @externs
  */
 
-/** @type {!Object|undefined} */
-http.ServerResponse.prototype._headers
 /** @type {string|undefined} */
 http.IncomingHttpHeaders.prototype.referrer
 /** @type {string|undefined} */

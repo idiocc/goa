@@ -12,7 +12,7 @@
     "do": "yarn-s doc doc-types doc-tests",
     "doc": "NODE_DEBUG=doc doc documentary/index -o README.md",
     "compile": "depack koa -a -c -o koa/out.js --externs http",
-    "wiki": "NODE_DEBUG=doc doc doc-wiki -W wiki",
+    "wiki": "NODE_DEBUG=doc doc doc-wiki -W wiki -n _goa",
     "doc-types": "NODE_DEBUG=doc doc documentary/2-types -o doc/TYPES.md",
     "doc-tests": "NODE_DEBUG=doc doc documentary/3-test.md -o doc/TESTS.md",
     "d": "yarn-s d1 typedef externs",
@@ -33,6 +33,10 @@
     "type": "git",
     "url": "git://github.com/idiocc/goa.git"
   },
+  "engines": {
+    "node": ">=7.7"
+  },
+  "fork": "2.7.0",
   "keywords": [
     "goa",
     "koa",
@@ -50,15 +54,15 @@
   },
   "homepage": "https://github.com/idiocc/goa#readme",
   "devDependencies": {
-    "@contexts/http": "^1.5.1",
+    "@contexts/http": "^1.6.1",
     "@goa/compose": "^1.0.0",
     "@goa/http-errors": "^1.0.0",
     "@goa/statuses": "^1.0.1",
-    "alamode": "^3.2.0",
+    "alamode": "^3.3.0",
     "depack": "^1.0.1",
-    "documentary": "^1.34.2",
+    "documentary": "^1.34.6",
     "eslint-config-artdeco": "1.0.1",
-    "typal": "^1.22.9",
+    "typal": "^1.24.7",
     "yarn-s": "1.2.1",
     "zoroaster": "^4.1.2"
   },
@@ -72,7 +76,7 @@
     "@goa/type-is": "^1.0.2",
     "@goa/vary": "^1.0.0",
     "@idio/debug": "^1.2.3",
-    "@typedefs/goa": "^0.0.5",
+    "@typedefs/goa": "^0.0.6",
     "mime-db": "^1.42.0"
   }
 }

@@ -20,6 +20,7 @@ export class ConsoleMock {
 
 export default class Context extends Cookies {
   /**
+   * A mock context.
    * @param {http.IncomingMessage} [req]
    * @param {http.ServerResponse} [res]
    * @param {Koa} [app]
@@ -27,13 +28,14 @@ export default class Context extends Cookies {
   makeContext(req, res, app) {
     const socket = new Duplex()
     req = Object.assign({ headers: {}, socket }, Readable.prototype, req)
-    res = Object.assign({ _headers: {}, socket }, Writable.prototype, res)
+    res = Object.assign({ socket }, Writable.prototype, res)
+    const _headers = {}
     req.socket.remoteAddress = req.socket.remoteAddress || '127.0.0.1'
     app = app || new Koa()
-    res.getHeader = k => res._headers[k.toLowerCase()]
-    res.getHeaders = () => res._headers
-    res.setHeader = (k, v) => res._headers[k.toLowerCase()] = v
-    res.removeHeader = (k) => delete res._headers[k.toLowerCase()]
+    res.getHeader = k => _headers[k.toLowerCase()]
+    res.getHeaders = () => _headers
+    res.setHeader = (k, v) => _headers[k.toLowerCase()] = v
+    res.removeHeader = (k) => delete _headers[k.toLowerCase()]
     return app.createContext(req, res)
   }
   get context() {

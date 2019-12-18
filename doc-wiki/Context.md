@@ -19,7 +19,7 @@ The total context consists of
 
 This allows to write the delegator classes, which are then extended both by the context, and the request/response objects themselves. This is consistent with how Koa typings were written.
 
-<typedef flatten narrow>../goa/types/Context.xml</typedef>
+<typedef flatten narrow slimFunctions>../goa/types/Context.xml</typedef>
 
 The base _Context_ contains the cookies, error throwing, state and other APIs, and also allows to access the request and response instances.
 

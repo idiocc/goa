@@ -5,7 +5,7 @@ ctx.request.acceptsCharsets ===
 ctx.acceptsCharsets
 ```
 
-<typedef flatten narrow name="ContextDelegatedRequest">../goa/types/Request.xml</typedef>
+<typedef flatten narrow slimFunctions name="ContextDelegatedRequest">../goa/types/Request.xml</typedef>
 
 The raw request is referenced in the `ctx.req` property.
 

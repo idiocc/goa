@@ -191,12 +191,6 @@ export default class Context {
    * `msg`. Note that these are user-level
    * errors, and the message may be exposed to the client.
    *
-   *    this.throw(403)
-   *    this.throw(400, 'name required')
-   *    this.throw('something exploded')
-   *    this.throw(new Error('invalid'))
-   *    this.throw(400, new Error('invalid'))
-   *
    * See: https://github.com/jshttp/http-errors
    *
    * Note: `status` should only be passed as the first parameter.
@@ -239,12 +233,7 @@ export default class Context {
     const { res } = this
 
     // first unset all headers
-    /* istanbul ignore else */
-    if (typeof res.getHeaderNames == 'function') {
-      res.getHeaderNames().forEach(name => res.removeHeader(name))
-    } else {
-      res._headers = {} // Node < 7.7
-    }
+    res.getHeaderNames().forEach(name => res.removeHeader(name))
 
     // then set those specified
     this.set(err.headers)

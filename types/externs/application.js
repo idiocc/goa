@@ -12,12 +12,12 @@ var _goa = {}
  */
 _goa.Application
 /**
- * Whether the server is running behind a proxy.
+ * Whether the server is running behind a proxy. Default `false`.
  * @type {boolean|undefined}
  */
 _goa.Application.prototype.proxy
 /**
- * The array with middleware used on the server.
+ * The array with middleware used on the server. Default `[]`.
  * @type {!Array<!_goa.Middleware>}
  */
 _goa.Application.prototype.middleware

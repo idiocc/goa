@@ -11,10 +11,10 @@
   <import from=".." ns="_goa" name="Response" />
 
   <type interface extends="events.EventEmitter" name="Application" desc="The application interface.">
-    <prop opt boolean name="proxy">
+    <prop opt boolean name="proxy" initial="false">
       Whether the server is running behind a proxy.
     </prop>
-    <prop type="!Array<!_goa.Middleware>" name="middleware">
+    <prop type="!Array<!_goa.Middleware>" name="middleware" initial="[]">
       The array with middleware used on the server.
     </prop>
     <prop type="!_goa.Context" name="context">
