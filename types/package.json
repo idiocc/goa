@@ -1,12 +1,16 @@
 {
   "name": "@typedefs/goa",
-  "version": "0.0.8",
+  "version": "0.0.10",
   "main": "index.js",
   "description": "JSDoc typededs for @goa/goa",
   "files": [
     "typedefs",
     "vendor",
-    "goa"
+    "goa",
+    "Application.xml",
+    "Context.xml",
+    "Request.xml",
+    "Response.xml"
   ],
   "homepage": "typedef.page",
   "license": "MIT",

@@ -1,5 +1,9 @@
 ## 18 December 2019
 
+### [1.4.2](https://github.com/idiocc/goa/compare/v1.4.1...v1.4.2)
+
+- [fix] Application to interface.
+
 ### [1.4.1](https://github.com/idiocc/goa/compare/v1.4.0...v1.4.1)
 
 - [package] Publish examples.
