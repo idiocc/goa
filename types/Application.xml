@@ -10,7 +10,7 @@
   <import from=".." ns="_goa" name="Request" />
   <import from=".." ns="_goa" name="Response" />
 
-  <type interface extends="events.EventEmitter" name="Application" desc="The application interface.">
+  <interface extends="events.EventEmitter" name="Application" desc="The application interface.">
     <prop opt boolean name="proxy" initial="false">
       Whether the server is running behind a proxy.
     </prop>
@@ -61,7 +61,7 @@
     <prop opt number name="subdomainOffset">
        For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>
-  </type>
+  </interface>
 
   <method name="Middleware" return="(!Promise|void)">
     <arg type="!_goa.Context" name="ctx">The context.</arg>

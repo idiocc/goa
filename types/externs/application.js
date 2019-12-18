@@ -10,7 +10,7 @@ var _goa = {}
  * @extends {events.EventEmitter}
  * @interface
  */
-_goa.Application
+_goa.Application = function() {}
 /**
  * Whether the server is running behind a proxy. Default `false`.
  * @type {boolean|undefined}
