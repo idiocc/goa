@@ -12,7 +12,7 @@
     "do": "yarn-s doc doc-types doc-tests",
     "doc": "NODE_DEBUG=doc doc documentary/index -o README.md",
     "compile": "depack koa -a -c -o koa/out.js --externs http",
-    "wiki": "doc doc-wiki -W wiki -n _goa -d",
+    "wiki": "doc doc-wiki -W wiki -n _goa -d -a",
     "doc-types": "NODE_DEBUG=doc doc documentary/2-types -o doc/TYPES.md",
     "doc-tests": "NODE_DEBUG=doc doc documentary/3-test.md -o doc/TESTS.md",
     "d": "yarn-s d1 typedef externs dv",
@@ -28,12 +28,14 @@
     "src",
     "types",
     "test",
-    "example/jsdoc"
+    "example/jsdoc",
+    "typedefs.json"
   ],
   "repository": {
     "type": "git",
     "url": "git://github.com/idiocc/goa.git"
   },
+  "typedefs": "typedefs.json",
   "engines": {
     "node": ">=7.7"
   },

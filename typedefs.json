@@ -1,0 +1,38 @@
+{
+  "_goa.Application": {
+    "link": "https://github.com/idiocc/goa/wiki/Application#type-application",
+    "description": "The application interface."
+  },
+  "_goa.Middleware": {
+    "link": "https://github.com/idiocc/goa/wiki/Application#type-middleware",
+    "description": "The function to handle requests which can be installed with the `.use` method."
+  },
+  "_goa.Context": {
+    "link": "https://github.com/idiocc/goa/wiki/Context#type-context",
+    "description": "The context object for each request."
+  },
+  "_goa.ContextDelegatedResponse": {
+    "link": "https://github.com/idiocc/goa/wiki/Context#type-contextdelegatedresponse",
+    "description": "The response API available via Context."
+  },
+  "_goa.ContextDelegatedRequest": {
+    "link": "https://github.com/idiocc/goa/wiki/Context#type-contextdelegatedrequest",
+    "description": "The request API available via Context."
+  },
+  "_goa.BaseRequest": {
+    "link": "https://github.com/idiocc/goa/wiki/Request#type-baserequest",
+    "description": "The additional API not available via Context."
+  },
+  "_goa.Request": {
+    "link": "https://github.com/idiocc/goa/wiki/Request#type-request",
+    "description": "The request object."
+  },
+  "_goa.BaseResponse": {
+    "link": "https://github.com/idiocc/goa/wiki/Response#type-baseresponse",
+    "description": "The additional API not available via Context."
+  },
+  "_goa.Response": {
+    "link": "https://github.com/idiocc/goa/wiki/Response#type-response",
+    "description": "The response object."
+  }
+}

@@ -1,3 +1,10 @@
+## 19 December 2019
+
+### [1.5.0](https://github.com/idiocc/goa/compare/v1.4.3...v1.5.0)
+
+- [deps] Update cookies and accepts.
+- [doc] Document using `include-typedefs` and publish `typedefs.json`.
+
 ## 18 December 2019
 
 ### [1.4.3](https://github.com/idiocc/goa/compare/v1.4.2...v1.4.3)
