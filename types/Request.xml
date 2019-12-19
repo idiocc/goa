@@ -2,18 +2,16 @@
   <import from="http" name="IncomingMessage" />
   <import from="http" name="ServerResponse" />
   <import from="url" name="URL" />
-  <import from="net" name="Socket">
-    The socket underlying the request.
-  </import>
+  <import from="net" name="Socket" />
 
-  <import from=".." ns="_goa" name="Accepts" desc="The _Accepts_ API." link="https://github.com/idiocc/accepts/wiki/Accepts#type-_goaaccepts" />
+  <import from=".." ns="_goa" name="Accepts" />
 
   <import from=".." ns="_goa" name="Application" />
   <import from=".." ns="_goa" name="Context" />
   <import from=".." ns="_goa" name="Response" />
 
   <type interface name="ContextDelegatedRequest" desc="The request API available via Context.">
-    <fn return="string|!Array<string>|boolean)" name="acceptsLanguages">
+    <fn return="string|!Array<string>|boolean" name="acceptsLanguages">
       <arg type="!Array<string>|string" name="language" opt>
         The language to check as a parameter, or multiple languages as an array.
       </arg>
@@ -22,7 +20,7 @@
       </arg>
       Return accepted languages or best fit based on `langs`. Given `Accept-Language: en;q=0.8, es, pt` an array sorted by quality is returned: `['es', 'pt', 'en']`.
     </fn>
-    <fn return="string|!Array<string>|boolean)" name="acceptsEncodings">
+    <fn return="string|!Array<string>|boolean" name="acceptsEncodings">
       <arg type="!Array<string>|string" name="encoding" opt>
         The encoding to check as a parameter, or multiple encodings as an array.
       </arg>
@@ -31,7 +29,7 @@
       </arg>
       Return accepted encodings or best fit based on `encodings`. Given `Accept-Encoding: gzip, deflate` an array sorted by quality is returned: `['gzip', 'deflate']`.
     </fn>
-    <fn return="(string|!Array<string>|boolean)" name="acceptsCharsets">
+    <fn return="string|!Array<string>|boolean" name="acceptsCharsets">
       <arg type="!Array<string>|string" name="charset" opt>
         The charset to check as a parameter, or multiple charsets as an array.
       </arg>
@@ -40,7 +38,7 @@
       </arg>
       Return accepted charsets or best fit based on `charsets`. Given `Accept-Charset: utf-8, iso-8859-1;q=0.2, utf-7;q=0.5` an array sorted by quality is returned: `['utf-8', 'utf-7', 'iso-8859-1']`.
     </fn>
-    <fn return="(string|!Array<string>|boolean)" name="accepts" example="../example/jsdoc/request/accepts.js">
+    <fn return="string|!Array<string>|boolean" name="accepts" example="../example/jsdoc/request/accepts.js">
       <arg type="!Array<string>|string" name="type" opt>
         The type to check as a parameter, or multiple types as an array.
       </arg>

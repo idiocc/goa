@@ -5,7 +5,7 @@
   <import from="events" name="EventEmitter" />
 
   <!-- The .. are required in types JS files to correctly link together. -->
-  <import from=".." ns="_goa" name="Keygrip" desc="Keygrip is a tool to encrypt sessions using a set of keys" link="https://github.com/idiocc/cookies/wiki/Keygrip#type-_goakeygrip" />
+  <import from=".." ns="_goa" name="Keygrip" />
 
   <import from=".." ns="_goa" name="Context" />
   <import from=".." ns="_goa" name="Request" />

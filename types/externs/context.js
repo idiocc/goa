@@ -5,6 +5,7 @@
 /* typal types/Context.xml externs skipNsDecl */
 /**
  * The context object for each request.
+ * The application will construct instances of _Context_ for each request manually.
  * @extends {_goa.ContextDelegatedResponse}
  * @extends {_goa.ContextDelegatedRequest}
  * @interface

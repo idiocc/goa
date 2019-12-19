@@ -1,12 +1,8 @@
 <types namespace="_goa">
   <import from="http" name="IncomingMessage" />
   <import from="http" name="ServerResponse" />
-  <import from="stream" name="Stream">
-    Body can be set as a stream to send data to clients.
-  </import>
-  <import from="net" name="Socket">
-    The socket underlying the request.
-  </import>
+  <import from="stream" name="Stream" />
+  <import from="net" name="Socket" />
 
   <import from=".." ns="_goa" name="Application" />
   <import from=".." ns="_goa" name="Context" />

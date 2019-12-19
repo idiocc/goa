@@ -3,7 +3,7 @@
   <import from="http" name="ServerResponse" />
 
   <!-- The cookies are vendored in types/vendor -->
-  <import from=".." ns="_goa" name="Cookies" desc="The interface for Cookies: signed and unsigned cookies based on Keygrip." link="https://github.com/idiocc/cookies/wiki/Cookies#type-cookies" />
+  <import from=".." ns="_goa" name="Cookies" />
 
   <import from=".." ns="_goa" name="Application" />
   <import from=".." ns="_goa" name="Request" />

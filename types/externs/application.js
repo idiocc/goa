@@ -7,6 +7,7 @@
 var _goa = {}
 /**
  * The application interface.
+ * Constructor method.
  * @extends {events.EventEmitter}
  * @interface
  */
@@ -57,7 +58,7 @@ _goa.Application.prototype.silent
  */
 _goa.Application.prototype.subdomainOffset
 /**
- * Shorthand for: `http.createServer(app.callback()).listen(...)`
+ * Shorthand for: `http.createServer(app.callback()).listen(...)`.
  * @param {...*} args The arguments as [described](https://nodejs.org/api/net.html#net_server_listen).
  * @return {!http.Server}
  */
