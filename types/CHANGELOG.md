@@ -1,5 +1,9 @@
 ## 19 December 2019
 
+### [0.1.2](https://github.com/idiocc/goa/compare/v0.1.1...v0.1.2)
+
+- [typedef] Add the `typedef.json` to the list of files.
+
 ### [0.1.1](https://github.com/idiocc/goa/compare/v0.1.0...v0.1.1)
 
 - [typedef] Add the `typedef.json` file.

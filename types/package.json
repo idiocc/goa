@@ -1,6 +1,6 @@
 {
   "name": "@typedefs/goa",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "index.js",
   "description": "JSDoc typededs for @goa/goa",
   "scripts": {
@@ -9,6 +9,7 @@
   "files": [
     "typedefs",
     "vendor",
+    "typedefs.json",
     "goa",
     "Application.xml",
     "Context.xml",
