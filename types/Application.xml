@@ -12,6 +12,9 @@
   <import from=".." ns="_goa" name="Response" />
 
   <interface extends="events.EventEmitter" name="Application" desc="The application interface.">
+    <fn name="constructor">
+      Creates a new app instance.
+    </fn>
     <prop opt boolean name="proxy" initial="false">
       Whether the server is running behind a proxy.
     </prop>

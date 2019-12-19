@@ -7,7 +7,7 @@
 var _goa = {}
 /**
  * The application interface.
- * Constructor method.
+ * Creates a new app instance.
  * @extends {events.EventEmitter}
  * @interface
  */
