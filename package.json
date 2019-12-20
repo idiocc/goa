@@ -31,6 +31,13 @@
     "example/jsdoc",
     "typedefs.json"
   ],
+  "externs": [
+    "types/externs/application.js",
+    "types/externs/context.js",
+    "types/externs/request.js",
+    "types/externs/response.js",
+    "types/externs/index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/idiocc/goa.git"

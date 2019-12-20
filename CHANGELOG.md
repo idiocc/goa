@@ -1,5 +1,9 @@
 ## 20 December 2019
 
+### [1.5.2](https://github.com/idiocc/goa/compare/v1.5.1...v1.5.2)
+
+- [package] Add `externs` field to _package.json_.
+
 ### [1.5.1](https://github.com/idiocc/goa/compare/v1.5.0...v1.5.1)
 
 - [doc] Fix linking of _Middleware_ in wiki and export the correct link in `typedefs.json`.
