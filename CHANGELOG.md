@@ -1,3 +1,10 @@
+## 20 December 2019
+
+### [1.5.1](https://github.com/idiocc/goa/compare/v1.5.0...v1.5.1)
+
+- [doc] Fix linking of _Middleware_ in wiki and export the correct link in `typedefs.json`.
+- [types] Add _Content-Disposition_ type for attachment options correctly.
+
 ## 19 December 2019
 
 ### [1.5.0](https://github.com/idiocc/goa/compare/v1.4.3...v1.5.0)

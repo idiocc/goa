@@ -8,8 +8,7 @@
     "context.js",
     "request.js",
     "response.js",
-    "index.js",
-    "content-disposition.js"
+    "index.js"
   ],
   "keywords": [
     "goa",
