@@ -4,7 +4,7 @@
     "description": "The application interface."
   },
   "_goa.Middleware": {
-    "link": "https://github.com/idiocc/goa/wiki/Application#type-middleware",
+    "link": "https://github.com/idiocc/goa/wiki/Application#middlewarectx-contextnext-function-promisevoid",
     "description": "The function to handle requests which can be installed with the `.use` method."
   },
   "_goa.Context": {
@@ -34,5 +34,9 @@
   "_goa.Response": {
     "link": "https://github.com/idiocc/goa/wiki/Response#type-response",
     "description": "The response object."
+  },
+  "_goa.ContentDisposition": {
+    "link": "https://github.com/idiocc/goa/wiki/Response#type-contentdisposition",
+    "description": "Options for setting the attachment."
   }
 }

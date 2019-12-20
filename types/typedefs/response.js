@@ -36,7 +36,7 @@ export {}
  * ctx.response.etag = '"md5hashsum"'
  * ctx.response.etag = 'W/"123456789"'
  * ```
- * @prop {(filename: string, options: !_goa.ContentDisposition) => void} attachment Set Content-Disposition header to "attachment" with optional `filename`.
+ * @prop {(filename?: string, options?: !_goa.ContentDisposition) => void} attachment Set _Content-Disposition_ header to "attachment" with optional `filename`.
  * @prop {(url: string, referrer?: string) => void} redirect Perform a 302 redirect to `url`. The string "back" is special-cased to provide Referrer support, when Referrer is not present `alt` or "/" is used.
  * ```js
  * ctx.response.redirect('back')
@@ -82,4 +82,8 @@ export {}
  * @prop {!_goa.Request} request The reference to the request instance.
  * @prop {!http.IncomingMessage} req The message from the client.
  * @prop {!http.ServerResponse} res The response from the server.
+ * @typedef {_goa.ContentDisposition} ContentDisposition `＠record` Options for setting the attachment.
+ * @typedef {Object} _goa.ContentDisposition `＠record` Options for setting the attachment.
+ * @prop {string} [type="attachment"] The type. Default `attachment`.
+ * @prop {boolean|string} [fallback=true] Fallback filename. Default `true`.
  */

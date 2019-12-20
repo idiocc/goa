@@ -10,9 +10,11 @@
 
   <type interface name="ContextDelegatedResponse" desc="The response API available via Context.">
     <fn void name="attachment">
-      <arg string name="filename">The filename.</arg>
-      <arg type="!_goa.ContentDisposition" name="options"?>Options.</arg>
-      Set Content-Disposition header to "attachment" with optional `filename`.
+      <arg string name="filename" opt>The filename.</arg>
+      <arg type="!_goa.ContentDisposition" name="options" opt>
+        _Content-Disposition_ options.
+      </arg>
+      Set _Content-Disposition_ header to "attachment" with optional `filename`.
     </fn>
     <fn void name="redirect" example="../example/jsdoc/response/redirect.js">
       <arg type="string" name="url">
@@ -120,4 +122,13 @@
       The response from the server.
     </prop>
   </type>
+
+  <record name="ContentDisposition" desc="Options for setting the attachment.">
+    <prop string name="type" default="attachment">
+      The type.
+    </prop>
+    <prop type="boolean|string" name="fallback" default="true">
+      Fallback filename.
+    </prop>
+  </record>
 </types>

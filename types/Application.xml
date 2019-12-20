@@ -48,7 +48,7 @@
       Use the given middleware `fn`. Old-style middleware will be converted.
     </fn>
     <fn return="function(!http.IncomingMessage, !http.ServerResponse)" name="callback">
-      Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+      Returns the request handler callback for Node's native _http/http2_ server composed of the installed middleware.
     </fn>
     <fn name="createContext" return="!_goa.Context">
       <arg type="!http.IncomingMessage" name="req">
@@ -69,8 +69,10 @@
     <fn name="inspect" return="!Object" template-no-return>
       `util.inspect()` implementation, which just returns the JSON output.
     </fn>
-    <prop opt number name="subdomainOffset">
-       For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
+    <prop opt number name="subdomainOffset" initial="2">
+       For example, if the domain is _tobi.ferrets.example.com_:
+       - if `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`.
+       - if `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>
   </interface>
 

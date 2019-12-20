@@ -53,7 +53,9 @@ _goa.Application.prototype.keys
  */
 _goa.Application.prototype.silent
 /**
- * For example, if the domain is "tobi.ferrets.example.com": If `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`. If `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
+ * For example, if the domain is _tobi.ferrets.example.com_:
+ * - if `app.subdomainOffset` is not set, request.subdomains is `["ferrets", "tobi"]`.
+ * - if `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`. Default `2`.
  * @type {number|undefined}
  */
 _goa.Application.prototype.subdomainOffset
@@ -70,7 +72,7 @@ _goa.Application.prototype.listen = function(...args) {}
  */
 _goa.Application.prototype.use = function(middleware) {}
 /**
- * Returns the request handler callback for node's native http/http2 server composed of the installed middleware.
+ * Returns the request handler callback for Node's native _http/http2_ server composed of the installed middleware.
  * @return {function(!http.IncomingMessage, !http.ServerResponse)}
  */
 _goa.Application.prototype.callback = function() {}

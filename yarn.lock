@@ -106,10 +106,10 @@
   resolved "https://registry.yarnpkg.com/@rqt/aqt/-/aqt-1.3.0.tgz#06472f50f85ab8e2a391db5b92c43ee726a8a844"
   integrity sha512-Ux0ygtQqaJE2bLuxw4J/mJpPyJGtLs1AdEdi/5FUG59CHwHiDWEsrldF4kxsJNFyWkWYT6Fe/zNTKnzv6KFREQ==
 
-"@typedefs/goa@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.0.11.tgz#5865ece9b311c0295b810ddb2b19e77df40e1804"
-  integrity sha512-Be8arwY7r9JEJWxq+OY+gKyxokTyRmXu3Rfq67+aT0lCMUSTskmUYRl14vnhctyA4Jw5Jnv5DkUHKHZ3tfrgxQ==
+"@typedefs/goa@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@typedefs/goa/-/goa-0.1.2.tgz#3c887c38b00705c64070be2c05baa4f3f51ccb6e"
+  integrity sha512-HwAR1lRPBOGUD9LQmGy1MTXlQsjPHpkvlsvB70Hr12WSLbo1ktlAKqK188zqkO4B22iwdN4scNXpxt18gcsF9w==
 
 "@zoroaster/assert@^1.0.2":
   version "1.0.2"
@@ -148,14 +148,14 @@ differently@^1.0.0:
   dependencies:
     erte "^1.2.0"
 
-documentary@^1.35.2:
-  version "1.35.2"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.2.tgz#9e18ad2e52e02369b5a6aa0951a89a8b72917d0e"
-  integrity sha512-qtoHJqVqeSwNE/Vnf8oLNG3wEfsbQxLWqBEdYC+zL6yNaLtS2/H0CGzf3jTfYqDWV0DHJirEHa9qJ++/bSaxJw==
+documentary@^1.35.3:
+  version "1.35.3"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.35.3.tgz#9ac599f3f33cc7520d8092ed3ae9c0681c46903b"
+  integrity sha512-IGkDlWdTwE0PRvNl9uTteYloocoar/cRw1UHlkTzuc00AxcKdrUgA6SYZALW7dnYIjCsn49tfSqdcQB/x7JcCQ==
   dependencies:
     alamode "^3.3.0"
     preact "8.5.3"
-    typal "^1.24.15"
+    typal "^1.24.17"
 
 erotic@^2.1.1:
   version "2.1.1"
@@ -189,10 +189,10 @@ preact@8.5.3:
   resolved "https://registry.yarnpkg.com/preact/-/preact-8.5.3.tgz#78c2a5562fcecb1fed1d0055fa4ac1e27bde17c1"
   integrity sha512-O3kKP+1YdgqHOFsZF2a9JVdtqD+RPzCQc3rP+Ualf7V6rmRDchZ9MJbiGTT7LuyqFKZqlHSOyO/oMFmI2lVTsw==
 
-typal@^1.24.15:
-  version "1.24.15"
-  resolved "https://registry.yarnpkg.com/typal/-/typal-1.24.15.tgz#e44d2eece47e466285a932d013505192b3cbc3c0"
-  integrity sha512-ghWcOORBgNeYCKu9lIAkYnC+Jv522j2WNjKD/hCkh1jTOrflTqgKKNZRxSOC+GJpk9GUivjaJjNRdImE/W/u1Q==
+typal@^1.24.17:
+  version "1.24.17"
+  resolved "https://registry.yarnpkg.com/typal/-/typal-1.24.17.tgz#0bb301ad8be4a8076f59527f167622a17b15f4d8"
+  integrity sha512-8qPwL4uPqRBAmHkGz0DIoWbCswykXo9kjz4urajEz7G7GsT2p6KNCiAqk+mJ+1MhNsO9yW9U1zSVS7TvSj3B3g==
 
 yarn-s@1.2.1:
   version "1.2.1"

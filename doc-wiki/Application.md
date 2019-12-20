@@ -6,4 +6,4 @@ app.on('error', (err) => {
 })
 ```
 
-<typedef flatten narrow slimFunctions>types/Application.xml</typedef>
+<typedef narrow flatten slimFunctions>types/Application.xml</typedef>

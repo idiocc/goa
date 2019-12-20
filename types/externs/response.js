@@ -54,9 +54,9 @@ _goa.ContextDelegatedResponse.prototype.headerSent
  */
 _goa.ContextDelegatedResponse.prototype.etag
 /**
- * Set Content-Disposition header to "attachment" with optional `filename`.
- * @param {string} filename The filename.
- * @param {!_goa.ContentDisposition} options Options.
+ * Set _Content-Disposition_ header to "attachment" with optional `filename`.
+ * @param {string=} [filename] The filename.
+ * @param {!_goa.ContentDisposition=} [options] _Content-Disposition_ options.
  */
 _goa.ContextDelegatedResponse.prototype.attachment = function(filename, options) {}
 /**
@@ -156,3 +156,18 @@ _goa.Response.prototype.req
  * @type {!http.ServerResponse}
  */
 _goa.Response.prototype.res
+/**
+ * Options for setting the attachment.
+ * @record
+ */
+_goa.ContentDisposition
+/**
+ * The type. Default `attachment`.
+ * @type {string|undefined}
+ */
+_goa.ContentDisposition.prototype.type
+/**
+ * Fallback filename. Default `true`.
+ * @type {(boolean|string)|undefined}
+ */
+_goa.ContentDisposition.prototype.fallback

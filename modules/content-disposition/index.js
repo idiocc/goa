@@ -122,18 +122,12 @@ var DISPOSITION_TYPE_REGEXP = /^([!#$%&'*+.0-9A-Z^_`a-z|~-]+)[\x09\x20]*(?:$|;)/
  * @param {Object} [options]
  * @param {string} [options.type=attachment]
  * @param {string|boolean} [options.fallback=true]
- * @return {string}
- * @public
  */
-
-export default function contentDisposition (filename, options) {
-  var opts = options || {}
-
-  // get type
-  var type = opts.type || 'attachment'
+export default function contentDisposition(filename, options = {}) {
+  const { type = 'attachment', fallback = true } = options
 
   // get parameters
-  var params = createparams(filename, opts.fallback)
+  const params = createparams(filename, fallback)
 
   // format into string
   return format(new ContentDisposition(type, params))
@@ -144,30 +138,23 @@ export default function contentDisposition (filename, options) {
  *
  * @param {string} [filename]
  * @param {string|boolean} [fallback=true]
- * @private
  */
-
-function createparams (filename, fallback) {
+function createparams(filename, fallback = true) {
   if (filename === undefined) {
     return
   }
 
   var params = {}
 
-  if (typeof filename !== 'string') {
+  if (typeof filename != 'string') {
     throw new TypeError('filename must be a string')
   }
 
-  // fallback defaults to true
-  if (fallback === undefined) {
-    fallback = true
-  }
-
-  if (typeof fallback !== 'string' && typeof fallback !== 'boolean') {
+  if (typeof fallback != 'string' && typeof fallback != 'boolean') {
     throw new TypeError('fallback must be a string or boolean')
   }
 
-  if (typeof fallback === 'string' && NON_LATIN1_REGEXP.test(fallback)) {
+  if (typeof fallback == 'string' && NON_LATIN1_REGEXP.test(fallback)) {
     throw new TypeError('fallback must be ISO-8859-1 string')
   }
 
@@ -178,10 +165,10 @@ function createparams (filename, fallback) {
   var isQuotedString = TEXT_REGEXP.test(name)
 
   // generate fallback name
-  var fallbackName = typeof fallback !== 'string'
+  const fallbackName = typeof fallback != 'string'
     ? fallback && getlatin1(name)
     : basename(fallback)
-  var hasFallback = typeof fallbackName === 'string' && fallbackName !== name
+  const hasFallback = typeof fallbackName == 'string' && fallbackName != name
 
   // set extended filename parameter
   if (hasFallback || !isQuotedString || HEX_ESCAPE_REGEXP.test(name)) {
