@@ -1,14 +1,22 @@
 // import Koa from '../depack/depack'
 import '../types/externs/module'
-import Koa from '../src/application'
+import Goa, { Context } from '../src'
 
-const app = new Koa()
+class MyContext extends Context {
+  get hello() {
+    return 'world'
+  }
+}
+
+const app = new Goa({
+  Context: MyContext,
+})
 
 /**
  * @type {!_goa.Middleware}
  */
 async function middleware(ctx) {
-  ctx.body = 'hello world'
+  ctx.body = 'hello ' + ctx.hello
   ctx.set('agc', 'def')
 }
 

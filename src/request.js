@@ -15,6 +15,7 @@ import Response from './response' // eslint-disable-line
 const IP = Symbol('context#ip')
 
 /**
+ * The request implementation.
  * @implements {_goa.Request}
  */
 export default class Request {

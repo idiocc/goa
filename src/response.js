@@ -16,7 +16,7 @@ import Context from './context' // eslint-disable-line
 import Request from './request' // eslint-disable-line
 
 /**
- * The response object.
+ * The response implementation.
  * @implements {_goa.Response}
  */
 export default class Response {
