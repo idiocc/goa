@@ -1,15 +1,10 @@
 {
   "name": "@externs/goa",
+  "main": "require.js",
   "module": "module.js",
   "description": "The Goa Web-Server Externs.",
-  "version": "0.1.3",
-  "externs": [
-    "application.js",
-    "context.js",
-    "request.js",
-    "response.js",
-    "index.js"
-  ],
+  "version": "1.0.0",
+  "license": "AGPL-3.0",
   "keywords": [
     "goa",
     "externs",
