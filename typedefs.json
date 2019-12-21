@@ -38,5 +38,9 @@
   "_goa.ContentDisposition": {
     "link": "https://github.com/idiocc/goa/wiki/Response#type-contentdisposition",
     "description": "Options for setting the attachment."
+  },
+  "_goa.ApplicationOptions": {
+    "link": "https://github.com/idiocc/goa/wiki/Application#type-applicationoptions",
+    "description": "Options for the application constructor."
   }
 }

@@ -21,20 +21,28 @@ const debug = Debug('@goa/koa:application')
 export default class Application extends EventEmitter {
   /**
    * Initialize a new `Application`.
+   * @param {!_goa.ApplicationOptions} options
    */
-  constructor() {
+  constructor(options = {}) {
+    const {
+      proxy = false,
+      subdomainOffset = 2,
+      env = process.env.NODE_ENV || 'development',
+      keys,
+      Context: C = Context,
+    } = options
     super()
 
-    this.proxy = false
+    this.proxy = proxy
     this.silent = false
     this.middleware = []
-    this.subdomainOffset = 2
-    this.env = process.env.NODE_ENV || 'development'
-    this.context = /** @type {!Context} */ (Object.create(Context.prototype))
+    this.subdomainOffset = subdomainOffset,
+    this.env = env
+    this.context = /** @type {!Context} */ (Object.create(C.prototype))
     this.request = /** @type {!Request} */ (Object.create(Request.prototype))
     this.response = /** @type {!Response} */ (Object.create(Response.prototype))
 
-    this.keys = undefined
+    this.keys = keys
     // if (util.inspect.custom) {
     //   this[util.inspect.custom] = this.inspect
     // }
@@ -253,4 +261,8 @@ function respond(ctx) {
 /**
  * @suppress {nonStandardJsDocs}
  * @typedef {import('../types').Context} _goa.Context
+ */
+/**
+ * @suppress {nonStandardJsDocs}
+ * @typedef {import('../types').ApplicationOptions} _goa.ApplicationOptions
  */

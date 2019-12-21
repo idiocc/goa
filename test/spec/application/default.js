@@ -1,5 +1,5 @@
-import Koa from '../../../src'
-import { equal, throws } from '@zoroaster/assert'
+import Goa from '../../../src'
+import { equal, throws, deepEqual } from '@zoroaster/assert'
 import Context from '../../context'
 
 /** @type {TestSuite} */
@@ -53,10 +53,32 @@ const TS = {
   'sets development env when NODE_ENV missing'() {
     const NODE_ENV = process.env.NODE_ENV
     process.env.NODE_ENV = ''
-    const app = new Koa()
+    const app = new Goa()
     if (NODE_ENV) process.env.NODE_ENV = NODE_ENV
     else delete process.env.NODE_ENV
     equal(app.env, 'development')
+  },
+  options: {
+    'sets env'() {
+      const env = 'custom'
+      const app = new Goa({ env })
+      equal(app.env, env)
+    },
+    'sets proxy flag'() {
+      const proxy = true
+      const app = new Goa({ proxy })
+      equal(app.proxy, proxy)
+    },
+    'sets signed cookie keys'() {
+      const keys = ['customkey']
+      const app = new Goa({ keys })
+      deepEqual(app.keys, keys)
+    },
+    'sets subdomainOffset'() {
+      const subdomainOffset = 3
+      const app = new Goa({ subdomainOffset })
+      deepEqual(app.subdomainOffset, subdomainOffset)
+    },
   },
 }
 

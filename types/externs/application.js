@@ -9,9 +9,10 @@ var _goa = {}
  * The application interface.
  * Creates a new app instance.
  * @extends {events.EventEmitter}
+ * @param {_goa.ApplicationOptions=} [options] Options to create an application.
  * @interface
  */
-_goa.Application = function() {}
+_goa.Application = function(options) {}
 /**
  * Whether the server is running behind a proxy. Default `false`.
  * @type {boolean|undefined}
@@ -98,6 +99,36 @@ _goa.Application.prototype.toJSON = function() {}
  * @return {!Object}
  */
 _goa.Application.prototype.inspect = function() {}
+/**
+ * Options for the application constructor.
+ * @record
+ */
+_goa.ApplicationOptions
+/**
+ * Whether the app should start in a proxy mode. Default `false`.
+ * @type {boolean|undefined}
+ */
+_goa.ApplicationOptions.prototype.proxy
+/**
+ * The offset for subdomains. Default `2`.
+ * @type {number|undefined}
+ */
+_goa.ApplicationOptions.prototype.subdomainOffset
+/**
+ * App environment. The default is `process.env.NODE_ENV || 'development'`.
+ * @type {string|undefined}
+ */
+_goa.ApplicationOptions.prototype.env
+/**
+ * The keys for cookies, or a _Keygrip_ instance.
+ * @type {(!(_goa.Keygrip|Array<string>))|undefined}
+ */
+_goa.ApplicationOptions.prototype.keys
+/**
+ * The custom context constructor.
+ * @type {(function(new: _goa.Context))|undefined}
+ */
+_goa.ApplicationOptions.prototype.Context = function() {}
 /**
  * The function to handle requests which can be installed with the `.use` method.
  * @typedef {function(!_goa.Context,!Function=): (!Promise|void)}

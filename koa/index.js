@@ -1,11 +1,5 @@
 // import Koa from '../depack/depack'
-import '../types/externs'
-import '../types/externs/application'
-import '../types/externs/content-disposition'
-import '../types/externs/context'
-import '../types/externs/request'
-import '../types/externs/response'
-
+import '../types/externs/module'
 import Koa from '../src/application'
 
 const app = new Koa()

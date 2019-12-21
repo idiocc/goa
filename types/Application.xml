@@ -13,6 +13,9 @@
 
   <interface extends="events.EventEmitter" name="Application" desc="The application interface.">
     <fn name="constructor">
+      <arg type="_goa.ApplicationOptions" name="options" opt>
+        Options to create an application.
+      </arg>
       Creates a new app instance.
     </fn>
     <prop opt boolean name="proxy" initial="false">
@@ -75,6 +78,24 @@
        - if `app.subdomainOffset` is 3, request.subdomains is `["tobi"]`.
     </prop>
   </interface>
+
+  <record name="ApplicationOptions" desc="Options for the application constructor.">
+    <prop boolean name="proxy" default="false" opt>
+      Whether the app should start in a proxy mode.
+    </prop>
+    <prop number name="subdomainOffset" default="2" opt>
+      The offset for subdomains.
+    </prop>
+    <prop string name="env" opt>
+      App environment. The default is `process.env.NODE_ENV || 'development'`.
+    </prop>
+    <prop type="!(_goa.Keygrip|Array<string>)" name="keys" opt>
+      The keys for cookies, or a _Keygrip_ instance.
+    </prop>
+    <prop type="function(new: _goa.Context)" name="Context" opt>
+      The custom context constructor.
+    </prop>
+  </record>
 
   <method name="Middleware" return="(!Promise|void)">
     <arg type="!_goa.Context" name="ctx">The context.</arg>
