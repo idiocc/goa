@@ -1,5 +1,9 @@
 ## 21 December 2019
 
+### [0.1.5](https://github.com/idiocc/goa/compare/v0.1.4...v0.1.5)
+
+- [feature] Application options.
+
 ### [0.1.4](https://github.com/idiocc/goa/compare/v0.1.3...v0.1.4)
 
 - [package] add `typedefs` field.
