@@ -1,3 +1,9 @@
+## 21 December 2019
+
+### [0.1.4](https://github.com/idiocc/goa/compare/v0.1.3...v0.1.4)
+
+- [package] add `typedefs` field.
+
 ## 19 December 2019
 
 ### [0.1.2](https://github.com/idiocc/goa/compare/v0.1.1...v0.1.2)
