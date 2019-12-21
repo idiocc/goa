@@ -19,14 +19,14 @@ The total context consists of
 
 This allows to write the delegator classes, which are then extended both by the context, and the request/response objects themselves. This is consistent with how Koa typings were written.
 
-<typedef flatten narrow slimFunctions>types/Context.xml</typedef>
+<typedef narrow slimFunctions>types/Context.xml</typedef>
 
 The base _Context_ contains the cookies, error throwing, state and other APIs, and also allows to access the request and response instances.
 
-<typedef flatten narrow slimFunctions name="ContextDelegatedResponse">types/Response.xml</typedef>
+<typedef narrow slimFunctions name="ContextDelegatedResponse">types/Response.xml</typedef>
 
 The methods from the [_Response_](Response) API are proxied in the context.
 
-<typedef flatten narrow name="ContextDelegatedRequest">types/Request.xml</typedef>
+<typedef narrow name="ContextDelegatedRequest">types/Request.xml</typedef>
 
 The methods from the [_Request_](Request) API are also available in the context for easier access.
