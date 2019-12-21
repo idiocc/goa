@@ -1,5 +1,9 @@
 ## 21 December 2019
 
+### [1.6.1](https://github.com/idiocc/goa/compare/v1.6.0...v1.6.1)
+
+- [feature] Export context, request and response.
+
 ### [1.6.0](https://github.com/idiocc/goa/compare/v1.5.2...v1.6.0)
 
 - [feature] Pass options to the application constructor.
