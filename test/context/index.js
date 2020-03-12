@@ -25,13 +25,12 @@ export default class Context extends Cookies {
    * @param {http.ServerResponse} [res]
    * @param {Koa} [app]
    */
-  makeContext(req, res, app) {
+  makeContext(req, res, app = new Koa()) {
     const socket = new Duplex()
     req = Object.assign({ headers: {}, socket }, Readable.prototype, req)
     res = Object.assign({ socket }, Writable.prototype, res)
     const _headers = {}
     req.socket.remoteAddress = req.socket.remoteAddress || '127.0.0.1'
-    app = app || new Koa()
     res.getHeader = k => _headers[k.toLowerCase()]
     res.getHeaders = () => _headers
     res.setHeader = (k, v) => _headers[k.toLowerCase()] = v
@@ -41,6 +40,9 @@ export default class Context extends Cookies {
   get context() {
     return this.makeContext
   }
+  /**
+   * Returns an instance of a mock context.
+   */
   get ctx() {
     return this.makeContext()
   }
@@ -119,6 +121,10 @@ export default class Context extends Cookies {
   startApp() {
     return this.startPlain(this._app.callback())
   }
+  /**
+   * Escapes HTML entities for `&`, `"`, `<` and `>`.
+   * @param {string} html
+   */
   escape(html){
     return `${html}`
       .replace(/&/g, '&amp;')
@@ -126,6 +132,10 @@ export default class Context extends Cookies {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
   }
+  /**
+   * Pause the runtime.
+   * @param {number} time
+   */
   sleep(time){
     return new Promise(resolve => setTimeout(resolve, time))
   }
